@@ -1,4 +1,198 @@
-@import "~bootstrap/scss/mixins/clearfix";
-@import "~bootstrap/scss/mixins/breakpoints";
-@import "~bootstrap/scss/variables";
+$navbar-menuitem-hover: #c72412;
+$navbar-color: #0f2431;
+$navbar-color-light: #FFFFFF;
+$navbar-link-color: #333;
+$navbar-border-color: #e6e6e6;
+$navbar-link-hover: #f4f4f4;
+$notification-bg-color: #ffc404;
+$navbar-signup-color: #47a447;
 
+.navbar-default {
+	background-color: $navbar-color-light;
+	color: $navbar-link-color;
+	border-color: $navbar-border-color;
+
+	.navbar-brand, 
+    .navbar-brand:hover, 
+    .navbar-brand:focus {
+    	color: $navbar-link-color;
+    }
+
+    .navbar-nav {
+
+        .active > a:focus, 
+        .active > a:hover, 
+        a:focus, a:hover,
+        .open > a,
+        .open > a:focus, 
+        .open > a:hover  {
+            background-color: $navbar-link-hover;
+            color: $navbar-link-color;
+        }
+
+        & > li > a { 
+            color: $navbar-link-color; 
+            text-transform: uppercase;
+        } 
+
+        & > li > a:focus, 
+        & > li > a:hover {
+            color: $navbar-link-color;
+        }
+
+        .open .dropdown-menu > li {
+
+            a {
+                color: $navbar-link-color;
+                font-weight: 300;
+            }
+
+            a:focus, > a:hover {
+                background-color: $navbar-link-hover;
+            }
+        }
+
+
+    }
+
+    .navbar-toggle:hover, 
+    .navbar-toggle:focus {
+        background-color: $navbar-link-hover;
+    }
+
+    .navbar-toggle {
+        border-color: $navbar-link-hover;
+    }
+
+}
+.navbar-header-menu {
+    float: right;
+    margin-right: 15px;
+
+    > .navbar-nav {
+        float: right;
+        margin: 0;
+
+        > li {
+            float: right;
+
+            > a {
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+        }
+
+
+        .open .dropdown-menu {
+            position: absolute;
+            float: right;
+            width: auto;
+            margin-top: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,.15);
+            -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+            box-shadow: 0 6px 12px rgba(0,0,0,.175);
+
+
+        }
+    }
+
+    > .navbar-right {
+        float: right;
+    }
+
+}
+
+.navbar-collapse {
+    .navbar-nav {
+        li {      
+            a:hover, a:focus {
+                background-color: $navbar-link-hover;
+            }
+        }
+
+        .menu-signup {
+            a {
+                margin: 4px;
+                padding: 10px;
+                color: $navbar-color-light;
+            }
+
+            a:hover, a:focus {
+                background-color: $navbar-signup-color;
+                opacity: 0.9;
+                color: $navbar-color-light;
+            }
+
+            a:after {
+                display: none;
+            }
+        }
+
+        .collapse-menu {
+            > li > a {
+                color: white;
+                font-weight: 500;
+            }
+
+            > li > a:focus, > li > a:hover {
+                color: $navbar-link-color;
+            }
+        }
+
+        .active a {
+            background-color: white;
+            color: $navbar-link-color;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+	.navbar-fixed-top {
+		.container {
+			position: relative;
+		}
+
+		.navbar-collapse {
+			> ul {
+				> li {
+					> a:hover, a:focus {
+						background-color: $navbar-link-hover;
+						color: $navbar-link-color;
+					}
+
+				}
+
+			}
+
+			.collapse-menu {
+				> li > a {
+					color: $navbar-link-color;
+					font-weight: 300;
+				}
+
+			}
+		}
+	}
+	.navbar-header-menu {
+        position: absolute;
+        right: 0;
+    }
+}
+
+
+.divider {
+  height: 1px;
+  border-top: 1px solid rgba(187, 191, 196, 0.5);
+  margin: 9px 15px;
+
+  @media (min-width: 768px) {
+    height: 40px;
+    margin: 5px 9px;
+    border-top: none;
+    border-bottom: none;
+    border-left: 1px solid rgba(187, 191, 196, 0.5);
+  }
+
+}

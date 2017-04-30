@@ -1,8 +1,4 @@
-@import "~bootstrap/scss/bootstrap";
-@import "~bootstrap/scss/bootstrap-grid";
-@import "~bootstrap/scss/mixins/breakpoints";
-@import "~bootstrap/scss/variables";
-
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,200,300,600,500,700,800,900);
 $fa-font-path: "/assets/font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
@@ -13,12 +9,128 @@ $section-text-light: #FFFFFF;
   box-sizing: border-box;
 }
 
-html, body{
-  font-family: 'Lato', Arial, Helvetica, sans-serif;
-  font-size: 62.5%;
+
+$bg-color: black;
+$navbar-color-bg: #f2f2f2;
+$navbar-color-link: #333;
+
+html, body {
+	height: 100% !important;
+  width: 100%;
+}
+
+html {
+  font-size: 62.5%
 }
 
 body {
-  font-size: 1.6rem;
-  background-color: #fbfbfb;
+  font-size: 1.4rem;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  background: #f4f4f4 !important;
 }
+
+section {
+  padding: 80px 0;
+
+  @media (max-width: 768px) {
+    & {
+      padding: 100px 0;
+    }
+  }
+}
+
+aside {
+  padding: 75px 0;
+}
+
+a {
+  color: $bg-color;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+p {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+p.styled {
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+ font-family: "Roboto", Helvetica, Arial, sans-serif;
+ font-weight: 900;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin: 0;
+  
+  @media (min-width: 768px) {
+    & {
+      font-size: 3rem;
+    }
+  }
+}
+
+h3 {
+  margin-bottom: 2px;
+}
+
+hr {
+  height: 1px;
+  margin: 5px auto;
+
+  @media (min-width: 768px) {
+    & {
+      margin: 20px auto;
+    }
+  }
+}
+
+hr.primary {
+  margin: 10px 0px;
+  border-top: 2px solid #f2f2f2;
+  border-bottom: 2px solid #f2f2f2;
+}
+
+hr.dark {
+  margin: 20px auto;
+  max-width: 200px;
+  border-top: 2px solid $bg-color;
+  border-bottom: 2px solid $bg-color;
+}
+
+hr.white {
+  border-color: white;
+  background-color: white;
+}
+
+hr.primary-vertical {
+  width: 1px;
+  height: 10px;
+  margin: 0;
+  border-color: $bg-color;
+  background-color: $bg-color;
+}
+
+.text-colored {
+  color: $bg-color;      
+}
+
+.img-center {
+  margin: 0 auto;
+}
+

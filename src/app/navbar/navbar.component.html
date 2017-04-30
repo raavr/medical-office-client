@@ -1,3 +1,68 @@
-<nav class="navbar navbar-fixed-top navbar-light bg-faded">
-
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target="#nav-data" class="navbar-toggle">
+            <span class="sr-only">Nawigacja</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" du-smooth-scroll="top" ng-href="/#top">eGabinet</a>
+      <div class="navbar-header-menu">
+        <ul ng-if="$ctrl.authService.loggedIn()" class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+              <a href="" data-toggle="dropdown" class="dropdown-toggle">
+              <span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a ui-sref="profile">Moje konto</a>
+                </li>
+                <li>
+                  <a ui-sref="logout">Wyloguj się</a>
+                </li>
+              </ul>
+          </li>
+          <!--<li ng-if="!$ctrl.authService.isAdmin()" class="dropdown" ng-include="'partials/user/notification-bar.html'"></li>-->
+          <!--<li ng-if="$ctrl.authService.isAdmin()" class="dropdown" ng-include="'partials/admin/notification-bar-admin.html'"></li>-->
+        </ul>
+      </div>
+    </div>
+    <div class="navbar-collapse collapse" id="nav-data">
+      <ul class="nav navbar-nav navbar-left">
+        <li class="hidden">
+          <a ng-href="#"></a>
+        </li>
+        <li du-smooth-scroll="articles" offset="50" du-scrollspy>
+          <a auto-collapse ng-href="/#articles">Aktualności</a>
+        </li>
+        <li du-smooth-scroll="offer" offset="50" du-scrollspy>
+          <a auto-collapse ng-href="/#offer">Oferta</a>
+        </li>
+        <li du-smooth-scroll="prices" offset="50" du-scrollspy>
+          <a auto-collapse ng-href="/#prices">Cennik</a>
+        </li>
+        <li du-smooth-scroll="contact" offset="50" du-scrollspy>
+          <a auto-collapse ng-href="/#contact">Kontakt</a>
+        </li>
+        <li ng-if="$ctrl.authService.loggedIn()" role="separator" class="divider"></li>
+        <li ng-class="{ active: navbarCtrl.isActive('/visits/browse')}" ng-if="$ctrl.authService.loggedIn() && !$ctrl.authService.isAdmin()"><a auto-collapse ui-sref="visits.browse.current" >Moje wizyty</a></li>
+        <li ng-if="$ctrl.authService.loggedIn() && !$ctrl.authService.isAdmin()" class="menu-signup"><a auto-collapse ui-sref="visit-signup.me" class="btn btn-success" >Zapisz się na wizytę</a></li>
+    
+        <li ng-class="{ active: navbarCtrl.isActive('/visits/admin/current') || navbarCtrl.isActive('/visits/admin/past')}" ng-if="$ctrl.authService.isAdmin()" class="dropdown">
+            <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="">Wizyty<span class="caret"></span></a>
+          <ul class="dropdown-menu collapse-menu" aria-labelledby="dropdownMenu1">
+            <li ng-class="{ active: navbarCtrl.isActive('/visits/admin/current')}"><a auto-collapse ui-sref="visits.admin.current" ng-click="navbarCtrl.goToAllVisits()">Przeglądaj wizyty</a></li>
+            <li ng-class="{ active: navbarCtrl.isActive('/visit/signup/user')}"><a auto-collapse ui-sref="visit-signup.user">Zapisz pacjenta na wizytę</a></li>
+            <li ng-class="{ active: navbarCtrl.isActive('/visits/admin/manage')}"><a auto-collapse ui-sref="manage-visits-date">Zarządzaj terminami wizyt</a></li>
+            <li ng-class="{ active: navbarCtrl.isActive('/visits/admin/lock')}"><a auto-collapse ui-sref="lock-visits-date">Zablokuj godziny wizyt</a></li>
+          </ul>
+         </li>
+        <li ng-class="{ active: navbarCtrl.isActive('/admin/users')}" ng-if="$ctrl.authService.isAdmin()"><a auto-collapse ui-sref="admin-users-list" >Pacjenci</a></li>
+        <li ng-class="{ active: navbarCtrl.isActive('/admin/articles')}" ng-if="$ctrl.authService.isAdmin()"><a auto-collapse ui-sref="article-list">Artykuły</a></li>
+      </ul>
+      <ul ng-if="!$ctrl.authService.loggedIn()" class="nav navbar-nav navbar-right">
+        <li><a auto-collapse ui-sref="login" >Zaloguj się</a></li>
+        <li class="menu-signup"><a auto-collapse ui-sref="signup" class="btn btn-success" >Zarejestruj się</a></li>
+      </ul>
+    </div>
 </nav>
