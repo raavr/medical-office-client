@@ -23,3 +23,4 @@ import 'rxjs/add/observable/fromPromise';
 // angular
 import angular from 'angular';
 import 'angular-jwt';
+import 'angular-ui-router';
