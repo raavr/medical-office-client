@@ -1,7 +1,8 @@
 // bootstrap v4
-import 'expose?Util!exports?Util!bootstrap/js/dist/util';
+//import 'expose?Util!exports?Util!bootstrap/js/dist/util';
 //import 'bootstrap/js/dist/collapse';
 //import 'bootstrap/js/dist/modal';
+import 'bootstrap/dist/js/bootstrap';
 
 // RxJS
 import 'rxjs/Observable';
