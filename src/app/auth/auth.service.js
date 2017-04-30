@@ -9,8 +9,13 @@ export class AuthService {
     }
 
     isAdmin() {
-      let token = localStorage.getItem(AUTH_CONFIG.DEFAULT_TOKEN_NAME),
-          decodedToken = this.jwtHelper.decodeToken(token);
+      let token = localStorage.getItem(AUTH_CONFIG.DEFAULT_TOKEN_NAME);
+
+      if(!token) {
+        return false;
+      }
+      
+      let decodedToken = this.jwtHelper.decodeToken(token);
       
       if (!decodedToken.hasOwnProperty('role')) {
         return null;
@@ -21,6 +26,11 @@ export class AuthService {
 
     loggedIn() {
         let token = localStorage.getItem(AUTH_CONFIG.DEFAULT_TOKEN_NAME);
+        
+        if(!token) {
+            return false;
+        }
+
         return !this.jwtHelper.isTokenExpired(token);
     }
 
