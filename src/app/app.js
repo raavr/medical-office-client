@@ -4,8 +4,9 @@ import './app.style.scss';
 
 import { AppComponent } from './app.component';
 import Auth from './auth/auth';
+import Navbar from './navbar/navbar';
 
  export default angular.module("My-app", [
-      Auth
+      Navbar, Auth
  ]).component("app", AppComponent)
    .name;
