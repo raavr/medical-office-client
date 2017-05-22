@@ -37,7 +37,8 @@ export class AuthService {
     login(credentials) {
         return Observable.fromPromise(this.$http
             .post(CONFIG.ENDPOINT + '/auth/login', JSON.stringify(credentials), { skipAuthorization: true }))
-            .map(data => localStorage.setItem(AUTH_CONFIG.DEFAULT_TOKEN_NAME, data.data.token));
+            .map(data => localStorage.setItem(AUTH_CONFIG.DEFAULT_TOKEN_NAME, data.data.token))
+            .catch(error => Observable.throw(error));
     }
 
     logout() {
