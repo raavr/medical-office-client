@@ -1,16 +1,14 @@
-$navbar-menuitem-hover: #c72412;
-$navbar-color: #0f2431;
-$navbar-color-light: #FFFFFF;
-$navbar-link-color: #333;
-$navbar-border-color: #e6e6e6;
-$navbar-link-hover: #f4f4f4;
-$notification-bg-color: #ffc404;
-$navbar-signup-color: #47a447;
+@import 'navbar.constant';
 
 .navbar-default {
 	background-color: $navbar-color-light;
 	color: $navbar-link-color;
 	border-color: $navbar-border-color;
+
+
+    .container {
+        position: relative;
+    }
 
 	.navbar-brand, 
     .navbar-brand:hover, 
@@ -65,6 +63,31 @@ $navbar-signup-color: #47a447;
     }
 
 }
+
+.navbar-menu {
+    float: right;
+    margin-right: 15px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 60px;
+
+    &::after {
+        content: '';
+        clear: both;
+        display: table;
+    }
+
+    @media(min-width: 768px) {
+        & {
+            position: static;
+            margin-right: 0;
+        }
+    }
+
+
+}
+
 .navbar-header-menu {
     float: right;
     margin-right: 15px;
@@ -109,24 +132,6 @@ $navbar-signup-color: #47a447;
         li {      
             a:hover, a:focus {
                 background-color: $navbar-link-hover;
-            }
-        }
-
-        .menu-signup {
-            a {
-                margin: 4px;
-                padding: 10px;
-                color: $navbar-color-light;
-            }
-
-            a:hover, a:focus {
-                background-color: $navbar-signup-color;
-                opacity: 0.9;
-                color: $navbar-color-light;
-            }
-
-            a:after {
-                display: none;
             }
         }
 
@@ -188,8 +193,8 @@ $navbar-signup-color: #47a447;
   margin: 9px 15px;
 
   @media (min-width: 768px) {
-    height: 40px;
-    margin: 5px 9px;
+    height: 24px;
+    margin: 12px 9px;
     border-top: none;
     border-bottom: none;
     border-left: 1px solid rgba(187, 191, 196, 0.5);

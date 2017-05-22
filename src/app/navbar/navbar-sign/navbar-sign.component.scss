@@ -1,0 +1,25 @@
+@import '../navbar.constant';
+
+.navbar-default {
+    
+    .navbar-nav {
+
+        .menu-signup {
+            a {
+                margin: 4px;
+                padding: 10px;
+                color: $navbar-color-light;
+            }
+
+            a:hover, a:focus {
+                background-color: $navbar-signup-color;
+                opacity: 0.9;
+                color: $navbar-color-light;
+            }
+
+            a:after {
+                display: none;
+            }
+        }
+    }
+}

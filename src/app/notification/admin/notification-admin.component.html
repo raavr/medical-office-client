@@ -1,0 +1,20 @@
+<ul class="list-group">
+    <li ng-if="$ctrl.notifications.length === 0" class="list-group-item list-group-item-none">Brak powiadomień</li>
+    <li class="list-group-item list-group-item-warning notification-item" 
+        ng-repeat="notification in $ctrl.notifications">
+        <div class="notification-wrapper">
+            <a>
+                <span>{{notification.name }} {{notification.surname}}</span> zapisał sie na wizytę <span>{{ notification.visitdate | date : 'dd/MM/yyyy'}}</span> o godzinie <span>{{notification.visitdate | date : 'HH:mm'}}</span>
+            </a>
+        </div>
+    </li>
+    <li class="dropdown-footer" ng-if="$ctrl.notifications.length > 0">
+        <div>
+            <a class="see-all" 
+                title="Zobacz {{$ctrl.notifications.length}}" 
+                ng-href="#" >
+                Zobacz {{$ctrl.notifications.length}} powiadomienia
+            </a>
+        </div>
+    </li>
+</ul>
