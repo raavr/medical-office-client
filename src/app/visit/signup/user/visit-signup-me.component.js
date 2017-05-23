@@ -2,8 +2,8 @@ import "./visit-signup-me.component.scss";
 import template from "./visit-signup-me.component.html";
 
 class VisitSignupMeController {
-    constructor(visitService) {
-        this.visitService = visitService;
+    constructor(visitSignupService) {
+        this.visitSignupService = visitSignupService;
     }
 
     addVisit() {
@@ -13,7 +13,7 @@ class VisitSignupMeController {
             desc: this.parent.visit.desc  
         };
         
-        this.visitService.addVisit(visit).subscribe(
+        this.visitSignupService.addVisit(visit).subscribe(
             () => { 
                 //TODO: 
                 //redirect to browse visit url
@@ -29,7 +29,7 @@ class VisitSignupMeController {
     }
 }
 
-VisitSignupMeController.$inject = ['visitService'];
+VisitSignupMeController.$inject = ['visitSignupService'];
 
 export const VisitSignupMeComponent = {
     bindings: {

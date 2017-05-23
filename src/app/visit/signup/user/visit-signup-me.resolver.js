@@ -1,5 +1,5 @@
-export default function VisitSignupMeResolve(visitService) {
-      return visitService.getDisabledDates().toPromise();
+export default function VisitSignupMeResolve(visitSignupService) {
+      return visitSignupService.getDisabledDates().toPromise();
 }
 
-VisitSignupMeResolve.$inject = ['visitService'];
+VisitSignupMeResolve.$inject = ['visitSignupService'];

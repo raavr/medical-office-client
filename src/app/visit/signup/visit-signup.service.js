@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
-import { CONFIG } from '../app.constant';
+import { CONFIG } from '../../app.constant';
 
-class VisitService {
+class VisitSignupService {
 
     constructor($http) {
         this.$http = $http;
@@ -30,8 +30,8 @@ class VisitService {
     }
 }
 
-VisitService.$inject = ['$http'];
+VisitSignupService.$inject = ['$http'];
 
 export default angular.module("visit.service", [])
-                      .service("visitService", VisitService)
+                      .service("visitSignupService", VisitSignupService)
                       .name;

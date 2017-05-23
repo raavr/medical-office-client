@@ -3,8 +3,8 @@ import { transformDate } from '../../app.helper';
 
 class VisitSignupController {
     
-    constructor(visitService) {
-        this.visitService = visitService;
+    constructor(visitSignupService) {
+        this.visitSignupService = visitSignupService;
         this.visit = {};
     }
 
@@ -14,7 +14,7 @@ class VisitSignupController {
     }      
 
     getAvailableTimes() {
-        this.visitService
+        this.visitSignupService
                 .getAvailableTimes(this.visit.date)
                 .subscribe(
                     (time) => this.visit.times = time,
@@ -24,7 +24,7 @@ class VisitSignupController {
     
 }
 
-VisitSignupController.$inject = ['visitService'];
+VisitSignupController.$inject = ['visitSignupService'];
 
 export const VisitSignupComponent = {
     template: template,
