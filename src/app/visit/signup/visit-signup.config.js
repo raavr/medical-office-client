@@ -1,6 +1,6 @@
-import VisitSignupMeResolve from './signup/user/visit-signup-me.resolver';
+import VisitSignupMeResolve from './user/visit-signup-me.resolver';
 
-export default function VisitConfig($stateProvider) {
+export default function VisitSignupConfig($stateProvider) {
     const states = [
          { 
              name: "visit-signup", 
@@ -23,4 +23,4 @@ export default function VisitConfig($stateProvider) {
 }
 
 
-VisitConfig.$inject = ['$stateProvider'];
+VisitSignupConfig.$inject = ['$stateProvider'];
