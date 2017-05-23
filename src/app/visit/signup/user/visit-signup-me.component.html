@@ -1,0 +1,47 @@
+<div class="container partials-content">
+    <div class="panel panel-default">
+        <div class="panel-heading">Zapisz na wizytę</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form>
+                        <div class="form-group">
+                            <label for="datepicker">Data wizyty:</label>
+                            <div class="input-group date">
+                                <input bt-datepicker 
+                                       change-date="$ctrl.parent.changeDate(event)" 
+                                       class="form-control" 
+                                       disabled-dates="$ctrl.disabledDates" 
+                                       current-date="$ctrl.parent.visit.date" 
+                                       autoclose="true" 
+                                       multidate="false">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-th" required></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="visittime">Godzina wizyty:</label>
+                            <select class="form-control" 
+                                    id="visittime" 
+                                    ng-model="$ctrl.parent.visit.selectedTime"
+                                    ng-options="s.visittime for s in $ctrl.parent.visit.times" 
+                                    required>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Informacje dodatkowe:</label>
+                            <textarea class="form-control" id="description" ng-model="$ctrl.parent.visit.desc"></textarea>
+                        </div>
+                        <button type="submit" 
+                                class="btn btn-success" 
+                                ng-disabled="$ctrl.isSubmitDisabled()" 
+                                ng-click="$ctrl.addVisit()">Zapisz się na wizytę</button>
+                                
+                        <a class="btn btn-danger" role="button" ui-sref="visits.browse.current">Anuluj</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
