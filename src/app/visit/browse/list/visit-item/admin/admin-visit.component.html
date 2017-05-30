@@ -1,0 +1,21 @@
+<div class="row visit-item" ng-class="{ 'is-even': $ctrl.isEven }">
+    <div ng-if="$ctrl.parent.type === 'admin_current'" class="col-xs-1"> 
+        <input type="checkbox"
+            ng-model="$ctrl.visit.isSelected"
+            ng-change="$ctrl.toggleSelection()">
+    </div>
+    <div class="col-xs-2">{{$ctrl.visit.visitdate | date : 'dd/MM/yyyy'}}</div>
+    <div class="col-xs-2">{{$ctrl.visit.visitdate | date : 'HH:mm'}}</div>
+    <div ng-class="{ 'col-xs-3': $ctrl.parent.type === 'admin_current', 
+                     'col-xs-4': $ctrl.parent.type === 'admin_past' }">
+            {{$ctrl.visit.name}} {{$ctrl.visit.surname}}
+    </div>
+    <div class="col-xs-2">
+        <button type="button" ng-if="$ctrl.visit.status === 'reservation'" class="btn btn-warning btn-type-warning btn-visit-type">Oczekuje</button>
+        <button type="button" ng-if="$ctrl.visit.status === 'accepted'" class="btn btn-success btn-type-success btn-visit-type">Zaakceptowano</button>
+        <button type="button" ng-if="$ctrl.visit.status === 'canceled'" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
+    </div>
+    <div class="col-xs-2">
+        <a ng-href="#" uib-tooltip="Pokaż więcej" ng-click="visitsAdminCtrl.showMoreInfoAboutVisit(visit.id)" class="btn btn-warning btn-action"><i class="glyphicon glyphicon-info-sign"></i></a>
+    </div>
+</div>

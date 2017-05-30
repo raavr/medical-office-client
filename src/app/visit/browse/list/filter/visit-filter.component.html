@@ -1,0 +1,54 @@
+<div class="row">
+    <div ng-if="$ctrl.parent.type === 'admin_current'" class="col-xs-1"></div>
+    <div class="col-xs-2">
+        <input type="text" 
+               class="form-control" 
+               ng-model="$ctrl.filter.date" 
+               ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})" 
+               ng-model-options="{
+                                    updateOn: 'default blur',
+                                    debounce: {
+                                        'default': 250,
+                                        'blur': 0
+                                    }
+                                 }">
+    </div>
+    <div class="col-xs-2">
+        <input type="text" 
+               class="form-control" 
+               ng-model="$ctrl.filter.time" 
+               ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})" 
+               ng-model-options="{
+                                    updateOn: 'default blur',
+                                    debounce: {
+                                        'default': 250,
+                                        'blur': 0
+                                    }
+                                 }">
+    </div>
+    <div ng-if="$ctrl.parent.type === 'user_current' || $ctrl.parent.type === 'user_past'" class="col-xs-4"></div>
+    <div ng-if="$ctrl.parent.type === 'admin_current' || $ctrl.parent.type === 'admin_past'" 
+         ng-class="{ 'col-xs-3': $ctrl.parent.type === 'admin_current', 
+                     'col-xs-4': $ctrl.parent.type === 'admin_past' }">
+        <input type="text" 
+               class="form-control" 
+               ng-model="$ctrl.filter.name" 
+               ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})" 
+               ng-model-options="{
+                                    updateOn: 'default blur',
+                                    debounce: {
+                                        'default': 250,
+                                        'blur': 0
+                                    }
+                                 }">
+    </div>
+    <div class="col-xs-2">
+        <select class="form-control" ng-model="$ctrl.filter.type" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})">
+            <option value="all">Wszystkie</option>
+            <option value="accepted">Zaakceptowane</option>
+            <option value="reservation">Oczekujące</option>
+            <option value="canceled">Odrzucone</option>
+        </select>
+    </div>
+    <div class="col-xs-2"></div>
+</div>

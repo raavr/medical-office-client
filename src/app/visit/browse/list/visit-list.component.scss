@@ -1,0 +1,49 @@
+@import "../../../navbar/navbar.constant";
+
+.visit-container {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.visit-list-status {
+    font-size: 1.6rem;
+}
+
+.pagination-sm {
+    margin: 0;
+}
+
+.pagination {
+    .active {
+        a, a:focus, a:hover,
+        span, span:focus, span:hover {
+            background-color: $navbar-color-bg;
+            border-color: #ddd;
+            color: $navbar-link-color;
+        }
+    }
+    
+    li {
+        a:focus, a:hover,
+        span:focus, span:hover {
+            color: $navbar-link-color;
+        }
+    }   
+}
+
+.loading-overlay {
+    background-color: rgba(255,255,255,0.8);
+    width: calc(100% + 30px);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        font-weight: 700;
+    }
+}

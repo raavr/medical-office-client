@@ -1,0 +1,18 @@
+<div class="container partials-content">
+	<div class="row">
+		<div class="col-sm-12">
+            <ul class="nav nav-tabs">
+                <li role="presentation" ng-class="{ active: $ctrl.isTabActive('current') }">
+                    <a ui-sref="{{$ctrl.authService.isAdmin() ? 'visit-browse.admin-current' : 'visit-browse.current'}}" ng-click="$ctrl.activeTab('current')">Atkualne wizyty</a>
+                </li>
+                <li role="presentation" ng-class="{ active: $ctrl.isTabActive('past') }">
+                    <a ui-sref="{{$ctrl.authService.isAdmin() ? 'visit-browse.admin-past' : 'visit-browse.past'}}" ng-click="$ctrl.activeTab('past')">Minione wizyty</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div ng-if="$ctrl.isLoading()">Trwa wczytywanie...</div>
+                <div ui-view class="show-grid"></div>
+            </div>
+		</div>
+	</div>
+</div>

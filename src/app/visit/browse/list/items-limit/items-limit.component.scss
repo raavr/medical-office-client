@@ -1,0 +1,20 @@
+@import "../../../../navbar/navbar.constant";
+
+.items-limit-container {
+    padding-right: 0;
+}
+
+ .btn-filter {
+  background-color: transparent;
+  border-color: $navbar-color-bg;
+  color: $navbar-link-color;
+  transition: all 0.2s ease;
+
+ }
+
+ .btn-filter.active, .btn:active {
+    box-shadow: none;
+    background-color: $navbar-color-bg;
+    border-color: $navbar-color-bg;
+    color: $navbar-link-color;
+ }

@@ -1,0 +1,5 @@
+<div class="col-xs-6 items-limit-container">
+    <div class="btn-group pull-right">
+        <button type="button" class="btn btn-filter" ng-repeat="entry in $ctrl.entries track by $index" ng-click="$ctrl.onLimitChange({entry: entry})" uib-btn-radio="{{entry}}" ng-model="$ctrl.selectedEntry">{{entry}}</button>  
+    </div>
+</div>
