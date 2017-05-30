@@ -2,6 +2,8 @@ import CurrentUserVisitResolve from './list/visit-item/user/user-visit-current.r
 import PastUserVisitResolve from './list/visit-item/user/user-visit-past.resolve';
 import CurrentAdminVisitResolve from './list/visit-item/admin/admin-visit-current.resolve';
 import PastAdminVisitResolve from './list/visit-item/admin/admin-visit-past.resolve';
+import AuthGuardUser from '../../auth/auth-guard-user.service';
+import AuthGuardAdmin from '../../auth/auth-guard-admin.service';
 
 export default function VisitBrowseConfig($stateProvider) {
     const states = [
@@ -15,6 +17,7 @@ export default function VisitBrowseConfig($stateProvider) {
             url: "/current",
             component: "visitList",
             resolve: {
+                canActivate: AuthGuardUser,
                 visits: CurrentUserVisitResolve,
                 type: () => "user_current"
             }
@@ -24,6 +27,7 @@ export default function VisitBrowseConfig($stateProvider) {
             url: "/past",
             component: "visitList",
             resolve: {
+                canActivate: AuthGuardUser,
                 visits: PastUserVisitResolve,
                 type: () => "user_past"
             }
@@ -33,6 +37,7 @@ export default function VisitBrowseConfig($stateProvider) {
             url: "/admin/current",
             component: "visitList",
             resolve: {
+                canActivate: AuthGuardAdmin,
                 visits: CurrentAdminVisitResolve,
                 type: () => "admin_current"
             }
@@ -42,6 +47,7 @@ export default function VisitBrowseConfig($stateProvider) {
             url: "/admin/past",
             component: "visitList",
             resolve: {
+                canActivate: AuthGuardAdmin,
                 visits: PastAdminVisitResolve,
                 type: () => "admin_past"
             }
