@@ -7,6 +7,10 @@ class AdminVisitController {
             visitId : this.visit.id
         });
     }
+
+    showMore() {
+        
+    }
 }
 
 
