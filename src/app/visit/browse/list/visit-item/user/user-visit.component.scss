@@ -6,10 +6,42 @@
         background-color: #f9f9f9;
     }
 
+    .visit-content {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-left: 1px solid #ddd;
+
+        @media(min-width: 768px) {
+            padding: 0;
+            border: 0;
+        }
+    }
+
+    .visit-label {
+        display: block;
+        font-weight: 700;
+        padding-left: 0;
+        padding-top: 3px;
+        padding-bottom: 3px;
+
+         @media(min-width: 768px) {
+             & {
+                 display: none;
+             }
+        }
+    }
+
     .btn-visit-type {
-        width: 100%;
-        padding: 0;
+        padding: 0px 10px;
         cursor: default !important;
+        font-size: 1.3rem;
+
+        @media(min-width: 768px) {
+            & {
+                padding: 0;
+                width: 100%;
+            }
+        }
     }
 
     .btn-type-success:hover {
@@ -29,6 +61,7 @@
 
     .btn-action {
         padding: 0 10px;
+        font-size: 1.3rem;
     }
     
 }

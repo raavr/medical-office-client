@@ -4,6 +4,16 @@
     padding-right: 0;
 }
 
+.btn-limit-group {
+    float: left;
+
+    @media(min-width: 768px) {
+        & {
+            float: right;
+        }
+    }
+}
+
  .btn-filter {
   background-color: transparent;
   border-color: $navbar-color-bg;

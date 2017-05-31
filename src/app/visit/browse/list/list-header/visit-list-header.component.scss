@@ -1,8 +1,15 @@
 .visit-items-header {
     margin-bottom: 10px; 
     border-bottom: 1px solid #e2e2e2;
+    display: none;
 
     .item-header {
         font-weight: 700;
+    }
+
+    @media(min-width: 768px) {
+        & {
+            display: block;
+        }
     }
 }

@@ -1,0 +1,36 @@
+.filter-container {
+    margin-bottom: 30px;
+
+    @media(min-width: 768px) {
+        & {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.visit-filter-content {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-left: 1px solid #ddd;
+
+    @media(min-width: 768px) {
+        & {
+            padding: 0;
+            border: 0;
+        }
+    }
+}
+
+.visit-filter-label {
+    display: block;
+    font-weight: 700;
+    padding-left: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    @media(min-width: 768px) {
+        & {
+            display: none;
+        }
+    }
+}

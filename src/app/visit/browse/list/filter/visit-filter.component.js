@@ -1,3 +1,4 @@
+import './visit-filter.component.scss';
 import template from "./visit-filter.component.html";
 
 class VisitFilterController {

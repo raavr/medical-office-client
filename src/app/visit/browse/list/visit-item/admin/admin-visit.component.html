@@ -1,21 +1,37 @@
 <div class="row visit-item" ng-class="{ 'is-even': $ctrl.isEven }">
-    <div ng-if="$ctrl.parent.type === 'admin_current'" class="col-xs-1"> 
-        <input type="checkbox"
-            ng-model="$ctrl.visit.isSelected"
-            ng-change="$ctrl.toggleSelection()">
+    <div ng-if="$ctrl.parent.type === 'admin_current'" class="col-xs-12 col-sm-1">
+        <div class="col-xs-3 visit-label"></div> 
+        <div class="col-xs-9 col-sm-12 visit-content">
+            <input type="checkbox"
+                ng-model="$ctrl.visit.isSelected"
+                ng-change="$ctrl.toggleSelection()">
+        </div>
     </div>
-    <div class="col-xs-2">{{$ctrl.visit.visitdate | date : 'dd/MM/yyyy'}}</div>
-    <div class="col-xs-2">{{$ctrl.visit.visitdate | date : 'HH:mm'}}</div>
-    <div ng-class="{ 'col-xs-3': $ctrl.parent.type === 'admin_current', 
-                     'col-xs-4': $ctrl.parent.type === 'admin_past' }">
-            {{$ctrl.visit.name}} {{$ctrl.visit.surname}}
+    <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-3 visit-label">Data:</div>
+        <div class="col-xs-9 col-sm-12 visit-content">{{$ctrl.visit.visitdate | date : 'dd/MM/yyyy'}}</div>
     </div>
-    <div class="col-xs-2">
-        <button type="button" ng-if="$ctrl.visit.status === 'reservation'" class="btn btn-warning btn-type-warning btn-visit-type">Oczekuje</button>
-        <button type="button" ng-if="$ctrl.visit.status === 'accepted'" class="btn btn-success btn-type-success btn-visit-type">Zaakceptowano</button>
-        <button type="button" ng-if="$ctrl.visit.status === 'canceled'" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
+     <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-3 visit-label">Godzina:</div>
+        <div class="col-xs-9 col-sm-12 visit-content">{{$ctrl.visit.visitdate | date : 'HH:mm'}}</div>
+     </div>
+    <div ng-class="{ 'col-xs-12 col-sm-3': $ctrl.parent.type === 'admin_current', 
+                     'col-xs-12 col-sm-4': $ctrl.parent.type === 'admin_past' }">
+            <div class="col-xs-3 visit-label">Pacjent:</div>
+            <div class="col-xs-9 col-sm-12 visit-content">{{$ctrl.visit.name}} {{$ctrl.visit.surname}}</div>
     </div>
-    <div class="col-xs-2">
-        <a ng-href="#" uib-tooltip="Pokaż więcej" ng-click="visitsAdminCtrl.showMoreInfoAboutVisit(visit.id)" class="btn btn-warning btn-action"><i class="glyphicon glyphicon-info-sign"></i></a>
+    <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-3 visit-label">Status:</div>
+        <div class="col-xs-9 col-sm-12 visit-content">
+            <button type="button" ng-if="$ctrl.visit.status === 'reservation'" class="btn btn-warning btn-type-warning btn-visit-type">Oczekuje</button>
+            <button type="button" ng-if="$ctrl.visit.status === 'accepted'" class="btn btn-success btn-type-success btn-visit-type">Zaakceptowano</button>
+            <button type="button" ng-if="$ctrl.visit.status === 'canceled'" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-3 visit-label">Akcje:</div>
+        <div class="col-xs-9 col-sm-12 visit-content">
+            <a ng-href="#" uib-tooltip="Pokaż więcej" ng-click="visitsAdminCtrl.showMoreInfoAboutVisit(visit.id)" class="btn btn-warning btn-action"><i class="glyphicon glyphicon-info-sign"></i></a>
+        </div>
     </div>
 </div>

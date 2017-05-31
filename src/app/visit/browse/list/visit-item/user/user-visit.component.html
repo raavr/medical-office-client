@@ -1,20 +1,40 @@
 <div class="row visit-item" ng-class="{ 'is-even': $ctrl.isEven }">
-    <div class="col-xs-2">{{$ctrl.visit.visitdate | date : 'dd/MM/yyyy'}}</div>
-    <div class="col-xs-2">{{$ctrl.visit.visitdate | date : 'HH:mm'}}</div>
-    <div ng-if="$ctrl.parent.type === 'user_current'" class="col-xs-4">{{$ctrl.visit.description}}{{$ctrl.visit.description.length > 0 ? '' : 'Brak'}}</div>
-    <div ng-if="$ctrl.parent.type === 'user_past'" class="col-xs-4">{{visit.infofromdoctor}}{{visit.infofromdoctor.length > 0 ? '' : '-'}}</div>
-    <div class="col-xs-2">
-        <button type="button" ng-if="$ctrl.visit.status === 'reservation'" class="btn btn-warning btn-type-warning btn-visit-type">Oczekuje</button>
-        <button type="button" ng-if="$ctrl.visit.status === 'accepted'"class="btn btn-success btn-type-success btn-visit-type">Zaakceptowano</button>
-        <button ng-if="$ctrl.parent.type === 'user_current' && $ctrl.visit.status === 'canceled'" type="button" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
-        <button ng-if="$ctrl.parent.type === 'user_past' && $ctrl.visit.status === 'canceled'" type="button" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
+    <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-3 visit-label">Data:</div>
+        <div class="col-xs-9 col-sm-12 visit-content">{{$ctrl.visit.visitdate | date : 'dd/MM/yyyy'}}</div>
     </div>
-    <div ng-if="$ctrl.parent.type === 'user_current'" class="col-xs-2">
-         <button type="button" ng-if="$ctrl.visit.status === 'reservation'" class="btn btn-danger btn-visit-type" ng-click="$ctrl.cancelVisit()">Anuluj</button>
-         <span class="small" ng-if="$ctrl.visit.status === 'accepted'">Jeśli chcesz odwołać tę wizytę, skontaktuj się z dentystą.</span>
-         <span class="small" ng-if="$ctrl.visit.status === 'canceled'">Powód odrzucenia: {{$ctrl.visit.rejectreason}}</span>
+     <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-3 visit-label">Godzina:</div>
+        <div class="col-xs-9 col-sm-12 visit-content">{{$ctrl.visit.visitdate | date : 'HH:mm'}}</div>
+     </div>
+    <div  class="col-xs-12 col-sm-4">
+        <div class="col-xs-3 visit-label">Informacje:</div>
+        <div  class="col-xs-9 col-sm-12 visit-content">
+            <span ng-if="$ctrl.parent.type === 'user_current'">{{$ctrl.visit.description}}{{$ctrl.visit.description.length > 0 ? '' : 'Brak'}}</span>
+            <span ng-if="$ctrl.parent.type === 'user_past'">{{visit.infofromdoctor}}{{visit.infofromdoctor.length > 0 ? '' : '-'}}</span>
+        </div>
     </div>
-    <div ng-if="$ctrl.parent.type === 'user_past'" class="col-xs-2">
-       {{$ctrl.visit.price}}
+    <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-3 visit-label">Status:</div>
+        <div class="col-xs-9 col-sm-12 visit-content">
+            <button type="button" ng-if="$ctrl.visit.status === 'reservation'" class="btn btn-warning btn-type-warning btn-visit-type">Oczekuje</button>
+            <button type="button" ng-if="$ctrl.visit.status === 'accepted'"class="btn btn-success btn-type-success btn-visit-type">Zaakceptowano</button>
+            <button ng-if="$ctrl.parent.type === 'user_current' && $ctrl.visit.status === 'canceled'" type="button" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
+            <button ng-if="$ctrl.parent.type === 'user_past' && $ctrl.visit.status === 'canceled'" type="button" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
+        </div>
+    </div>
+    <div ng-if="$ctrl.parent.type === 'user_current'" class="col-xs-12 col-sm-2">
+        <div class="col-xs-3 visit-label">Akcje:</div>
+        <div class="col-xs-9 col-sm-12 visit-content">
+            <button type="button" ng-if="$ctrl.visit.status === 'reservation'" class="btn btn-danger btn-visit-type" ng-click="$ctrl.cancelVisit()">Anuluj</button>
+            <span class="small" ng-if="$ctrl.visit.status === 'accepted'">Jeśli chcesz odwołać tę wizytę, skontaktuj się z dentystą.</span>
+            <span class="small" ng-if="$ctrl.visit.status === 'canceled'">Powód odrzucenia: {{$ctrl.visit.rejectreason}}</span>
+         </div>
+    </div>
+    <div ng-if="$ctrl.parent.type === 'user_past'" class="col-xs-12 col-sm-2">
+        <div class="col-xs-3 visit-label">Koszt wizyty:</div>
+        <div class="col-xs-9 col-sm-12 visit-content">
+            {{$ctrl.visit.price}}
+        </div>
     </div>
 </div>
