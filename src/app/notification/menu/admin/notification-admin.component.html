@@ -3,7 +3,7 @@
     <li class="notification-item-warning notification-item" 
         ng-repeat="notification in $ctrl.notifications">
         <div class="notification-wrapper">
-            <a>
+            <a ng-click="$ctrl.openNotificationModal($index)">
                 <span>{{notification.name }} {{notification.surname}}</span> zapisał sie na wizytę <span>{{ notification.visitdate | date : 'dd/MM/yyyy'}}</span> o godzinie <span>{{notification.visitdate | date : 'HH:mm'}}</span>
             </a>
         </div>

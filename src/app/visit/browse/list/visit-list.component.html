@@ -19,7 +19,7 @@
         <div ng-if="$ctrl.isUpdating" class="loading-overlay"><span>Proszę czekać...</span></div>
         <p ng-if="$ctrl.filteredVisits.length === 0" class="visit-list-status">Brak wizyt</p>
     </div>
-    <admin-action-panel ng-if="$ctrl.authService.isAdmin() && $ctrl.type === 'admin_current'" selected-visits="$ctrl.selectedVisits" on-visits-updated="$ctrl.onVisitsModified(status)" is-updating="$ctrl.showUpdatingPanel(isUpdating)"></admin-action-panel>
+    <admin-action-panel ng-if="$ctrl.authService.isAdmin() && $ctrl.type === 'admin_current'" selected-visits="$ctrl.selectedVisits" on-visits-updated="$ctrl.onVisitsModified(visit)" is-updating="$ctrl.showUpdatingPanel(isUpdating)"></admin-action-panel>
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <ul uib-pagination 

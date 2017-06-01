@@ -2,7 +2,7 @@
     <li ng-if="$ctrl.notifications.length === 0" class="notification-item notification-item-none">Brak powiadomień</li>
     <li class="notification-item-{{notification.type}} notification-item" ng-repeat="notification in $ctrl.notifications">
         <div class="notification-wrapper">
-            <a ng-click="$ctrl.markAsRead(notification.id)">Wizyta w dniu {{notification.visitdate | date : 'dd/MM/yyyy'}} o godzinie {{notification.visitdate | date : 'HH:mm'}} została {{notification.type}}.</a>
+            <a ng-click="$ctrl.openNotificationModal($index)">Wizyta w dniu {{notification.visitdate | date : 'dd/MM/yyyy'}} o godzinie {{notification.visitdate | date : 'HH:mm'}} została {{notification.type | notificationTypeFilter}}.</a>
         </div>
     </li>
     <li class="dropdown-footer" ng-if="$ctrl.notifications.length > 0">

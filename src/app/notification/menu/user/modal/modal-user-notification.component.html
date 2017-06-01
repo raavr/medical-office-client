@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <h3 class="modal-title">Informacja dla pacjenta</h3>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <p>Wizyta w dniu <span>{{$ctrl.ntf.visitdate | date : 'dd/MM/yyyy'}}</span> o godzinie <span>{{$ctrl.ntf.visitdate | date : 'HH:mm'}}</span> została <span>{{$ctrl.ntf.type | notificationTypeFilter}}.</span></p>
+        <p class="small">{{$ctrl.ntf.rejectreason}}</p>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.markAsRead()">Oznacz jako przeczytane</button>
+</div>

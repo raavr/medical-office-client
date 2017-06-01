@@ -105,12 +105,20 @@ class VisitListController {
         });
     }
 
-    onVisitsModified(status) {
-        this.selectedVisits.forEach((elem) => {
-            elem.status = status;
-            elem.isSelected = false;
-        });
-        this.selectedVisits = [];
+    onVisitsModified(visit) {
+        if(visit.id === -1) {
+            this.selectedVisits.forEach((elem) => {
+                elem.status = status;
+                elem.isSelected = false;
+            });
+            this.selectedVisits = [];
+        } else {
+            let fVisit = this.visits.find((elem) => elem.id === visit.id)
+            if(fVisit) {
+                fVisit.status = visit.status;
+            }
+        }
+
         this.showUpdatingPanel(false);
     }
 

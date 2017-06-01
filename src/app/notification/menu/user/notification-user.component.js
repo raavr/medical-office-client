@@ -2,9 +2,10 @@ import '../base/notification-item.scss';
 import template from './notification-user.component.html';
 
 class NotificationUserCtrl {
-    constructor(notificationEventService, notificationUserService) {
+    constructor(notificationEventService, notificationUserService, $uibModal) {
         this.notificationEventService = notificationEventService;
         this.notificationUserService = notificationUserService;
+        this.$uibModal = $uibModal;
     }
 
     $onInit() {
@@ -58,10 +59,26 @@ class NotificationUserCtrl {
     $onDestroy() {
         this.notificationEventSubscription.unsubscribe();
     }
+
+    openNotificationModal(index) {
+        let modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'modalUserNotification',
+            resolve: {
+                notification: () => this.notifications[index]
+            }  
+        });
+
+        modalInstance.result.then(
+            () =>  this.markAsRead(this.notifications[index].id),
+            () => {}
+        );
+    }
+
     
 }
 
-NotificationUserCtrl.$inject = ['notificationEventService', 'notificationUserService'];
+NotificationUserCtrl.$inject = ['notificationEventService', 'notificationUserService', '$uibModal'];
 
 export const NotificationUserComponent = {
     bindings: {
