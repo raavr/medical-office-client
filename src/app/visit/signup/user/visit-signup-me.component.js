@@ -2,8 +2,9 @@ import "./visit-signup-me.component.scss";
 import template from "./visit-signup-me.component.html";
 
 class VisitSignupMeController {
-    constructor(visitSignupService) {
+    constructor(visitSignupService, $state) {
         this.visitSignupService = visitSignupService;
+        this.$state = $state;
     }
 
     addVisit() {
@@ -16,8 +17,8 @@ class VisitSignupMeController {
         this.visitSignupService.addVisit(visit).subscribe(
             () => { 
                 //TODO: 
-                //redirect to browse visit url
                 //show toast
+                this.$state.go('visit-browse.current');
                 console.log("Zapisałeś się na wizytę");
              },
              (err) => console.log(err)
@@ -29,7 +30,7 @@ class VisitSignupMeController {
     }
 }
 
-VisitSignupMeController.$inject = ['visitSignupService'];
+VisitSignupMeController.$inject = ['visitSignupService', '$state'];
 
 export const VisitSignupMeComponent = {
     bindings: {
