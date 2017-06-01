@@ -1,16 +1,7 @@
 <div class="dropdown notification-dropdown">
-    <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-href="#">
+    <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-href="#" ng-click="$ctrl.toggleNotificationMenu()">
         <span class="glyphicon glyphicon-bell"></span>
         <span ng-if="$ctrl.notificationsCount > 0" class="badge">{{$ctrl.notificationsCount}}</span>
     </a>
-    <div class="dropdown-menu dropdown-menu-right alert-dropdown-menu" aria-labelledby="dropdownMenu1">
-        <div class="dropdown-header">
-            <div class="refresh-box">
-                <span class="glyphicon glyphicon-refresh"></span>
-            </div>
-            <p class="notification-header-title">Powiadomienia</p>
-        </div>
-        <notification-admin ng-if="$ctrl.authService.isAdmin()"></notification-admin>
-        <notification-user ng-if="!$ctrl.authService.isAdmin()"></notification-user>
-    </div>
+    <notification-menu refresh-count="$ctrl.getNotificationCount()" ng-if="$ctrl.isNotificationPanelOpen"></notification-menu>
 </div>

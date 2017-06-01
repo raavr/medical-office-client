@@ -1,0 +1,11 @@
+ <div class="alert-dropdown-menu">
+    <div class="notification-dropdown-header">
+        <div class="refresh-box" ng-click="$ctrl.refreshNotificationEvent(); $event.stopPropagation();">
+            <span class="glyphicon glyphicon-refresh"></span>
+        </div>
+        <p class="notification-header-title">Powiadomienia</p>
+    </div>
+    <div ng-if="$ctrl.isLoading" class="is-loading-notification">Ładuję powiadomienia...</div>
+    <notification-admin on-notification-loaded="$ctrl.setLoading(isLoading)" ng-if="$ctrl.authService.isAdmin()"></notification-admin>
+    <notification-user on-notification-loaded="$ctrl.setLoading(isLoading)" on-notification-readed="$ctrl.refreshCount()" ng-if="!$ctrl.authService.isAdmin()"></notification-user>
+</div>

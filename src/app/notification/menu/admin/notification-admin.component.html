@@ -1,6 +1,6 @@
 <ul class="list-group">
-    <li ng-if="$ctrl.notifications.length === 0" class="list-group-item list-group-item-none">Brak powiadomień</li>
-    <li class="list-group-item list-group-item-warning notification-item" 
+    <li ng-if="$ctrl.notifications.length === 0" class="notification-item notification-item-none">Brak powiadomień</li>
+    <li class="notification-item-warning notification-item" 
         ng-repeat="notification in $ctrl.notifications">
         <div class="notification-wrapper">
             <a>
@@ -11,9 +11,9 @@
     <li class="dropdown-footer" ng-if="$ctrl.notifications.length > 0">
         <div>
             <a class="see-all" 
-                title="Zobacz {{$ctrl.notifications.length}}" 
-                ng-href="#" >
-                Zobacz {{$ctrl.notifications.length}} powiadomienia
+                title="Zobacz wszystkie powiadomienia" 
+                ui-sref="visit-browse.admin-current" >
+                Zobacz wszystkie powiadomienia
             </a>
         </div>
     </li>

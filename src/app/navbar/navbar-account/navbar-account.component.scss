@@ -1,4 +1,12 @@
 .account-dropdown {
     padding: 15px 10px;
     display: inline-block;
+
+    .dropdown-menu {
+        right: 0;
+        left: auto;
+        margin-top: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
 }
