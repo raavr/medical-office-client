@@ -108,7 +108,7 @@ class VisitListController {
     onVisitsModified(visit) {
         if(visit.id === -1) {
             this.selectedVisits.forEach((elem) => {
-                elem.status = status;
+                elem.status = visit.status;
                 elem.isSelected = false;
             });
             this.selectedVisits = [];
