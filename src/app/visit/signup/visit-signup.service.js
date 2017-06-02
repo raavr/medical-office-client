@@ -28,6 +28,13 @@ class VisitSignupService {
          return Observable.fromPromise(resPromise)
                           .catch(error => Observable.throw(error));
     }
+
+    findUsers(userName) {
+        let resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/admin/usersbyname', {val : userName});
+        return Observable.fromPromise(resPromise)
+                         .map(res => res.data.us)
+                         .catch(error => Observable.throw(error));
+    }
 }
 
 VisitSignupService.$inject = ['$http'];
