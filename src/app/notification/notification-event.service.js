@@ -9,6 +9,9 @@ export class NotificationEventService {
 
         this.updateVisitStatusSource = new Subject();
         this.updateVisitStatusObservable = this.updateVisitStatusSource.asObservable();
+
+        this.refreshNotificationCountSource = new Subject();
+        this.refreshNotificationCountObservable = this.refreshNotificationCountSource.asObservable();
     }
    
     loadNotificationEvent() {
@@ -17,6 +20,10 @@ export class NotificationEventService {
 
     updateVisitStatusEvent(ntf) {
         this.updateVisitStatusSource.next(ntf);
+    }
+
+    refreshNotificationCount() {
+        this.refreshNotificationCountSource.next();
     }
    
 }

@@ -38,6 +38,7 @@ class AdminActionPanelController {
                                 }
                             }
                         );
+                        this.notificationEventService.refreshNotificationCount();
                     },
                     (err) => { 
                         console.log(err);
@@ -62,6 +63,7 @@ class AdminActionPanelController {
                             }
                         }
                     );
+                    this.notificationEventService.refreshNotificationCount();
                 },
                 (err) => {
                     console.log(err);
