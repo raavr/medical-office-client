@@ -2,9 +2,10 @@ import "./visit-signup-me.component.scss";
 import template from "./visit-signup-me.component.html";
 
 class VisitSignupMeController {
-    constructor(visitSignupService, $state) {
+    constructor(visitSignupService, $state, alertEventService) {
         this.visitSignupService = visitSignupService;
         this.$state = $state;
+        this.alertEventService = alertEventService;
     }
 
     addVisit() {
@@ -16,10 +17,8 @@ class VisitSignupMeController {
         
         this.visitSignupService.addVisit(visit).subscribe(
             () => { 
-                //TODO: 
-                //show toast
                 this.$state.go('visit-browse.current');
-                console.log("Zapisałeś się na wizytę");
+                this.alertEventService.showSuccessAlert("Zapisałeś się na wizytę");             
              },
              (err) => console.log(err)
         );
@@ -30,7 +29,7 @@ class VisitSignupMeController {
     }
 }
 
-VisitSignupMeController.$inject = ['visitSignupService', '$state'];
+VisitSignupMeController.$inject = ['visitSignupService', '$state', 'alertEventService'];
 
 export const VisitSignupMeComponent = {
     bindings: {

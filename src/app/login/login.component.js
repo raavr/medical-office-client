@@ -2,9 +2,10 @@ import "./login.component.scss";
 import template from "./login.component.html";
 
 class LoginCtrl {
-    constructor(authService, $location) {
+    constructor(authService, $location, alertEventService) {
         this.authService = authService;
         this.$location = $location;
+        this.alertEventService = alertEventService;
         this.user = {};
     }
 
@@ -13,13 +14,15 @@ class LoginCtrl {
                 .login({ email: this.user.email, password: this.user.password })
                 .subscribe(
                     () => this.$location.path("/"),
-                    (err) => console.log(err.data.message)
+                    (err) => {
+                        this.alertEventService.showDangerAlert(err.data.message);
+                    }
                 );
     }
 
 }
 
-LoginCtrl.$inject = ['authService', '$location'];
+LoginCtrl.$inject = ['authService', '$location', 'alertEventService'];
 
 export const LoginComponent = {
     template: template,

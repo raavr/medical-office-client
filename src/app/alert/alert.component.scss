@@ -1,0 +1,26 @@
+.alert-container {
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 65px 0;
+    position: absolute;
+
+    .row {
+        margin: 0;
+    }
+}
+
+.col-alert {
+    position: relative;
+}
+
+.remove-alert {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: grey;
+}
+
+.alert {
+    margin: 0 10px;
+}

@@ -10,13 +10,15 @@ import Navbar from './navbar/navbar';
 import Home from './home/home';
 import Login from './login/login';
 import Visit from './visit/visit';
+import Alert from './alert/alert';
 
  export default angular.module("My-app", [
       Navbar, 
       Auth, 
       Home, 
       Login,
-      Visit
+      Visit,
+      Alert
  ]).config(AppConfig)
    .component("app", AppComponent)
    .name;
