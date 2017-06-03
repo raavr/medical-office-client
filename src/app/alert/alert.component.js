@@ -8,19 +8,19 @@ class AlertController {
     }
 
     $onInit() {
-        this.isAlertVisisble = false;
+        this.isAlertVisible = false;
 
         this.alertEventService
             .showAlertObservable
             .subscribe((data) => {
                 this.alertData.type = data.type,
                 this.alertData.message = data.message;
-                this.isAlertVisisble = true;
+                this.isAlertVisible = true;
             })
     }
 
     toggleVisibility() {
-         this.isAlertVisisble = !this.isAlertVisisble;
+         this.isAlertVisible = !this.isAlertVisible;
     }
 }
 
