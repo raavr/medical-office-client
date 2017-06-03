@@ -1,9 +1,12 @@
 import "./alert.component.scss";
 import template from "./alert.component.html";
 
+const ALERT_TIMEOUT = 5000; //5s
+
 class AlertController {
-    constructor(alertEventService) {
+    constructor(alertEventService, $timeout) {
         this.alertEventService = alertEventService;
+        this.$timeout = $timeout;
         this.alertData = {};
     }
 
@@ -13,9 +16,10 @@ class AlertController {
         this.alertEventService
             .showAlertObservable
             .subscribe((data) => {
-                this.alertData.type = data.type,
-                this.alertData.message = data.message;
+                this.alertData = data;
+                
                 this.isAlertVisible = true;
+                this.$timeout(() => this.isAlertVisible = false, ALERT_TIMEOUT);
             })
     }
 
@@ -24,7 +28,7 @@ class AlertController {
     }
 }
 
-AlertController.$inject = ['alertEventService'];
+AlertController.$inject = ['alertEventService', '$timeout'];
 
 export const AlertComponent = {
     template: template,
