@@ -4,9 +4,10 @@ import { NOTF_TYPE } from '../../../../notification/menu/admin/notification-type
 
 class AdminActionPanelController {
 
-    constructor(adminActionService, notificationEventService) {
+    constructor(adminActionService, notificationEventService, alertEventService) {
         this.adminActionService = adminActionService;
         this.notificationEventService = notificationEventService;
+        this.alertEventService = alertEventService;
     }
 
     $onInit() {
@@ -29,7 +30,7 @@ class AdminActionPanelController {
                 .acceptVisits(this.selectedVisits.map((elem) => elem.id))
                 .subscribe(
                     () => {
-                        console.log("Wizyty zaakceptowane");
+                        this.alertEventService.showSuccessAlert('Wizyty zostały zaakceptowane.');
                         this.onVisitsUpdated(
                             { 
                                 visit: {
@@ -54,7 +55,7 @@ class AdminActionPanelController {
             .rejectVisits(this.selectedVisits.map((elem) => elem.id), "Powodu brak")
             .subscribe(
                 () => {
-                     console.log("Wizyty odrzucone");
+                     this.alertEventService.showSuccessAlert('Wizyty zostały odrzucone.');
                      this.onVisitsUpdated(
                         { 
                             visit: {
@@ -77,7 +78,7 @@ class AdminActionPanelController {
     }
 }
 
-AdminActionPanelController.$inject = ['adminActionService', 'notificationEventService'];
+AdminActionPanelController.$inject = ['adminActionService', 'notificationEventService', 'alertEventService'];
 
 
 export const AdminActionPanelComponent = {

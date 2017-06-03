@@ -1,10 +1,11 @@
 import template from "./visit-signup-user.component.html";
 
 class VisitSignupUserController {
-    constructor(visitSignupService, $state) {
+    constructor(visitSignupService, $state, alertEventService) {
         this.visitSignupService = visitSignupService;
         this.$state = $state;
         this.userSelected = {};
+        this.alertEventService = alertEventService;
     }
 
     addVisit() {
@@ -17,10 +18,8 @@ class VisitSignupUserController {
         
         this.visitSignupService.addVisit(visit).subscribe(
             () => { 
-                //TODO: 
-                //show toast
                 this.$state.go('visit-browse.admin-current');
-                console.log(`Pacjent ${this.asyncSelectedUser} został zapisany na wizytę.`);
+                this.alertEventService.showSuccessAlert(`Pacjent ${this.asyncSelectedUser} został zapisany na wizytę.`);
              },
              (err) => { 
                 console.log(err);
@@ -49,7 +48,7 @@ class VisitSignupUserController {
 
 }
 
-VisitSignupUserController.$inject = ['visitSignupService', '$state'];
+VisitSignupUserController.$inject = ['visitSignupService', '$state', 'alertEventService'];
 
 export const VisitSignupUserComponent = {
     bindings: {

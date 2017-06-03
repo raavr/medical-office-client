@@ -18,7 +18,7 @@ class VisitSignupMeController {
         this.visitSignupService.addVisit(visit).subscribe(
             () => { 
                 this.$state.go('visit-browse.current');
-                this.alertEventService.showSuccessAlert("Zapisałeś się na wizytę");             
+                this.alertEventService.showSuccessAlert("Zapisałeś się na wizytę.");             
              },
              (err) => console.log(err)
         );

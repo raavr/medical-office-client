@@ -2,9 +2,10 @@ import "./user-visit.component.scss";
 import template from "./user-visit.component.html";
 
 class UserVisitController {
-    constructor(visitBrowseService, $window) {
+    constructor(visitBrowseService, $window, alertEventService) {
         this.visitBrowseService = visitBrowseService;
         this.$window = $window;
+        this.alertEventService = alertEventService;
     }
 
     cancelVisit() {
@@ -15,8 +16,8 @@ class UserVisitController {
             this.visitBrowseService
                 .cancelVisit(this.visit.id)
                 .subscribe(
-                    () => { 
-                        console.log("Wizyta została anulowna");
+                    () => {
+                        this.alertEventService.showSuccessAlert('Wizyta została anulowna.'); 
                         this.onVisitCanceled({visitId: this.visit.id});       
                     },
                     (err) => { 
@@ -28,7 +29,7 @@ class UserVisitController {
     }
 }
 
-UserVisitController.$inject = ['visitBrowseService', '$window']
+UserVisitController.$inject = ['visitBrowseService', '$window', 'alertEventService']
 
 export const UserVisitComponent = {
     bindings: {
