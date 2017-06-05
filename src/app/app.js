@@ -11,6 +11,7 @@ import Home from './home/home';
 import Login from './login/login';
 import Visit from './visit/visit';
 import Alert from './alert/alert';
+import Account from './account/account';
 
  export default angular.module("My-app", [
       Navbar, 
@@ -18,7 +19,8 @@ import Alert from './alert/alert';
       Home, 
       Login,
       Visit,
-      Alert
+      Alert,
+      Account
  ]).config(AppConfig)
    .component("app", AppComponent)
    .name;
