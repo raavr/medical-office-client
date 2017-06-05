@@ -4,6 +4,19 @@
     padding: 65px 0;
     position: absolute;
 
+    @media(min-width: 768px) {
+      & {
+        padding-top: 115px;
+      }
+    }
+
+    
+    @media(min-width: 992px) {
+      & {
+        padding-top: 65px;
+      }
+    }
+
     .row {
         margin: 0;
     }

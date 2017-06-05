@@ -141,6 +141,19 @@ hr.primary-vertical {
 .partials-content {
     padding: 80px 25px 80px 25px;
     min-height: 500px;
+
+    @media(min-width: 768px) {
+      & {
+        padding-top: 130px;
+      }
+    }
+
+    
+    @media(min-width: 992px) {
+      & {
+        padding-top: 80px;
+      }
+    }
 }
 
 .glyphicon {
