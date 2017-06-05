@@ -5,7 +5,7 @@ export default
             scope: {
                 changeDate: "&",
                 disabledDates: "<"
-            },
+			},
 			link: (scope, elm, attr, ctrl) => {
 				elm.datepicker({
 				   format: "dd/mm/yyyy",
@@ -19,7 +19,7 @@ export default
                     scope.changeDate({event: e});
 				});
                 elm.datepicker('setDatesDisabled', scope.disabledDates);
-
+				
 				scope.$watch(attr.currentDate, (new_value) =>{
 					if(new_value === '') {
 						elm.datepicker('update', new_value);

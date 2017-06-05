@@ -1,5 +1,5 @@
 import template from "./visit-signup.component.html";
-import { transformDate } from '../../app.helper';
+import { toDate_mmddyyyy } from '../../app.helper';
 
 class VisitSignupController {
     
@@ -9,7 +9,7 @@ class VisitSignupController {
     }
 
     changeDate(event) {
-        this.visit.date = transformDate(event.date);
+        this.visit.date = toDate_mmddyyyy(event.date);
         this.getAvailableTimes();
     }      
 
