@@ -1,0 +1,49 @@
+<div class="container partials-content">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+    <div class="center-form panel">
+      <div class="panel-body">
+        <h2 class="text-center signup-title">Rejestracja</h2>
+        <form ng-submit="$ctrl.signup()" name="signupForm">
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.name.$invalid && signupForm.name.$dirty }">
+            <input class="form-control input-lg" type="text" name="name" ng-model="$ctrl.user.name" placeholder="Imię" required autofocus>
+            <div class="help-block text-danger" ng-if="signupForm.name.$dirty && signupForm.name.$invalid" ng-messages="signupForm.name.$error">
+              <div ng-show="signupForm.name.$error.required" ng-message="required">Musisz wprowadzić swoje imię.</div>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.surname.$invalid && signupForm.surname.$dirty }">
+            <input class="form-control input-lg" type="text" name="surname" ng-model="$ctrl.user.surname" placeholder="Nazwisko" required autofocus>
+            <div class="help-block text-danger" ng-if="signupForm.surname.$dirty && signupForm.surname.$invalid" ng-messages="signupForm.surname.$error">
+              <div ng-show="signupForm.surname.$error.required" ng-message="required">Musisz wprowadzić swoje nazwisko.</div>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
+            <input class="form-control input-lg" type="email" id="email" name="email" ng-model="$ctrl.user.email" placeholder="Email" required
+            ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+            <div class="help-block text-danger" ng-if="signupForm.email.$dirty && signupForm.email.$invalid" ng-messages="signupForm.email.$error">
+              <div ng-show="signupForm.email.$error.required" ng-message="required">Twój adres e-mail jest wymagany.</div>
+              <div ng-show="signupForm.email.$error.pattern" ng-message="pattern">Adres e-mail jest niepoprawny.</div>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }">
+            <input class="form-control input-lg" type="password" name="password" ng-model="$ctrl.user.password" placeholder="Hasło" ng-pattern="/^(?=.*\d)(?=.*[a-z]).{8,}$/" required>
+            <div class="help-block text-danger" ng-if="signupForm.password.$dirty && signupForm.password.$invalid" ng-messages="signupForm.password.$error">
+              <div ng-show="signupForm.password.$error.required" ng-message="required">Hasło jest wymagane.</div>
+              <div ng-show="signupForm.password.$error.pattern" ng-message="pattern">Hasło musi składać z conajmniej 8 znaków i zawierać przynajmniej jedną cyfrę.</div>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }">
+            <input password-match="$ctrl.user.password" class="form-control input-lg" type="password" name="confirmPassword" ng-model="$ctrl.user.confirmPassword" placeholder="Potwierdź hasło">
+            <div class="help-block text-danger" ng-if="signupForm.confirmPassword.$dirty && signupForm.confirmPassword.$invalid" ng-messages="signupForm.confirmPassword.$error">
+              <div ng-show="signupForm.confirmPassword.$error.compareTo" ng-message="compareTo">Hasła muszą być takie same.</div>
+            </div>
+          </div>
+          <button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-lg btn-block btn-primary">Zarejestruj się</button>
+          <p class="text-center text-muted small privacy-policy">Klikając zarejestruj się zgadzasz się na <a href="#">regulamin</a> i <a href="#">politykę prywatności</a></p>
+          <p class="text-center text-muted">Masz już konto? <a ui-sref="login">Zaloguj się</a></p>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

@@ -12,6 +12,7 @@ import Login from './login/login';
 import Visit from './visit/visit';
 import Alert from './alert/alert';
 import Account from './account/account';
+import Signup from './signup/signup';
 
  export default angular.module("My-app", [
       Navbar, 
@@ -20,7 +21,8 @@ import Account from './account/account';
       Login,
       Visit,
       Alert,
-      Account
+      Account,
+      Signup
  ]).config(AppConfig)
    .component("app", AppComponent)
    .name;
