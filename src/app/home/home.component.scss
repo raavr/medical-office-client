@@ -1,0 +1,11 @@
+.home-container {
+    padding-top: 0px;
+
+    @media(min-width: 768) {
+        padding-top: 50px;
+    }
+
+    @media(min-width: 992px) {
+        padding-top: 0px;
+    }
+}

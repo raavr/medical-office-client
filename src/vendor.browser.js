@@ -28,3 +28,4 @@ import angular from 'angular';
 import 'angular-jwt';
 import 'angular-ui-router';
 import 'bootstrap-datepicker/dist/js/bootstrap-datepicker';
+import 'owl.carousel';
