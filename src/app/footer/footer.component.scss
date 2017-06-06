@@ -1,0 +1,23 @@
+.page-footer {
+	background-color: #333;
+	padding: 0 0 0 0;
+	color: #ffffff;
+	border-top: 1px #e6e6e6 solid;
+	position: absolute;
+	bottom: -80px;
+	height: 80px;
+	left: 0;
+	width: 100%;
+
+	a {
+	    color: #fff;
+	}
+
+	.copyright-box {
+		margin: 30px 0;
+	}
+
+	.copyright {
+		margin: 0;
+	}
+}

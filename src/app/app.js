@@ -13,6 +13,7 @@ import Visit from './visit/visit';
 import Alert from './alert/alert';
 import Account from './account/account';
 import Signup from './signup/signup';
+import Footer from './footer/footer';
 
  export default angular.module("My-app", [
       Navbar, 
@@ -22,7 +23,8 @@ import Signup from './signup/signup';
       Visit,
       Alert,
       Account,
-      Signup
+      Signup,
+      Footer
  ]).config(AppConfig)
    .component("app", AppComponent)
    .name;
