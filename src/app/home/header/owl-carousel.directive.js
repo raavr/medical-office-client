@@ -1,32 +1,63 @@
+class OwlCarousel {
+    constructor(scope) {
+        this.scope = scope;
+    }
+
+    init() {
+        this.scope.init();
+    }
+}
+
+OwlCarousel.$inject = ['$scope'];
+
 export function OwlCarouselDirective(){
     return {
         restrict: 'E',
         scope: {
-            items: "<"
+            responsive: "<",
+            nav: "<",
+            autoPlay: "<"
         },
+        controller: OwlCarousel,
+        controllerAs: "owlCarousel",
         link: (scope, elm, attr, ctrl) => {
             let options = {
                 autoplayTimeout: 5000,
-                autoplay: true, 
-                stopOnHover: true,  
+                autoplay: scope.autoPlay, 
                 smartSpeed : 300, 
                 navSpeed : 400, 
-                nav: true,
-                items: +scope.items,
+                nav: scope.nav,
+                responsive: scope.responsive,
+                mergeFit: true,
                 navText: [
                     '<i class=\'glyphicon glyphicon-chevron-left\'></i>',
                     '<i class=\'glyphicon glyphicon-chevron-right\'></i>'
                 ]
             };
-            elm.owlCarousel(options);
+            scope.init = () => elm.owlCarousel(options);
         }
     };
 }
 
-export function OwlCarouselItemDirective() {
+export function OwlCarouselItemDirective($timeout) {
     return {
         restrict: "E",
+        scope: {
+            isLastElem: "<"
+        },
         transclude: true,
-        template: "<div ng-transclude></div>"
+        template: "<div ng-transclude></div>",
+        require: "^owlCarousel",
+        link: (scope, iElement, iAttrs, owlCarousel) => {
+
+            //init owlCarousel when last child is created
+            if(scope.isLastElem) {
+                //workaround: without timeout owlCarousel is not working correctly
+                $timeout(() => owlCarousel.init(), 500);
+            }
+        }
+
     }
 }
+
+OwlCarouselItemDirective.$inject = ['$timeout'];

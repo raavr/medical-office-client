@@ -1,0 +1,37 @@
+ <section id="offer" class="offer">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-12 subtitle-container" >
+                <h2>Zapoznaj się z naszą ofertą</h2>
+            </div>
+            <div class="col-lg-12">
+                <owl-carousel class="owl-carousel"
+                              nav="true" 
+                              responsive="{
+                                    0: { items:1 },
+                                    768: { items:3 },
+                                    992: { items:5 }
+                                }"
+                                auto-play="false">  
+                    <owl-carousel-item 
+                        ng-repeat="offer in $ctrl.offerDescs" 
+                        is-last-elem="$ctrl.offerDescs.length - 1 === $index" 
+                        ng-click="$ctrl.setOfferDesc($index)"
+                        class="offer-item">
+                        <span class="icon">
+                            <i class="{{offer.icon}}"></i>
+                        </span>
+                        <h3>{{offer.title}}</h3>
+                    </owl-carousel-item>
+                </owl-carousel>
+            </div>
+            <div ng-if="$ctrl.currentOffer" class="col-lg-12">
+                <div class="panel panel-default panel-offer">
+                    <div class="panel-body">
+                        {{$ctrl.currentOffer.desc}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

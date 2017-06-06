@@ -5,6 +5,7 @@ import { HeaderComponent } from './header/header.component';
 import { ArticlesComponent } from './article/articles.component';
 import { ArticleItemComponent } from './article/article-item/article-item.component';
 import { AsideSignupComponent } from './aside-signup/aside-signup.component';
+import { OfferComponent } from './offer/offer.component';
 import { OwlCarouselDirective, OwlCarouselItemDirective } from './header/owl-carousel.directive';
 
 export default 
@@ -15,6 +16,7 @@ export default
            .component("articles", ArticlesComponent)
            .component("articleItem", ArticleItemComponent)
            .component("asideSignup", AsideSignupComponent)
+           .component("offer", OfferComponent)
            .directive("owlCarousel", OwlCarouselDirective)
            .directive("owlCarouselItem", OwlCarouselItemDirective)
            .name;

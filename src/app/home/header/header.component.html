@@ -1,16 +1,10 @@
 <header id="top" class="page-header">
-  <owl-carousel class="owl-carousel" items="1">  
-    <owl-carousel-item>  
-        <img class="img-responsive" ng-src="/assets/images/page-header1.jpg" alt="Zdrowy uśmiech 1"/> 
+  <owl-carousel class="owl-carousel" responsive="{ 0: { items: 1 }}" nav="true" auto-play="true">  
+    <owl-carousel-item ng-repeat="owlItem in $ctrl.owlItems" is-last-elem="$ctrl.owlItems.length - 1 === $index">  
+        <img class="img-responsive" ng-src="{{owlItem.src}}" alt="Zdrowy uśmiech-{{$index}}"/> 
         <div class="owl-desc"> 
-          <h2>Zarejestruj się i umów na wizytę!</h2>
+          <h2>{{owlItem.desc}}</h2>
         </div>
-    </owl-carousel-item>  
-    <owl-carousel-item>  
-        <img class="img-responsive" ng-src="/assets/images/page-header2.jpg" alt="Zdrowy uśmiech 2"/>  
-        <div class="owl-desc"> 
-          <h2>Zadbaj o zdrowie swoich zębów!</h2>
-        </div>
-    </owl-carousel-item>  
+    </owl-carousel-item>   
   </owl-carousel>  
 </header>
