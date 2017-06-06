@@ -7,6 +7,7 @@ import { ArticleItemComponent } from './article/article-item/article-item.compon
 import { AsideSignupComponent } from './aside-signup/aside-signup.component';
 import { OfferComponent } from './offer/offer.component';
 import { PriceListComponent } from './price-list/price-list.component';
+import { WorkingHoursComponent } from './working-hours/working-hours.component';
 import { OwlCarouselDirective, OwlCarouselItemDirective } from './header/owl-carousel.directive';
 
 export default 
@@ -19,6 +20,7 @@ export default
            .component("asideSignup", AsideSignupComponent)
            .component("offer", OfferComponent)
            .component("priceList", PriceListComponent)
+           .component("workingHours", WorkingHoursComponent)
            .directive("owlCarousel", OwlCarouselDirective)
            .directive("owlCarouselItem", OwlCarouselItemDirective)
            .name;
