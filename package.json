@@ -27,7 +27,9 @@
   "homepage": "",
   "dependencies": {
     "angular": "^1.5.0",
+    "angular-google-maps": "^2.4.1",
     "angular-jwt": "^0.1.9",
+    "angular-simple-logger": "^0.1.7",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^1.0.0-rc.1",
     "bootstrap": "^3.3.7",

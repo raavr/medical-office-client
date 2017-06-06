@@ -29,3 +29,5 @@ import 'angular-jwt';
 import 'angular-ui-router';
 import 'bootstrap-datepicker/dist/js/bootstrap-datepicker';
 import 'owl.carousel';
+import 'angular-simple-logger';
+import 'angular-google-maps';

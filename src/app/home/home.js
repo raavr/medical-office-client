@@ -8,10 +8,11 @@ import { AsideSignupComponent } from './aside-signup/aside-signup.component';
 import { OfferComponent } from './offer/offer.component';
 import { PriceListComponent } from './price-list/price-list.component';
 import { WorkingHoursComponent } from './working-hours/working-hours.component';
+import { MapComponent } from './map/map.component';
 import { OwlCarouselDirective, OwlCarouselItemDirective } from './header/owl-carousel.directive';
 
 export default 
-    angular.module("home", [uiRouter])
+    angular.module("home", [uiRouter, 'nemLogging', 'uiGmapgoogle-maps'])
            .config(HomeConfig)
            .component("home", HomeComponent)
            .component("appHeader", HeaderComponent)
@@ -21,6 +22,7 @@ export default
            .component("offer", OfferComponent)
            .component("priceList", PriceListComponent)
            .component("workingHours", WorkingHoursComponent)
+           .component("map", MapComponent)
            .directive("owlCarousel", OwlCarouselDirective)
            .directive("owlCarouselItem", OwlCarouselItemDirective)
            .name;

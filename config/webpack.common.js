@@ -56,7 +56,8 @@ module.exports = {
 			new ProvidePlugin({
         $: "jquery",
         jQuery: "jquery",
-        "window.jQuery": "jquery"
+        "window.jQuery": "jquery",
+				 "_" : "lodash"
 			})
 	    
     ],
