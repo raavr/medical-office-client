@@ -1,5 +1,5 @@
 export default function PatientBrowseResolve(patientBrowseService) {
-      return patientBrowseService.getPatients().toPromise();
+      return patientBrowseService.getPatients().toPromise().catch(() => {});
 }
 
 PatientBrowseResolve.$inject = ['patientBrowseService'];

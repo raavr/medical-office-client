@@ -1,5 +1,5 @@
 export default function CurrentAdminVisitResolve(visitBrowseService) {
-      return visitBrowseService.getAdminVisits().toPromise();
+      return visitBrowseService.getAdminVisits().toPromise().catch(() => {});
 }
 
 
