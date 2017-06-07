@@ -6,3 +6,8 @@ $navbar-border-color: #e6e6e6;
 $navbar-link-hover: #f4f4f4;
 $navbar-signup-color: #47a447;
 $navbar-color-bg: #f2f2f2;
+
+.nav-active {
+    background-color: $navbar-link-hover;
+    color: $navbar-link-color;
+}

@@ -1,3 +1,5 @@
+@import '../navbar.constant';
+
 .account-dropdown {
     padding: 15px 10px;
     display: inline-block;
@@ -8,5 +10,9 @@
         margin-top: 0;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
+
+        .active a {
+            @extend .nav-active;
+        }
     }
 }

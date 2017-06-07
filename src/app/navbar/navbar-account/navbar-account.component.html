@@ -3,11 +3,11 @@
         <span class="glyphicon glyphicon-user"></span><b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li>
-        <a ui-sref="account">Moje konto</a>
+        <li ui-sref-active="active">
+            <a ui-sref="account">Moje konto</a>
         </li>
         <li>
-        <a href="#" ng-click="$ctrl.logout()">Wyloguj się</a>
+            <a href="#" ng-click="$ctrl.logout()">Wyloguj się</a>
         </li>
     </ul>
 </div>

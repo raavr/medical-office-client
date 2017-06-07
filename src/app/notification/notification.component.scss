@@ -1,4 +1,10 @@
+@import '../navbar/navbar.constant';
+
 .notification-dropdown {
     padding: 15px 10px;
     display: inline-block;
+
+    &.active {
+        @extend .nav-active;
+    }
 }

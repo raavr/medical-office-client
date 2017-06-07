@@ -156,8 +156,7 @@
         }
 
         .active a {
-            background-color: white;
-            color: $navbar-link-color;
+            @extend .nav-active;
         }
     }
 }

@@ -5,13 +5,13 @@
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu collapse-menu" aria-labelledby="dropdownMenu1">
-            <li>
+            <li ng-class="{ active: $ctrl.isActive() }">
                 <a ui-sref="visit-browse.admin-current">Przeglądaj wizyty</a>
             </li>
-            <li>
+            <li ui-sref-active="active">
                 <a ui-sref="visit-signup.user">Zapisz pacjenta na wizytę</a>
             </li>
-            <li>
+            <li ui-sref-active="active">
                 <a ui-sref="visit-manage">Zarządzaj terminami wizyt</a>
             </li>
         </ul>
