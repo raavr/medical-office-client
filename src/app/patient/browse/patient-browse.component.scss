@@ -1,0 +1,22 @@
+.patient-list-container {
+    padding: 0 20px;
+}
+
+.patient-margin-box {
+    margin-bottom: 15px
+}
+
+.patient-items-header {
+    margin-bottom: 10px; 
+    display: none;
+
+    .item-header {
+        font-weight: 700;
+    }
+
+    @media(min-width: 768px) {
+        & {
+            display: block;
+        }
+    }
+}

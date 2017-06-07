@@ -14,6 +14,7 @@ import Visit from './visit/visit';
 import Alert from './alert/alert';
 import Account from './account/account';
 import Signup from './signup/signup';
+import Patient from './patient/patient';
 import Footer from './footer/footer';
 
  export default angular.module("My-app", [
@@ -25,6 +26,7 @@ import Footer from './footer/footer';
       Alert,
       Account,
       Signup,
+      Patient,
       Footer
  ]).config(AppConfig)
    .component("app", AppComponent)

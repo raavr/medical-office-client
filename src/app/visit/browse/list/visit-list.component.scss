@@ -31,19 +31,3 @@
         }
     }   
 }
-
-.loading-overlay {
-    background-color: rgba(255,255,255,0.8);
-    width: calc(100% + 30px);
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: -15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    span {
-        font-weight: 700;
-    }
-}

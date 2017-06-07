@@ -1,0 +1,24 @@
+<div class="row patient-item" ng-class="{ 'is-even': $ctrl.isEven }">
+    <div class="col-xs-12 col-sm-3">
+        <div class="col-xs-3 patient-label">Imię:</div>
+        <div class="col-xs-9 col-sm-12 patient-content">{{$ctrl.patient.name}}</div>
+    </div>
+     <div class="col-xs-12 col-sm-3">
+        <div class="col-xs-3 patient-label">Nazwisko:</div>
+        <div class="col-xs-9 col-sm-12 patient-content">{{$ctrl.patient.surname}}</div>
+     </div>
+    <div  class="col-xs-12 col-sm-3">
+        <div class="col-xs-3 patient-label">Email:</div>
+        <div  class="col-xs-9 col-sm-12 patient-content">
+           {{$ctrl.patient.email}}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+        <div class="col-xs-3 patient-label">Status:</div>
+        <div class="col-xs-9 col-sm-12 patient-content">
+            <a ng-href="#" uib-tooltip="Usuń użytkownika" ng-click="$ctrl.deletePatient()" class="btn btn-warning btn-action">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </div>
+    </div>
+</div>

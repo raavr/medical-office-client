@@ -1,0 +1,39 @@
+.patient-item {
+    border-top: 1px solid #ddd;
+    padding: 8px 0;
+
+    &.is-even {
+        background-color: #f9f9f9;
+    }
+
+    .patient-content {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-left: 1px solid #ddd;
+
+        @media(min-width: 768px) {
+            padding: 0;
+            border: 0;
+        }
+    }
+
+    .patient-label {
+        display: block;
+        font-weight: 700;
+        padding-left: 0;
+        padding-top: 3px;
+        padding-bottom: 3px;
+
+         @media(min-width: 768px) {
+             & {
+                 display: none;
+             }
+        }
+    }
+
+    .btn-action {
+        padding: 0 10px;
+        font-size: 1.3rem;
+    }
+    
+}

@@ -1,0 +1,41 @@
+<div class="container partials-content">
+  <div class="panel panel-default">
+    <div class="panel-heading">Pacjenci</div>
+    <div class="panel-body">
+      <div class="row"> 
+        <div class="col-sm-12 patient-margin-box">
+          <button type="button" class="btn btn-success" ng-click="$ctrl.createPatientAccount()">Utwórz konto pacjenta</button>
+        </div>
+        <div class="col-sm-12 patient-margin-box">
+            <form autocomplete="off">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="search" class="form-control" placeholder="Imię lub nazwisko lub email..."
+                          ng-model="$ctrl.filter" 
+                          ng-change="$ctrl.onFilterChange()" 
+                          ng-model-options="{
+                              updateOn: 'default blur',
+                              debounce: {
+                                  'default': 250,
+                                  'blur': 0
+                              }
+                            }"/>
+                        <span class="input-group-addon">
+                            Wyszukaj
+                        </span>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-sm-12 patients-container">
+            <div ng-if="$ctrl.isUpdating" class="loading-overlay"><span>Proszę czekać...</span></div>
+            <div class="row patient-items-header">
+                <div ng-repeat="header in ['Imię', 'Nazwisko', 'Email', 'Akcje']" class="col-sm-3 item-header">{{header}}</div>
+            </div>
+            <patient-item ng-repeat="patient in $ctrl.filteredPatients" patient="patient" is-even="$index % 2 === 0" on-patient-deleted="$ctrl.onPatientDeleted(patientId)" is-updating="$ctrl.showUpdatingPanel(isUpdating)"></patient-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
