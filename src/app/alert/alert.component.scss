@@ -3,17 +3,26 @@
     transform: translateX(-50%);
     padding: 65px 0;
     position: absolute;
+    width: 100%;
 
     @media(min-width: 768px) {
       & {
         padding-top: 115px;
+        width: 750px;
       }
     }
-
     
     @media(min-width: 992px) {
       & {
         padding-top: 65px;
+        width: 970px;
+      }
+    }
+
+    @media(min-width: 1200px) {
+      & {
+        padding-top: 65px;
+        width: 1170px;
       }
     }
 
