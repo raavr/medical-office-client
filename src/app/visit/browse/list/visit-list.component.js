@@ -108,14 +108,14 @@ class VisitListController {
     onVisitsModified(visit) {
         if(visit.id === -1) {
             this.selectedVisits.forEach((elem) => {
-                elem.status = visit.status;
+                elem.status = visit.type;
                 elem.isSelected = false;
             });
             this.selectedVisits = [];
         } else {
             let fVisit = this.visits.find((elem) => elem.id === visit.id)
             if(fVisit) {
-                fVisit.status = visit.status;
+                fVisit.status = visit.type;
             }
         }
 

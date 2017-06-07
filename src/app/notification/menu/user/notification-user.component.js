@@ -38,7 +38,7 @@ class NotificationUserCtrl {
                     () => { 
                         let idx = this.notifications.findIndex((notf) => notf.id === notificationId);
                         this.notifications.splice(idx, 1);
-                        this.onNotificationReaded();
+                        this.notificationEventService.refreshNotificationCount();
                     },
                     (err) => console.log(err)
                 );
@@ -50,7 +50,7 @@ class NotificationUserCtrl {
                 .subscribe(
                     () => { 
                         this.notifications = [];
-                        this.onNotificationReaded();
+                        this.notificationEventService.refreshNotificationCount();
                     },
                     (err) => console.log(err)
                 );
@@ -82,8 +82,7 @@ NotificationUserCtrl.$inject = ['notificationEventService', 'notificationUserSer
 
 export const NotificationUserComponent = {
     bindings: {
-        onNotificationLoaded: "&",
-        onNotificationReaded: "&"
+        onNotificationLoaded: "&"
     },
     template: template,
     controller: NotificationUserCtrl

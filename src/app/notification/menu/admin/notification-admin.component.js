@@ -4,10 +4,11 @@ import { NOTF_TYPE } from './notification-type.enum';
 
 class NotificationAdminCtrl {
     
-    constructor(notificationEventService, notificationAdminService, $uibModal) {
+    constructor(notificationEventService, notificationAdminService, $uibModal, adminActionService) {
         this.notificationEventService = notificationEventService;
         this.notificationAdminService = notificationAdminService;
         this.$uibModal = $uibModal;
+        this.adminActionService = adminActionService;
     }
 
     $onInit() {
@@ -47,23 +48,34 @@ class NotificationAdminCtrl {
         });
 
         modalInstance.result.then(
-            (type) =>  {
-                this.notificationEventService.updateVisitStatusEvent({ type: type, id: this.notifications[index].id});
-                this.notifications.splice(index, 1);
-                this.onNotificationChange();
+            (type) => {
+                if(type === NOTF_TYPE.ACCEPT) {
+                    this.adminActionService
+                        .acceptVisits([this.notifications[index].id])
+                        .subscribe(() => this._onSuccess(type, index));
+                } else {
+                    this.adminActionService
+                        .rejectVisits([this.notifications[index].id], "Tymczasowy powód odrzucenia")
+                        .subscribe(() => this._onSuccess(type, index));
+                }  
             },
             () => {}
         );
     }
+
+    _onSuccess(type, index) {
+        this.notificationEventService.updateVisitStatusEvent({ type: type, id: this.notifications[index].id});
+        this.notifications.splice(index, 1);
+        this.notificationEventService.refreshNotificationCount();
+    }
     
 }
 
-NotificationAdminCtrl.$inject = ['notificationEventService', 'notificationAdminService', '$uibModal'];
+NotificationAdminCtrl.$inject = ['notificationEventService', 'notificationAdminService', '$uibModal', 'adminActionService'];
 
 export const NotificationAdminComponent = {
     bindings: {
-        onNotificationLoaded: "&",
-        onNotificationChange: "&"
+        onNotificationLoaded: "&"
     },
     template: template,
     controller: NotificationAdminCtrl

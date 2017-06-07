@@ -8,7 +8,7 @@ class ModalAdminNotificationCtrl {
     }
 
     reject() {
-        this.close({$value: NOTF_TYPE.REJECT});
+        this.close({$value: NOTF_TYPE.CANCEL});
     }
 
     accept() {

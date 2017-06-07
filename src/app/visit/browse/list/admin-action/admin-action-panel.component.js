@@ -14,14 +14,7 @@ class AdminActionPanelController {
         this.notificationEventSubscription = 
                     this.notificationEventService
                         .updateVisitStatusObservable
-                        .subscribe((ntf) => {
-                            this.selectedVisits = [ntf];
-                            if(ntf.type === NOTF_TYPE.ACCEPT) {
-                                this.acceptSelectedVisits(ntf.id);
-                            } else {
-                                this.cancelSelectedVisits(ntf.id);
-                            }
-                        })
+                        .subscribe((ntf) => this._onSuccess(ntf));
     }
     
     acceptSelectedVisits(id = -1) {
@@ -30,16 +23,7 @@ class AdminActionPanelController {
                 .acceptVisits(this.selectedVisits.map((elem) => elem.id))
                 .subscribe(
                     () => {
-                        this.alertEventService.showSuccessAlert('Wizyty zostały zaakceptowane.');
-                        this.onVisitsUpdated(
-                            { 
-                                visit: {
-                                    status: 'accepted',
-                                    id: id
-                                }
-                            }
-                        );
-                        this.notificationEventService.refreshNotificationCount();
+                        this._onSuccess({type: NOTF_TYPE.ACCEPT, id: id});
                     },
                     (err) => { 
                         console.log(err);
@@ -49,22 +33,21 @@ class AdminActionPanelController {
         
     }
 
+    _onSuccess(ntf) {
+        this.alertEventService.showSuccessAlert(
+            ntf.type === NOTF_TYPE.ACCEPT ? 'Wizyty zostały zaakceptowane.' : 'Wizyty zostały odrzucone.'
+        );
+        this.onVisitsUpdated({ visit: ntf});
+        this.notificationEventService.refreshNotificationCount();
+    }
+
     cancelSelectedVisits(id = -1) {
         this.isUpdating({isUpdating: true});
         this.adminActionService
             .rejectVisits(this.selectedVisits.map((elem) => elem.id), "Powodu brak")
             .subscribe(
                 () => {
-                     this.alertEventService.showSuccessAlert('Wizyty zostały odrzucone.');
-                     this.onVisitsUpdated(
-                        { 
-                            visit: {
-                                status: 'canceled',
-                                id: id
-                            }
-                        }
-                    );
-                    this.notificationEventService.refreshNotificationCount();
+                     this._onSuccess({type: NOTF_TYPE.CANCEL, id: id});
                 },
                 (err) => {
                     console.log(err);

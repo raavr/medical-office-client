@@ -3,5 +3,5 @@
         <span class="glyphicon glyphicon-bell"></span>
         <span ng-if="$ctrl.notificationsCount > 0" class="badge">{{$ctrl.notificationsCount}}</span>
     </a>
-    <notification-menu refresh-count="$ctrl.getNotificationCount()" ng-if="$ctrl.isNotificationPanelOpen"></notification-menu>
+    <notification-menu ng-if="$ctrl.isNotificationPanelOpen"></notification-menu>
 </div>

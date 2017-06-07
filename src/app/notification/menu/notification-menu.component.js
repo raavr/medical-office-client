@@ -13,7 +13,7 @@ class NotificationMenuCtrl {
 
     refreshNotificationEvent() {
         this.notificationEventService.loadNotificationEvent(); 
-        this.refreshCount();  
+        this.notificationEventService.refreshNotificationCount();  
     }
 
     setLoading(isLoading) {
@@ -25,9 +25,6 @@ class NotificationMenuCtrl {
 NotificationMenuCtrl.$inject = ['authService', 'notificationEventService'];
 
 export const NotificationMenuComponent = {
-    bindings: {
-        refreshCount: "&"
-    },
     template: template,
     controller: NotificationMenuCtrl
 }
