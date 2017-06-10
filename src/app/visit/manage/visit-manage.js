@@ -5,9 +5,10 @@ import visitManageService from './visit-manage.service';
 import visitCommon from '../common/visit.common';
 import DayOfWeekNameFilter from './day-of-week/day-of-week.filter';
 import { DayOfWeekComponent } from './day-of-week/day-of-week.component';
+import Alert from '../../alert/alert';
 
 export default 
-    angular.module("visit.manage", [uiRouter, visitManageService, visitCommon])
+    angular.module("visit.manage", [uiRouter, visitManageService, visitCommon, Alert])
            .config(VisitManageConfig)
            .component("visitManage", VisitManageComponent)
            .component("dayOfWeek", DayOfWeekComponent)
