@@ -99,7 +99,7 @@ describe("VisitSignupService", () => {
 
     it("should sign up patient to visit", () => {
         response = $httpMock.when("POST", CONFIG.ENDPOINT + "/api/visits/check");
-        response.respond(20, {"message": "Poprawnie zapisano na wizytę"});
+        response.respond(200, {"message": "Poprawnie zapisano na wizytę"});
 
         mVisitSignupService.addVisit()
             .subscribe(s => {
