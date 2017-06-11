@@ -4,6 +4,7 @@ import { NotificationComponent } from './notification.component';
 import { NotificationMenuComponent } from './menu/notification-menu.component';
 import { ModalUserNotificationComponent } from './menu/user/modal/modal-user-notification.component';
 import { ModalAdminNotificationComponent } from './menu/admin/modal/modal-admin-notification.component';
+import NotificationClickOutside from './notification-click-outside.directive';
 import NotificationTypeFilter from './menu/user/notification-user.filter';
 import NotifcationService from './notification.service';
 import Auth from '../auth/auth';
@@ -17,5 +18,6 @@ export default
            .component("notificationUser", NotificationUserComponent)
            .component("modalUserNotification", ModalUserNotificationComponent)
            .component("modalAdminNotification", ModalAdminNotificationComponent)
+           .directive("notificationClickOutside", NotificationClickOutside)
            .filter("notificationTypeFilter", NotificationTypeFilter)
            .name;

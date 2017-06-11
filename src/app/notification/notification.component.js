@@ -16,6 +16,14 @@ class NotificationController {
         this.notificationEventSubscription = this.notificationEventService
                 .refreshNotificationCountObservable
                 .subscribe(() => this.getNotificationCount());
+        
+        this.notificationMenuHidingSubscription = this.notificationEventService
+                .hideNotificationMenuSourceObservable
+                .subscribe(() => {     
+                    if(this.isNotificationPanelOpen) {
+                        this.isNotificationPanelOpen = false;
+                    }
+                });
     }
 
     getNotificationCount() {
@@ -35,6 +43,7 @@ class NotificationController {
 
     $onDestroy() {
         this.notificationEventSubscription.unsubscribe();
+        this.notificationMenuHidingSubscription.unsubscribe();
     }
 }
 

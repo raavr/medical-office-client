@@ -12,6 +12,9 @@ export class NotificationEventService {
 
         this.refreshNotificationCountSource = new Subject();
         this.refreshNotificationCountObservable = this.refreshNotificationCountSource.asObservable();
+
+        this.hideNotificationMenuSource = new Subject();
+        this.hideNotificationMenuSourceObservable = this.hideNotificationMenuSource.asObservable();
     }
    
     loadNotificationEvent() {
@@ -24,6 +27,10 @@ export class NotificationEventService {
 
     refreshNotificationCount() {
         this.refreshNotificationCountSource.next();
+    }
+
+    hideNotificationMenu() {
+        this.hideNotificationMenuSource.next();
     }
    
 }
