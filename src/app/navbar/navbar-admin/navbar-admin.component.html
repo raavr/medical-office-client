@@ -6,17 +6,17 @@
         </a>
         <ul class="dropdown-menu collapse-menu" aria-labelledby="dropdownMenu1">
             <li ng-class="{ active: $ctrl.isActive() }">
-                <a ui-sref="visit-browse.admin-current">Przeglądaj wizyty</a>
+                <a ui-sref="visit-browse.admin-current" collapse-navbar>Przeglądaj wizyty</a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="visit-signup.user">Zapisz pacjenta na wizytę</a>
+                <a ui-sref="visit-signup.user" collapse-navbar>Zapisz pacjenta na wizytę</a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="visit-manage">Zarządzaj terminami wizyt</a>
+                <a ui-sref="visit-manage" collapse-navbar>Zarządzaj terminami wizyt</a>
             </li>
         </ul>
     </li>
     <li ui-sref-active="active">
-        <a ui-sref="patient-browse">Pacjenci</a>
+        <a ui-sref="patient-browse" collapse-navbar>Pacjenci</a>
     </li>
 </ul>
