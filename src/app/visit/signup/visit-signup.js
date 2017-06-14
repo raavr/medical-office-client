@@ -6,9 +6,10 @@ import VisitSignupConfig from './visit-signup.config';
 import visitSignupService from './visit-signup.service';
 import uiBootstrapTypeahead from 'angular-ui-bootstrap/src/typeahead';
 import visitCommon from '../common/visit.common';
+import Alert from '../../alert/alert';
 
 export default 
-    angular.module("visit.signup", [uiRouter, visitSignupService, uiBootstrapTypeahead, visitCommon])
+    angular.module("visit.signup", [uiRouter, visitSignupService, uiBootstrapTypeahead, visitCommon, Alert])
            .config(VisitSignupConfig)
            .component("visitSignup", VisitSignupComponent)
            .component("visitSignupMe", VisitSignupMeComponent)
