@@ -14,9 +14,11 @@ import { ItemsLimitComponent } from './list/items-limit/items-limit.component';
 import { VisitSelectorComponent } from './list/visit-selector/visit-selector.component';
 import { AdminActionPanelComponent } from './list/admin-action/admin-action-panel.component';
 import visitBrowseService from './visit-browse.service';
+import Auth from '../../auth/auth';
 
 export default 
     angular.module("visit.browse", [
+            Auth,
             uiRouter, 
             uiBootstrapBtns, 
             uiBootstrapPagination, 
