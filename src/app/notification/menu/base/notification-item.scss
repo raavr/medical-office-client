@@ -1,5 +1,3 @@
-$notification-bg-color: #ffc404;
-
 .notification-wrapper {
     a {
         padding: 10px;
@@ -16,24 +14,27 @@ $notification-bg-color: #ffc404;
     padding: 0;
     position: relative;
     display: block;
-    margin-bottom: -1px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    margin-bottom: 0px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #dddddd;
+
+    a, a:hover {
+        color: #333333;
+    }
+
+    &:hover {
+        background-color: #eeeeee;
+    }
+
 }
 
-.notification-item-warning {
-    color: #8a6d3b;
-    background-color: #f9f5e1;
+
+.notification-item-danger span {
+    color: #d03732;
 }
 
-.notification-item-danger {
-    color: #a94442;
-    background-color: #f2dede;
-}
-
-.notification-item-success {
-    color: #3c763d;
-    background-color: #dff0d8;
+.notification-item-success span {
+    color: #5cb85c;
 }
 
 .notification-item-none {
@@ -44,10 +45,11 @@ $notification-bg-color: #ffc404;
     padding: 10px;
     display: block;
     cursor: pointer;
-}
+    color: #ffffff;
 
-.see-all:hover {
-    background-color: rgba($notification-bg-color, 1);
+    &:hover {
+        color: #ffffff;
+    }
 }
 
 .dropdown-footer {
@@ -55,11 +57,13 @@ $notification-bg-color: #ffc404;
     font-size: 1.2rem;
     padding: 0;
     white-space: nowrap;
-    background-color: rgba($notification-bg-color, 0.8);
+    background-color: #5cb85c;
+
+    &:hover {
+         background-color: #4cae4c;
+    }
 }
 
 .list-group {
     margin-bottom: 0;
-    max-height: 300px;
-    overflow-y: auto;
 }
