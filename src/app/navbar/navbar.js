@@ -6,9 +6,11 @@ import { NavbarAccountComponent } from './navbar-account/navbar-account.componen
 import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 import { NavbarUserComponent } from './navbar-user/navbar-user.component';
 import Notification from '../notification/notification';
+import { SmoothScrollDirective } from './smooth-scroll.directive';
 
 export default angular.module("navbar", [ Auth, Notification ])
                       .directive("collapseNavbar", CollapseNavbarDirective)
+                      .directive("smoothScroll", SmoothScrollDirective)
                       .component("navbar", NavbarComponent)
                       .component("navbarSign", NavbarSignComponent)
                       .component("navbarAccount", NavbarAccountComponent)

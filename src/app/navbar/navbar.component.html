@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-href="/#top">eGabinet</a>
+      <a class="navbar-brand" ng-href="/#top" smooth-scroll>eGabinet</a>
     </div>
     <div ng-if="$ctrl.authService.loggedIn()" class="navbar-menu">
       <notification></notification>
@@ -19,16 +19,16 @@
           <a ng-href="#"></a>
         </li>
         <li>
-          <a ng-href="/#articles" collapse-navbar>Aktualności</a>
+          <a ng-href="/#articles" collapse-navbar smooth-scroll>Aktualności</a>
         </li>
         <li>
-          <a ng-href="/#offer" collapse-navbar>Oferta</a>
+          <a ng-href="/#offer" collapse-navbar smooth-scroll>Oferta</a>
         </li>
         <li>
-          <a ng-href="/#price-list" collapse-navbar>Cennik</a>
+          <a ng-href="/#price-list" collapse-navbar smooth-scroll>Cennik</a>
         </li>
         <li>
-          <a ng-href="/#find-us" collapse-navbar>Odwiedź nas</a>
+          <a ng-href="/#find-us" collapse-navbar smooth-scroll>Odwiedź nas</a>
         </li>
         <li ng-if="$ctrl.authService.loggedIn()" role="separator" class="divider"></li>
       </ul>
