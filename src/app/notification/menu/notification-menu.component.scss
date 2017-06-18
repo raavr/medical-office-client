@@ -4,7 +4,7 @@
     position: absolute;
     width: auto;
     margin-top: 0;
-    right: 0;
+    right: -80px;
     top: 100%;
     background-color: #fff;
     border: 1px solid rgba(0,0,0,.15);
@@ -12,6 +12,12 @@
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
     z-index: 1000;
     min-width: 220px;
+
+    @media (min-width: 380px) {
+        & {
+            right: 0;
+        }
+    }
 
     @media (min-width: 768px) {
         & {
