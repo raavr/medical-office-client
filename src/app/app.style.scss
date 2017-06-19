@@ -31,7 +31,7 @@ body {
   background: #f4f4f4 !important;
   position: relative;
   margin-bottom: 80px;
-  min-height: 100%;
+  min-height: calc(100% - 80px);
 }
 
 section {
@@ -183,5 +183,42 @@ hr.primary-vertical {
 
     span {
         font-weight: 700;
+    }
+}
+
+ .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% + 40px));
+
+    div {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      background-color: #333;
+      margin: 5px;
+      border-radius: 100%;
+      background-clip: padding-box;
+      animation: bouncedelay 1.4s infinite ease-in-out;
+      animation-fill-mode: both;
+    }
+
+    .bounce-1 {
+        animation-delay: -.32s;
+    }
+
+    .bounce-2 {
+        animation-delay: -.16s;
+    }
+}
+
+@keyframes bouncedelay {
+    0%,100%,80% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
     }
 }
