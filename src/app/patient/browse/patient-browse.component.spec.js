@@ -135,4 +135,49 @@ describe("PatientBrowseComponent", () => {
         expect(ctrl.showUpdatingPanel).toHaveBeenCalledWith(false);
     });
 
+    describe("when PatientBrowseComponent is compiled manually", () => {
+        
+        let element, ctrl, scope, $rootScope, $compile, $timeout;
+
+        beforeEach(angular.mock.inject(($injector) => {
+            $timeout = $injector.get("$timeout");
+            $rootScope = $injector.get("$rootScope");
+            $compile = $injector.get("$compile");
+        }));
+
+        beforeEach(() => {
+            scope = $rootScope.$new();
+            scope.patients = bindings.patients;
+            element = $compile("<patient-browse patients='patients'></patient-browse>")(scope);
+            ctrl = element.controller("patientBrowse");
+            scope.$apply();
+        });
+
+        it("should call onFilterChange and set filter variable", () => {
+            spyOn(ctrl, "onFilterChange");
+
+            expect(ctrl.filter).not.toBeDefined();
+            expect(ctrl.onFilterChange).not.toHaveBeenCalled();
+            
+            element.find("input").val("John").triggerHandler("input");
+            $timeout.flush();
+            
+            expect(ctrl.filter).toEqual("John");
+            expect(ctrl.onFilterChange).toHaveBeenCalled();
+        });
+
+        it("should have two patient-item components", () => {
+            expect(element.find("patient-item").length).toEqual(2);
+        });
+
+        it("should show loading-overlay element", () => {
+            expect(element.find(".loading-overlay").length).toBe(0);
+            ctrl.showUpdatingPanel(true);
+
+            scope.$apply();
+            expect(element.find(".loading-overlay").length).toBe(1);
+            expect(element.find(".loading-overlay").text()).toBe("Proszę czekać...");
+        });
+
+    });
 });
