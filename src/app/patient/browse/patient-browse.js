@@ -6,12 +6,14 @@ import Auth from '../../auth/auth';
 import { PatientBrowseService } from './patient-browse.service'; 
 import { PatientItemService } from './patient-item/patient-item.service'; 
 import uiBootstrapTooltip from 'angular-ui-bootstrap/src/tooltip';
+import Alert from '../../alert/alert';
 
 export default 
     angular.module("patient.browse", [
             uiRouter, 
             Auth,
-            uiBootstrapTooltip
+            uiBootstrapTooltip,
+            Alert
          ]).config(PatientBrowseConfig)
            .component("patientBrowse", PatientBrowseComponent)
            .component("patientItem", PatientItemComponent)
