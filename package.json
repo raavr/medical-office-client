@@ -1,5 +1,5 @@
 {
-  "name": "angularjs-webpack-boilerplate",
+  "name": "angularjs-dentist-app",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -18,7 +18,7 @@
   "author": "Rafał Rykowski",
   "license": "MIT",
   "keywords": [
-    "angular",
+    "angularjs",
     "webpack",
     "es6",
     "karma",
