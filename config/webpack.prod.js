@@ -40,10 +40,6 @@ module.exports = webpackMerge(commonConfig, {
 
     new NoErrorsPlugin(),
 
-    new CopyWebpackPlugin([{
-      from: helpers.root('/src/assets')
-    }]),
-
     new ExtractTextPlugin('[name].[hash].css'),
     
     new CommonsChunkPlugin({

@@ -15,33 +15,34 @@ module.exports = {
 	},
 
 	module: {
+		
 		loaders: [
 			{
 		      test: /\.js$/,
 		      loader: 'babel',
 		      exclude: /node_modules/
-		    }, 
-		    {
+		  }, 
+		  {
 		      test: /\.css$/,
 		      loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
 			}, 
 			{
-			  test: /\.scss$/, 
-			  loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap!postcss')
+					test: /\.scss$/, 
+					loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap!postcss')
 			}, 
 			{
-		      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-			  loader: 'file'
+		    	test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+			  	loader: 'file'
 			}, 
 			{
-			  test: /\.html$/,
-			  loader: 'raw'
+			  	test: /\.html$/,
+			  	loader: 'raw'
 			}
-	    ]
+	  ]
 	},
 
-    plugins : [
-		new HtmlWebpackPlugin({
+  plugins : [
+			new HtmlWebpackPlugin({
 	        template: './src/index.html',
 	        inject: 'body'
 	    }),
@@ -58,14 +59,13 @@ module.exports = {
         jQuery: "jquery",
         "window.jQuery": "jquery",
 				 "_" : "lodash"
-			})
-	    
-    ],
+			})  
+	],
 
-    postcss: [
-	    autoprefixer({
-	      browsers: ['last 2 version']
-	    })
+  postcss: [
+		autoprefixer({
+			browsers: ['last 2 version']
+	  })
 	]	
 
 };
