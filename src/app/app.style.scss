@@ -3,17 +3,9 @@ $fa-font-path: "https://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts";
 // $fa-font-path: "/assets/font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
-$section-text-dark: #000000;
-$section-text-light: #FFFFFF;
-
 * {
   box-sizing: border-box;
 }
-
-
-$bg-color: black;
-$navbar-color-bg: #f2f2f2;
-$navbar-color-link: #333;
 
 html, body {
   width: 100%;
@@ -48,29 +40,6 @@ aside {
   padding: 75px 0;
 }
 
-a {
-  color: $bg-color;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  transition: all 0.2s;
-}
-a:hover,
-a:focus {
-  color: inherit;
-  text-decoration: none;
-}
-p {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.5;
-  margin: 0 0 20px;
-}
-
-p.styled {
-  font-size: 22px;
-  margin-top: 20px;
-}
-
 h1, h2, h3, h4, h5, h6 {
  font-family: "Roboto", Helvetica, Arial, sans-serif;
  font-weight: 900;
@@ -93,45 +62,20 @@ h3 {
   margin-bottom: 2px;
 }
 
-hr {
-  height: 1px;
-  margin: 5px auto;
+a {
+  color: #000000;
 
-  @media (min-width: 768px) {
-    & {
-      margin: 20px auto;
-    }
+  &:hover, &:focus {
+    color: inherit;
+    text-decoration: none;
   }
 }
 
-hr.primary {
-  margin: 10px 0px;
-  border-top: 2px solid #f2f2f2;
-  border-bottom: 2px solid #f2f2f2;
-}
-
-hr.dark {
-  margin: 20px auto;
-  max-width: 200px;
-  border-top: 2px solid $bg-color;
-  border-bottom: 2px solid $bg-color;
-}
-
-hr.white {
-  border-color: white;
-  background-color: white;
-}
-
-hr.primary-vertical {
-  width: 1px;
-  height: 10px;
-  margin: 0;
-  border-color: $bg-color;
-  background-color: $bg-color;
-}
-
-.text-colored {
-  color: $bg-color;      
+p {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0 0 20px;
 }
 
 .img-center {
