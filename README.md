@@ -1,9 +1,9 @@
-# AngularJS and webpack boilerplate
+# Dentist App with AngularJS and Webpack
 
 An application using:
 * [AngularJS] (http://www.angularjs.org/)
 * [UI Router] (https://ui-router.github.io/)
-* [Bootstrap v4] (https://v4-alpha.getbootstrap.com/)
+* [Bootstrap v3] (https://getbootstrap.com/)
 * [Sass] (http://sass-lang.com/)
 * [RxJs] (http://reactivex.io/rxjs/)
 * [Babel] (https://babeljs.io/)
