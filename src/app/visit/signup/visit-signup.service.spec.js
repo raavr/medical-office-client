@@ -1,11 +1,10 @@
 import { Observable } from 'rxjs/Observable';
-import { TestScheduler } from 'rxjs';
 import VisitSignupModule from './visit-signup.service';
 import { CONFIG } from '../../app.constant';
 
 describe("VisitSignupService", () => {
 
-    let $httpMock, mVisitSignupService, fakeVisitDates, fakeVisitTimes, fakeUserName, transfVisitDates, response, scheduler;
+    let $httpMock, mVisitSignupService, fakeVisitDates, fakeVisitTimes, fakeUserName, transfVisitDates, response;
 
     beforeEach(angular.mock.module(VisitSignupModule));
     beforeEach(() => {
