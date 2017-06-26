@@ -10,6 +10,7 @@ import { PriceListComponent } from './price-list/price-list.component';
 import { WorkingHoursComponent } from './working-hours/working-hours.component';
 import { MapComponent } from './map/map.component';
 import { OwlCarouselDirective, OwlCarouselItemDirective } from './header/owl-carousel.directive';
+import { PriceListService } from './price-list/price-list.service';
 
 export default 
     angular.module("home", [uiRouter, 'nemLogging', 'uiGmapgoogle-maps'])
@@ -25,4 +26,5 @@ export default
            .component("map", MapComponent)
            .directive("owlCarousel", OwlCarouselDirective)
            .directive("owlCarouselItem", OwlCarouselItemDirective)
+           .service("priceListService", PriceListService)
            .name;

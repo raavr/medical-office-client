@@ -1,0 +1,117 @@
+{
+    "priceList": [
+        { 
+            "category": "Stomatologia zapobiegawcza", 
+            "items": [
+                {
+                    "name": "Wypełnienie w zębie stałym",
+                    "price": "70 - 120 zł"
+                },
+                {
+                    "name": "Wypełnienie w zębie mlecznym",
+                    "price": "40 - 60 zł"
+                },
+                {
+                    "name": "Licówka",
+                    "price": "180 - 200 zł"
+                },
+                {
+                    "name": "Leczenie kanałowe zęba",
+                    "price": "170 zł"
+                },
+                {
+                    "name": "Opatrunek leczniczy",
+                    "price": "40 zł"
+                },
+                {
+                    "name": "Leczenie zęba trzonowego",
+                    "price": "280 zł"
+                },
+                {
+                    "name": "Piaskowanie",
+                    "price": "80 - 110 zł"
+                },
+                {
+                    "name": "Lakowanie",
+                    "price": "40 zł"
+                },
+                {
+                    "name": "Znieczulenie",
+                    "price": "20 zł"
+                },
+                {
+                    "name": "Wybielanie",
+                    "price": "300 zł"
+                }
+            ]
+        },
+        {
+            "category": "Protetyka",
+            "items": [
+                {
+                    "name": "Proteza całkowita",
+                    "price": "350 zł"
+                },
+                {
+                    "name": "Proteza szkieletowa",
+                    "price": "750 zł"
+                },
+                {
+                    "name": "Podścielenie protezy",
+                    "price": "60 zł"
+                },
+                {
+                    "name": "Korona porcelanowa",
+                    "price": "400 - 500 zł"
+                },
+                {
+                    "name": "Korona ceramiczna",
+                    "price": "800 zł"
+                },
+                {
+                    "name": "Korona tymczasowa",
+                    "price": "100 zł"
+                }
+            ]
+        },
+        {
+            "category": "Chirurgia zębów",
+            "items": [
+                {
+                    "name": "Ekstrakcja zęba",
+                    "price": "70 - 120 zł"
+                },
+                {
+                    "name": "Usunięcie zęba zablokowanego",
+                    "price": "180 - 350 zł"
+                },
+                {
+                    "name": "Leczenie ropnia",
+                    "price": "80 - 110 zł"
+                }
+            ]
+        },
+        {
+            "category": "Periodontologia",
+            "items": [
+                {
+                    "name": "Usunięcie kamienia nazębnego",
+                    "price": "100 zł"
+                },
+                {
+                    "name": "Usunięcie kamienia dziąsłowego",
+                    "price": "100 - 150 zł"
+                },
+                {
+                    "name": "Wydłużenie korony",
+                    "price": "250 zł"
+                },
+                {
+                    "name": "Testy nowotworowe",
+                    "price": "150 zł"
+                }
+            ]
+        }       
+    ]
+}
+ 
