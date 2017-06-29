@@ -11,15 +11,17 @@ class AlertController {
     }
 
     $onInit() {
+        let timeoutPromise = null;
         this.isAlertVisible = false;
 
         this.alertEventService
             .showAlertObservable
-            .subscribe((data) => {
+            .subscribe((data) => {   
+                this.$timeout.cancel(timeoutPromise);
                 this.alertData = data;
-                
                 this.isAlertVisible = true;
-                this.$timeout(() => this.isAlertVisible = false, ALERT_TIMEOUT);
+
+                timeoutPromise = this.$timeout(() => this.isAlertVisible = false, ALERT_TIMEOUT);
             })
     }
 
