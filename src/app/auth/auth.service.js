@@ -18,7 +18,7 @@ export class AuthService {
       let decodedToken = this.jwtHelper.decodeToken(token);
       
       if (!decodedToken.hasOwnProperty('role')) {
-        return null;
+        return false;
       }
 
       return decodedToken['role'] === 'admin';
