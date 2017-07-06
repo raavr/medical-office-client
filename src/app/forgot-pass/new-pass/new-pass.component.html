@@ -1,0 +1,27 @@
+<div class="container partials-content">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="center-form panel">
+                <div class="panel-body">
+                    <h2 class="text-center reset-pass-title">Wprowadź nowe hasło</h2>
+                    <form method="post" ng-submit="$ctrl.setNewPass()" name="newPassForm">
+                        <div class="form-group has-feedback" ng-class="{ 'has-error' : newPassForm.password.$invalid && newPassForm.password.$dirty }">
+                            <input class="form-control input-lg" type="password" name="password" ng-model="$ctrl.password.newPass" placeholder="Hasło" ng-pattern="/^(?=.*\d)(?=.*[a-z]).{8,}$/" required>
+                            <div class="help-block text-danger" ng-if="newPassForm.password.$dirty && newPassForm.password.$invalid" ng-messages="newPassForm.password.$error">
+                                <div ng-show="newPassForm.password.$error.required" ng-message="required">Hasło jest wymagane.</div>
+                                <div ng-show="newPassForm.password.$error.pattern" ng-message="pattern">Hasło musi składać z conajmniej 8 znaków i zawierać przynajmniej jedną cyfrę.</div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{ 'has-error' : newPassForm.confirmPassword.$invalid && newPassForm.confirmPassword.$dirty }">
+                            <input password-match="$ctrl.password.newPass" class="form-control input-lg" type="password" name="confirmPassword" ng-model="$ctrl.password.confirmPass" placeholder="Potwierdź hasło">
+                            <div class="help-block text-danger" ng-if="newPassForm.confirmPassword.$dirty && newPassForm.confirmPassword.$invalid" ng-messages="newPassForm.confirmPassword.$error">
+                                <div ng-show="newPassForm.confirmPassword.$error.compareTo" ng-message="compareTo">Hasła muszą być takie same.</div>
+                            </div>
+                        </div>
+                        <button type="submit" ng-disabled="newPassForm.$invalid" class="btn btn-lg btn-block btn-primary">Zmień hasło</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
