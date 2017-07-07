@@ -15,6 +15,7 @@ import { VisitSelectorComponent } from './list/visit-selector/visit-selector.com
 import { AdminActionPanelComponent } from './list/admin-action/admin-action-panel.component';
 import visitBrowseService from './visit-browse.service';
 import Auth from '../../auth/auth';
+import Modal from '../../modal/modal';
 
 export default 
     angular.module("visit.browse", [
@@ -24,7 +25,8 @@ export default
             uiBootstrapPagination, 
             uiBootstrapTooltip,
             uiBootstrapPopover,
-            visitBrowseService
+            visitBrowseService,
+            Modal
          ]).config(VisitBrowseConfig)
            .component("visitBrowse", VisitBrowseComponent)
            .component("visitList", VisitListComponent)

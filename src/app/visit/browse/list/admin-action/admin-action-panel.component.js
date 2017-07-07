@@ -4,10 +4,11 @@ import { NOTF_TYPE } from '../../../../notification/menu/admin/notification-type
 
 class AdminActionPanelController {
 
-    constructor(adminActionService, notificationEventService, alertEventService) {
+    constructor(adminActionService, notificationEventService, alertEventService, $uibModal) {
         this.adminActionService = adminActionService;
         this.notificationEventService = notificationEventService;
         this.alertEventService = alertEventService;
+        this.$uibModal = $uibModal;
     }
 
     $onInit() {
@@ -41,19 +42,33 @@ class AdminActionPanelController {
         this.notificationEventService.refreshNotificationCount();
     }
 
-    cancelSelectedVisits(id = -1) {
+    openRejectModal() {
+        let modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'modalRejectionVisit'
+        });
+
+         modalInstance.result.then(
+            (rejectReason) => {
+                this._cancelSelectedVisits(rejectReason);
+            },
+            () => {}
+        );        
+    }
+
+    _cancelSelectedVisits(rejectReason, id = -1) {
         this.isUpdating({isUpdating: true});
         this.adminActionService
-            .rejectVisits(this.selectedVisits.map((elem) => elem.id), "Powodu brak")
+            .rejectVisits(this.selectedVisits.map((elem) => elem.id), rejectReason)
             .subscribe(
                 () => {
-                     this._onSuccess({type: NOTF_TYPE.CANCEL, id: id});
+                    this._onSuccess({type: NOTF_TYPE.CANCEL, id: id});
                 },
                 (err) => {
                     console.log(err);
                     this.isUpdating({isUpdating: false});
                 }
-            );       
+            ); 
     }
 
     $onDestroy() {
@@ -61,7 +76,7 @@ class AdminActionPanelController {
     }
 }
 
-AdminActionPanelController.$inject = ['adminActionService', 'notificationEventService', 'alertEventService'];
+AdminActionPanelController.$inject = ['adminActionService', 'notificationEventService', 'alertEventService', '$uibModal'];
 
 
 export const AdminActionPanelComponent = {

@@ -1,5 +1,5 @@
 import template from './modal-admin-notification.component.html';
-import { NOTF_TYPE } from  '../notification-type.enum';
+import { NOTF_TYPE } from  '../../notification/menu/admin/notification-type.enum';
 
 class ModalAdminNotificationCtrl {
 

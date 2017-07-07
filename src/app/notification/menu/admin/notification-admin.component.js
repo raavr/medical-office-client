@@ -54,10 +54,24 @@ class NotificationAdminCtrl {
                         .acceptVisits([this.notifications[index].id])
                         .subscribe(() => this._onSuccess(type, index));
                 } else {
-                    this.adminActionService
-                        .rejectVisits([this.notifications[index].id], "Tymczasowy powód odrzucenia")
-                        .subscribe(() => this._onSuccess(type, index));
+                    this.openRejectVisitModal(index);
                 }  
+            },
+            () => {}
+        );
+    }
+
+    openRejectVisitModal(index) {
+        let modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'modalRejectionVisit'
+        });
+
+        modalInstance.result.then(
+            (rejectReason) => {
+                this.adminActionService
+                    .rejectVisits([this.notifications[index].id], rejectReason)
+                    .subscribe(() => this._onSuccess(NOTF_TYPE.CANCEL, index));
             },
             () => {}
         );
