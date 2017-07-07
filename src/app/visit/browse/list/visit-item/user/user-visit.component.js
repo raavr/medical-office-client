@@ -21,7 +21,7 @@ class UserVisitController {
                         this.onVisitCanceled({visitId: this.visit.id});       
                     },
                     (err) => { 
-                        console.log(err); 
+                        this.alertEventService.showDangerAlert(err.data.message);  
                         this.isUpdating({isUpdating: false});
                     }
                 );
