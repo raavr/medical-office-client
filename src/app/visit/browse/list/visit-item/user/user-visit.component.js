@@ -2,10 +2,11 @@ import "./user-visit.component.scss";
 import template from "./user-visit.component.html";
 
 class UserVisitController {
-    constructor(visitBrowseService, $window, alertEventService) {
+    constructor(visitBrowseService, $window, alertEventService, $uibModal) {
         this.visitBrowseService = visitBrowseService;
         this.$window = $window;
         this.alertEventService = alertEventService;
+        this.$uibModal = $uibModal;
     }
 
     cancelVisit() {
@@ -27,9 +28,21 @@ class UserVisitController {
                 );
         }
     }
+
+    showMore() {
+        let modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'modalVisitMoreInfo',
+            resolve: {
+                visit: () => this.visit
+            }  
+        });
+
+        modalInstance.result.catch(() => {});    
+    }
 }
 
-UserVisitController.$inject = ['visitBrowseService', '$window', 'alertEventService']
+UserVisitController.$inject = ['visitBrowseService', '$window', 'alertEventService', '$uibModal']
 
 export const UserVisitComponent = {
     bindings: {
