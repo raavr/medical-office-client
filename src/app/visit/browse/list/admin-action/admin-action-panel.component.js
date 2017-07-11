@@ -62,7 +62,7 @@ class AdminActionPanelController {
             .rejectVisits(this.selectedVisits.map((elem) => elem.id), rejectReason)
             .subscribe(
                 () => {
-                    this._onSuccess({type: NOTF_TYPE.CANCEL, id: id});
+                    this._onSuccess({type: NOTF_TYPE.CANCEL, id: id, rejectReason: rejectReason});
                 },
                 (err) => {
                     console.log(err);

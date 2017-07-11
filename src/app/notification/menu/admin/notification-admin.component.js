@@ -52,7 +52,7 @@ class NotificationAdminCtrl {
                 if(type === NOTF_TYPE.ACCEPT) {
                     this.adminActionService
                         .acceptVisits([this.notifications[index].id])
-                        .subscribe(() => this._onSuccess(type, index));
+                        .subscribe(() => this._onSuccess({type: type, index: index}));
                 } else {
                     this.openRejectVisitModal(index);
                 }  
@@ -71,15 +71,15 @@ class NotificationAdminCtrl {
             (rejectReason) => {
                 this.adminActionService
                     .rejectVisits([this.notifications[index].id], rejectReason)
-                    .subscribe(() => this._onSuccess(NOTF_TYPE.CANCEL, index));
+                    .subscribe(() => this._onSuccess({type: NOTF_TYPE.CANCEL, index: index}, rejectReason));
             },
             () => {}
         );
     }
 
-    _onSuccess(type, index) {
-        this.notificationEventService.updateVisitStatusEvent({ type: type, id: this.notifications[index].id});
-        this.notifications.splice(index, 1);
+    _onSuccess(ntf, rejectReason) {
+        this.notificationEventService.updateVisitStatusEvent({ type: ntf.type, id: this.notifications[ntf.index].id, rejectReason: rejectReason});
+        this.notifications.splice(ntf.index, 1);
         this.notificationEventService.refreshNotificationCount();
     }
     

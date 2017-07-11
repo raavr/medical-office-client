@@ -110,12 +110,14 @@ class VisitListController {
             this.selectedVisits.forEach((elem) => {
                 elem.status = visit.type;
                 elem.isSelected = false;
+                elem.rejectreason = visit.rejectReason;
             });
             this.selectedVisits = [];
         } else {
             let fVisit = this.visits.find((elem) => elem.id === visit.id)
             if(fVisit) {
                 fVisit.status = visit.type;
+                fVisit.rejectreason = visit.rejectReason;
             }
         }
 
