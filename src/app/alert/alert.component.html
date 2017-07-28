@@ -1,7 +1,7 @@
-<div ng-if="$ctrl.isAlertVisible" class="container alert-container">
+<div ng-if="$ctrl.isAlertVisible" class="container-fluid alert-container">
     <div class="row">
         <div class="col-xs-12 col-alert">
-            <div class="alert" ng-class="{ 
+            <div class="app-alert" ng-class="{ 
                 'alert-success': $ctrl.alertData.type === 'success',
                 'alert-danger': $ctrl.alertData.type === 'danger' 
             }">{{$ctrl.alertData.message}}</div>
