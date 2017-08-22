@@ -13,7 +13,10 @@ class LoginCtrl {
         this.authService
                 .login({ email: this.user.email, password: this.user.password })
                 .subscribe(
-                    () => this.$location.path("/"),
+                    () => {
+                        this.$location.path("/");
+                        this.alertEventService.showSuccessAlert("Aplikacja jest w wersji demonstracyjnej, wszystkie wprowadzone przez Ciebie zmiany zostaną po pewnym czasie usunięte.");
+                    },
                     (err) => {
                         this.alertEventService.showDangerAlert(err.data.message);
                     }
