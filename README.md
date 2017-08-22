@@ -1,6 +1,6 @@
-# Dentist App with AngularJS and Webpack
+# WebApp for doctors and their patients with AngularJS and Webpack
 
-An application using:
+This app is built with:
 * [AngularJS] (http://www.angularjs.org/)
 * [UI Router] (https://ui-router.github.io/)
 * [Bootstrap v3] (https://getbootstrap.com/)
