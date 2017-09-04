@@ -6,17 +6,23 @@ $owl-pagination-color: #ffffff;
 	border-bottom: 0;
 
 	.owl-item {
-		max-height: 550px;
+		max-height: calc(100vh - 100px);
 
 		.owl-desc {
 			position: absolute;
 			top: 50%;
 			left: 70px;
 			color: white;
-			width: 40%;
+			width: 50%;
 			transform: translateY(-50%);
 			padding: 20px;
 			background-color: rgba(0,0,0,0.3);
+
+			@media(min-width: 768px) {
+				& {
+				  width: auto;
+				}
+			}
 
 			h2 {
 				margin: 0;
