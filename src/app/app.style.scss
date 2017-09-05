@@ -86,12 +86,18 @@ p {
 }
 
 .partials-content {
-    padding: 80px 25px 80px 25px;
+    padding: 80px 15px;
     min-height: 500px;
+
+    @media(min-width: 576px) {
+      & {
+        padding: 80px 25px;
+      }
+    }
 
     @media(min-width: 768px) {
       & {
-        padding-top: 130px;
+        padding: 130px 25px;
       }
     }
 

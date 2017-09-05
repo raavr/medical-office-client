@@ -7,13 +7,13 @@ $font-family-icon: 'FontAwesome' !default;
 .checkbox{
   padding-left: 20px;
   display: inline-block;
-  margin-left: 10px;
 
   label{
     display: inline-block;
     vertical-align: middle;
     position: relative;
     padding-left: 5px;
+    padding-right: 10px;
 
     &::before{
       content: "";
@@ -119,4 +119,12 @@ legend.scheduler-border {
     padding: 0 1.4em 1.4em;
     margin: 0 0 1.5em;
     box-shadow: 0 0 0 0 #000;
+}
+
+.select-btns {
+    margin-bottom: 10px;
+
+  .btn {
+      margin-top: 5px;
+  }
 }

@@ -1,4 +1,10 @@
 .visit-selector {
-    padding-left: 0;
+    padding-left: 15px;
     margin-bottom: 20px;
+    
+    @media(min-width: 576px) {
+        & {
+          padding-left: 0px;
+        }
+    }
 }

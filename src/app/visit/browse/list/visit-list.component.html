@@ -21,7 +21,7 @@
     </div>
     <admin-action-panel ng-if="$ctrl.authService.isAdmin() && $ctrl.type === 'admin_current'" selected-visits="$ctrl.selectedVisits" on-visits-updated="$ctrl.onVisitsModified(visit)" is-updating="$ctrl.showUpdatingPanel(isUpdating)"></admin-action-panel>
     <div class="row">
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12">
             <ul uib-pagination 
                 total-items="$ctrl.filteredVisits.length" 
                 ng-model="$ctrl.pageSettings.currentPage" 
@@ -37,7 +37,7 @@
                 first-text="&laquo;" 
                 last-text="&raquo;">
             </ul>
+            <items-limit entries="[5, 10, 25, 50]" on-limit-change="$ctrl.onLimitChange(entry)"></items-limit>
         </div>
-        <items-limit entries="[5, 10, 25, 50]" on-limit-change="$ctrl.onLimitChange(entry)"></items-limit>
     </div>
 </div>

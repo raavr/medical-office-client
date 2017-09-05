@@ -1,25 +1,23 @@
 @import "../../../../navbar/navbar.constant";
 
-.items-limit-container {
-    padding-right: 0;
-}
-
 .btn-limit-group {
     float: left;
+    width: 100%;
 
-    @media(min-width: 768px) {
+    @media(min-width: 576px) {
         & {
             float: right;
+            width: auto;
         }
     }
 }
 
  .btn-filter {
-  background-color: transparent;
-  border-color: $navbar-color-bg;
-  color: $navbar-link-color;
-  transition: all 0.2s ease;
-
+    background-color: transparent;
+    border-color: $navbar-color-bg;
+    color: $navbar-link-color;
+    transition: all 0.2s ease;
+    font-size: 1.2rem;
  }
 
  .btn-filter.active, .btn:active {

@@ -1,7 +1,7 @@
 <fieldset class="scheduler-border">
     <legend class="scheduler-border" for="visitday-{{$ctrl.visitTime.dayofweek}}">{{$ctrl.visitTime.dayofweek  | dayOfWeekName }}</legend>
     <div class="control-group">
-        <div class="show-grid">
+        <div class="select-btns">
             <a ng-href="" class="btn btn-xs btn-default" ng-click="$ctrl.setSelected(true)">Zaznacz wszystkie</a>
             <a ng-href="" class="btn btn-xs btn-default" ng-click="$ctrl.setSelected(false)">Odznacz wszystkie</a>
         </div>
