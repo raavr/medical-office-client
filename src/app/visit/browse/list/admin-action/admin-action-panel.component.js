@@ -43,7 +43,7 @@ class AdminActionPanelController {
     }
 
     openRejectModal() {
-        let modalInstance = this.$uibModal.open({
+        const modalInstance = this.$uibModal.open({
             animation: true,
             component: 'modalRejectionVisit'
         });

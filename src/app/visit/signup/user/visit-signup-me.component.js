@@ -9,7 +9,7 @@ class VisitSignupMeController {
     }
 
     addVisit() {
-        let visit = {
+        const visit = {
             date: this.parent.visit.date,
             time: this.parent.visit.selectedTime.visittime,
             desc: this.parent.visit.desc  

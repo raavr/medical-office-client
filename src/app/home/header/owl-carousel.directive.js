@@ -21,7 +21,7 @@ export function OwlCarouselDirective(){
         controller: OwlCarousel,
         controllerAs: "owlCarousel",
         link: (scope, elm, attr, ctrl) => {
-            let options = {
+            const options = {
                 autoplayTimeout: 5000,
                 autoplay: scope.autoPlay, 
                 smartSpeed : 300, 

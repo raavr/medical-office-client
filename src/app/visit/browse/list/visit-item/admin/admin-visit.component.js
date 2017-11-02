@@ -13,7 +13,7 @@ class AdminVisitController {
     }
 
     showMore() {
-        let modalInstance = this.$uibModal.open({
+        const modalInstance = this.$uibModal.open({
             animation: true,
             component: 'modalVisitMoreInfo',
             resolve: {

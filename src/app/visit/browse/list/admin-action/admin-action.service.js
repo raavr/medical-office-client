@@ -13,7 +13,7 @@ export class AdminActionService {
     }
 
     rejectVisits(visits, reason) {
-       return this._updateVisits(ACTION_TYPE.REJECT, visits, reason);
+        return this._updateVisits(ACTION_TYPE.REJECT, visits, reason);
     }
 
     acceptVisits(visits) {
@@ -21,7 +21,7 @@ export class AdminActionService {
     }
 
     _updateVisits(type, visits, reason) {
-        let resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/admin/visits/updatevisit', { type : type, visits: visits, info: reason });
+        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/admin/visits/updatevisit', { type : type, visits: visits, info: reason });
 		return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }

@@ -62,7 +62,7 @@ class NotificationAdminCtrl {
     }
 
     openRejectVisitModal(index) {
-        let modalInstance = this.$uibModal.open({
+        const modalInstance = this.$uibModal.open({
             animation: true,
             component: 'modalRejectionVisit'
         });

@@ -12,7 +12,7 @@ class PatientBrowseController {
     _getFilteredPatients() {
           return Observable.from(this.patients)
                     .filter((pat) => {
-                        let patString = pat.name + ' ' + pat.surname + ' ' + pat.email;
+                        const patString = `${pat.name} ${pat.surname} ${pat.email}`;
                         return !this.filter || patString.indexOf(this.filter) >= 0
                     })
                     .toArray()
@@ -24,7 +24,7 @@ class PatientBrowseController {
     }
 
     onPatientDeleted(patientId) {
-        let index = this.patients.findIndex((pat) => pat.id === patientId);
+        const index = this.patients.findIndex((pat) => pat.id === patientId);
         
         if(index >= 0) {
             this.patients.splice(index, 1);

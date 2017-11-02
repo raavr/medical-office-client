@@ -8,7 +8,7 @@ export class SignupService {
     }
 
     signup(credentials) {
-        let resPromise = this.$http.post(CONFIG.ENDPOINT + '/auth/signup', credentials, { skipAuthorization: true });
+        const resPromise = this.$http.post(CONFIG.ENDPOINT + '/auth/signup', credentials, { skipAuthorization: true });
         return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }

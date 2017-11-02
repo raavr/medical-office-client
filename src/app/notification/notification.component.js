@@ -27,7 +27,7 @@ class NotificationController {
     }
 
     getNotificationCount() {
-        let nCountObservable = this.authService.isAdmin() ?  
+        const nCountObservable = this.authService.isAdmin() ?  
                                 this.notificationAdminService.getAdminNotificationCount() : 
                                 this.notificationUserService.getUserNotificationCount();
 

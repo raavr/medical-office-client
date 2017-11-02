@@ -5,7 +5,7 @@ export default
             scope: {},
 			link: (scope, elm) => {
                 angular.element(document).bind('click', (e) => {
-                    let dropdownElem = angular.element(e.target).hasClass("notification-dropdown"),
+                    const dropdownElem = angular.element(e.target).hasClass("notification-dropdown"),
                         isChildOfDropdown = angular.element(".notification-dropdown").find(e.target).length,
                         isModalElemOpen = angular.element(".modal").length; 
 

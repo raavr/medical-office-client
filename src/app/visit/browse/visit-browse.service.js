@@ -25,13 +25,13 @@ class VisitBrowseService {
     }
 
     _getVisits(url) {
-        let resPromise = this.$http.get(CONFIG.ENDPOINT + url);
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + url);
         return Observable.fromPromise(resPromise).map(res => res.data.vs)
                          .catch(error => Observable.throw(error));
     }
 
     cancelVisit(visitId) {
-        let resPromise = this.$http.delete(CONFIG.ENDPOINT + '/api/visits/delete/' + visitId);
+        const resPromise = this.$http.delete(CONFIG.ENDPOINT + '/api/visits/delete/' + visitId);
 		return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }

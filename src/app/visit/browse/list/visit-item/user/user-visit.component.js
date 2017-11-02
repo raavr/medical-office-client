@@ -10,7 +10,7 @@ class UserVisitController {
     }
 
     cancelVisit() {
-        let confirmed = this.$window.confirm('Czy na pewno chcesz wypisać się z wizyty?');
+        const confirmed = this.$window.confirm('Czy na pewno chcesz wypisać się z wizyty?');
 
         if(confirmed) {
             this.isUpdating({isUpdating: true});
@@ -30,7 +30,7 @@ class UserVisitController {
     }
 
     showMore() {
-        let modalInstance = this.$uibModal.open({
+        const modalInstance = this.$uibModal.open({
             animation: true,
             component: 'modalVisitMoreInfo',
             resolve: {

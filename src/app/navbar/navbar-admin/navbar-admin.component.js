@@ -7,7 +7,7 @@ class NavbarAdminController {
     }
 
     isActive() {
-        let cState = this.$state.is("visit-browse.admin-current"),
+        const cState = this.$state.is("visit-browse.admin-current"),
             pState = this.$state.is("visit-browse.admin-past");
 
         return cState || pState;

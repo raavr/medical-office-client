@@ -18,13 +18,13 @@ export class NotificationBaseService {
     }
 
     _getRequest(url) {
-        let resPromise = this.$http.get(CONFIG.ENDPOINT + url);
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + url);
 		return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }
 
     _putRequest(url, data) {
-        let resPromise = this.$http.put(CONFIG.ENDPOINT + url, data);
+        const resPromise = this.$http.put(CONFIG.ENDPOINT + url, data);
         return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }

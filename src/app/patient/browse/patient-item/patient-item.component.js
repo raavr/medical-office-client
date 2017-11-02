@@ -9,7 +9,7 @@ class PatientItemController {
     }
 
     deletePatient() {
-        let confirmed = this.$window.confirm('Czy na pewno chcesz usunąć konto pacjenta?');
+        const confirmed = this.$window.confirm('Czy na pewno chcesz usunąć konto pacjenta?');
 
         if(confirmed) {
             this.isUpdating({isUpdating: true});

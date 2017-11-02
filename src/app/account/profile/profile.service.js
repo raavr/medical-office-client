@@ -8,14 +8,14 @@ export class ProfileService {
     }
 
     getProfile() {
-		let resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/me');
+		const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/me');
         return Observable.fromPromise(resPromise)
                          .map(res => res.data)
                          .catch(error => Observable.throw(error));
 	}
 
     updateProfile(profileData) {
-        let resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/me', profileData);
+        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/me', profileData);
         return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }

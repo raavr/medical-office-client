@@ -8,7 +8,7 @@ class VisitSignupService {
     }
 
     getDisabledDates() {
-		let resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/visits');
+		const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/visits');
         return Observable.fromPromise(resPromise).map(res => res.data.vts)
             .mergeMap(res => Observable.from(res))
             .map(a => a.date_visit)
@@ -17,20 +17,20 @@ class VisitSignupService {
 	}
 
     getAvailableTimes(date) {
-        let resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/visits/times', { visittime : date });
+        const resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/visits/times', { visittime : date });
         return Observable.fromPromise(resPromise)
                          .map(res => res.data.ts)
                          .catch(error => Observable.throw(error));
     }
 
     addVisit(visit) {
-         let resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/visits/check', visit);
+         const resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/visits/check', visit);
          return Observable.fromPromise(resPromise)
                           .catch(error => Observable.throw(error));
     }
 
     findUsers(userName) {
-        let resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/admin/usersbyname', {val : userName});
+        const resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/admin/usersbyname', {val : userName});
         return Observable.fromPromise(resPromise)
                          .map(res => res.data.us)
                          .catch(error => Observable.throw(error));
