@@ -4,13 +4,13 @@
     <visit-filter on-filter-change="$ctrl.onFilterChange(filter)"></visit-filter>
     <div class="visit-container">
         <admin-visit ng-if="$ctrl.authService.isAdmin()" 
-                     ng-repeat="visit in $ctrl.renderedVisits" 
+                     ng-repeat="visit in $ctrl.currentVisibleVisits" 
                      visit="visit" 
                      is-even="$index % 2 === 0"
                      on-change="$ctrl.onVisitSelected(visitId)">
         </admin-visit>
         <user-visit ng-if="!$ctrl.authService.isAdmin()" 
-                    ng-repeat="visit in $ctrl.renderedVisits" 
+                    ng-repeat="visit in $ctrl.currentVisibleVisits" 
                     visit="visit" 
                     is-even="$index % 2 === 0"
                     on-visit-canceled="$ctrl.onVisitCanceledByUser(visitId)"
@@ -24,11 +24,11 @@
         <div class="col-xs-12">
             <ul uib-pagination 
                 total-items="$ctrl.filteredVisits.length" 
-                ng-model="$ctrl.pageSettings.currentPage" 
+                ng-model="$ctrl.filters.currentPage" 
                 max-size="5" 
-                num-pages="$ctrl.pageSettings.numPages" 
-                items-per-page="$ctrl.pageSettings.limit" 
-                ng-change="$ctrl.renderVisits()"
+                num-pages="$ctrl.filters.numPages" 
+                items-per-page="$ctrl.filters.limit" 
+                ng-change="$ctrl.applyLimitAndOffset()"
                 class="pagination-sm" 
                 boundary-links="true" 
                 rotate="false" 

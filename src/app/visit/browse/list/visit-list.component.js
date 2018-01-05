@@ -8,66 +8,46 @@ const VISIT_PAGE_SETTINGS = {
 }
 
 class VisitListController {
-    constructor($filter, authService) {
-        this.$filter = $filter;
-        this.filter = {};
+    constructor(authService, filterService) {
         this.authService = authService;
+        this.filterService = filterService;
+
         this.selectedVisits = [];
+        this.filters = Object.assign({}, VISIT_PAGE_SETTINGS);
     }
 
     $onInit() {
-        this.pageSettings = Object.assign({}, VISIT_PAGE_SETTINGS);
         this.parent.setLoading(false);
-        
-        this._updateVisits();
+   
+        this._prepareVisits();
         this.showUpdatingPanel(false);
     }
-
-    onFilterChange(filter) {
-        this.filter = filter;
-        this._updateVisits();
+    
+    _applyFilters() {
+        this.filterService
+        .applyFilters(this.visits, this.filters)
+        .subscribe((data) => this.filteredVisits = data);
     }
 
-    renderVisits() {
-        this._getFilteredVisits()
-             .map((visits) => {
-                 this.pageSettings.numPages = Math.ceil(visits.length / this.pageSettings.limit);
-                 const offset = (this.pageSettings.currentPage - 1) * this.pageSettings.limit;
-                 return visits.slice(offset, offset + this.pageSettings.limit);
-             })
-             .subscribe((visits) => this.renderedVisits = visits);
-    }
-
-    _getFilteredVisits() {
-          return Observable.from(this.visits)
-                    .filter((vis) => {
-                        const fVisit = this.$filter('date')(vis.visitdate, 'dd/MM/yyyy').toString();
-                        return !this.filter.date || fVisit.indexOf(this.filter.date) >= 0
-                    })
-                    .filter((vis) => {
-                        const fVisit = this.$filter('date')(vis.visitdate, 'HH:mm').toString();
-                        return !this.filter.time || fVisit.indexOf(this.filter.time) >= 0
-                    })
-                    .filter((vis) => {
-                        const name = `${vis.name} ${vis.surname}`;
-                        return !this.filter.name || name.indexOf(this.filter.name) >= 0
-                    })
-                    .filter((vis) => (!this.filter.type || this.filter.type === 'all') ? true : vis.status === this.filter.type)
-                    .toArray();            
-    }
-
-    _filterVisits() {
-        this._getFilteredVisits().subscribe((data) => this.filteredVisits = data);
+    applyLimitAndOffset() {
+        this.filterService
+        .applyLimitAndOffset(this.filteredVisits, this.filters)
+        .subscribe((visits) => this.currentVisibleVisits = visits);
     }
     
-    onLimitChange(limit) {
-        this.pageSettings.limit = limit;
-        this.renderVisits();
+    onFilterChange(filter) {
+        this.filters = Object.assign(this.filters, filter);
+        this._prepareVisits();
     }
 
-    _updateVisits() {
-        this._filterVisits();
-        this.renderVisits();
+    onLimitChange(limit) {
+        this.filters.limit = limit;
+        this.applyLimitAndOffset();
+    }
+
+    _prepareVisits() {
+        this._applyFilters();
+        this.applyLimitAndOffset();
     }
 
     onVisitCanceledByUser(visitId) {
@@ -75,7 +55,7 @@ class VisitListController {
         
         if(index >= 0) {
             this.visits.splice(index, 1);
-            this._updateVisits();
+            this._prepareVisits();
         }
         this.showUpdatingPanel(false);
     }
@@ -130,7 +110,7 @@ class VisitListController {
 
 }
 
-VisitListController.$inject = ['$filter', 'authService'];
+VisitListController.$inject = ['authService', 'visitFilterService'];
 
 
 export const VisitListComponent = {
