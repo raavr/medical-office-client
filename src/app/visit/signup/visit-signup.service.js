@@ -7,8 +7,8 @@ class VisitSignupService {
         this.$http = $http;
     }
 
-    getDisabledDates() {
-		const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/visits');
+    getDisabledDates(doctorId) {
+		const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/visits', { params: { doctorId: doctorId }});
         return Observable.fromPromise(resPromise).map(res => res.data.vts)
             .mergeMap(res => Observable.from(res))
             .map(a => a.date_visit)
@@ -16,8 +16,8 @@ class VisitSignupService {
             .catch(error => Observable.throw(error));
 	}
 
-    getAvailableTimes(date) {
-        const resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/visits/times', { visittime : date });
+    getAvailableTimes(date, doctorId) {
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/visits/times', { params: { visittime : date, doctorid: doctorId }});
         return Observable.fromPromise(resPromise)
                          .map(res => res.data.ts)
                          .catch(error => Observable.throw(error));
@@ -30,11 +30,19 @@ class VisitSignupService {
     }
 
     findUsers(userName) {
-        const resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/admin/usersbyname', {val : userName});
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/admin/usersbyname', { params: { val : userName}});
         return Observable.fromPromise(resPromise)
                          .map(res => res.data.us)
                          .catch(error => Observable.throw(error));
     }
+
+    getDoctors() {
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/doctors');
+        return Observable.fromPromise(resPromise)
+                         .map(res => res.data.dn)
+                         .catch(error => Observable.throw(error));
+    }
+
 }
 
 VisitSignupService.$inject = ['$http'];

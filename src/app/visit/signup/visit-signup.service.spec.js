@@ -58,7 +58,7 @@ describe("VisitSignupService", () => {
     });
 
     it("should return available visit times", () => {
-        response = $httpMock.when("POST", CONFIG.ENDPOINT + "/api/visits/times");
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits/times");
         response.respond({ ts: fakeVisitTimes });
 
         mVisitSignupService.getAvailableTimes()
@@ -68,7 +68,7 @@ describe("VisitSignupService", () => {
     });
 
     it("should return 4 visit times", () => {
-        response = $httpMock.when("POST", CONFIG.ENDPOINT + "/api/visits/times");
+        response = $httpMock.whenGET(CONFIG.ENDPOINT + "/api/visits/times");
         response.respond({ ts: fakeVisitTimes });
 
         mVisitSignupService.getAvailableTimes()
@@ -78,16 +78,17 @@ describe("VisitSignupService", () => {
     });
 
     it("should not return any unavailable visit times", () => {
-        response = $httpMock.when("POST", CONFIG.ENDPOINT + "/api/visits/times");
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits/times");
 
         response.respond({ ts: [] });
-        mVisitSignupService.getAvailableTimes().subscribe((s) => { 
-            expect(s.length).toBe(0);
-        });
+        mVisitSignupService.getAvailableTimes()
+            .subscribe((s) => { 
+                expect(s.length).toBe(0);
+            });
     });
 
     it("should return user name", () => {
-        response = $httpMock.when("POST", CONFIG.ENDPOINT + "/api/admin/usersbyname");
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/usersbyname");
         response.respond({ us: fakeUserName });
 
         mVisitSignupService.findUsers()

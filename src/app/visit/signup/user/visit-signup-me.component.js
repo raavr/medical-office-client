@@ -1,42 +1,45 @@
 import "./visit-signup-me.component.scss";
 import template from "./visit-signup-me.component.html";
+import { VisitSignupBaseController } from '../base/visit-signup-base.controller'; 
 
-class VisitSignupMeController {
-    constructor(visitSignupService, $state, alertEventService) {
+class VisitSignupMeController extends VisitSignupBaseController {
+    constructor(visitSignupService, alertEventService, authService, $state) {
+        super();
         this.visitSignupService = visitSignupService;
-        this.$state = $state;
         this.alertEventService = alertEventService;
+        this.authService = authService;
+        this.$state = $state;
     }
 
     addVisit() {
-        const visit = {
-            date: this.parent.visit.date,
-            time: this.parent.visit.selectedTime.visittime,
-            desc: this.parent.visit.desc  
-        };
-        
-        this.visitSignupService.addVisit(visit).subscribe(
+        this.visitSignupService.addVisit(this.visit).subscribe(
             () => { 
                 this.$state.go('visit-browse.current');
                 this.alertEventService.showSuccessAlert("Zapisałeś się na wizytę.");             
              },
-             (err) => console.log(err)
+             (err) => {
+                console.log(err);
+                this.alertEventService.showDangerAlert(err.data.message);
+             }
         );
     }
 
-    isSubmitDisabled() {
-        return !this.parent.visit.date || !this.parent.visit.selectedTime;
+    onSelectUser() {
+        super.onSelectUser(this.userSelected);
+
+        this.formVisit = {};
+        this.visitSignupService
+            .getDisabledDates(this.userSelected.id)
+            .subscribe(disabledDates => this.disabledDates = disabledDates);
     }
+
 }
 
-VisitSignupMeController.$inject = ['visitSignupService', '$state', 'alertEventService'];
+VisitSignupMeController.$inject = ['visitSignupService', 'alertEventService', 'authService', '$state'];
 
 export const VisitSignupMeComponent = {
     bindings: {
-        disabledDates: "<"
-    },
-    require: {
-        parent: "^visitSignup"
+        doctorsList: "<"
     },
     template: template,
     controller: VisitSignupMeController

@@ -1,4 +1,5 @@
 import VisitSignupMeResolve from './user/visit-signup-me.resolver';
+import VisitSignupUserResolve from './admin/visit-signup-user.resolver';
 import AuthGuardUser from '../../auth/auth-guard-user.service';
 import AuthGuardAdmin from '../../auth/auth-guard-admin.service';
 
@@ -15,7 +16,7 @@ export default function VisitSignupConfig($stateProvider) {
             component: "visitSignupMe", 
             resolve: {
                 canActivate: AuthGuardUser,
-                disabledDates: VisitSignupMeResolve
+                doctorsList: VisitSignupMeResolve
             } 
         },
         { 
@@ -24,7 +25,7 @@ export default function VisitSignupConfig($stateProvider) {
             component: "visitSignupUser", 
             resolve: {
                 canActivate: AuthGuardAdmin,
-                disabledDates: VisitSignupMeResolve
+                disabledDates: VisitSignupUserResolve
             } 
         }
     ]

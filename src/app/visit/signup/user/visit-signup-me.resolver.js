@@ -1,5 +1,5 @@
 export default function VisitSignupMeResolve(visitSignupService) {
-      return visitSignupService.getDisabledDates().toPromise().catch(() => {});
+      return visitSignupService.getDoctors().toPromise().catch(() => {});
 }
 
 VisitSignupMeResolve.$inject = ['visitSignupService'];

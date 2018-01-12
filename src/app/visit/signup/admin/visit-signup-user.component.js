@@ -1,29 +1,25 @@
 import template from "./visit-signup-user.component.html";
+import { VisitSignupBaseController } from "../base/visit-signup-base.controller";
 
-class VisitSignupUserController {
-    constructor(visitSignupService, $state, alertEventService) {
+class VisitSignupUserController extends VisitSignupBaseController {
+    constructor(visitSignupService, alertEventService, authService, $state) {
+        super();
         this.visitSignupService = visitSignupService;
-        this.$state = $state;
-        this.userSelected = {};
         this.alertEventService = alertEventService;
+        this.authService = authService;
+        this.$state = $state;
     }
 
     addVisit() {
-        const visit = {
-            date: this.parent.visit.date,
-            time: this.parent.visit.selectedTime.visittime,
-            desc: this.parent.visit.desc,
-            userid: this.userSelected.id  
-        };
-        
-        this.visitSignupService.addVisit(visit).subscribe(
+        this.visitSignupService.addVisit(this.visit).subscribe(
             () => { 
                 this.$state.go('visit-browse.admin-current');
                 this.alertEventService.showSuccessAlert(`Pacjent ${this.asyncSelectedUser} został zapisany na wizytę.`);
              },
              (err) => { 
                 console.log(err);
-                this.parent.getAvailableTimes();
+                this.alertEventService.showDangerAlert(err.data.message);
+                this.getAvailableTimes();
              }
         );
     }
@@ -34,28 +30,17 @@ class VisitSignupUserController {
                 .toPromise();
     }
 
-    onSelectUser(item) {
-        this.userSelected.id = item.id;
-        this.userSelected.name = item.sn;
-    }
-
     isSubmitDisabled() {
-        return !this.parent.visit.date 
-               || !this.parent.visit.selectedTime 
-               || !this.userSelected.name 
-               || this.asyncSelectedUser !== this.userSelected.name;
+        return super.isSubmitDisabled() || this.asyncSelectedUser !== this.userSelected.name;
     }
 
 }
 
-VisitSignupUserController.$inject = ['visitSignupService', '$state', 'alertEventService'];
+VisitSignupUserController.$inject = ['visitSignupService', 'alertEventService', 'authService', '$state'];
 
 export const VisitSignupUserComponent = {
     bindings: {
         disabledDates: "<"
-    },
-    require: {
-        parent: "^visitSignup"
     },
     template: template,
     controller: VisitSignupUserController

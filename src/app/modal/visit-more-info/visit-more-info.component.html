@@ -9,12 +9,16 @@
             <dt>Pacjent:</dt>
             <dd>{{$ctrl.visit.name}} {{$ctrl.visit.surname}}</dd>
         </div>
+        <div ng-if="!$ctrl.authService.isAdmin()">
+            <dt>Lekarz:</dt>
+            <dd>{{$ctrl.visit.doctorName}}</dd>
+        </div>
         <dt>Informacje dodatkowe:</dt>
         <dd>{{$ctrl.visit.description}}{{$ctrl.visit.description.length > 0 ? '' : 'Brak'}}</dd>
         <div class="modal-status-box">
             <dt>Status:</dt>
             <dd>
-                <button ng-if="$ctrl.visit.status === 'reservation' && $ctrl.authService.isAdmin()" type="button" class="btn btn-warning btn-type-warning btn-visit-type">Oczekuje</button>
+                <button ng-if="$ctrl.visit.status === 'reservation'" type="button" class="btn btn-warning btn-type-warning btn-visit-type">Oczekuje</button>
                 <button ng-if="$ctrl.visit.status === 'accepted'" type="button" class="btn btn-success btn-type-success btn-visit-type">Zaakceptowano</button>
                 <button ng-if="$ctrl.visit.status === 'canceled'" type="button" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
             </dd>

@@ -1,36 +1,41 @@
 import { Observable } from 'rxjs/Observable';
 import VisitSignupModule from '../visit-signup';
+import * as ToDateFunctions from '../../../app.helper';
 
 describe("VisitSignupMeComponent", () => {
-    let $componentController, ctrl, spySignupService, bindings;
+    let $componentController, ctrl, spySignupService, visitTimesMock, spyAvailableTimes, spyIsAdmin
     beforeEach(angular.mock.module(VisitSignupModule));
 
     beforeEach(() => {
-        bindings = { 
-            disabledDates: ["22/06/2017", "23/06/2017", "26/06/2017"], 
-            parent: {
-                visit: {}
-            }
-        };
+        visitTimesMock = [
+            { visittime: "09:30:00" },
+            { visittime: "10:00:00" },
+            { visittime: "10:30:00" }, 
+            { visittime: "11:00:00" }
+        ];
     })
 
     beforeEach(angular.mock.inject(($injector) => {
         $componentController = $injector.get("$componentController");
-        ctrl = $componentController("visitSignupMe", null, bindings);
+        ctrl = $componentController("visitSignupMe", null, null);
     }));
     
     beforeEach(() => {
         spySignupService = spyOn(ctrl.visitSignupService, "addVisit").and.returnValue(Observable.of(null));
         spyOn(ctrl.alertEventService, "showSuccessAlert");
         spyOn(ctrl.$state, "go");
+        spyAvailableTimes = spyOn(ctrl.visitSignupService, "getAvailableTimes").and.returnValue(Observable.of(visitTimesMock));
+        spyIsAdmin = spyOn(ctrl.authService, "isAdmin").and.returnValue(false);
     });
 
-    it('should initialize disabledDates', () => {
-        expect(ctrl.disabledDates).toEqual(bindings.disabledDates);
+    it('should initialize formVisits object', () => {
+        expect(ctrl.formVisit).toBeDefined();
+        expect(ctrl.formVisit).toEqual({});
     });
 
-    it('should initialize parent', () => {
-        expect(ctrl.parent).toEqual(bindings.parent);
+    it('should initialize userSelected object', () => {
+        expect(ctrl.userSelected).toBeDefined();
+        expect(ctrl.userSelected).toEqual({});
     });
 
     it("should initialize services", () => {
@@ -44,29 +49,66 @@ describe("VisitSignupMeComponent", () => {
     });
 
     it('should isSubmitDisabled return true when date !== undefined', () => {
-        ctrl.parent.visit.date = "22/06/2017";
+        ctrl.formVisit.date = "22/06/2017";
         expect(ctrl.isSubmitDisabled()).toBe(true);
     });
 
     it('should isSubmitDisabled return true when selectedTime !== undefined', () => {
-        ctrl.parent.visit.selectedTime = { visittime: "09:30:00" };
+        ctrl.formVisit.selectedTime = { visittime: "09:30:00" };
         expect(ctrl.isSubmitDisabled()).toBe(true);
     });
 
-    it('should isSubmitDisabled return false when both date and selectedTime !== undefined', () => {
-        ctrl.parent.visit.date = "22/06/2017";
-        ctrl.parent.visit.selectedTime = { visittime: "09:30:00" };
+    it('should isSubmitDisabled return true when both date and selectedTime !== undefined', () => {
+        ctrl.formVisit.date = "22/06/2017";
+        ctrl.formVisit.selectedTime = { visittime: "09:30:00" };
+        expect(ctrl.isSubmitDisabled()).toBe(true);
+    });
+
+    it('should isSubmitDisabled return false when all form inputs are valid', () => {
+        ctrl.formVisit.date = "22/06/2017";
+        ctrl.formVisit.selectedTime = { visittime: "09:30:00" };
+        ctrl.userSelected.name = "John Doe";
         expect(ctrl.isSubmitDisabled()).toBe(false);
     });
 
+    it('should set visit times', () => {
+        expect(ctrl.formVisit.times).not.toBeDefined();
+        ctrl.userSelected = { id: 1 };
+        ctrl.getAvailableTimes();
+        
+        expect(ctrl.formVisit.times).toEqual(visitTimesMock); 
+    });
+
+    it('should set empty array of visit times', () => {
+        spyAvailableTimes.and.returnValue(Observable.of([]));
+        ctrl.userSelected = { id: 1 };
+
+        expect(ctrl.formVisit.times).not.toBeDefined();
+        
+        ctrl.getAvailableTimes();
+        
+        expect(ctrl.formVisit.times.length).toBe(0);
+    });
+
+    it('should not call visitSignupService.getAvailableTime', () => {        
+        expect(ctrl.formVisit.times).not.toBeDefined();
+        
+        ctrl.getAvailableTimes();
+        expect(ctrl.visitSignupService.getAvailableTimes).not.toHaveBeenCalled();
+        expect(ctrl.formVisit.times).not.toBeDefined();
+    });
+
     describe("when addVisit() is called", () => {
+        let visit;
 
         beforeEach(() => {
-            ctrl.parent.visit = {
+            visit = {
+                userid: 1,
                 date: "22/06/2017",
                 selectedTime: { visittime: "09:30:00" },
                 desc: "Lorem ipsum"
-            }   
+            }
+            spyOnProperty(ctrl, 'visit', 'get').and.returnValue(visit);   
         });
          
          it('should call visitSignupService.addVisit', () => {
@@ -76,12 +118,6 @@ describe("VisitSignupMeComponent", () => {
         });
 
         it('should call visitSignupService.addVisit with visit object', () => {
-            const visit = {
-                date: "22/06/2017",
-                time: "09:30:00",
-                desc: "Lorem ipsum"  
-            };
-
             expect(ctrl.visitSignupService.addVisit).not.toHaveBeenCalled();
             ctrl.addVisit();
             expect(ctrl.visitSignupService.addVisit).toHaveBeenCalledWith(visit);
@@ -102,17 +138,73 @@ describe("VisitSignupMeComponent", () => {
         
         });
 
-        it('should call console.log', () => {
-            const err = new Error("Error");
-            spySignupService.and.returnValue(Observable.throw(err));
-            spyOn(console, "log");
+        describe("with error", () => {
+            let err;
+
+            beforeEach(() => {
+                err = {
+                    data: {
+                        message: "err!"
+                    }
+                };
+
+                spySignupService.and.returnValue(Observable.throw(err));
+            });
             
-            expect(console.log).not.toHaveBeenCalled();
-            ctrl.addVisit();
-            expect(console.log).toHaveBeenCalled();
-            expect(console.log.calls.argsFor(0)).toEqual([err]);
+            it('should call console.log', () => {
+                spyOn(console, "log");
+                
+                expect(console.log).not.toHaveBeenCalled();
+                ctrl.addVisit();
+                expect(console.log).toHaveBeenCalled();
+                expect(console.log.calls.argsFor(0)).toEqual([err]);
+            });
+    
+            it('should call alertEventService.showDangerAlert', () => {
+                spyOn(ctrl.alertEventService, "showDangerAlert");
+
+                expect(ctrl.alertEventService.showDangerAlert).not.toHaveBeenCalled();
+                ctrl.addVisit();
+                expect(ctrl.alertEventService.showDangerAlert).toHaveBeenCalled();
+                expect(ctrl.alertEventService.showDangerAlert.calls.argsFor(0)).toEqual(["err!"]);
+            });
+
+        });
+    });
+
+    describe("changeDate tests", () => {
+
+        beforeEach(() => {
+            spyOn(ToDateFunctions, "toDate_mmddyyyy").and.returnValue("06/20/2017");
+        });
+        
+        it('should set visit date', () => {  
+            expect(ctrl.formVisit.date).not.toBeDefined();
+            
+            ctrl.changeDate({date: ""});
+            
+            expect(ctrl.formVisit.date).toBe("06/20/2017");
         });
 
+        it('should set visit date and time', () => {
+            expect(ctrl.formVisit.date).not.toBeDefined();
+            expect(ctrl.formVisit.times).not.toBeDefined();
+            
+            ctrl.userSelected = { id: 1 };
+            ctrl.changeDate({date: ""});
+
+            expect(ctrl.formVisit.date).toBe("06/20/2017");
+            expect(ctrl.formVisit.times).toEqual(visitTimesMock); 
+        });
+
+        it('should call getAvailableTimes function', () => {
+            spyOn(ctrl, "getAvailableTimes");
+            expect(ctrl.getAvailableTimes).not.toHaveBeenCalled();
+            
+            ctrl.changeDate({date: ""});
+            
+            expect(ctrl.getAvailableTimes).toHaveBeenCalled();
+        });
     });
 
 });
