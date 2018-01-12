@@ -8,9 +8,10 @@ const VISIT_PAGE_SETTINGS = {
 }
 
 class VisitListController {
-    constructor(authService, filterService) {
+    constructor(authService, filterService, visitBrowseService) {
         this.authService = authService;
         this.filterService = filterService;
+        this.visitBrowseService = visitBrowseService;
 
         this.selectedVisits = [];
         this.filters = Object.assign({}, VISIT_PAGE_SETTINGS);
@@ -18,36 +19,47 @@ class VisitListController {
 
     $onInit() {
         this.parent.setLoading(false);
-   
-        this._prepareVisits();
+        this.totalItems = this.visits.totalItems;
+        this.visits = this.visits.vs;
+        
         this.showUpdatingPanel(false);
-    }
-    
-    _applyFilters() {
-        this.filterService
-        .applyFilters(this.visits, this.filters)
-        .subscribe((data) => this.filteredVisits = data);
-    }
-
-    applyLimitAndOffset() {
-        this.filterService
-        .applyLimitAndOffset(this.filteredVisits, this.filters)
-        .subscribe((visits) => this.currentVisibleVisits = visits);
     }
     
     onFilterChange(filter) {
         this.filters = Object.assign(this.filters, filter);
-        this._prepareVisits();
+        this.getVisits();
     }
 
     onLimitChange(limit) {
         this.filters.limit = limit;
-        this.applyLimitAndOffset();
+        this.getVisits();
     }
 
-    _prepareVisits() {
-        this._applyFilters();
-        this.applyLimitAndOffset();
+    getVisits() {
+        this.showUpdatingPanel(true);
+
+        const getVisitsSubscription = (visits) => {
+            this.visits = visits.vs; 
+            this.totalItems = visits.totalItems;
+            
+            this.showUpdatingPanel(false);
+            this.selectedVisits = [];
+        }
+
+        switch(this.type) {
+            case "user_past":
+                this.visitBrowseService.getPastUsersVisits(this.filters).subscribe(getVisitsSubscription);
+                break;
+            case "user_current":
+                this.visitBrowseService.getUsersVisits(this.filters).subscribe(getVisitsSubscription);            
+                break;
+            case "admin_past":
+                this.visitBrowseService.getPastAdminVisits(this.filters).subscribe(getVisitsSubscription);
+                break;
+            case "admin_current":
+                this.visitBrowseService.getAdminVisits(this.filters).subscribe(getVisitsSubscription);
+                break;
+        }
     }
 
     onVisitCanceledByUser(visitId) {
@@ -55,8 +67,8 @@ class VisitListController {
         
         if(index >= 0) {
             this.visits.splice(index, 1);
-            this._prepareVisits();
         }
+
         this.showUpdatingPanel(false);
     }
 
@@ -77,7 +89,7 @@ class VisitListController {
     onSelectBtnClicked(isSelected) {
         this.selectedVisits = [];
 
-        this.filteredVisits.forEach((elem) => { 
+        this.visits.forEach((elem) => { 
             elem.isSelected = isSelected;
             if(isSelected) {
                 this.selectedVisits.push(elem);
@@ -110,7 +122,7 @@ class VisitListController {
 
 }
 
-VisitListController.$inject = ['authService', 'visitFilterService'];
+VisitListController.$inject = ['authService', 'visitFilterService', 'visitBrowseService'];
 
 
 export const VisitListComponent = {

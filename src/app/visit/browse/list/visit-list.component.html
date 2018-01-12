@@ -4,31 +4,31 @@
     <visit-filter on-filter-change="$ctrl.onFilterChange(filter)"></visit-filter>
     <div class="visit-container">
         <admin-visit ng-if="$ctrl.authService.isAdmin()" 
-                     ng-repeat="visit in $ctrl.currentVisibleVisits" 
+                     ng-repeat="visit in $ctrl.visits" 
                      visit="visit" 
                      is-even="$index % 2 === 0"
                      on-change="$ctrl.onVisitSelected(visitId)">
         </admin-visit>
         <user-visit ng-if="!$ctrl.authService.isAdmin()" 
-                    ng-repeat="visit in $ctrl.currentVisibleVisits" 
+                    ng-repeat="visit in $ctrl.visits" 
                     visit="visit" 
                     is-even="$index % 2 === 0"
                     on-visit-canceled="$ctrl.onVisitCanceledByUser(visitId)"
                     is-updating="$ctrl.showUpdatingPanel(isUpdating)">
         </user-visit>
         <div ng-if="$ctrl.isUpdating" class="loading-overlay"><span>Proszę czekać...</span></div>
-        <p ng-if="$ctrl.filteredVisits.length === 0" class="visit-list-status">Brak wizyt</p>
+        <p ng-if="$ctrl.totalItems === 0" class="visit-list-status">Brak wizyt</p>
     </div>
     <admin-action-panel ng-if="$ctrl.authService.isAdmin() && $ctrl.type === 'admin_current'" selected-visits="$ctrl.selectedVisits" on-visits-updated="$ctrl.onVisitsModified(visit)" is-updating="$ctrl.showUpdatingPanel(isUpdating)"></admin-action-panel>
     <div class="row">
         <div class="col-xs-12">
             <ul uib-pagination 
-                total-items="$ctrl.filteredVisits.length" 
+                total-items="$ctrl.totalItems" 
                 ng-model="$ctrl.filters.currentPage" 
                 max-size="5" 
                 num-pages="$ctrl.filters.numPages" 
                 items-per-page="$ctrl.filters.limit" 
-                ng-change="$ctrl.applyLimitAndOffset()"
+                ng-change="$ctrl.getVisits()"
                 class="pagination-sm" 
                 boundary-links="true" 
                 rotate="false" 
