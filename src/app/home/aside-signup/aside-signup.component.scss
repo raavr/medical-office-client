@@ -1,3 +1,10 @@
+.override-bg {
+	width: 100%;
+	height: 100%;
+	padding: 100px 0;
+	background-color: rgba(0,0,0,0.8);
+}
+
 .aside-signup {
 	background-image: url('/assets/images/bg-aside-signup.jpg');
 	background-position: center;
@@ -6,24 +13,17 @@
 	background-size: cover;
 	color: #ffffff;
 	padding: 0;
+}
 
-	.override-bg {
-		width: 100%;
-		height: 100%;
-		padding: 100px 0;
-		background-color: rgba(0,0,0,0.8);
-	}
+.aside-signup__title {
+	font-size: 3.2rem;
+	margin-bottom: 35px;
+}
 
-	p {
-		font-size: 3.2rem;
-        margin-bottom: 35px;
-	}
-    
-    .btn-home {
-        border-radius: 0;
-        font-size: 1.4rem;
-        min-width: 250px;
-        padding: 11px 20px;
-        text-transform: uppercase;
-    }
+.aside-signup__btn {
+	border-radius: 0;
+	font-size: 1.4rem;
+	min-width: 250px;
+	padding: 11px 20px;
+	text-transform: uppercase;
 }

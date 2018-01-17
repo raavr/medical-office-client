@@ -1,21 +1,6 @@
 .price-list {
 	position: relative;
 
-    .title-container {
-        margin-bottom: 50px;
-    }
-
-	.table-condensed {
-        background-color: rgba(15,36,49,0.6);
-		color: #ffffff;
-		font-size: 1.3rem;
-
-		.price {
-			min-width: 80px;
-			text-align: right;
-		}
-	}
-
     &:after {
         content : "";
         display: block;
@@ -32,4 +17,14 @@
         z-index: -1;
     }
 	
+}
+
+.price-list__header {
+    margin-bottom: 50px;
+}
+
+.price-item__table {
+    background-color: rgba(15,36,49,0.6);
+    color: #ffffff;
+    font-size: 1.3rem;
 }

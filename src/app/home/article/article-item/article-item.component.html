@@ -1,11 +1,11 @@
-<article class="col-xs-12 col-sm-6 col-md-4 news-item-container">
-    <div class="news-wrapper">       
-        <img ng-if="$ctrl.item.img" class="img-responsive img-center" ng-src="{{$ctrl.item.img}}" alt="{{$ctrl.item.title}} - obrazek"/>
-        <div class="news-content-text">
-            <h3 class="news-item-title">{{$ctrl.item.title}}</h3>
-            <time datetime="{{$ctrl.item.createdate}}" class="small news-published-time">{{$ctrl.item.createdate | date : "dd MMM y',' HH:mm" }}</time>
-            <p class="news-desc">{{$ctrl.item.description}}{{$ctrl.item.description.length > 100 ? '...' : ''}}</p>
-            <button type="button" class="btn btn-default btn-read-more">Czytaj więcej...</button>
+<article class="col-xs-12 col-sm-6 col-md-4 article-container">
+    <div class="article">       
+        <img ng-if="$ctrl.item.img" class="img-responsive img-center article__header" ng-src="{{$ctrl.item.img}}" alt="{{$ctrl.item.title}} - obrazek"/>
+        <div class="article__body">
+            <h3 class="article__title">{{$ctrl.item.title}}</h3>
+            <time datetime="{{$ctrl.item.createdate}}" class="article__published-time small">{{$ctrl.item.createdate | date : "dd MMM y',' HH:mm" }}</time>
+            <p class="article__description">{{$ctrl.item.description}}{{$ctrl.item.description.length > 100 ? '...' : ''}}</p>
+            <button type="button" class="btn btn-default article__btn-read-more">Czytaj więcej...</button>
         </div>  
     </div>
 </article>

@@ -1,8 +1,8 @@
- <section id="offer" class="offer">
+ <section id="offer" class="offers">
     <div class="container">
         <div class="row text-center">
-            <div class="col-lg-12 subtitle-container" >
-                <h2>Zapoznaj się z naszą ofertą</h2>
+            <div class="col-lg-12 offers__header">
+                <h2 class="offers__title">Zapoznaj się z naszą ofertą</h2>
             </div>
             <div class="col-lg-12">
                 <owl-carousel class="owl-carousel"
@@ -17,16 +17,16 @@
                         ng-repeat="offer in $ctrl.offerDescs" 
                         is-last-elem="$ctrl.offerDescs.length - 1 === $index" 
                         ng-click="$ctrl.setOfferDesc($index)"
-                        class="offer-item">
-                        <span class="icon">
+                        class="offer">
+                        <span class="offer__icon">
                             <i class="{{offer.icon}}"></i>
                         </span>
-                        <h3>{{offer.title}}</h3>
+                        <h3 class="offer__title">{{offer.title}}</h3>
                     </owl-carousel-item>
                 </owl-carousel>
             </div>
             <div ng-if="$ctrl.currentOffer" class="col-lg-12">
-                <div class="panel panel-default panel-offer">
+                <div class="panel panel-default offers__body">
                     <div class="panel-body">
                         {{$ctrl.currentOffer.desc}}
                     </div>
