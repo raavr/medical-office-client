@@ -1,9 +1,9 @@
 <div class="container partials-content">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
-      <div class="center-form panel">
-        <div class="panel-body">
-          <h2 class="text-center login-title">Logowanie</h2>
+      <div class="center-form panel login">
+        <div class="panel-body login__body">
+          <h2 class="text-center login__title">Logowanie</h2>
           <form method="post" ng-submit="$ctrl.login()" name="loginForm">
             <div class="form-group has-feedback">
               <input class="form-control input-lg" type="email" name="email" ng-model="$ctrl.user.email" placeholder="Email" required autofocus>
@@ -13,7 +13,7 @@
             </div>
             <button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-lg  btn-block btn-success">Zaloguj się</button>
           </form>
-          <p class="text-center forgot-pwd">
+          <p class="text-center login__forgot-pwd">
             <a ui-sref="reset-pass">Zapomniałeś hasła?</a>
           </p>
           <p class="text-center text-muted small">
