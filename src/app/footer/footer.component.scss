@@ -8,20 +8,20 @@
 	height: 80px;
 	left: 0;
 	width: 100%;
+}
 
-	a {
-	    color: #fff;
+.copyright {
+	margin: 30px 0;
+}
 
-		&:hover {
-			text-decoration: underline;
-		}
-	}
+.copyright__title {
+	margin: 0;
+}
 
-	.copyright-box {
-		margin: 30px 0;
-	}
+.copyright__link {
+	color: #fff;
 
-	.copyright {
-		margin: 0;
+	&:hover {
+		text-decoration: underline;
 	}
 }
