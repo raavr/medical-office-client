@@ -1,4 +1,4 @@
-.alert-container {
+.app-alert-container {
     margin: 50px 0;
     position: fixed;
     z-index: 1001;
@@ -22,24 +22,24 @@
     }
 }
 
-.col-alert {
+.app-alert {
     position: relative;
     padding: 0;
 }
 
-.remove-alert {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: grey;
-}
-
-.app-alert {
+.app-alert__body {
     padding: 10px 40px;
     text-align: center;
     box-shadow: 
       0px 1px 1px -2px rgba(0, 0, 0, 0.2), 
       0px 2px 2px 0px rgba(0, 0, 0, 0.14), 
       0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.app-alert__remove-btn {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: grey;
 }
