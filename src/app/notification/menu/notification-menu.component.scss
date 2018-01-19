@@ -1,4 +1,4 @@
-.alert-dropdown-menu {
+.notification-dropdown {
     padding-top: 0;
     padding-bottom: 0;
     position: absolute;
@@ -25,30 +25,28 @@
         }
     }
 
-
-}
-
-.notification-dropdown-header {
-    padding: 10px;
-}
-
-.notification-header-title {
-    display: inline-block;
-    margin-bottom: 0;
-    font-size: 1.4rem;
-}
-
-.refresh-box {
-    display: inline-block;
-    float: right;
-    cursor: pointer;
-    
-    span {
-        line-height: 1.8rem;
+    &__header {
+        padding: 10px;
     }
-}
 
-.is-loading-notification {
-    padding: 10px;
-    text-align: center;
+    &__title {
+        display: inline-block;
+        margin-bottom: 0;
+        font-size: 1.4rem;
+    }
+    
+    &__refresh-icon {
+        display: inline-block;
+        float: right;
+        cursor: pointer;
+        
+        span {
+            line-height: 1.8rem;
+        }
+    }
+    
+    &__is-loading {
+        padding: 10px;
+        text-align: center;
+    }
 }
