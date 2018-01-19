@@ -1,22 +1,22 @@
-<div class="row patient-item" ng-class="{ 'is-even': $ctrl.isEven }">
+<div class="row patient-item" ng-class="{ 'patient-item--is-even': $ctrl.isEven }">
     <div class="col-xs-12 col-sm-3">
-        <div class="col-xs-4 patient-label">Imię:</div>
-        <div class="col-xs-8 col-sm-12 patient-content">{{$ctrl.patient.name}}</div>
+        <div class="col-xs-4 patient-item__label">Imię:</div>
+        <div class="col-xs-8 col-sm-12 patient-item__content">{{$ctrl.patient.name}}</div>
     </div>
      <div class="col-xs-12 col-sm-3">
-        <div class="col-xs-4 patient-label">Nazwisko:</div>
-        <div class="col-xs-8 col-sm-12 patient-content">{{$ctrl.patient.surname}}</div>
+        <div class="col-xs-4 patient-item__label">Nazwisko:</div>
+        <div class="col-xs-8 col-sm-12 patient-item__content">{{$ctrl.patient.surname}}</div>
      </div>
     <div  class="col-xs-12 col-sm-3">
-        <div class="col-xs-4 patient-label">Email:</div>
-        <div  class="col-xs-8 col-sm-12 patient-content">
+        <div class="col-xs-4 patient-item__label">Email:</div>
+        <div  class="col-xs-8 col-sm-12 patient-item__content">
            {{$ctrl.patient.email}}
         </div>
     </div>
     <div class="col-xs-12 col-sm-3">
-        <div class="col-xs-4 patient-label">Status:</div>
-        <div class="col-xs-8 col-sm-12 patient-content">
-            <a ng-href="#" uib-tooltip="Usuń użytkownika" ng-click="$ctrl.deletePatient()" class="btn btn-warning btn-action">
+        <div class="col-xs-4 patient-item__label">Status:</div>
+        <div class="col-xs-8 col-sm-12 patient-item__content">
+            <a ng-href="#" uib-tooltip="Usuń użytkownika" ng-click="$ctrl.deletePatient()" class="btn btn-warning patient-item__remove-btn">
                 <i class="glyphicon glyphicon-trash"></i>
             </a>
         </div>

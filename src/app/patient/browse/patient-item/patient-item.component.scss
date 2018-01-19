@@ -2,11 +2,11 @@
     border-top: 1px solid #ddd;
     padding: 8px 0;
 
-    &.is-even {
+    &.patient-item--is-even {
         background-color: #f9f9f9;
     }
 
-    .patient-content {
+    &__content {
         padding-top: 3px;
         padding-bottom: 3px;
         border-left: 1px solid #ddd;
@@ -17,7 +17,7 @@
         }
     }
 
-    .patient-label {
+    &__label {
         display: block;
         font-weight: 700;
         padding-left: 0;
@@ -31,9 +31,8 @@
         }
     }
 
-    .btn-action {
+    &__remove-btn {
         padding: 0 10px;
         font-size: 1.3rem;
     }
-    
 }
