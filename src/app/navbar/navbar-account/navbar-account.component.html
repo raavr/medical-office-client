@@ -1,13 +1,13 @@
-<div class="dropdown account-dropdown">
+<div class="dropdown menu-icons-dropdown">
     <a href="" data-toggle="dropdown" class="dropdown-toggle">
         <span class="glyphicon glyphicon-user"></span><b class="caret"></b>
     </a>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu menu-icons-dropdown__list">
         <li ui-sref-active="active">
-            <a ui-sref="account">Moje konto</a>
+            <a class="app-navbar__link" ui-sref="account">Moje konto</a>
         </li>
         <li>
-            <a href="#" ng-click="$ctrl.logout()">Wyloguj się</a>
+            <a class="app-navbar__link" href="#" ng-click="$ctrl.logout()">Wyloguj się</a>
         </li>
     </ul>
 </div>

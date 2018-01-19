@@ -1,37 +1,37 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top app-navbar">
   <h2 class="sr-only">Nawigacja</h2>
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" data-toggle="collapse" data-target="#nav-data" class="navbar-toggle">
-            <span class="sr-only">Nawigacja</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+    <div class="navbar-header app-navbar__header">
+      <button type="button" data-toggle="collapse" data-target="#nav-data" class="navbar-toggle app-navbar__toggle">
+        <span class="sr-only">Nawigacja</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-href="/#top" smooth-scroll>eGabinet</a>
+      <a class="navbar-brand app-navbar__brand" ng-href="/#top" smooth-scroll>eGabinet</a>
     </div>
-    <div ng-if="$ctrl.authService.loggedIn()" class="navbar-menu">
+    <div ng-if="$ctrl.authService.loggedIn()" class="app-navbar__menu-icons">
       <notification></notification>
       <navbar-account></navbar-account>
     </div>
-    <div class="navbar-collapse collapse" id="nav-data">
-      <ul class="nav navbar-nav navbar-left">
+    <div class="navbar-collapse collapse app-navbar__links" id="nav-data">
+      <ul class="nav navbar-nav navbar-left app-navbar__nav">
         <li class="hidden">
-          <a ng-href="#"></a>
+          <a class="app-navbar__link" ng-href="#"></a>
         </li>
         <li>
-          <a ng-href="/#articles" collapse-navbar smooth-scroll>Aktualności</a>
+          <a class="app-navbar__link" ng-href="/#articles" collapse-navbar smooth-scroll>Aktualności</a>
         </li>
         <li>
-          <a ng-href="/#offer" collapse-navbar smooth-scroll>Oferta</a>
+          <a class="app-navbar__link" ng-href="/#offer" collapse-navbar smooth-scroll>Oferta</a>
         </li>
         <li>
-          <a ng-href="/#price-list" collapse-navbar smooth-scroll>Cennik</a>
+          <a class="app-navbar__link" ng-href="/#price-list" collapse-navbar smooth-scroll>Cennik</a>
         </li>
         <li>
-          <a ng-href="/#find-us" collapse-navbar smooth-scroll>Odwiedź nas</a>
+          <a class="app-navbar__link" ng-href="/#find-us" collapse-navbar smooth-scroll>Odwiedź nas</a>
         </li>
-        <li ng-if="$ctrl.authService.loggedIn()" role="separator" class="divider"></li>
+        <li ng-if="$ctrl.authService.loggedIn()" role="separator" class="app-navbar__divider"></li>
       </ul>
       <navbar-user ng-if="$ctrl.authService.loggedIn() && !$ctrl.authService.isAdmin()"></navbar-user>
       <navbar-admin ng-if="$ctrl.authService.loggedIn() && $ctrl.authService.isAdmin()"></navbar-admin>
