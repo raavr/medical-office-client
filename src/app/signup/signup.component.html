@@ -1,9 +1,9 @@
 <div class="container partials-content">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
-    <div class="center-form panel">
+    <div class="center-form panel signup">
       <div class="panel-body">
-        <h2 class="text-center signup-title">Rejestracja</h2>
+        <h2 class="text-center signup__title">Rejestracja</h2>
         <form ng-submit="$ctrl.signup()" name="signupForm">
           <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.name.$invalid && signupForm.name.$dirty }">
             <input class="form-control input-lg" type="text" name="name" ng-model="$ctrl.user.name" placeholder="Imię" required autofocus>
@@ -39,7 +39,7 @@
             </div>
           </div>
           <button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-lg btn-block btn-primary">Zarejestruj się</button>
-          <p class="text-center text-muted small privacy-policy">Klikając zarejestruj się zgadzasz się na <a href="#">regulamin</a> i <a href="#">politykę prywatności</a></p>
+          <p class="text-center text-muted small signup__privacy-policy">Klikając zarejestruj się zgadzasz się na <a href="#">regulamin</a> i <a href="#">politykę prywatności</a></p>
           <p class="text-center text-muted">Masz już konto? <a ui-sref="login">Zaloguj się</a></p>
         </form>
       </div>
