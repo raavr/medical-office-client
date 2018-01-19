@@ -10,35 +10,35 @@
             margin-bottom: 20px;
         }
     }
-}
-
-.article__body {
-    margin: 15px 0;
-}
-
-.article__header {
-    height: 150px;
-    width: 100%;
-    object-fit: cover;
-
-    @media(min-width: 768px) {
-        & {
-            height: 180px;
+    
+    &__body {
+        margin: 15px 0;
+    }
+    
+    &__header {
+        height: 150px;
+        width: 100%;
+        object-fit: cover;
+    
+        @media(min-width: 768px) {
+            & {
+                height: 180px;
+            }
         }
     }
-}
-
-.article__title {
-    font-weight: 400;
-    margin: 0;
-}
-
-.article__description {
-    margin-top: 15px;
-    font-size: 1.4rem;
-}
-
-.article__btn-read-more {
-    right: 20px;
-    bottom: 20px;
+    
+    &__title {
+        font-weight: 400;
+        margin: 0;
+    }
+    
+    &__description {
+        margin-top: 15px;
+        font-size: 1.4rem;
+    }
+    
+    &__btn-read-more {
+        right: 20px;
+        bottom: 20px;
+    }
 }

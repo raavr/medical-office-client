@@ -1,15 +1,16 @@
 .map {
 	position: relative;
 	padding: 0;
+	
+	&__overlay {
+		background-color: rgba(255,255,255,0.8);
+		padding: 20px;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+	}
 }
 
-.map__overlay {
-	background-color: rgba(255,255,255,0.8);
-	padding: 20px;
-	position: absolute;
-	top: 20px;
-	right: 20px;
-}
 
 .angular-google-map-container { 	
 	height: 400px; 

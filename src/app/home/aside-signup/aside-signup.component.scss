@@ -13,17 +13,17 @@
 	background-size: cover;
 	color: #ffffff;
 	padding: 0;
-}
-
-.aside-signup__title {
-	font-size: 3.2rem;
-	margin-bottom: 35px;
-}
-
-.aside-signup__btn {
-	border-radius: 0;
-	font-size: 1.4rem;
-	min-width: 250px;
-	padding: 11px 20px;
-	text-transform: uppercase;
+	
+	&__title {
+		font-size: 3.2rem;
+		margin-bottom: 35px;
+	}
+	
+	&__btn {
+		border-radius: 0;
+		font-size: 1.4rem;
+		min-width: 250px;
+		padding: 11px 20px;
+		text-transform: uppercase;
+	}
 }

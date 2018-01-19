@@ -17,10 +17,9 @@
         z-index: -1;
     }
 	
-}
-
-.price-list__header {
-    margin-bottom: 50px;
+    &__header {
+        margin-bottom: 50px;
+    }
 }
 
 .price-item__table {

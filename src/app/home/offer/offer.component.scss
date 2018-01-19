@@ -1,11 +1,12 @@
 .offers {
     background-color: #ffffff; 
+    
+    &__body {
+        margin-top: 20px;
+        background-color: #eeeeee;
+    }
 }
 
-.offers__body {
-    margin-top: 20px;
-    background-color: #eeeeee;
-}
 
 .offer {
     margin: 15px 15px;

@@ -1,8 +1,11 @@
-.login__title {
-    margin-bottom: 30px;
-}
+.login {
 
-.login__forgot-pwd {
-    margin-top: 20px;
-    margin-bottom: 0;
+    &__title {
+        margin-bottom: 30px;
+    }
+    
+    &__forgot-pwd {
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
 }
