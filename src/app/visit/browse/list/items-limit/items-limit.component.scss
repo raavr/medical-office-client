@@ -1,6 +1,6 @@
 @import "../../../../navbar/navbar.constant";
 
-.btn-limit-group {
+.items-limit {
     float: left;
     width: 100%;
 
@@ -10,19 +10,21 @@
             width: auto;
         }
     }
+
+    &__btn {
+        background-color: transparent;
+        border-color: $navbar-color-bg;
+        color: $navbar-link-color;
+        transition: all 0.2s ease;
+        font-size: 1.2rem;
+    
+        &.active {
+            box-shadow: none;
+            background-color: $navbar-color-bg;
+            border-color: $navbar-color-bg;
+            color: $navbar-link-color;
+        }
+    } 
 }
 
- .btn-filter {
-    background-color: transparent;
-    border-color: $navbar-color-bg;
-    color: $navbar-link-color;
-    transition: all 0.2s ease;
-    font-size: 1.2rem;
- }
 
- .btn-filter.active, .btn:active {
-    box-shadow: none;
-    background-color: $navbar-color-bg;
-    border-color: $navbar-color-bg;
-    color: $navbar-link-color;
- }

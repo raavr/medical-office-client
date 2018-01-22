@@ -28,10 +28,10 @@
                     </form>
                 </div>
             </div>
-            <div class="col-sm-12 patients__body">
+            <div class="col-sm-12">
                 <div ng-if="$ctrl.isUpdating" class="loading-overlay"><span>Proszę czekać...</span></div>
-                <div class="row patients__table-header">
-                    <div ng-repeat="header in ['Imię', 'Nazwisko', 'Email', 'Akcje']" class="col-sm-3 patients--bold">{{header}}</div>
+                <div class="row list-header">
+                    <div ng-repeat="header in ['Imię', 'Nazwisko', 'Email', 'Akcje']" class="col-sm-3 list-header--bold">{{header}}</div>
                 </div>
                 <patient-item ng-repeat="patient in $ctrl.filteredPatients" patient="patient" is-even="$index % 2 === 0" on-patient-deleted="$ctrl.onPatientDeleted(patientId)" is-updating="$ctrl.showUpdatingPanel(isUpdating)"></patient-item>
             </div>

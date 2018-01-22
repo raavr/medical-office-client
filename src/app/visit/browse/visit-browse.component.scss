@@ -1,21 +1,20 @@
 .tab-content {
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  padding: 20px 10px;
-  border-top-color: #ffffff;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    padding: 20px 10px;
+    border-top-color: #ffffff;
 
-  @media(min-width: 576px) {
-    & {
-      padding: 20px;
+    @media(min-width: 576px) {
+        & {
+            padding: 20px;
+        }
     }
-  }
 }
 
+
 .nav-tabs {
-    li {
-        a {
-            background-color: #f5f5f5;
-            border: 1px solid #dddddd;
-        }
+    & &__link {
+        background-color: #f5f5f5;
+        border: 1px solid #dddddd;
     }
 }

@@ -1,21 +1,5 @@
 .patients {
-
     &--additional-margin {
-        margin-bottom: 15px
-    }
-
-    &--bold {
-        font-weight: 700;
-    }
-
-    &__table-header {
-        margin-bottom: 10px; 
-        display: none;
-    
-        @media(min-width: 768px) {
-            & {
-                display: block;
-            }
-        }
+        margin-bottom: 15px;
     }
 }

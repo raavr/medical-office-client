@@ -2,7 +2,7 @@
     <visit-selector ng-if="$ctrl.authService.isAdmin() && $ctrl.type === 'admin_current'" on-select-btn-clicked="$ctrl.onSelectBtnClicked(isSelected)"></visit-selector>
     <visit-list-header></visit-list-header>
     <visit-filter on-filter-change="$ctrl.onFilterChange(filter)"></visit-filter>
-    <div class="visit-container">
+    <div class="visits-container">
         <admin-visit ng-if="$ctrl.authService.isAdmin()" 
                      ng-repeat="visit in $ctrl.visits" 
                      visit="visit" 
@@ -17,7 +17,7 @@
                     is-updating="$ctrl.showUpdatingPanel(isUpdating)">
         </user-visit>
         <div ng-if="$ctrl.isUpdating" class="loading-overlay"><span>Proszę czekać...</span></div>
-        <p ng-if="$ctrl.totalItems === 0" class="visit-list-status">Brak wizyt</p>
+        <p ng-if="$ctrl.totalItems === 0" class="visits__status">Brak wizyt</p>
     </div>
     <admin-action-panel ng-if="$ctrl.authService.isAdmin() && $ctrl.type === 'admin_current'" selected-visits="$ctrl.selectedVisits" on-visits-updated="$ctrl.onVisitsModified(visit)" is-updating="$ctrl.showUpdatingPanel(isUpdating)"></admin-action-panel>
     <div class="row">
@@ -29,7 +29,7 @@
                 num-pages="$ctrl.filters.numPages" 
                 items-per-page="$ctrl.filters.limit" 
                 ng-change="$ctrl.getVisits()"
-                class="pagination-sm" 
+                class="pagination--no-margin" 
                 boundary-links="true" 
                 rotate="false" 
                 previous-text="&lsaquo;" 

@@ -1,12 +1,12 @@
-.visit-item {
+.list-item {
     border-top: 1px solid #ddd;
     padding: 8px 0;
 
-    &.is-even {
+    &.list-item--is-even {
         background-color: #f9f9f9;
     }
 
-    .visit-content {
+    &__content {
         padding-top: 3px;
         padding-bottom: 3px;
         border-left: 1px solid #ddd;
@@ -17,7 +17,7 @@
         }
     }
 
-    .visit-label {
+    &__label {
         display: block;
         font-weight: 700;
         padding-left: 0;
@@ -31,7 +31,7 @@
         }
     }
 
-    .btn-visit-type {
+    &__type-btn {
         padding: 0px 10px;
         cursor: default !important;
         font-size: 1.3rem;
@@ -44,22 +44,22 @@
         }
     }
 
-    .btn-type-success:hover {
+    &__type-btn--success:hover {
         background-color: #5cb85c;
         border-color: #4cae4c;
     }
 
-    .btn-type-danger:hover {
+    &__type-btn--danger:hover {
         background-color: #d9534f;
         border-color: #d43f3a;
     }
 
-    .btn-type-warning:hover {
+    &__type-btn--warning:hover {
         background-color: #f0ad4e;
         border-color: #eea236;
     }
 
-    .btn-action {
+    &__action-btn {
         padding: 0 10px;
         font-size: 1.3rem;
     }

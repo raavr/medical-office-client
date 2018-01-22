@@ -1,10 +1,10 @@
-<div class="row filter-container">
+<div class="row visit-filter">
     <div ng-if="$ctrl.parent.type === 'admin_current'" class="col-xs-1"></div>
     <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 visit-filter-label">
+        <div class="col-xs-4 visit-filter__label">
             Data:
         </div>
-        <div class="col-xs-8 col-sm-12 visit-filter-content">
+        <div class="col-xs-8 col-sm-12 visit-filter__content">
             <input type="text" 
                class="form-control" 
                ng-model="$ctrl.filter.date" 
@@ -19,10 +19,10 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 visit-filter-label">
+        <div class="col-xs-4 visit-filter__label">
             Godzina:
         </div>
-        <div class="col-xs-8 col-sm-12 visit-filter-content">
+        <div class="col-xs-8 col-sm-12 visit-filter__content">
             <input type="text" 
                class="form-control" 
                ng-model="$ctrl.filter.time" 
@@ -40,10 +40,10 @@
     <div ng-if="$ctrl.parent.type === 'admin_current' || $ctrl.parent.type === 'admin_past'" 
          ng-class="{ 'col-xs-12 col-sm-3': $ctrl.parent.type === 'admin_current', 
                      'col-xs-12 col-sm-4': $ctrl.parent.type === 'admin_past' }">
-        <div class="col-xs-4 visit-filter-label">
+        <div class="col-xs-4 visit-filter__label">
             Pacjent:
         </div>
-        <div class="col-xs-8 col-sm-12 visit-filter-content">
+        <div class="col-xs-8 col-sm-12 visit-filter__content">
             <input type="text" 
                class="form-control" 
                ng-model="$ctrl.filter.name" 
@@ -58,8 +58,8 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 visit-filter-label">Status:</div>
-        <div class="col-xs-8 col-sm-12 visit-filter-content">
+        <div class="col-xs-4 visit-filter__label">Status:</div>
+        <div class="col-xs-8 col-sm-12 visit-filter__content">
             <select class="form-control" ng-model="$ctrl.filter.type" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})">
                 <option value="all">Wszystkie</option>
                 <option value="accepted">Zaakceptowane</option>

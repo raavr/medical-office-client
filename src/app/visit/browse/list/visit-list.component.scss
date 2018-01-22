@@ -1,17 +1,13 @@
 @import "../../../navbar/navbar.constant";
 
-.visit-container {
+.visits-container {
     margin-top: 10px;
     margin-bottom: 20px;
     position: relative;
 }
 
-.visit-list-status {
+.visits__status {
     font-size: 1.6rem;
-}
-
-.pagination-sm {
-    margin: 0;
 }
 
 .pagination {
@@ -29,5 +25,9 @@
         span:focus, span:hover {
             color: $navbar-link-color;
         }
-    }   
+    }
+    
+    &--no-margin {
+        margin: 0;
+    }
 }
