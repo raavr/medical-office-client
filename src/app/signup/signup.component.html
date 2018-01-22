@@ -3,7 +3,7 @@
     <div class="col-lg-8 col-lg-offset-2">
     <div class="center-form panel signup">
       <div class="panel-body">
-        <h2 class="text-center signup__title">Rejestracja</h2>
+        <h2 class="text-center panel__title--additional-margin-b">Rejestracja</h2>
         <form ng-submit="$ctrl.signup()" name="signupForm">
           <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.name.$invalid && signupForm.name.$dirty }">
             <input class="form-control input-lg" type="text" name="name" ng-model="$ctrl.user.name" placeholder="Imię" required autofocus>

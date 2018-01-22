@@ -3,7 +3,7 @@
     <div class="col-lg-8 col-lg-offset-2">
       <div class="center-form panel reset-pass">
         <div class="panel-body">
-          <h2 class="text-center reset-pass__title">Zresetuj hasło</h2>
+          <h2 class="text-center panel__title--additional-margin-b">Zresetuj hasło</h2>
           <form method="post" ng-submit="$ctrl.resetPass()" name="resetPassForm">
             <div class="form-group has-feedback" ng-class="{ 'has-error' : resetPassForm.email.$invalid && resetPassForm.email.$dirty }">
                 <input class="form-control input-lg" type="email" id="email" name="email" ng-model="$ctrl.email" placeholder="Email" required
