@@ -20,7 +20,7 @@ class VisitListController {
     $onInit() {
         this.parent.setLoading(false);
         this.totalItems = this.visits.totalItems;
-        this.visits = this.visits.vs;
+        this.visits = this.visits.visits;
         
         this.showUpdatingPanel(false);
     }
@@ -39,7 +39,7 @@ class VisitListController {
         this.showUpdatingPanel(true);
 
         const getVisitsSubscription = (visits) => {
-            this.visits = visits.vs; 
+            this.visits = visits.visits; 
             this.totalItems = visits.totalItems;
             
             this.showUpdatingPanel(false);

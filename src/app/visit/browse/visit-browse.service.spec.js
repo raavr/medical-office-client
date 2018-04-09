@@ -10,7 +10,7 @@ describe("visitBrowseService", () => {
     beforeEach(() => {
         
         fakeVisits = {
-            vs: [
+            visits: [
                     {
                         "createdate": "2017-06-02T18:37:43", 
                         "id": 1, 
@@ -57,11 +57,11 @@ describe("visitBrowseService", () => {
 
         it("should not return any visits", () => {
             response = $httpMock.when("GET", CONFIG.ENDPOINT + "/visits");
-            response.respond({ vs: [] });
+            response.respond({ visits: [] });
 
             mVisitBrowseService._getVisits("/visits", {})
                 .subscribe(s => {
-                    expect(s.vs.length).toBe(0);
+                    expect(s.visits.length).toBe(0);
                 });  
         });
 
@@ -79,7 +79,7 @@ describe("visitBrowseService", () => {
 
          it("should cancel visits", () => {
             const id = 1;
-            response = $httpMock.when("DELETE", CONFIG.ENDPOINT + "/api/visits/delete/" + id);
+            response = $httpMock.when("DELETE", CONFIG.ENDPOINT + "/api/visits/" + id);
             response.respond(200, {});
 
             mVisitBrowseService.cancelVisit(id)
@@ -90,7 +90,7 @@ describe("visitBrowseService", () => {
 
         it("should catch error when cancelVisit is called", () => {
             const id = 2;
-            response = $httpMock.when("DELETE", CONFIG.ENDPOINT + "/api/visits/delete/" + id);
+            response = $httpMock.when("DELETE", CONFIG.ENDPOINT + "/api/visits/" + id);
             response.respond(400, {});
 
             mVisitBrowseService.cancelVisit(id)
@@ -116,7 +116,7 @@ describe("visitBrowseService", () => {
             expect(mVisitBrowseService._getVisits).not.toHaveBeenCalled();
             mVisitBrowseService.getUsersVisits();
             expect(mVisitBrowseService._getVisits).toHaveBeenCalled();
-            expect(mVisitBrowseService._getVisits.calls.argsFor(0)).toEqual(['/api/visits/browse', {}]);
+            expect(mVisitBrowseService._getVisits.calls.argsFor(0)).toEqual(['/api/visits', {}]);
         });
 
         it("should call _getVisits() and return user visits", () => {
@@ -129,7 +129,7 @@ describe("visitBrowseService", () => {
             expect(mVisitBrowseService._getVisits).not.toHaveBeenCalled();
             mVisitBrowseService.getPastUsersVisits();
             expect(mVisitBrowseService._getVisits).toHaveBeenCalled();
-            expect(mVisitBrowseService._getVisits.calls.argsFor(0)).toEqual(['/api/visits/browse/past', {}]);
+            expect(mVisitBrowseService._getVisits.calls.argsFor(0)).toEqual(['/api/visits/past', {}]);
         });
 
         it("should call _getVisits() when getAdminVisits is called", () => {

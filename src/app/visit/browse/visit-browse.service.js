@@ -10,11 +10,11 @@ class VisitBrowseService {
     }
       
     getUsersVisits(filters = {}) {
-        return this._getVisits('/api/visits/browse', filters);
+        return this._getVisits('/api/visits', filters);
     }
 
     getPastUsersVisits(filters = {}) {
-        return this._getVisits('/api/visits/browse/past', filters);
+        return this._getVisits('/api/visits/past', filters);
     }
 
     getAdminVisits(filters = {}) {
@@ -32,7 +32,7 @@ class VisitBrowseService {
     }
 
     cancelVisit(visitId) {
-        const resPromise = this.$http.delete(CONFIG.ENDPOINT + '/api/visits/delete/' + visitId);
+        const resPromise = this.$http.delete(CONFIG.ENDPOINT + '/api/visits/' + visitId);
 		return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }

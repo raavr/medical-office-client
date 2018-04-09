@@ -21,7 +21,7 @@ export class AdminActionService {
     }
 
     _updateVisits(type, visits, reason) {
-        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/admin/visits/updatevisit', { type : type, visits: visits, info: reason });
+        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/admin/visits', { type : type, visits: visits, info: reason });
 		return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }
