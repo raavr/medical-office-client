@@ -14,7 +14,7 @@ export class NotificationBaseService {
 
     _getNotifications(url) {
 		return this._getRequest(url)
-                   .map((res) => res.data.ms);
+                   .map((res) => res.data.messages);
     }
 
     _getRequest(url) {

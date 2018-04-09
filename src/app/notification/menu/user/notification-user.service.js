@@ -15,11 +15,11 @@ export class NotificationUserService extends NotificationBaseService {
     }
 
     markAllAsRead() {
-        return super._putRequest('/api/msgs/updateall');
+        return super._putRequest('/api/msgs');
     }
 
-    markAsRead(notificationId) {
-        return super._putRequest('/api/msgs/update', { idmsg: notificationId });;
+    markAsRead(msgId) {
+        return super._putRequest('/api/msgs', { msg_id: msgId });;
     }
     
 }
