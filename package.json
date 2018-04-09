@@ -36,6 +36,7 @@
     "bootstrap-datepicker": "^1.6.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",
+    "node-sass": "^4.7.2",
     "owl.carousel": "^2.2.0"
   },
   "devDependencies": {
@@ -63,7 +64,6 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
     "node-libs-browser": "^1.0.0",
-    "node-sass": "^3.8.0",
     "null-loader": "^0.1.1",
     "phantomjs-prebuilt": "^2.1.4",
     "postcss-loader": "^0.9.1",

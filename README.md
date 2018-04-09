@@ -1,4 +1,4 @@
-# WebApp for doctors and their patients with AngularJS and Webpack
+# Medical office webapp with AngularJS v1.5 and Webpack
 
 This app is built with:
 * [AngularJS] (http://www.angularjs.org/)
@@ -14,3 +14,9 @@ This app is built with:
 And for testing:
 * [Karma] (https://karma-runner.github.io/)
 * [Jasmine] (http://jasmine.github.io/)
+
+Screenshots
+-----------
+![Screenshot 1][1]
+
+[1]: ./screenshots/screenshot-1.jpg
