@@ -28,7 +28,7 @@ describe("PatientBrowseService", () => {
         $httpMock = $injector.get("$httpBackend");
         mPatientBrowseService = patientBrowseService;
 
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/users");
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/users/patients");
     }));
 
     afterEach(() => {

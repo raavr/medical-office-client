@@ -8,7 +8,7 @@ export class PatientItemService {
     }
     
     deletePatient(patientId) {
-        const resPromise = this.$http.delete(CONFIG.ENDPOINT + '/api/admin/users/' + patientId);
+        const resPromise = this.$http.delete(CONFIG.ENDPOINT + '/api/admin/users/patients/' + patientId);
         return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }
