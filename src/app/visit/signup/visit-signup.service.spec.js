@@ -38,8 +38,8 @@ describe("VisitSignupService", () => {
     });
 
     it("should return unavailable visit dates", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits");
-        response.respond({ vts: fakeVisitDates });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits/disabled_dates");
+        response.respond({ disabled_dates: fakeVisitDates });
 
         mVisitSignupService.getDisabledDates()
             .subscribe(s => {
@@ -48,8 +48,8 @@ describe("VisitSignupService", () => {
     });
 
     it("should not return any unavailable visit dates", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits");
-        response.respond({ vts: [] });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits/disabled_dates");
+        response.respond({ disabled_dates: [] });
 
         mVisitSignupService.getDisabledDates()
             .subscribe(s => {
@@ -59,7 +59,7 @@ describe("VisitSignupService", () => {
 
     it("should return available visit times", () => {
         response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits/times");
-        response.respond({ ts: fakeVisitTimes });
+        response.respond({ datetimes: fakeVisitTimes });
 
         mVisitSignupService.getAvailableTimes()
             .subscribe(s => {
@@ -69,7 +69,7 @@ describe("VisitSignupService", () => {
 
     it("should return 4 visit times", () => {
         response = $httpMock.whenGET(CONFIG.ENDPOINT + "/api/visits/times");
-        response.respond({ ts: fakeVisitTimes });
+        response.respond({ datetimes: fakeVisitTimes });
 
         mVisitSignupService.getAvailableTimes()
             .subscribe(s => {
@@ -80,7 +80,7 @@ describe("VisitSignupService", () => {
     it("should not return any unavailable visit times", () => {
         response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits/times");
 
-        response.respond({ ts: [] });
+        response.respond({ datetimes: [] });
         mVisitSignupService.getAvailableTimes()
             .subscribe((s) => { 
                 expect(s.length).toBe(0);
@@ -88,8 +88,8 @@ describe("VisitSignupService", () => {
     });
 
     it("should return user name", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/usersbyname");
-        response.respond({ us: fakeUserName });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/users/patients");
+        response.respond({ users: fakeUserName });
 
         mVisitSignupService.findUsers()
             .subscribe(s => {
@@ -98,12 +98,12 @@ describe("VisitSignupService", () => {
     });
 
     it("should sign up patient to visit", () => {
-        response = $httpMock.when("POST", CONFIG.ENDPOINT + "/api/visits/check");
-        response.respond(200, {"message": "Poprawnie zapisano na wizytę"});
+        response = $httpMock.when("POST", CONFIG.ENDPOINT + "/api/visits");
+        response.respond(201, {"message": "Poprawnie zapisano na wizytę"});
 
         mVisitSignupService.addVisit()
             .subscribe(s => {
-                expect(s.status).toEqual(200);
+                expect(s.status).toEqual(201);
                 expect(s.data.message).toBe("Poprawnie zapisano na wizytę");
             });  
     });
