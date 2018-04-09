@@ -8,9 +8,9 @@ class VisitManageService {
     }
 
     getUnavailableDates() {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/admin/visits/disabledates');
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/admin/visits/disabled_dates');
         return Observable.fromPromise(resPromise)
-                         .map(res => res.data.dd)
+                         .map(res => res.data.disabled_dates)
                          .mergeMap(res => Observable.from(res))
                          .map(a => a.disabledate)
                          .toArray()
@@ -18,14 +18,14 @@ class VisitManageService {
     }
 
     getAvailableVisitTimes() {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/admin/visits/times');
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/admin/visits/weeks_times');
         return Observable.fromPromise(resPromise)
-                         .map(res => res.data.vt)
+                         .map(res => res.data.weeks_times)
                          .catch(error => Observable.throw(error));
     }
 
     updateAvailableVisitTimes(dates, times) {
-        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/admin/visits/updatetimes', { dates: dates, times : times });
+        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/admin/visits/weeks_times', { dates: dates, times : times });
         return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }

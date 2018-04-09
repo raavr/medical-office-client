@@ -51,8 +51,8 @@ describe("VisitManageService", () => {
     });
 
     it("should return unavailable visit dates", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/visits/disabledates");
-        response.respond({ dd: fakeUnavailableDates });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/visits/disabled_dates");
+        response.respond({ disabled_dates: fakeUnavailableDates });
 
         mVisitManageService.getUnavailableDates()
             .subscribe(s => {
@@ -61,8 +61,8 @@ describe("VisitManageService", () => {
     });
 
     it("should not return any unavailable visit dates", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/visits/disabledates");
-        response.respond({ dd: [] });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/visits/disabled_dates");
+        response.respond({ disabled_dates: [] });
 
         mVisitManageService.getUnavailableDates()
             .subscribe(s => {
@@ -71,8 +71,8 @@ describe("VisitManageService", () => {
     });
 
     it("should return available visit times", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/visits/times");
-        response.respond({ vt: fakeAvailableTimes });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/visits/weeks_times");
+        response.respond({ weeks_times: fakeAvailableTimes });
 
         mVisitManageService.getAvailableVisitTimes()
             .subscribe(s => {
@@ -81,8 +81,8 @@ describe("VisitManageService", () => {
     });
 
     it("should not return any available visit times", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/visits/times");
-        response.respond({ vt: [] });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/admin/visits/weeks_times");
+        response.respond({ weeks_times: [] });
 
         mVisitManageService.getAvailableVisitTimes().subscribe((s) => { 
             expect(s.length).toBe(0);
@@ -90,7 +90,7 @@ describe("VisitManageService", () => {
     });
 
     it("should update available visit times", () => {
-        response = $httpMock.when("PUT", CONFIG.ENDPOINT + "/api/admin/visits/updatetimes");
+        response = $httpMock.when("PUT", CONFIG.ENDPOINT + "/api/admin/visits/weeks_times");
         response.respond(200, {"message": ""});
 
         mVisitManageService.updateAvailableVisitTimes()
