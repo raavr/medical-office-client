@@ -18,8 +18,8 @@ function toDateArray(date) {
           dd = date.getDate();
 
     return [
-          (dd>9 ? '' : '0') + dd,
-          (mm>9 ? '' : '0') + mm,
-          date.getFullYear()
+        (dd>9 ? '' : '0') + dd,
+        (mm>9 ? '' : '0') + mm,
+        date.getFullYear()
     ];
 }

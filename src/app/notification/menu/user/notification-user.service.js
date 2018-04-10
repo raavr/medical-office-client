@@ -3,7 +3,7 @@ import { NotificationBaseService } from '../base/notification-base.service';
 export class NotificationUserService extends NotificationBaseService {
 
     constructor($http) {
-       super($http);
+        super($http);
     }
 
     getUserNotificationCount() {

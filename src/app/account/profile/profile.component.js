@@ -9,17 +9,17 @@ class ProfileController {
 
     updateProfile() {
         this.profileService
-                .updateProfile(this.user)
-                .subscribe(
-                    () => { 
-                        this.alertEventService.showSuccessAlert("Twój profil został zaktualizowany.");
-                        this.user.lastEmail = this.user.email;
-                    },
-                    (err) => { 
-                        this.alertEventService.showDangerAlert("Coś poszło nie tak. Spróbuj ponownie później.");
-                        this.user.email = this.user.lastEmail;
-                    }
-                )
+            .updateProfile(this.user)
+            .subscribe(
+                () => { 
+                    this.alertEventService.showSuccessAlert("Twój profil został zaktualizowany.");
+                    this.user.lastEmail = this.user.email;
+                },
+                (err) => { 
+                    this.alertEventService.showDangerAlert("Coś poszło nie tak. Spróbuj ponownie później.");
+                    this.user.email = this.user.lastEmail;
+                }
+            )
     }
 
     $onInit() {

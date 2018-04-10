@@ -9,19 +9,19 @@ export class AuthService {
     }
 
     isAdmin() {
-      const token = localStorage.getItem(AUTH_CONFIG.DEFAULT_TOKEN_NAME);
+        const token = localStorage.getItem(AUTH_CONFIG.DEFAULT_TOKEN_NAME);
 
-      if(!token) {
-        return false;
-      }
-      
-      const decodedToken = this.jwtHelper.decodeToken(token);
-      
-      if (!decodedToken.hasOwnProperty('role')) {
-        return false;
-      }
+        if(!token) {
+            return false;
+        }
+        
+        const decodedToken = this.jwtHelper.decodeToken(token);
+        
+        if (!decodedToken.hasOwnProperty('role')) {
+            return false;
+        }
 
-      return decodedToken['role'] === 'admin';
+        return decodedToken['role'] === 'admin';
     }
 
     loggedIn() {

@@ -15,11 +15,11 @@ class NotificationUserCtrl {
 
     _getNotification() {
         this.notificationUserService
-                .getUserNotifications()
-                .subscribe((data) => { 
-                    this.notifications = data; 
-                    this.onNotificationLoaded({isLoading: false})
-                });
+            .getUserNotifications()
+            .subscribe((data) => { 
+                this.notifications = data; 
+                this.onNotificationLoaded({isLoading: false})
+            });
     }
 
     _initRefreshEvent() {
@@ -32,28 +32,28 @@ class NotificationUserCtrl {
     }
 
     markAsRead(notificationId) {
-       this.notificationUserService
-                .markAsRead(notificationId)
-                .subscribe(
-                    () => { 
-                        let idx = this.notifications.findIndex((notf) => notf.id === notificationId);
-                        this.notifications.splice(idx, 1);
-                        this.notificationEventService.refreshNotificationCount();
-                    },
-                    (err) => console.log(err)
-                );
+        this.notificationUserService
+            .markAsRead(notificationId)
+            .subscribe(
+                () => { 
+                    let idx = this.notifications.findIndex((notf) => notf.id === notificationId);
+                    this.notifications.splice(idx, 1);
+                    this.notificationEventService.refreshNotificationCount();
+                },
+                (err) => console.log(err)
+            );
     }
 
     markAllAsRead() {
         this.notificationUserService
-                .markAllAsRead()
-                .subscribe(
-                    () => { 
-                        this.notifications = [];
-                        this.notificationEventService.refreshNotificationCount();
-                    },
-                    (err) => console.log(err)
-                );
+            .markAllAsRead()
+            .subscribe(
+                () => { 
+                    this.notifications = [];
+                    this.notificationEventService.refreshNotificationCount();
+                },
+                (err) => console.log(err)
+            );
     }
 
     $onDestroy() {

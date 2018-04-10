@@ -11,16 +11,16 @@ class SignupCtrl {
 
     signup() {
         this.signupService
-                .signup(this.user)
-                .subscribe(
-                    () => { 
-                        this.alertEventService.showSuccessAlert("Poprawnie założono konto. Możesz się teraz zalogować.");
-                        this.$state.go('login');
-                    },
-                    (err) => {
-                        this.alertEventService.showDangerAlert(err.data.message);
-                    }
-                );
+            .signup(this.user)
+            .subscribe(
+                () => { 
+                    this.alertEventService.showSuccessAlert("Poprawnie założono konto. Możesz się teraz zalogować.");
+                    this.$state.go('login');
+                },
+                (err) => {
+                    this.alertEventService.showDangerAlert(err.data.message);
+                }
+            );
     }
 
 }

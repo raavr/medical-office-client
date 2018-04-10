@@ -2,11 +2,11 @@ export default function AuthGuardAdminService($q, $authService, $location) {
     const deferred = $q.defer();
 
     if (!$authService.loggedIn()) {
-      $location.path('/login');
+        $location.path('/login');
     } else if (!$authService.isAdmin()) {
-      $location.path('/');
+        $location.path('/');
     } else {
-      deferred.resolve();
+        deferred.resolve();
     }
 
     return deferred.promise;

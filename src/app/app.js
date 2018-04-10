@@ -19,19 +19,19 @@ import Footer from './footer/footer';
 import NoContent from './no-content/no-content';
 import ForgotPass from './forgot-pass/forgot-pass';
 
- export default angular.module("My-app", [
-      Navbar, 
-      Auth, 
-      Home, 
-      Login,
-      Visit,
-      Alert,
-      Account,
-      Signup,
-      Patient,
-      Footer,
-      NoContent,
-      ForgotPass
- ]).config(AppConfig)
-   .component("app", AppComponent)
-   .name;
+export default angular.module("My-app", [
+    Navbar, 
+    Auth, 
+    Home, 
+    Login,
+    Visit,
+    Alert,
+    Account,
+    Signup,
+    Patient,
+    Footer,
+    NoContent,
+    ForgotPass
+]).config(AppConfig)
+  .component("app", AppComponent)
+  .name;

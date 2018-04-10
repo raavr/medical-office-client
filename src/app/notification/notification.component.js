@@ -13,11 +13,13 @@ class NotificationController {
         this.getNotificationCount();
         this.isNotificationPanelOpen = false;
 
-        this.notificationEventSubscription = this.notificationEventService
+        this.notificationEventSubscription = 
+            this.notificationEventService
                 .refreshNotificationCountObservable
                 .subscribe(() => this.getNotificationCount());
         
-        this.notificationMenuHidingSubscription = this.notificationEventService
+        this.notificationMenuHidingSubscription = 
+            this.notificationEventService
                 .hideNotificationMenuSourceObservable
                 .subscribe(() => {     
                     if(this.isNotificationPanelOpen) {
@@ -27,18 +29,19 @@ class NotificationController {
     }
 
     getNotificationCount() {
-        const nCountObservable = this.authService.isAdmin() ?  
-                                this.notificationAdminService.getAdminNotificationCount() : 
-                                this.notificationUserService.getUserNotificationCount();
+        const nCountObservable = 
+            this.authService.isAdmin() ?  
+                this.notificationAdminService.getAdminNotificationCount() : 
+                this.notificationUserService.getUserNotificationCount();
 
         nCountObservable.subscribe((count) => this.notificationsCount = count);
     }
 
     toggleNotificationMenu() {
-         this.isNotificationPanelOpen = !this.isNotificationPanelOpen;
-         if(this.isNotificationPanelOpen) {
-             this.getNotificationCount();
-         }
+        this.isNotificationPanelOpen = !this.isNotificationPanelOpen;
+        if(this.isNotificationPanelOpen) {
+            this.getNotificationCount();
+        }
     }
 
     $onDestroy() {

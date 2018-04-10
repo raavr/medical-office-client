@@ -8,13 +8,11 @@ export class NotificationBaseService {
     }
 
     _getNotificationCount(url) {
-        return this._getRequest(url)
-            .map((res) => res.data.count);
+        return this._getRequest(url).map((res) => res.data.count);
     }
 
     _getNotifications(url) {
-		return this._getRequest(url)
-                   .map((res) => res.data.messages);
+		return this._getRequest(url).map((res) => res.data.messages);
     }
 
     _getRequest(url) {

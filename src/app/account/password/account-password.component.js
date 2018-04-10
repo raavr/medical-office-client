@@ -11,16 +11,16 @@ class AccountPasswordController {
 
     changePassword() {
         this.accountPasswordService
-                .changePassword(this.user)
-                .subscribe(
-                    () => { 
-                        this.alertEventService.showSuccessAlert("Twoje hasło zostało zmienione.");
-                        this._clearForm();
-                    },
-                    (err) => { 
-                        this.alertEventService.showDangerAlert(err.data.message);
-                    }
-                );
+            .changePassword(this.user)
+            .subscribe(
+                () => { 
+                    this.alertEventService.showSuccessAlert("Twoje hasło zostało zmienione.");
+                    this._clearForm();
+                },
+                (err) => { 
+                    this.alertEventService.showDangerAlert(err.data.message);
+                }
+            );
     }
 
     $onInit() {
