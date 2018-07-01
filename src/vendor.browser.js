@@ -1,3 +1,5 @@
+// polyfill
+import 'babel-polyfill';
 // bootstrap v3
 import 'bootstrap/dist/js/bootstrap';
 
