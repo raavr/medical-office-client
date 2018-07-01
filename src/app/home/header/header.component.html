@@ -1,7 +1,7 @@
 <header id="top" class="page-header">
   <owl-carousel class="owl-carousel" responsive="{ 0: { items: 1 }}" nav="true" auto-play="true">  
     <owl-carousel-item ng-repeat="owlItem in $ctrl.owlItems" is-last-elem="$ctrl.owlItems.length - 1 === $index">  
-        <img class="img-responsive" ng-src="{{owlItem.src}}" alt="Zdrowy uśmiech-{{$index}}"/> 
+        <div class="img-responsive owl-img" ng-style="{'background-image':'url({{owlItem.src}})'}" alt="Zdrowy uśmiech-{{$index}}"><div></div> 
         <div class="owl-desc"> 
           <h2>{{owlItem.desc}}</h2>
         </div>

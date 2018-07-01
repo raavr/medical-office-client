@@ -6,7 +6,13 @@ $owl-pagination-color: #ffffff;
 	border-bottom: 0;
 
 	.owl-item {
-		max-height: calc(100vh - 100px);
+
+		.owl-img {
+			min-height: 70vh;
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
 
 		.owl-desc {
 			position: absolute;
