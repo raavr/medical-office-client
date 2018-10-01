@@ -8,7 +8,7 @@ export class ResetPassService {
     }
 
     resetPassword(email) {
-        const resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/reset', email);
+        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/reset', email);
         return Observable.fromPromise(resPromise)
                          .map(res => res.data.message)
                          .catch(error => Observable.throw(error));

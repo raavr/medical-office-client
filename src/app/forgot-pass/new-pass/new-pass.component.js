@@ -11,7 +11,7 @@ class NewPassController {
 
     setNewPass() {
         this.newPassService
-            .setNewPassword(this.token, { newPass: this.password.newPass })
+            .setNewPassword(this.token, { password: this.password.newPass })
             .subscribe(
                 (message) => {
                     this.alertEventService.showSuccessAlert(message); 

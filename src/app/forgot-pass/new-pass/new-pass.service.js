@@ -14,7 +14,7 @@ export class NewPassService {
     }
 
     setNewPassword(token, newPass) {
-        const resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/reset/' + token, newPass);
+        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/reset/' + token, newPass);
         return this._transformPromise(resPromise);
     }
     
