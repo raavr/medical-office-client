@@ -8,7 +8,7 @@ export class AccountPasswordService {
     }
 
     changePassword(account) {
-        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/users/me/change_pass', account);
+        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/change_password', account);
         return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }
