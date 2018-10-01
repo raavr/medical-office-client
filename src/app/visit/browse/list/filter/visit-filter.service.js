@@ -20,7 +20,7 @@ export class VisitFilterService {
                 const name = `${vis.name} ${vis.surname}`;
                 return !filters.name || name.indexOf(filters.name) >= 0
             })
-            .filter((vis) => (!filters.type || filters.type === 'all') ? true : vis.status === filters.type)
+            .filter((vis) => (!filters.status || filters.status === 'all') ? true : vis.status === filters.status)
             .toArray();  
     }
 

@@ -1,5 +1,5 @@
 <div class="row visit-filter">
-    <div ng-if="$ctrl.parent.type === 'admin_current'" class="col-xs-1"></div>
+    <div ng-if="$ctrl.type === 'current' && $ctrl.authService.isAdmin()" class="col-xs-1"></div>
     <div class="col-xs-12 col-sm-2">
         <div class="col-xs-4 visit-filter__label">
             Data:
@@ -36,10 +36,10 @@
                                  }">
         </div>
     </div>
-    <div ng-if="$ctrl.parent.type === 'user_current' || $ctrl.parent.type === 'user_past'" class="col-sm-4"></div>
-    <div ng-if="$ctrl.parent.type === 'admin_current' || $ctrl.parent.type === 'admin_past'" 
-         ng-class="{ 'col-xs-12 col-sm-3': $ctrl.parent.type === 'admin_current', 
-                     'col-xs-12 col-sm-4': $ctrl.parent.type === 'admin_past' }">
+    <div ng-if="!$ctrl.authService.isAdmin()" class="col-sm-4"></div>
+    <div ng-if="$ctrl.authService.isAdmin()" 
+         ng-class="{ 'col-xs-12 col-sm-3': $ctrl.type === 'current', 
+                     'col-xs-12 col-sm-4': $ctrl.type === 'past' }">
         <div class="col-xs-4 visit-filter__label">
             Pacjent:
         </div>
@@ -60,10 +60,10 @@
     <div class="col-xs-12 col-sm-2">
         <div class="col-xs-4 visit-filter__label">Status:</div>
         <div class="col-xs-8 col-sm-12 visit-filter__content">
-            <select class="form-control" ng-model="$ctrl.filter.type" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})">
+            <select class="form-control" ng-model="$ctrl.filter.status" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})">
                 <option value="all">Wszystkie</option>
                 <option value="accepted">Zaakceptowane</option>
-                <option value="reservation">Oczekujące</option>
+                <option value="reserved">Oczekujące</option>
                 <option value="canceled">Odrzucone</option>
             </select>
         </div>

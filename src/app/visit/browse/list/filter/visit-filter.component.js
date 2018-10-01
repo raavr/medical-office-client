@@ -2,20 +2,21 @@ import './visit-filter.component.scss';
 import template from "./visit-filter.component.html";
 
 class VisitFilterController {
-    constructor() {
+    constructor(authService) {
+        this.authService = authService;
         this.filter = {
-            type: "all"
+            status: "all"
         };
     }
 }
 
+VisitFilterController.$inject = ['authService'];
+
 
 export const VisitFilterComponent = {
     bindings: {
-        onFilterChange: "&"
-    },
-    require: {
-        parent: "^visitList"
+        onFilterChange: "&",
+        type: "<"
     },
     template: template,
     controller: VisitFilterController

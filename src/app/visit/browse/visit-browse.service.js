@@ -9,20 +9,8 @@ class VisitBrowseService {
         this.$http = $http;
     }
       
-    getUsersVisits(filters = {}) {
+    getVisits(filters = {}) {
         return this._getVisits('/api/visits', filters);
-    }
-
-    getPastUsersVisits(filters = {}) {
-        return this._getVisits('/api/visits/past', filters);
-    }
-
-    getAdminVisits(filters = {}) {
-        return this._getVisits('/api/admin/visits', filters);
-    }
-
-    getPastAdminVisits(filters = {}) {
-        return this._getVisits('/api/admin/visits/past', filters);
     }
 
     _getVisits(url, filters) {

@@ -47,6 +47,7 @@ UserVisitController.$inject = ['visitBrowseService', '$window', 'alertEventServi
 export const UserVisitComponent = {
     bindings: {
         visit: "<",
+        type: "<",
         isEven: "<",
         onVisitCanceled: "&",
         isUpdating: "&"

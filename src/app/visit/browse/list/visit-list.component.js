@@ -8,10 +8,11 @@ const VISIT_PAGE_SETTINGS = {
 }
 
 class VisitListController {
-    constructor(authService, filterService, visitBrowseService) {
+    constructor(authService, filterService, visitBrowseService, $state) {
         this.authService = authService;
         this.filterService = filterService;
         this.visitBrowseService = visitBrowseService;
+        this.$state = $state;
 
         this.selectedVisits = [];
         this.filters = Object.assign({}, VISIT_PAGE_SETTINGS);
@@ -37,29 +38,16 @@ class VisitListController {
 
     getVisits() {
         this.showUpdatingPanel(true);
-
-        const getVisitsSubscription = (visits) => {
-            this.visits = visits.visits; 
-            this.totalItems = visits.totalItems;
-            
-            this.showUpdatingPanel(false);
-            this.selectedVisits = [];
-        }
-
-        switch(this.type) {
-            case "user_past":
-                this.visitBrowseService.getPastUsersVisits(this.filters).subscribe(getVisitsSubscription);
-                break;
-            case "user_current":
-                this.visitBrowseService.getUsersVisits(this.filters).subscribe(getVisitsSubscription);            
-                break;
-            case "admin_past":
-                this.visitBrowseService.getPastAdminVisits(this.filters).subscribe(getVisitsSubscription);
-                break;
-            case "admin_current":
-                this.visitBrowseService.getAdminVisits(this.filters).subscribe(getVisitsSubscription);
-                break;
-        }
+        this.filters = Object.assign(this.filters, { type: this.getVisitType() });
+        
+        this.visitBrowseService.getVisits(this.filters)
+            .subscribe((visits) => {
+                this.visits = visits.visits; 
+                this.totalItems = visits.totalItems;
+                
+                this.showUpdatingPanel(false);
+                this.selectedVisits = [];
+            });
     }
 
     onVisitCanceledByUser(visitId) {
@@ -100,7 +88,7 @@ class VisitListController {
     onVisitsModified(visit) {
         if(visit.id === -1) {
             this.selectedVisits.forEach((elem) => {
-                elem.status = visit.type;
+                elem.status = visit.status;
                 elem.isSelected = false;
                 elem.rejectreason = visit.rejectReason;
             });
@@ -108,7 +96,7 @@ class VisitListController {
         } else {
             const fVisit = this.visits.find((elem) => elem.id === visit.id)
             if(fVisit) {
-                fVisit.status = visit.type;
+                fVisit.status = visit.status;
                 fVisit.rejectreason = visit.rejectReason;
             }
         }
@@ -118,17 +106,20 @@ class VisitListController {
 
     showUpdatingPanel(isUpdating) {
         this.isUpdating = isUpdating;
-    }    
+    }
+
+    getVisitType() {
+        return this.$state.current.url.slice(1);
+    }
 
 }
 
-VisitListController.$inject = ['authService', 'visitFilterService', 'visitBrowseService'];
+VisitListController.$inject = ['authService', 'visitFilterService', 'visitBrowseService', '$state'];
 
 
 export const VisitListComponent = {
     bindings: {
-        visits: "<",
-        type: "<"
+        visits: "<"
     },
     require: {
         parent: "^visitBrowse"

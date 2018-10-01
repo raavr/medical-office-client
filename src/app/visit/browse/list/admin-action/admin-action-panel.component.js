@@ -24,7 +24,7 @@ class AdminActionPanelController {
                 .acceptVisits(this.selectedVisits.map((elem) => elem.id))
                 .subscribe(
                     () => {
-                        this._onSuccess({type: NOTF_TYPE.ACCEPT, id: id});
+                        this._onSuccess({status: NOTF_TYPE.ACCEPT, id: id});
                     },
                     (err) => { 
                         console.log(err);
@@ -36,7 +36,7 @@ class AdminActionPanelController {
 
     _onSuccess(ntf) {
         this.alertEventService.showSuccessAlert(
-            ntf.type === NOTF_TYPE.ACCEPT ? 'Wizyty zostały zaakceptowane.' : 'Wizyty zostały odrzucone.'
+            ntf.status === NOTF_TYPE.ACCEPT ? 'Wizyty zostały zaakceptowane.' : 'Wizyty zostały odrzucone.'
         );
         this.onVisitsUpdated({ visit: ntf});
         this.notificationEventService.refreshNotificationCount();
@@ -62,7 +62,7 @@ class AdminActionPanelController {
             .rejectVisits(this.selectedVisits.map((elem) => elem.id), rejectReason)
             .subscribe(
                 () => {
-                    this._onSuccess({type: NOTF_TYPE.CANCEL, id: id, rejectReason: rejectReason});
+                    this._onSuccess({status: NOTF_TYPE.CANCEL, id: id, rejectReason: rejectReason});
                 },
                 (err) => {
                     console.log(err);

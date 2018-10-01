@@ -2,7 +2,7 @@ import { Observable } from "rxjs/Observable";
 import VisitBrowseModule from "./visit-browse";
 
 describe("VisitBrowseComponent", () => {
-    let $componentController, ctrl, $rootScope, $compile, spyAuthService, spyState;
+    let $componentController, ctrl, $rootScope, $compile, spyState;
     beforeEach(angular.mock.module(VisitBrowseModule));
 
     beforeEach(angular.mock.inject(($injector) => {
@@ -13,7 +13,6 @@ describe("VisitBrowseComponent", () => {
     }));
 
     beforeEach(() => {
-        spyAuthService = spyOn(ctrl.authService, "isAdmin").and.returnValue(false);
         spyState = spyOn(ctrl.$state, "is");
     });
 
@@ -49,10 +48,6 @@ describe("VisitBrowseComponent", () => {
         let element, ctrl, scope;
 
         beforeEach(() => {
-            spyAuthService.and.returnValue(true);
-        });
-
-        beforeEach(() => {
             scope = $rootScope.$new();
             element = $compile("<visit-browse></visit-browse>")(scope);
             ctrl = element.controller("visitBrowse");
@@ -74,12 +69,12 @@ describe("VisitBrowseComponent", () => {
                 expect(ctrl.activatedTab).toEqual('current');
             });
 
-            it("should set nav-tabs link's href attr to '/visit/browse/admin/past' and ui-sref to 'visit-browse.admin-past'", () => {
+            it("should set nav-tabs link's href attr to '/visit/browse/past' and ui-sref to 'visit-browse.past'", () => {
                 let href = element.find(".nav-tabs li a").eq(1).attr("href").substr(2);
                 let uiSref = element.find(".nav-tabs li a").eq(1).attr("ui-sref");
                 
-                expect(href).toEqual('/visit/browse/admin/past');
-                expect(uiSref).toEqual('visit-browse.admin-past');
+                expect(href).toEqual('/visit/browse/past');
+                expect(uiSref).toEqual('visit-browse.past');
             });
 
             it("should show loading panel", () => {

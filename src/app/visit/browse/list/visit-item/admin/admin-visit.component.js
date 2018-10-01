@@ -31,11 +31,9 @@ AdminVisitController.$inject = ['$uibModal'];
 export const AdminVisitComponent = {
     bindings: {
         visit: "<",
+        type: "<",
         isEven: "<",
         onChange: "&"
-    },
-    require: {
-        parent: "^visitList"
     },
     template: template,
     controller: AdminVisitController

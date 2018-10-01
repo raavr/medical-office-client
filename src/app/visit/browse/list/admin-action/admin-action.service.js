@@ -2,8 +2,8 @@ import { Observable } from 'rxjs/Observable';
 import { CONFIG } from '../../../../app.constant';
 
 const ACTION_TYPE = {
-    ACCEPT: 1,
-    REJECT: 2
+    ACCEPT: 'accepted',
+    REJECT: 'canceled'
 }
 
 export class AdminActionService {
@@ -20,8 +20,8 @@ export class AdminActionService {
         return this._updateVisits(ACTION_TYPE.ACCEPT, visits);
     }
 
-    _updateVisits(type, visits, reason) {
-        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/admin/visits', { type : type, visits: visits, info: reason });
+    _updateVisits(status, visits, reason) {
+        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/visits', { status , visits, info: reason });
 		return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }
