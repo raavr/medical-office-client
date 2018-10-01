@@ -8,9 +8,9 @@ export class PatientBrowseService {
     }
 
     getPatients() {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/admin/users/patients');
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/patients');
         return Observable.fromPromise(resPromise)
-                         .map((res) => res.data.users)
+                         .map((res) => res.data)
                          .catch(error => Observable.throw(error));
     }
 

@@ -8,7 +8,7 @@ export class PatientCreateService {
     }
 
     createPatient(patient) {
-        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/admin/users/patients', {patient: patient});
+        const resPromise = this.$http.post(CONFIG.ENDPOINT + '/api/patients', patient);
         return Observable.fromPromise(resPromise)
                          .catch(error => Observable.throw(error));
     }
