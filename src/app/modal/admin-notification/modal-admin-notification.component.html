@@ -2,7 +2,7 @@
     <h3 class="modal-title">Informacja o wizycie</h3>
 </div>
 <div class="modal-body">
-    <p>Pacjent <strong>{{$ctrl.ntf.name}} {{$ctrl.ntf.surname}}</strong> zapisał sie na wizytę <strong>{{$ctrl.ntf.visitdate | date : 'dd/MM/yyyy'}}</strong> o godzinie <strong>{{$ctrl.ntf.visitdate | date : 'HH:mm'}}</strong>.</p>
+    <p>Pacjent <strong>{{$ctrl.ntf.patient.name}} {{$ctrl.ntf.patient.surname}}</strong> zapisał sie na wizytę <strong>{{$ctrl.ntf.visitDate | date : 'dd/MM/yyyy'}}</strong> o godzinie <strong>{{$ctrl.ntf.visitDate | date : 'HH:mm'}}</strong>.</p>
     <dl ng-if="$ctrl.ntf.description">
         <dt>Informacja od pacjenta:</dt>
         <dd>{{$ctrl.ntf.description}}</dd>

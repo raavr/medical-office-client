@@ -1,42 +1,39 @@
-import '../base/notification-item.scss';
+import '../common/notification-item.scss';
 import template from './notification-user.component.html';
 
 class NotificationUserCtrl {
-    constructor(notificationEventService, notificationUserService, $uibModal) {
+    constructor(notificationEventService, notificationService, notificationUserService, $uibModal) {
         this.notificationEventService = notificationEventService;
+        this.notificationService = notificationService;
         this.notificationUserService = notificationUserService;
         this.$uibModal = $uibModal;
     }
 
     $onInit() {
         this._initRefreshEvent();
-        this._getNotification();
+        this._getNotifications();
     }
 
-    _getNotification() {
-        this.notificationUserService
-            .getUserNotifications()
-            .subscribe((data) => { 
-                this.notifications = data; 
-                this.onNotificationLoaded({isLoading: false})
-            });
+    _getNotifications() {
+        this.notificationService
+            .getNotifications()
+            .do(() => this.onNotificationLoaded({isLoading: false}))
+            .subscribe(data => this.notifications = data);
     }
 
     _initRefreshEvent() {
         this.notificationEventSubscription = 
             this.notificationEventService
                 .loadNotificationObservable
-                .subscribe(
-                    () => { this._getNotification(); }
-                );
+                .subscribe(() => this._getNotifications());
     }
 
-    markAsRead(notificationId) {
+    markAsRead(notification) {
         this.notificationUserService
-            .markAsRead(notificationId)
+            .markAsRead(notification.notification.id)
             .subscribe(
                 () => { 
-                    let idx = this.notifications.findIndex((notf) => notf.id === notificationId);
+                    let idx = this.notifications.findIndex((notf) => notf === notification);
                     this.notifications.splice(idx, 1);
                     this.notificationEventService.refreshNotificationCount();
                 },
@@ -70,7 +67,7 @@ class NotificationUserCtrl {
         });
 
         modalInstance.result.then(
-            () =>  this.markAsRead(this.notifications[index].id),
+            () =>  this.markAsRead(this.notifications[index]),
             () => {}
         );
     }
@@ -78,7 +75,7 @@ class NotificationUserCtrl {
     
 }
 
-NotificationUserCtrl.$inject = ['notificationEventService', 'notificationUserService', '$uibModal'];
+NotificationUserCtrl.$inject = ['notificationEventService', 'notificationService', 'notificationUserService', '$uibModal'];
 
 export const NotificationUserComponent = {
     bindings: {

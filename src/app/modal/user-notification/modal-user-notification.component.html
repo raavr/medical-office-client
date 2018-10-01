@@ -2,10 +2,10 @@
     <h3 class="modal-title">Informacja dla pacjenta</h3>
 </div>
 <div class="modal-body">
-    <p>Wizyta w dniu <strong>{{$ctrl.ntf.visitdate | date : 'dd/MM/yyyy'}}</strong> o godzinie <strong>{{$ctrl.ntf.visitdate | date : 'HH:mm'}}</strong> została <strong>{{$ctrl.ntf.type | notificationTypeFilter}}</strong> przez lek. {{$ctrl.ntf.doctorname}}.</p>
-    <dl ng-if="$ctrl.ntf.rejectreason">
+    <p>Wizyta w dniu <strong>{{$ctrl.ntf.visitDate | date : 'dd/MM/yyyy'}}</strong> o godzinie <strong>{{$ctrl.ntf.visitDate | date : 'HH:mm'}}</strong> została <strong>{{$ctrl.ntf.notification.type | notificationTypeFilter}}</strong> przez lek. {{$ctrl.ntf.doctor.name}} {{$ctrl.ntf.doctor.surname}}.</p>
+    <dl ng-if="$ctrl.ntf.rejectReason">
         <dt>Powód odrzucenia wizyty:</dt>
-        <dd>{{$ctrl.ntf.rejectreason}}</dd>
+        <dd>{{$ctrl.ntf.rejectReason}}</dd>
     </dl>
 </div>
 <div class="modal-footer">

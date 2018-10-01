@@ -3,7 +3,7 @@
     <li class="notifications__item--warning notifications__item" 
         ng-repeat="notification in $ctrl.notifications">
         <a class="notifications__link" ng-click="$ctrl.openNotificationModal($index)" href="">
-            <span class="notifications__link--bold">{{notification.name }} {{notification.surname}}</span> zapisał sie na wizytę <span class="notifications__link--bold">{{ notification.visitdate | date : 'dd/MM/yyyy'}}</span> o godzinie <span class="notifications__link--bold">{{notification.visitdate | date : 'HH:mm'}}</span>
+            <span class="notifications__link--bold">{{notification.patient.name }} {{notification.patient.surname}}</span> zapisał sie na wizytę <span class="notifications__link--bold">{{ notification.visitDate | date : 'dd/MM/yyyy'}}</span> o godzinie <span class="notifications__link--bold">{{notification.visitDate | date : 'HH:mm'}}</span>
         </a>
     </li>
     <li class="notifications__footer" ng-if="$ctrl.notifications.length > 0">

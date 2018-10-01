@@ -21,7 +21,7 @@ export class AuthService {
             return false;
         }
 
-        return decodedToken['role'] === 'admin';
+        return decodedToken['role'] === 'doctor';
     }
 
     loggedIn() {

@@ -7,14 +7,6 @@ export class NotificationBaseService {
         this.$http = $http;
     }
 
-    _getNotificationCount(url) {
-        return this._getRequest(url).map((res) => res.data.count);
-    }
-
-    _getNotifications(url) {
-		return this._getRequest(url).map((res) => res.data.messages);
-    }
-
     _getRequest(url) {
         const resPromise = this.$http.get(CONFIG.ENDPOINT + url);
 		return Observable.fromPromise(resPromise)

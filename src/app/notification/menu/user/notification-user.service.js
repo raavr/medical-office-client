@@ -1,4 +1,4 @@
-import { NotificationBaseService } from '../base/notification-base.service';
+import { NotificationBaseService } from '../common/notification-base.service';
 
 export class NotificationUserService extends NotificationBaseService {
 
@@ -6,20 +6,12 @@ export class NotificationUserService extends NotificationBaseService {
         super($http);
     }
 
-    getUserNotificationCount() {
-        return super._getNotificationCount('/api/msgs/count');
-    }
-    
-    getUserNotifications() {
-        return super._getNotifications('/api/msgs');
-    }
-
     markAllAsRead() {
-        return super._putRequest('/api/msgs');
+        return super._putRequest('/api/notifications');
     }
 
-    markAsRead(msgId) {
-        return super._putRequest('/api/msgs', { msg_id: msgId });;
+    markAsRead(notificationId) {
+        return super._putRequest('/api/notifications', { notificationId });;
     }
     
 }

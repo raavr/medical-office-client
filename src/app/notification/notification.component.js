@@ -2,45 +2,37 @@ import "./notification.component.scss";
 import template from "./notification.component.html";
 
 class NotificationController {
-    constructor(authService, notificationAdminService, notificationUserService, notificationEventService) {
-        this.authService = authService;
-        this.notificationAdminService = notificationAdminService;
-        this.notificationUserService = notificationUserService;
+    constructor(notificationService, notificationEventService) {
+        this.notificationService = notificationService;
         this.notificationEventService = notificationEventService;
     }
 
     $onInit() {
-        this.getNotificationCount();
+        this.getNotificationsCount();
         this.isNotificationPanelOpen = false;
 
         this.notificationEventSubscription = 
             this.notificationEventService
                 .refreshNotificationCountObservable
-                .subscribe(() => this.getNotificationCount());
+                .subscribe(() => this.getNotificationsCount());
         
         this.notificationMenuHidingSubscription = 
             this.notificationEventService
                 .hideNotificationMenuSourceObservable
-                .subscribe(() => {     
-                    if(this.isNotificationPanelOpen) {
-                        this.isNotificationPanelOpen = false;
-                    }
-                });
+                .filter(() => this.isNotificationPanelOpen)
+                .subscribe(() => this.isNotificationPanelOpen = false);
     }
 
-    getNotificationCount() {
-        const nCountObservable = 
-            this.authService.isAdmin() ?  
-                this.notificationAdminService.getAdminNotificationCount() : 
-                this.notificationUserService.getUserNotificationCount();
-
-        nCountObservable.subscribe((count) => this.notificationsCount = count);
+    getNotificationsCount() {
+        const nCountObservable = this.notificationService
+            .getNotificationsCount()
+            .subscribe((count) => this.notificationsCount = count);
     }
 
     toggleNotificationMenu() {
         this.isNotificationPanelOpen = !this.isNotificationPanelOpen;
         if(this.isNotificationPanelOpen) {
-            this.getNotificationCount();
+            this.getNotificationsCount();
         }
     }
 
@@ -50,7 +42,7 @@ class NotificationController {
     }
 }
 
-NotificationController.$inject = ['authService', 'notificationAdminService', 'notificationUserService', 'notificationEventService'];
+NotificationController.$inject = ['notificationService', 'notificationEventService'];
 
 export const NotificationComponent = {
     template: template,

@@ -1,7 +1,7 @@
 <ul class="list-group notifications">
     <li ng-if="$ctrl.notifications.length === 0" class="notifications__item notifications__item--none">Brak powiadomień</li>
-    <li class="notifications__item--{{notification.type}} notifications__item" ng-repeat="notification in $ctrl.notifications">
-        <a class="notifications__link" ng-click="$ctrl.openNotificationModal($index)" href="">Wizyta w dniu <span class="notifications__link--bold">{{notification.visitdate | date : 'dd/MM/yyyy'}}</span> o godzinie <span class="notifications__link--bold">{{notification.visitdate | date : 'HH:mm'}}</span> została <span class="notifications__link--bold">{{notification.type | notificationTypeFilter}}</span>.</a>
+    <li class="notifications__item--{{notification.notification.type}} notifications__item" ng-repeat="notification in $ctrl.notifications">
+        <a class="notifications__link" ng-click="$ctrl.openNotificationModal($index)" href="">Wizyta w dniu <span class="notifications__link--bold">{{notification.visitDate | date : 'dd/MM/yyyy'}}</span> o godzinie <span class="notifications__link--bold">{{notification.visitDate | date : 'HH:mm'}}</span> została <span class="notifications__link--bold">{{notification.notification.type | notificationTypeFilter}}</span>.</a>
     </li>
     <li class="notifications__footer" ng-if="$ctrl.notifications.length > 0">
         <a class="notifications__see-all-btn" title="Oznacz wszystkie jako przeczytane" ng-click="$ctrl.markAllAsRead()" href="">Oznacz wszystkie jako przeczytane</a>

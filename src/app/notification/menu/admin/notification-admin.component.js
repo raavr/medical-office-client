@@ -1,37 +1,33 @@
-import '../base/notification-item.scss';
+import '../common/notification-item.scss';
 import template from './notification-admin.component.html';
 import { NOTF_TYPE } from './notification-type.enum';
 
 class NotificationAdminCtrl {
     
-    constructor(notificationEventService, notificationAdminService, $uibModal, adminActionService) {
+    constructor(notificationEventService, notificationService, $uibModal, adminActionService) {
         this.notificationEventService = notificationEventService;
-        this.notificationAdminService = notificationAdminService;
+        this.notificationService = notificationService;
         this.$uibModal = $uibModal;
         this.adminActionService = adminActionService;
     }
 
     $onInit() {
         this._initRefreshEvent();
-        this._getNotification();
+        this._getNotifications();
     }
 
-    _getNotification() {
-        this.notificationAdminService
-                .getAdminNotifications()
-                .subscribe((data) => { 
-                    this.notifications = data; 
-                    this.onNotificationLoaded({isLoading: false})
-                });
+    _getNotifications() {
+        this.notificationService
+                .getNotifications()
+                .do(() => this.onNotificationLoaded({isLoading: false}))
+                .subscribe(data => this.notifications = data);
     }
 
     _initRefreshEvent() {
         this.notificationEventSubscription = 
             this.notificationEventService
                 .loadNotificationObservable
-                .subscribe(
-                    () => { this._getNotification(); }
-                );
+                .subscribe(() => this._getNotifications());
     }
 
     $onDestroy() {
@@ -85,7 +81,7 @@ class NotificationAdminCtrl {
     
 }
 
-NotificationAdminCtrl.$inject = ['notificationEventService', 'notificationAdminService', '$uibModal', 'adminActionService'];
+NotificationAdminCtrl.$inject = ['notificationEventService', 'notificationService', '$uibModal', 'adminActionService'];
 
 export const NotificationAdminComponent = {
     bindings: {
