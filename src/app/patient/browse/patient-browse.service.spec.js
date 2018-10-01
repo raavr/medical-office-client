@@ -37,7 +37,7 @@ describe("PatientBrowseService", () => {
 
     it("should return patients", () => {
         
-        response.respond({ users: fakeUsers });
+        response.respond(fakeUsers);
 
         mPatientBrowseService.getPatients()
             .subscribe(s => {
@@ -46,7 +46,7 @@ describe("PatientBrowseService", () => {
     });
 
     it("should not return any patients", () => {
-        response.respond({ users: [] });
+        response.respond([]);
 
         mPatientBrowseService.getPatients()
             .subscribe(s => {
