@@ -1,13 +1,13 @@
 <div ng-if="$ctrl.isAlertVisible" class="container-fluid app-alert-container">
-    <div class="row">
-        <div class="col-xs-12 app-alert">
-            <div class="app-alert__body" ng-class="{ 
-                'alert-success': $ctrl.alertData.type === 'success',
-                'alert-danger': $ctrl.alertData.type === 'danger' 
-            }">{{$ctrl.alertData.message}}</div>
-            <a href="#" class="app-alert__remove-btn" ng-click="$ctrl.toggleVisibility()">
-                <i class="glyphicon glyphicon-remove"></i>
-            </a>
-        </div>
+  <div class="row">
+    <div class="col-xs-12 app-alert">
+      <div class="app-alert__body" ng-class="{ 
+        'alert-success': $ctrl.alertData.type === 'success',
+        'alert-danger': $ctrl.alertData.type === 'danger' 
+      }">{{$ctrl.alertData.message}}</div>
+      <a href="#" class="app-alert__remove-btn" ng-click="$ctrl.toggleVisibility()">
+        <i class="glyphicon glyphicon-remove"></i>
+      </a>
     </div>
+  </div>
 </div>
