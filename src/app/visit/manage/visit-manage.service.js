@@ -7,27 +7,17 @@ class VisitManageService {
         this.$http = $http;
     }
 
-    getUnavailableDates() {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/admin/visits/disabled_dates');
+    getAvailableTimesAndDisabledDates() {
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/weekly_times');
         return Observable.fromPromise(resPromise)
-                         .map(res => res.data.disabled_dates)
-                         .mergeMap(res => Observable.from(res))
-                         .map(a => a.disabledate)
-                         .toArray()
-                         .catch(error => Observable.throw(error));
+            .map(res => res.data)
+            .catch(error => Observable.throw(error));
     }
 
-    getAvailableVisitTimes() {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/admin/visits/weeks_times');
+    updateAvailableTimesAndDisabledDates(datetimes) {
+        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/weekly_times', datetimes);
         return Observable.fromPromise(resPromise)
-                         .map(res => res.data.weeks_times)
-                         .catch(error => Observable.throw(error));
-    }
-
-    updateAvailableVisitTimes(dates, times) {
-        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/admin/visits/weeks_times', { dates: dates, times : times });
-        return Observable.fromPromise(resPromise)
-                         .catch(error => Observable.throw(error));
+            .catch(error => Observable.throw(error));
     }
 
 }
@@ -35,5 +25,5 @@ class VisitManageService {
 VisitManageService.$inject = ['$http'];
 
 export default angular.module("visit.manage.service", [])
-                      .service("visitManageService", VisitManageService)
-                      .name;
+    .service("visitManageService", VisitManageService)
+    .name;

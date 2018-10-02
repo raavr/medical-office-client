@@ -1,11 +1,5 @@
-export function VisitManageUnavailableDatesResolve(visitManageService) {
-      return visitManageService.getUnavailableDates().toPromise().catch(() => {});
+export function VisitManageVisitDatetimesResolve(visitManageService) {
+      return visitManageService.getAvailableTimesAndDisabledDates().toPromise().catch(() => {});
 }
 
-VisitManageUnavailableDatesResolve.$inject = ['visitManageService'];
-
-export function VisitManageVisitTimesResolve(visitManageService) {
-      return visitManageService.getAvailableVisitTimes().toPromise().catch(() => {});
-}
-
-VisitManageVisitTimesResolve.$inject = ['visitManageService'];
+VisitManageVisitDatetimesResolve.$inject = ['visitManageService'];

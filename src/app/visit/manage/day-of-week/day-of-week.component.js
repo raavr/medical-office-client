@@ -4,7 +4,7 @@ import template from "./day-of-week.component.html";
 class DayOfWeekController {
     
     setSelected(checked) {
-        const arr = this.visitTime.visittime;
+        const arr = this.visitTime.visitTime;
         arr.forEach((elem) => elem.selected = checked);
     }
 

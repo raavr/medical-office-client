@@ -1,11 +1,11 @@
 <fieldset class="scheduler-border">
-    <legend class="scheduler-border" for="visitday-{{$ctrl.visitTime.dayofweek}}">{{$ctrl.visitTime.dayofweek  | dayOfWeekName }}</legend>
+    <legend class="scheduler-border" for="visitday-{{$ctrl.visitTime.dayOfWeek}}">{{$ctrl.visitTime.dayOfWeek  | dayOfWeekName }}</legend>
     <div class="control-group">
         <div class="select-btns">
             <a ng-href="" class="btn btn-xs btn-default" ng-click="$ctrl.setSelected(true)">Zaznacz wszystkie</a>
             <a ng-href="" class="btn btn-xs btn-default" ng-click="$ctrl.setSelected(false)">Odznacz wszystkie</a>
         </div>
-        <div class="checkbox checkbox-success checkbox-circle" ng-repeat="vtime in $ctrl.visitTime.visittime">
+        <div class="checkbox checkbox-success checkbox-circle" ng-repeat="vtime in $ctrl.visitTime.visitTime">
             <input type="checkbox" value="{{vtime.time}}" ng-model="vtime.selected">
             <label>{{vtime.time}}</label>
         </div>

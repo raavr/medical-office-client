@@ -8,8 +8,8 @@ describe("DayOfWeekComponent", () => {
     beforeEach(() => {
         bindings = { 
             visitTime: {
-                dayofweek: 1, 
-                visittime: [
+                dayOfWeek: 1, 
+                visitTime: [
                     { selected: false, time: "09:30:00" }, 
                     { selected: false, time: "10:00:00" }
                 ]
@@ -35,10 +35,10 @@ describe("DayOfWeekComponent", () => {
         expect(ctrl.setSelected).toHaveBeenCalled();
     });
 
-    it("should set selected property to true for every element of visittime array", () => {
-        expect(ctrl.visitTime.visittime).toBe(bindings.visitTime.visittime);
+    it("should set selected property to true for every element of visitTime array", () => {
+        expect(ctrl.visitTime.visitTime).toBe(bindings.visitTime.visitTime);
         ctrl.setSelected(true);
-        ctrl.visitTime.visittime.forEach((elem) => expect(elem.selected).toBe(true));
+        ctrl.visitTime.visitTime.forEach((elem) => expect(elem.selected).toBe(true));
     });
 
     describe("when DayOfWeekComponent was compiled manually", () => {
@@ -66,10 +66,10 @@ describe("DayOfWeekComponent", () => {
                 expect(ctrl.setSelected).toHaveBeenCalledWith(true);
             });
 
-            it("should set selected property to true for every element of visittime array", () => {
-                ctrl.visitTime.visittime.forEach((elem) => expect(elem.selected).toBe(false));
+            it("should set selected property to true for every element of visitTime array", () => {
+                ctrl.visitTime.visitTime.forEach((elem) => expect(elem.selected).toBe(false));
                 element.find("a").eq(0).triggerHandler("click");
-                ctrl.visitTime.visittime.forEach((elem) => expect(elem.selected).toBe(true));
+                ctrl.visitTime.visitTime.forEach((elem) => expect(elem.selected).toBe(true));
             });
 
             it("should call setSelected with false", () => {
@@ -78,10 +78,10 @@ describe("DayOfWeekComponent", () => {
                 expect(ctrl.setSelected).toHaveBeenCalledWith(false);
             });
 
-            it("should set selected property to false for every element of visittime array", () => {
-                ctrl.visitTime.visittime.forEach((elem) => expect(elem.selected).toBe(false));
+            it("should set selected property to false for every element of visitTime array", () => {
+                ctrl.visitTime.visitTime.forEach((elem) => expect(elem.selected).toBe(false));
                 element.find("a").eq(1).triggerHandler("click");
-                ctrl.visitTime.visittime.forEach((elem) => expect(elem.selected).toBe(false));
+                ctrl.visitTime.visitTime.forEach((elem) => expect(elem.selected).toBe(false));
             });
         });       
 

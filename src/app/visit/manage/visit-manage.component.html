@@ -13,7 +13,7 @@
                                         <input bt-datepicker 
                                             change-date="$ctrl.changeDate(event)" 
                                             class="form-control" 
-                                            current-date="$ctrl.disabledDates"
+                                            current-date="$ctrl.visitDatetimes.disabledDates"
                                             autoclose="false" 
                                             multidate="true">
                                         <span class="input-group-addon">
@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Ustal godziny wizyt dla dni tygodnia:</label>
-                                    <day-of-week ng-repeat="visitTime in $ctrl.visitTimes" visit-time="visitTime"></day-of-week>
+                                    <day-of-week ng-repeat="visitTime in $ctrl.visitDatetimes.weeklyVisitTimes" visit-time="visitTime"></day-of-week>
                                     <button type="submit" class="btn btn-success" ng-click="$ctrl.saveChanges()">Zapisz zmiany</button>
                                 </div>
                             </form>

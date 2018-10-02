@@ -8,16 +8,18 @@ describe("VisitManageComponent", () => {
 
     beforeEach(() => {
         bindings = { 
-            disabledDates: ["22/06/2017", "23/06/2017", "26/06/2017"], 
-            visitTimes: [
-                {
-                    dayofweek: 1, 
-                    visittime: [
-                        { selected: true, time: "09:30:00" }, 
-                        { selected: true, time: "10:00:00" }, 
-                    ]
-                }
-            ]
+            visitDatetimes: {
+                disabledDates: ["22/06/2017", "23/06/2017", "26/06/2017"], 
+                weeklyVisitTimes: [
+                    {
+                        dayOfWeek: 1, 
+                        visitTime: [
+                            { selected: true, time: "09:30:00" }, 
+                            { selected: true, time: "10:00:00" }, 
+                        ]
+                    }
+                ]
+            }
         };
     })
 
@@ -27,18 +29,18 @@ describe("VisitManageComponent", () => {
     }));
     
     beforeEach(() => {
-        spyManageService = spyOn(ctrl.visitManageService, "updateAvailableVisitTimes").and.returnValue(Observable.of(null));
+        spyManageService = spyOn(ctrl.visitManageService, "updateAvailableTimesAndDisabledDates").and.returnValue(Observable.of(null));
         spyOn(ctrl.alertEventService, "showSuccessAlert");
         spyOn(ctrl.alertEventService, "showDangerAlert");
         spyOn(ToDateFunctions, "toDate_ddmmyyyy").and.returnValue("20/06/2017");
     });
 
     it('should initialize disabledDates', () => {
-        expect(ctrl.disabledDates).toEqual(bindings.disabledDates);
+        expect(ctrl.visitDatetimes.disabledDates).toEqual(bindings.visitDatetimes.disabledDates);
     });
 
     it('should initialize visitTimes', () => {
-        expect(ctrl.visitTimes).toEqual(bindings.visitTimes);
+        expect(ctrl.visitDatetimes.weeklyVisitTimes).toEqual(bindings.visitDatetimes.weeklyVisitTimes);
     });
 
     it("should initialize services", () => {
@@ -50,15 +52,15 @@ describe("VisitManageComponent", () => {
         const dates = { dates: [ new Date("Fri Jun 20 2017"), new Date("Fri Jun 20 2017") ] };
         ctrl.changeDate(dates);
 
-        expect(ctrl.disabledDates).toEqual(["20/06/2017", "20/06/2017"]);
+        expect(ctrl.visitDatetimes.disabledDates).toEqual(["20/06/2017", "20/06/2017"]);
     });
 
     describe("when saveChange() is called", () => {
          
-         it('should call visitManageService.updateAvailableVisitTimes', () => {
-            expect(ctrl.visitManageService.updateAvailableVisitTimes).not.toHaveBeenCalled();
+         it('should call visitManageService.updateAvailableTimesAndDisabledDates', () => {
+            expect(ctrl.visitManageService.updateAvailableTimesAndDisabledDates).not.toHaveBeenCalled();
             ctrl.saveChanges();
-            expect(ctrl.visitManageService.updateAvailableVisitTimes).toHaveBeenCalled();
+            expect(ctrl.visitManageService.updateAvailableTimesAndDisabledDates).toHaveBeenCalled();
         });
 
         it('should call alertEventService.showSuccessAlert', () => {

@@ -1,4 +1,4 @@
-import { VisitManageUnavailableDatesResolve, VisitManageVisitTimesResolve } from './visit-manage.resolve';
+import { VisitManageVisitDatetimesResolve } from './visit-manage.resolve';
 import AuthGuardAdmin from '../../auth/auth-guard-admin.service';
 
 export default function VisitManageConfig($stateProvider) {    
@@ -10,8 +10,7 @@ export default function VisitManageConfig($stateProvider) {
                 component: "visitManage",
                 resolve: {
                     canActivate: AuthGuardAdmin,
-                    disabledDates: VisitManageUnavailableDatesResolve,
-                    visitTimes: VisitManageVisitTimesResolve
+                    visitDatetimes: VisitManageVisitDatetimesResolve
                 }
             }
         );   
