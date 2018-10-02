@@ -12,7 +12,7 @@
                                     <select class="form-control" 
                                             id="userselect" 
                                             ng-model="$ctrl.userSelected"
-                                            ng-options="s.sn for s in $ctrl.doctorsList"
+                                            ng-options="s.name for s in $ctrl.doctorsList"
                                             ng-change="$ctrl.onSelectUser()" 
                                             required>
                                     </select>
@@ -37,7 +37,7 @@
                                     <select class="form-control" 
                                             id="visittime" 
                                             ng-model="$ctrl.formVisit.selectedTime"
-                                            ng-options="s.visittime for s in $ctrl.formVisit.times" 
+                                            ng-options="s.visitTime for s in $ctrl.formVisit.times" 
                                             required>
                                     </select>
                                 </div>

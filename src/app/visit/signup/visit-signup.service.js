@@ -8,18 +8,16 @@ class VisitSignupService {
     }
 
     getDisabledDates(doctorId) {
-		const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/visits/disabled_dates', { params: { doctor_id: doctorId }});
-        return Observable.fromPromise(resPromise).map(res => res.data.disabled_dates)
-            .mergeMap(res => Observable.from(res))
-            .map(a => a.date_visit)
-            .toArray()
+		const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/unavailable_dates', { params: { doctorId }});
+        return Observable.fromPromise(resPromise)
+            .map(res => res.data.disabledDates)
             .catch(error => Observable.throw(error));
 	}
 
     getAvailableTimes(date, doctorId) {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/visits/times', { params: { date : date, doctor_id: doctorId }});
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/available_times', { params: { date, doctorId }});
         return Observable.fromPromise(resPromise)
-                         .map(res => res.data.datetimes)
+                         .map(res => res.data)
                          .catch(error => Observable.throw(error));
     }
 
@@ -30,17 +28,22 @@ class VisitSignupService {
     }
 
     findUsers(userName) {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/users/patients', { params: { name : userName}});
-        return Observable.fromPromise(resPromise)
-                         .map(res => res.data.users)
-                         .catch(error => Observable.throw(error));
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/patients', { params: { name : userName}});
+        return this._getUsers(resPromise);
     }
 
     getDoctors() {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/users/doctors');
+        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/doctors');
+        return this._getUsers(resPromise);
+    }
+
+    _getUsers(resPromise) {
         return Observable.fromPromise(resPromise)
-                         .map(res => res.data.doctors)
-                         .catch(error => Observable.throw(error));
+            .map(res => res.data)
+            .flatMap(data => Observable.from(data))
+            .map(data => ({ id: data.id, name: `${data.name} ${data.surname}`}))
+            .toArray()
+            .catch(error => Observable.throw(error));
     }
 
 }

@@ -13,7 +13,7 @@ class VisitSignupUserController extends VisitSignupBaseController {
     addVisit() {
         this.visitSignupService.addVisit(this.visit).subscribe(
             () => { 
-                this.$state.go('visit-browse.admin-current');
+                this.$state.go('visit-browse.current');
                 this.alertEventService.showSuccessAlert(`Pacjent ${this.asyncSelectedUser} został zapisany na wizytę.`);
              },
              (err) => { 

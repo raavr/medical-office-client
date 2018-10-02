@@ -4,27 +4,37 @@ import { CONFIG } from '../../app.constant';
 
 describe("VisitSignupService", () => {
 
-    let $httpMock, mVisitSignupService, fakeVisitDates, fakeVisitTimes, fakeUserName, transfVisitDates, response;
+    let $httpMock, mVisitSignupService, fakeVisitDates, fakeVisitTimes, fakeUser, transfUser, response;
 
     beforeEach(angular.mock.module(VisitSignupModule));
     beforeEach(() => {
         fakeVisitDates = [
-            { date_visit: "22/06/2017" },
-            { date_visit: "15/06/2017" }
+            "22/06/2017",
+            "15/06/2017"
         ];
 
         fakeVisitTimes = [
-            { visittime: "09:30:00" },
-            { visittime: "10:00:00" },
-            { visittime: "10:30:00" }, 
-            { visittime: "11:00:00" }
+            { visitTime: "09:30:00" },
+            { visitTime: "10:00:00" },
+            { visitTime: "10:30:00" }, 
+            { visitTime: "11:00:00" }
         ];
 
-        fakeUserName = [
-            { sn: "John Doe" }
+        fakeUser = [
+            { 
+                id: '1',
+                name: "John",
+                surname: "Doe" 
+            }
         ];
 
-        transfVisitDates = ["22/06/2017", "15/06/2017"];
+        transfUser = [
+            {
+                id: '1',
+                name: "John Doe"
+            }
+        ]
+
 
     });
 
@@ -38,18 +48,18 @@ describe("VisitSignupService", () => {
     });
 
     it("should return unavailable visit dates", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits/disabled_dates");
-        response.respond({ disabled_dates: fakeVisitDates });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/unavailable_dates");
+        response.respond({ disabledDates: fakeVisitDates });
 
         mVisitSignupService.getDisabledDates()
             .subscribe(s => {
-                expect(s).toEqual(transfVisitDates);
+                expect(s).toEqual(fakeVisitDates);
             });     
     });
 
     it("should not return any unavailable visit dates", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits/disabled_dates");
-        response.respond({ disabled_dates: [] });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/unavailable_dates");
+        response.respond({ disabledDates: [] });
 
         mVisitSignupService.getDisabledDates()
             .subscribe(s => {
@@ -58,8 +68,8 @@ describe("VisitSignupService", () => {
     });
 
     it("should return available visit times", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits/times");
-        response.respond({ datetimes: fakeVisitTimes });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/available_times");
+        response.respond(fakeVisitTimes);
 
         mVisitSignupService.getAvailableTimes()
             .subscribe(s => {
@@ -68,8 +78,8 @@ describe("VisitSignupService", () => {
     });
 
     it("should return 4 visit times", () => {
-        response = $httpMock.whenGET(CONFIG.ENDPOINT + "/api/visits/times");
-        response.respond({ datetimes: fakeVisitTimes });
+        response = $httpMock.whenGET(CONFIG.ENDPOINT + "/api/available_times");
+        response.respond(fakeVisitTimes);
 
         mVisitSignupService.getAvailableTimes()
             .subscribe(s => {
@@ -78,9 +88,9 @@ describe("VisitSignupService", () => {
     });
 
     it("should not return any unavailable visit times", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits/times");
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/available_times");
 
-        response.respond({ datetimes: [] });
+        response.respond([]);
         mVisitSignupService.getAvailableTimes()
             .subscribe((s) => { 
                 expect(s.length).toBe(0);
@@ -88,12 +98,12 @@ describe("VisitSignupService", () => {
     });
 
     it("should return user name", () => {
-        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/users/patients");
-        response.respond({ users: fakeUserName });
+        response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/patients");
+        response.respond(fakeUser);
 
         mVisitSignupService.findUsers()
             .subscribe(s => {
-                expect(s).toEqual(fakeUserName);
+                expect(s).toEqual(transfUser);
             });  
     });
 

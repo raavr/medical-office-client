@@ -27,7 +27,7 @@
                                     <select class="form-control" 
                                             id="visittime" 
                                             ng-model="$ctrl.formVisit.selectedTime"
-                                            ng-options="s.visittime for s in $ctrl.formVisit.times" 
+                                            ng-options="s.visitTime for s in $ctrl.formVisit.times" 
                                             required>
                                     </select>
                                 </div>
@@ -36,7 +36,7 @@
                                     <input type="text" 
                                         name="userselect" 
                                         ng-model="$ctrl.asyncSelectedUser" 
-                                        uib-typeahead="user.sn for user in $ctrl.findUsers($viewValue)" 
+                                        uib-typeahead="user.name for user in $ctrl.findUsers($viewValue)" 
                                         typeahead-loading="loadingUsers" 
                                         typeahead-no-results="noResults" 
                                         typeahead-wait-ms="0" 
@@ -56,7 +56,7 @@
                                         class="btn btn-success" 
                                         ng-disabled="$ctrl.isSubmitDisabled()" 
                                         ng-click="$ctrl.addVisit()">Zapisz pacjenta na wizytę</button>
-                                <a class="btn btn-danger" role="button" ui-sref="visit-browse.admin-current">Anuluj</a>
+                                <a class="btn btn-danger" role="button" ui-sref="visit-browse.current">Anuluj</a>
                             </form>
                         </div>
                     </div>

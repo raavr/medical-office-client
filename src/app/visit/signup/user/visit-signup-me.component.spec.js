@@ -8,10 +8,10 @@ describe("VisitSignupMeComponent", () => {
 
     beforeEach(() => {
         visitTimesMock = [
-            { visittime: "09:30:00" },
-            { visittime: "10:00:00" },
-            { visittime: "10:30:00" }, 
-            { visittime: "11:00:00" }
+            { visitTime: "09:30:00" },
+            { visitTime: "10:00:00" },
+            { visitTime: "10:30:00" }, 
+            { visitTime: "11:00:00" }
         ];
     })
 
@@ -54,19 +54,19 @@ describe("VisitSignupMeComponent", () => {
     });
 
     it('should isSubmitDisabled return true when selectedTime !== undefined', () => {
-        ctrl.formVisit.selectedTime = { visittime: "09:30:00" };
+        ctrl.formVisit.selectedTime = { visitTime: "09:30:00" };
         expect(ctrl.isSubmitDisabled()).toBe(true);
     });
 
     it('should isSubmitDisabled return true when both date and selectedTime !== undefined', () => {
         ctrl.formVisit.date = "22/06/2017";
-        ctrl.formVisit.selectedTime = { visittime: "09:30:00" };
+        ctrl.formVisit.selectedTime = { visitTime: "09:30:00" };
         expect(ctrl.isSubmitDisabled()).toBe(true);
     });
 
     it('should isSubmitDisabled return false when all form inputs are valid', () => {
         ctrl.formVisit.date = "22/06/2017";
-        ctrl.formVisit.selectedTime = { visittime: "09:30:00" };
+        ctrl.formVisit.selectedTime = { visitTime: "09:30:00" };
         ctrl.userSelected.name = "John Doe";
         expect(ctrl.isSubmitDisabled()).toBe(false);
     });
@@ -103,9 +103,9 @@ describe("VisitSignupMeComponent", () => {
 
         beforeEach(() => {
             visit = {
-                userid: 1,
+                userId: 1,
                 date: "22/06/2017",
-                selectedTime: { visittime: "09:30:00" },
+                selectedTime: { visitTime: "09:30:00" },
                 desc: "Lorem ipsum"
             }
             spyOnProperty(ctrl, 'visit', 'get').and.returnValue(visit);   
@@ -175,7 +175,7 @@ describe("VisitSignupMeComponent", () => {
     describe("changeDate tests", () => {
 
         beforeEach(() => {
-            spyOn(ToDateFunctions, "toDate_mmddyyyy").and.returnValue("06/20/2017");
+            spyOn(ToDateFunctions, "toDate_ddmmyyyy").and.returnValue("20/06/2017");
         });
         
         it('should set visit date', () => {  
@@ -183,7 +183,7 @@ describe("VisitSignupMeComponent", () => {
             
             ctrl.changeDate({date: ""});
             
-            expect(ctrl.formVisit.date).toBe("06/20/2017");
+            expect(ctrl.formVisit.date).toBe("20/06/2017");
         });
 
         it('should set visit date and time', () => {
@@ -193,7 +193,7 @@ describe("VisitSignupMeComponent", () => {
             ctrl.userSelected = { id: 1 };
             ctrl.changeDate({date: ""});
 
-            expect(ctrl.formVisit.date).toBe("06/20/2017");
+            expect(ctrl.formVisit.date).toBe("20/06/2017");
             expect(ctrl.formVisit.times).toEqual(visitTimesMock); 
         });
 

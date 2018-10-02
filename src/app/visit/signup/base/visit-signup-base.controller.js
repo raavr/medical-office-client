@@ -1,4 +1,4 @@
-import { toDate_mmddyyyy } from '../../../app.helper';
+import { toDate_ddmmyyyy } from '../../../app.helper';
 
 export class VisitSignupBaseController {
     constructor() {
@@ -8,11 +8,11 @@ export class VisitSignupBaseController {
 
     onSelectUser(item) {
         this.userSelected.id = item.id;
-        this.userSelected.name = item.sn;
+        this.userSelected.name = item.name;
     }
 
     changeDate(event) {
-        this.formVisit.date = toDate_mmddyyyy(event.date);
+        this.formVisit.date = toDate_ddmmyyyy(event.date);
         this.getAvailableTimes();
     }      
 
@@ -37,9 +37,9 @@ export class VisitSignupBaseController {
     get visit() {
         return {
             date: this.formVisit.date,
-            time: this.formVisit.selectedTime.visittime,
+            time: this.formVisit.selectedTime.visitTime,
             desc: this.formVisit.desc,
-            userid: this.userSelected.id  
+            userId: this.userSelected.id  
         }
     }
 }
