@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+
 export function toDate_mmddyyyy(date) {
     const dateArr = toDateArray(date);
 
@@ -22,4 +24,10 @@ function toDateArray(date) {
         (mm>9 ? '' : '0') + mm,
         date.getFullYear()
     ];
+}
+
+export function mapRequest(resPromise) {
+    return Observable.fromPromise(resPromise)
+      .map(res => res.data)
+      .catch(error => Observable.throw(error));
 }

@@ -8,12 +8,12 @@ import { ProfileService } from './profile/profile.service';
 import { AccountPasswordService } from './password/account-password.service';
 import PasswordMatch from './password/password-match';
 
-export default 
-    angular.module("account", [ uiRouter, Auth, PasswordMatch ])
-           .config(AccountConfig)
-           .component("account", AccountComponent)
-           .component("profile", ProfileComponent)
-           .component("accountPassword", AccountPasswordComponent)
-           .service("profileService", ProfileService)
-           .service("accountPasswordService", AccountPasswordService)
-           .name;
+export default
+  angular.module("account", [uiRouter, Auth, PasswordMatch])
+    .config(AccountConfig)
+    .component("account", AccountComponent)
+    .component("profile", ProfileComponent)
+    .component("accountPassword", AccountPasswordComponent)
+    .service("profileService", ProfileService)
+    .service("accountPasswordService", AccountPasswordService)
+    .name;
