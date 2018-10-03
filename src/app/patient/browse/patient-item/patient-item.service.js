@@ -1,17 +1,16 @@
-import { Observable } from 'rxjs/Observable';
 import { CONFIG } from '../../../app.constant';
+import { handleRequest } from '../../../app.helper';
 
 export class PatientItemService {
 
-    constructor($http) {
-        this.$http = $http;
-    }
-    
-    deletePatient(patientId) {
-        const resPromise = this.$http.delete(CONFIG.ENDPOINT + '/api/patients/' + patientId);
-        return Observable.fromPromise(resPromise)
-                         .catch(error => Observable.throw(error));
-    }
+  constructor($http) {
+    this.$http = $http;
+  }
+
+  deletePatient(patientId) {
+    const reqPromise = this.$http.delete(CONFIG.ENDPOINT + '/api/patients/' + patientId);
+    return handleRequest(reqPromise);
+  }
 
 }
 

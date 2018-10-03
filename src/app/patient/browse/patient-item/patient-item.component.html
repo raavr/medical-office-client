@@ -1,24 +1,24 @@
 <div class="row list-item" ng-class="{ 'list-item--is-even': $ctrl.isEven }">
-    <div class="col-xs-12 col-sm-3">
-        <div class="col-xs-4 list-item__label">Imię:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.patient.name}}</div>
+  <div class="col-xs-12 col-sm-3">
+    <div class="col-xs-4 list-item__label">Imię:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.patient.name}}</div>
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    <div class="col-xs-4 list-item__label">Nazwisko:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.patient.surname}}</div>
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    <div class="col-xs-4 list-item__label">Email:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">
+      {{$ctrl.patient.email}}
     </div>
-     <div class="col-xs-12 col-sm-3">
-        <div class="col-xs-4 list-item__label">Nazwisko:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.patient.surname}}</div>
-     </div>
-    <div  class="col-xs-12 col-sm-3">
-        <div class="col-xs-4 list-item__label">Email:</div>
-        <div  class="col-xs-8 col-sm-12 list-item__content">
-           {{$ctrl.patient.email}}
-        </div>
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    <div class="col-xs-4 list-item__label">Status:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">
+      <a ng-href="#" uib-tooltip="Usuń użytkownika" ng-click="$ctrl.deletePatient()" class="btn btn-warning list-item__action-btn">
+        <i class="glyphicon glyphicon-trash"></i>
+      </a>
     </div>
-    <div class="col-xs-12 col-sm-3">
-        <div class="col-xs-4 list-item__label">Status:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">
-            <a ng-href="#" uib-tooltip="Usuń użytkownika" ng-click="$ctrl.deletePatient()" class="btn btn-warning list-item__action-btn">
-                <i class="glyphicon glyphicon-trash"></i>
-            </a>
-        </div>
-    </div>
+  </div>
 </div>

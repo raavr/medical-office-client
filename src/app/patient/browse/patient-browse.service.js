@@ -1,18 +1,16 @@
-import { Observable } from 'rxjs/Observable';
 import { CONFIG } from '../../app.constant';
+import { handleRequest } from '../../app.helper';
 
 export class PatientBrowseService {
 
-    constructor($http) {
-        this.$http = $http;
-    }
+  constructor($http) {
+    this.$http = $http;
+  }
 
-    getPatients() {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/patients');
-        return Observable.fromPromise(resPromise)
-                         .map((res) => res.data)
-                         .catch(error => Observable.throw(error));
-    }
+  getPatients() {
+    const reqPromise = this.$http.get(CONFIG.ENDPOINT + '/api/patients');
+    return handleRequest(reqPromise);
+  }
 
 }
 
