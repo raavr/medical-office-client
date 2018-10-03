@@ -26,8 +26,8 @@ function toDateArray(date) {
     ];
 }
 
-export function mapRequest(resPromise) {
-    return Observable.fromPromise(resPromise)
+export function handleRequest(reqPromise) {
+    return Observable.fromPromise(reqPromise)
       .map(res => res.data)
       .catch(error => Observable.throw(error));
 }

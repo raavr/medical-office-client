@@ -1,6 +1,5 @@
-import { Observable } from 'rxjs/Observable';
 import { CONFIG } from '../../app.constant';
-import { mapRequest } from '../../app.helper';
+import { handleRequest } from '../../app.helper';
 
 export class ProfileService {
 
@@ -9,13 +8,13 @@ export class ProfileService {
   }
 
   getProfile() {
-    const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/profile');
-    return mapRequest(resPromise);
+    const reqPromise = this.$http.get(CONFIG.ENDPOINT + '/api/profile');
+    return handleRequest(reqPromise);
   }
 
   updateProfile(profileData) {
-    const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/profile', profileData);
-    return mapRequest(resPromise);
+    const reqPromise = this.$http.put(CONFIG.ENDPOINT + '/api/profile', profileData);
+    return handleRequest(reqPromise);
   }
 
 }

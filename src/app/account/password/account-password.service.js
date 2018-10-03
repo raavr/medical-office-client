@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs/Observable';
 import { CONFIG } from '../../app.constant';
+import { handleRequest } from '../../app.helper';
 
 export class AccountPasswordService {
 
@@ -8,10 +8,8 @@ export class AccountPasswordService {
   }
 
   changePassword(account) {
-    const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/change_password', account);
-    return Observable.fromPromise(resPromise)
-      .map(res => res.data)
-      .catch(error => Observable.throw(error));
+    const reqPromise = this.$http.put(CONFIG.ENDPOINT + '/api/change_password', account);
+    return handleRequest(reqPromise);
   }
 
 }
