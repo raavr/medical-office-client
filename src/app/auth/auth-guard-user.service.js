@@ -1,13 +1,13 @@
 export default function AuthGuardAdminService($q, $authService, $location) {
-    const deferred = $q.defer();
+  const deferred = $q.defer();
 
-    if (!$authService.loggedIn()) {
-        $location.path('/login');
-    } else {
-        deferred.resolve();
-    }
+  if (!$authService.loggedIn()) {
+    $location.path('/login');
+  } else {
+    deferred.resolve();
+  }
 
-    return deferred.promise;
+  return deferred.promise;
 }
 
 AuthGuardAdminService.$inject = ['$q', 'authService', '$location'];
