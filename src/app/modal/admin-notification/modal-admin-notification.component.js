@@ -1,31 +1,31 @@
 import template from './modal-admin-notification.component.html';
-import { NOTF_TYPE } from  '../../notification/menu/admin/notification-type.enum';
+import { NOTF_TYPE } from '../../notification/menu/admin/notification-type.enum';
 
 class ModalAdminNotificationCtrl {
 
-    $onInit() {
-        this.ntf = this.resolve.notification;
-    }
+  $onInit() {
+    this.ntf = this.resolve.notification;
+  }
 
-    reject() {
-        this.close({$value: NOTF_TYPE.CANCEL});
-    }
+  reject() {
+    this.close({ $value: NOTF_TYPE.CANCEL });
+  }
 
-    accept() {
-        this.close({$value: NOTF_TYPE.ACCEPT});
-    }
+  accept() {
+    this.close({ $value: NOTF_TYPE.ACCEPT });
+  }
 
-    cancel() {
-        this.dismiss();
-    }
+  cancel() {
+    this.dismiss();
+  }
 }
 
 export const ModalAdminNotificationComponent = {
-    bindings: {
-        resolve: '<',
-        close: '&',
-        dismiss: '&'
-    },
-    template: template,
-    controller: ModalAdminNotificationCtrl
+  bindings: {
+    resolve: '<',
+    close: '&',
+    dismiss: '&'
+  },
+  template,
+  controller: ModalAdminNotificationCtrl
 }

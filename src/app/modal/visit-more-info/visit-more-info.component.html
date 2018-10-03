@@ -1,38 +1,39 @@
 <div class="modal-header">
-    <h3 class="modal-title">Szczegóły wizyty</h3>
+  <h3 class="modal-title">Szczegóły wizyty</h3>
 </div>
 <div class="modal-body">
-    <dl>
-        <dt>Termin wizyty:</dt>
-        <dd>{{$ctrl.visit.visitDate | date : 'dd/MM/yyyy'}} o godzinie {{$ctrl.visit.visitDate | date : 'HH:mm'}}</dd>
-        <div ng-if="$ctrl.authService.isAdmin()">
-            <dt>Pacjent:</dt>
-            <dd>{{$ctrl.visit.patient.name}} {{$ctrl.visit.patient.surname}}</dd>
-        </div>
-        <div ng-if="!$ctrl.authService.isAdmin()">
-            <dt>Lekarz:</dt>
-            <dd>{{$ctrl.visit.doctor.name}} {{$ctrl.visit.doctor.surname}}</dd>
-        </div>
-        <dt>Informacje dodatkowe:</dt>
-        <dd>{{$ctrl.visit.description}}{{$ctrl.visit.description.length > 0 ? '' : 'Brak'}}</dd>
-        <div class="modal-status-box">
-            <dt>Status:</dt>
-            <dd>
-                <button ng-if="$ctrl.visit.status === 'reserved'" type="button" class="btn btn-warning btn-type-warning btn-visit-type">Oczekuje</button>
-                <button ng-if="$ctrl.visit.status === 'accepted'" type="button" class="btn btn-success btn-type-success btn-visit-type">Zaakceptowano</button>
-                <button ng-if="$ctrl.visit.status === 'canceled'" type="button" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
-            </dd>
-        </div>
-        <div ng-if="$ctrl.visit.status === 'accepted' && !$ctrl.authService.isAdmin()">
-            <dt>Więcej:</dt>
-            <dd>Jeśli chcesz odwołać tę wizytę, napisz na adres: <a href="mailto:gabinet@example.com">gabinet@example.com</a>.</dd>
-        </div>
-        <div ng-if="$ctrl.visit.status === 'canceled'">
-            <dt>Powód odrzucenia:</dt>
-            <dd>{{$ctrl.visit.rejectReason}}</dd>
-        </div>
-    </dl>
+  <dl>
+    <dt>Termin wizyty:</dt>
+    <dd>{{$ctrl.visit.visitDate | date : 'dd/MM/yyyy'}} o godzinie {{$ctrl.visit.visitDate | date : 'HH:mm'}}</dd>
+    <div ng-if="$ctrl.authService.isAdmin()">
+      <dt>Pacjent:</dt>
+      <dd>{{$ctrl.visit.patient.name}} {{$ctrl.visit.patient.surname}}</dd>
+    </div>
+    <div ng-if="!$ctrl.authService.isAdmin()">
+      <dt>Lekarz:</dt>
+      <dd>{{$ctrl.visit.doctor.name}} {{$ctrl.visit.doctor.surname}}</dd>
+    </div>
+    <dt>Informacje dodatkowe:</dt>
+    <dd>{{$ctrl.visit.description}}{{$ctrl.visit.description.length > 0 ? '' : 'Brak'}}</dd>
+    <div class="modal-status-box">
+      <dt>Status:</dt>
+      <dd>
+        <button ng-if="$ctrl.visit.status === 'reserved'" type="button" class="btn btn-warning btn-type-warning btn-visit-type">Oczekuje</button>
+        <button ng-if="$ctrl.visit.status === 'accepted'" type="button" class="btn btn-success btn-type-success btn-visit-type">Zaakceptowano</button>
+        <button ng-if="$ctrl.visit.status === 'canceled'" type="button" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
+      </dd>
+    </div>
+    <div ng-if="$ctrl.visit.status === 'accepted' && !$ctrl.authService.isAdmin()">
+      <dt>Więcej:</dt>
+      <dd>Jeśli chcesz odwołać tę wizytę, napisz na adres:
+        <a href="mailto:gabinet@example.com">gabinet@example.com</a>.</dd>
+    </div>
+    <div ng-if="$ctrl.visit.status === 'canceled'">
+      <dt>Powód odrzucenia:</dt>
+      <dd>{{$ctrl.visit.rejectReason}}</dd>
+    </div>
+  </dl>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+  <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
 </div>

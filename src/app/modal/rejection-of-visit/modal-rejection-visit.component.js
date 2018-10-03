@@ -2,20 +2,20 @@ import template from './modal-rejection-visit.component.html';
 
 class ModalRejectionVisitCtrl {
 
-    ok() {
-        this.close({$value: this.rejectReason});
-    }
+  ok() {
+    this.close({ $value: this.rejectReason });
+  }
 
-    cancel() {
-        this.dismiss();
-    }
+  cancel() {
+    this.dismiss();
+  }
 }
 
 export const ModalRejectionVisitComponent = {
-    bindings: {
-        close: '&',
-        dismiss: '&'
-    },
-    template: template,
-    controller: ModalRejectionVisitCtrl
+  bindings: {
+    close: '&',
+    dismiss: '&'
+  },
+  template,
+  controller: ModalRejectionVisitCtrl
 }

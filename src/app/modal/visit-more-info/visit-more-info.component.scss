@@ -1,21 +1,22 @@
 dl {
-    margin-bottom: 0;
+  margin-bottom: 0;
 
-    dt {
-        margin-top: 10px;
-    }
+  dt {
+    margin-top: 10px;
+  }
 
-    > dt:first-child {
-        margin-top: 0;
-    }
+  >dt:first-child {
+    margin-top: 0;
+  }
 }
 
 .modal-status-box {
-    dd, dt {
-        display: inline-block;
-    }
-
-    dt {
-        margin-right: 5px;
-    }
+  dd,
+  dt {
+    display: inline-block;
+  }
+  
+  dt {
+    margin-right: 5px;
+  }
 }
