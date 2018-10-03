@@ -1,18 +1,18 @@
- <section id="price-list" class="price-list">
-    <div class="container">
-        <div class="text-center price-list__header">
-            <h2 class="price-list__title">Cennik</h2>
-        </div>
-        <div class="row price-list__body">
-             <div class="col-xs-12 col-sm-6 col-md-4 price-item" ng-repeat="priceItem in $ctrl.priceList">
-                <h4 class="price-item__title">{{priceItem.category}}</h4>
-                <table class="table table-condensed price-item__table">
-                    <tr ng-repeat="categoryItem in priceItem.items">
-                        <td>{{categoryItem.name}}</td>
-                        <td>{{categoryItem.price}}</td>
-                    </tr>                          
-                </table>   
-            </div>
-        </div>      
+<section id="price-list" class="price-list">
+  <div class="container">
+    <div class="text-center price-list__header">
+      <h2 class="price-list__title">Cennik</h2>
     </div>
- </section>
+    <div class="row price-list__body">
+      <div class="col-xs-12 col-sm-6 col-md-4 price-item" ng-repeat="priceItem in $ctrl.priceList">
+        <h4 class="price-item__title">{{priceItem.category}}</h4>
+        <table class="table table-condensed price-item__table">
+          <tr ng-repeat="categoryItem in priceItem.items">
+            <td>{{categoryItem.name}}</td>
+            <td>{{categoryItem.price}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
