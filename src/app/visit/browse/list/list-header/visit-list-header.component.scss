@@ -1,18 +1,18 @@
 .list-header {
-    margin-bottom: 10px; 
-    display: none;
+  margin-bottom: 10px;
+  display: none;
 
-    @media(min-width: 768px) {
-        & {
-            display: block;
-        }
+  @media(min-width: 768px) {
+    & {
+      display: block;
     }
+  }
 
-    &--additional-border-b {
-        border-bottom: 1px solid #e2e2e2;
-    }
-
-    &--bold {
-        font-weight: 700;
-    }
+  &--additional-border-b {
+    border-bottom: 1px solid #e2e2e2;
+  }
+  
+  &--bold {
+    font-weight: 700;
+  }
 }

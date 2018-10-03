@@ -1,38 +1,43 @@
 <div class="row list-item" ng-class="{ 'list-item--is-even': $ctrl.isEven }">
-    <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 list-item__label">Data:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.visitDate | date : 'dd/MM/yyyy'}}</div>
+  <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 list-item__label">Data:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.visitDate | date : 'dd/MM/yyyy'}}</div>
+  </div>
+  <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 list-item__label">Godzina:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.visitDate | date : 'HH:mm'}}</div>
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-4 list-item__label">Informacje:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">
+      <span ng-if="$ctrl.type === 'current'">{{$ctrl.visit.description}}{{$ctrl.visit.description.length > 0 ? '' : 'Brak'}}</span>
+      <span ng-if="$ctrl.type === 'past'">{{visit.infoFromDoctor}}{{visit.infoFromDoctor.length > 0 ? '' : '-'}}</span>
     </div>
-     <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 list-item__label">Godzina:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.visitDate | date : 'HH:mm'}}</div>
-     </div>
-    <div  class="col-xs-12 col-sm-4">
-        <div class="col-xs-4 list-item__label">Informacje:</div>
-        <div  class="col-xs-8 col-sm-12 list-item__content">
-            <span ng-if="$ctrl.type === 'current'">{{$ctrl.visit.description}}{{$ctrl.visit.description.length > 0 ? '' : 'Brak'}}</span>
-            <span ng-if="$ctrl.type === 'past'">{{visit.infoFromDoctor}}{{visit.infoFromDoctor.length > 0 ? '' : '-'}}</span>
-        </div>
+  </div>
+  <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 list-item__label">Status:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">
+      <button type="button" ng-if="$ctrl.visit.status === 'reserved'" class="btn btn-warning list-item__type-btn list-item__type-btn--warning">Oczekuje</button>
+      <button type="button" ng-if="$ctrl.visit.status === 'accepted'" class="btn btn-success list-item__type-btn list-item__type-btn--success">Zaakceptowano</button>
+      <button ng-if="$ctrl.visit.status === 'canceled'" type="button" class="btn btn-danger list-item__type-btn list-item__type-btn--danger">Odrzucono</button>
     </div>
-    <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 list-item__label">Status:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">
-            <button type="button" ng-if="$ctrl.visit.status === 'reserved'" class="btn btn-warning list-item__type-btn list-item__type-btn--warning">Oczekuje</button>
-            <button type="button" ng-if="$ctrl.visit.status === 'accepted'"class="btn btn-success list-item__type-btn list-item__type-btn--success">Zaakceptowano</button>
-            <button ng-if="$ctrl.visit.status === 'canceled'" type="button" class="btn btn-danger list-item__type-btn list-item__type-btn--danger">Odrzucono</button>
-        </div>
+  </div>
+  <div ng-if="$ctrl.type === 'current'" class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 list-item__label">Akcje:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">
+      <button type="button" uib-tooltip="Pokaż więcej" ng-click="$ctrl.showMore()" class="btn btn-warning list-item__action-btn">
+        <i class="glyphicon glyphicon-info-sign"></i>
+      </button>
+      <button type="button" ng-if="$ctrl.visit.status === 'reserved'" uib-tooltip="Anuluj rezerwację" ng-click="$ctrl.cancelVisit()"
+        class="btn btn-danger list-item__action-btn">
+        <i class="glyphicon glyphicon-trash"></i>
+      </button>
     </div>
-    <div ng-if="$ctrl.type === 'current'" class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 list-item__label">Akcje:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">
-            <button type="button" uib-tooltip="Pokaż więcej" ng-click="$ctrl.showMore()" class="btn btn-warning list-item__action-btn"><i class="glyphicon glyphicon-info-sign"></i></button>
-            <button type="button" ng-if="$ctrl.visit.status === 'reserved'" uib-tooltip="Anuluj rezerwację" ng-click="$ctrl.cancelVisit()" class="btn btn-danger list-item__action-btn"><i class="glyphicon glyphicon-trash"></i></button>
-         </div>
+  </div>
+  <div ng-if="$ctrl.type === 'past'" class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 list-item__label">Koszt wizyty:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">
+      {{$ctrl.visit.price}}
     </div>
-    <div ng-if="$ctrl.type === 'past'" class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 list-item__label">Koszt wizyty:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">
-            {{$ctrl.visit.price}}
-        </div>
-    </div>
+  </div>
 </div>

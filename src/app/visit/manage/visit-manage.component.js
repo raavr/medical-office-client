@@ -4,32 +4,32 @@ import { toDate_ddmmyyyy } from '../../app.helper';
 
 class VisitManageController {
 
-    constructor(visitManageService, alertEventService) {
-        this.visitManageService = visitManageService;
-        this.alertEventService = alertEventService;
-    }
+  constructor(visitManageService, alertEventService) {
+    this.visitManageService = visitManageService;
+    this.alertEventService = alertEventService;
+  }
 
-    changeDate(event) {
-        this.visitDatetimes.disabledDates = event.dates.map((elem) => toDate_ddmmyyyy(elem));
-    }
+  changeDate(event) {
+    this.visitDatetimes.disabledDates = event.dates.map((elem) => toDate_ddmmyyyy(elem));
+  }
 
-    saveChanges() {
-        this.visitManageService
-            .updateAvailableTimesAndDisabledDates(this.visitDatetimes)
-            .subscribe(
-                () => this.alertEventService.showSuccessAlert("Zmiany zostały wprowadzone."),
-                () => this.alertEventService.showDangerAlert("Wystąpił błąd. Zmiany nie zostały wprowadzone.")
-            );
-    }
+  saveChanges() {
+    this.visitManageService
+      .updateAvailableTimesAndDisabledDates(this.visitDatetimes)
+      .subscribe(
+        (data) => this.alertEventService.showSuccessAlert(data.message),
+        (err) => this.alertEventService.showDangerAlert(err.data.message)
+      );
+  }
 
 }
 
 VisitManageController.$inject = ['visitManageService', 'alertEventService'];
 
 export const VisitManageComponent = {
-    bindings: {
-        visitDatetimes: "<"
-    },
-    template: template,
-    controller: VisitManageController
+  bindings: {
+    visitDatetimes: "<"
+  },
+  template,
+  controller: VisitManageController
 }

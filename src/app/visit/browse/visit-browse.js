@@ -17,24 +17,24 @@ import visitBrowseService from './visit-browse.service';
 import Auth from '../../auth/auth';
 import Modal from '../../modal/modal';
 
-export default 
-    angular.module("visit.browse", [
-            Auth,
-            uiRouter, 
-            uiBootstrapBtns, 
-            uiBootstrapPagination, 
-            uiBootstrapTooltip,
-            uiBootstrapPopover,
-            visitBrowseService,
-            Modal
-         ]).config(VisitBrowseConfig)
-           .component("visitBrowse", VisitBrowseComponent)
-           .component("visitList", VisitListComponent)
-           .component("visitListHeader", VisitListHeaderComponent)
-           .component("visitFilter", VisitFilterComponent)
-           .component("userVisit", UserVisitComponent)
-           .component("adminVisit", AdminVisitComponent)
-           .component("itemsLimit", ItemsLimitComponent)
-           .component("visitSelector", VisitSelectorComponent)
-           .component("adminActionPanel", AdminActionPanelComponent)
-           .name;
+export default
+  angular.module("visit.browse", [
+    Auth,
+    uiRouter,
+    uiBootstrapBtns,
+    uiBootstrapPagination,
+    uiBootstrapTooltip,
+    uiBootstrapPopover,
+    visitBrowseService,
+    Modal
+  ]).config(VisitBrowseConfig)
+    .component("visitBrowse", VisitBrowseComponent)
+    .component("visitList", VisitListComponent)
+    .component("visitListHeader", VisitListHeaderComponent)
+    .component("visitFilter", VisitFilterComponent)
+    .component("userVisit", UserVisitComponent)
+    .component("adminVisit", AdminVisitComponent)
+    .component("itemsLimit", ItemsLimitComponent)
+    .component("visitSelector", VisitSelectorComponent)
+    .component("adminActionPanel", AdminActionPanelComponent)
+    .name;

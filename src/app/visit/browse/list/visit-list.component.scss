@@ -1,33 +1,38 @@
 @import "../../../navbar/navbar.constant";
-
 .visits-container {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    position: relative;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .visits__status {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 .pagination {
-    .active {
-        a, a:focus, a:hover,
-        span, span:focus, span:hover {
-            background-color: $navbar-color-bg;
-            border-color: #ddd;
-            color: $navbar-link-color;
-        }
+  .active {
+    a,
+    a:focus,
+    a:hover,
+    span,
+    span:focus,
+    span:hover {
+      background-color: $navbar-color-bg;
+      border-color: #ddd;
+      color: $navbar-link-color;
     }
-    
-    li {
-        a:focus, a:hover,
-        span:focus, span:hover {
-            color: $navbar-link-color;
-        }
+  }
+
+  li {
+    a:focus,
+    a:hover,
+    span:focus,
+    span:hover {
+      color: $navbar-link-color;
     }
-    
-    &--no-margin {
-        margin: 0;
-    }
+  }
+  
+  &--no-margin {
+    margin: 0;
+  }
 }

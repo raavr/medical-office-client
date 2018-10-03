@@ -1,67 +1,66 @@
 .list-item {
-    border-top: 1px solid #ddd;
-    padding: 8px 0;
+  border-top: 1px solid #ddd;
+  padding: 8px 0;
 
-    &.list-item--is-even {
-        background-color: #f9f9f9;
+  &.list-item--is-even {
+    background-color: #f9f9f9;
+  }
+
+  &__content {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-left: 1px solid #ddd;
+
+    @media(min-width: 768px) {
+      padding: 0;
+      border: 0;
     }
+  }
 
-    &__content {
-        padding-top: 3px;
-        padding-bottom: 3px;
-        border-left: 1px solid #ddd;
+  &__label {
+    display: block;
+    font-weight: 700;
+    padding-left: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
 
-        @media(min-width: 768px) {
-            padding: 0;
-            border: 0;
-        }
+    @media(min-width: 768px) {
+      & {
+        display: none;
+      }
     }
+  }
 
-    &__label {
-        display: block;
-        font-weight: 700;
-        padding-left: 0;
-        padding-top: 3px;
-        padding-bottom: 3px;
+  &__type-btn {
+    padding: 0px 10px;
+    cursor: default !important;
+    font-size: 1.3rem;
 
-         @media(min-width: 768px) {
-             & {
-                 display: none;
-             }
-        }
+    @media(min-width: 768px) {
+      & {
+        padding: 0;
+        width: 100%;
+      }
     }
+  }
 
-    &__type-btn {
-        padding: 0px 10px;
-        cursor: default !important;
-        font-size: 1.3rem;
+  &__type-btn--success:hover {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+  }
 
-        @media(min-width: 768px) {
-            & {
-                padding: 0;
-                width: 100%;
-            }
-        }
-    }
+  &__type-btn--danger:hover {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+  }
 
-    &__type-btn--success:hover {
-        background-color: #5cb85c;
-        border-color: #4cae4c;
-    }
-
-    &__type-btn--danger:hover {
-        background-color: #d9534f;
-        border-color: #d43f3a;
-    }
-
-    &__type-btn--warning:hover {
-        background-color: #f0ad4e;
-        border-color: #eea236;
-    }
-
-    &__action-btn {
-        padding: 0 10px;
-        font-size: 1.3rem;
-    }
-    
+  &__type-btn--warning:hover {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+  }
+  
+  &__action-btn {
+    padding: 0 10px;
+    font-size: 1.3rem;
+  }
 }

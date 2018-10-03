@@ -9,10 +9,10 @@ import visitCommon from '../common/visit.common';
 import Alert from '../../alert/alert';
 import Auth from '../../auth/auth';
 
-export default 
-    angular.module("visit.signup", [uiRouter, visitSignupService, uiBootstrapTypeahead, visitCommon, Alert, Auth])
-           .config(VisitSignupConfig)
-           .component("visitSignup", VisitSignupComponent)
-           .component("visitSignupMe", VisitSignupMeComponent)
-           .component("visitSignupUser", VisitSignupUserComponent)
-           .name;
+export default
+  angular.module("visit.signup", [uiRouter, visitSignupService, uiBootstrapTypeahead, visitCommon, Alert, Auth])
+    .config(VisitSignupConfig)
+    .component("visitSignup", VisitSignupComponent)
+    .component("visitSignupMe", VisitSignupMeComponent)
+    .component("visitSignupUser", VisitSignupUserComponent)
+    .name;

@@ -4,87 +4,89 @@ import { NOTF_TYPE } from '../../../../notification/menu/admin/notification-type
 
 class AdminActionPanelController {
 
-    constructor(adminActionService, notificationEventService, alertEventService, $uibModal) {
-        this.adminActionService = adminActionService;
-        this.notificationEventService = notificationEventService;
-        this.alertEventService = alertEventService;
-        this.$uibModal = $uibModal;
-    }
+  constructor(adminActionService, notificationEventService, alertEventService, $uibModal) {
+    this.adminActionService = adminActionService;
+    this.notificationEventService = notificationEventService;
+    this.alertEventService = alertEventService;
+    this.$uibModal = $uibModal;
+  }
 
-    $onInit() {
-        this.notificationEventSubscription = 
-                    this.notificationEventService
-                        .updateVisitStatusObservable
-                        .subscribe((ntf) => this._onSuccess(ntf));
-    }
-    
-    acceptSelectedVisits(id = -1) {
-        this.isUpdating({isUpdating: true});
-        this.adminActionService
-                .acceptVisits(this.selectedVisits.map((elem) => elem.id))
-                .subscribe(
-                    () => {
-                        this._onSuccess({status: NOTF_TYPE.ACCEPT, id: id});
-                    },
-                    (err) => { 
-                        console.log(err);
-                        this.isUpdating({isUpdating: false});
-                    }
-                );       
-        
-    }
+  $onInit() {
+    this.notificationEventSubscription =
+      this.notificationEventService
+        .updateVisitStatusObservable
+        .subscribe((ntf) => this._onSuccess(ntf));
+  }
 
-    _onSuccess(ntf) {
-        this.alertEventService.showSuccessAlert(
-            ntf.status === NOTF_TYPE.ACCEPT ? 'Wizyty zostały zaakceptowane.' : 'Wizyty zostały odrzucone.'
-        );
-        this.onVisitsUpdated({ visit: ntf});
-        this.notificationEventService.refreshNotificationCount();
-    }
+  acceptSelectedVisits(id = -1) {
+    this.isUpdating({ isUpdating: true });
+    this.adminActionService
+      .acceptVisits(this.selectedVisits.map((elem) => elem.id))
+      .subscribe(
+        () => {
+          this._onSuccess({ status: NOTF_TYPE.ACCEPT, id });
+        },
+        (err) => {
+          console.log(err);
+          this.isUpdating({ isUpdating: false });
+        }
+      );
 
-    openRejectModal() {
-        const modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'modalRejectionVisit'
-        });
+  }
 
-         modalInstance.result.then(
-            (rejectReason) => {
-                this._cancelSelectedVisits(rejectReason);
-            },
-            () => {}
-        );        
-    }
+  _onSuccess(ntf) {
+    this.alertEventService.showSuccessAlert(
+      ntf.status === NOTF_TYPE.ACCEPT 
+        ? 'Wizyty zostały zaakceptowane.' 
+        : 'Wizyty zostały odrzucone.'
+    );
+    this.onVisitsUpdated({ visit: ntf });
+    this.notificationEventService.refreshNotificationCount();
+  }
 
-    _cancelSelectedVisits(rejectReason, id = -1) {
-        this.isUpdating({isUpdating: true});
-        this.adminActionService
-            .rejectVisits(this.selectedVisits.map((elem) => elem.id), rejectReason)
-            .subscribe(
-                () => {
-                    this._onSuccess({status: NOTF_TYPE.CANCEL, id: id, rejectReason: rejectReason});
-                },
-                (err) => {
-                    console.log(err);
-                    this.isUpdating({isUpdating: false});
-                }
-            ); 
-    }
+  openRejectModal() {
+    const modalInstance = this.$uibModal.open({
+      animation: true,
+      component: 'modalRejectionVisit'
+    });
 
-    $onDestroy() {
-        this.notificationEventSubscription.unsubscribe();
-    }
+    modalInstance.result.then(
+      (rejectReason) => {
+        this._cancelSelectedVisits(rejectReason);
+      },
+      () => { }
+    );
+  }
+
+  _cancelSelectedVisits(rejectReason, id = -1) {
+    this.isUpdating({ isUpdating: true });
+    this.adminActionService
+      .rejectVisits(this.selectedVisits.map((elem) => elem.id), rejectReason)
+      .subscribe(
+        () => {
+          this._onSuccess({ status: NOTF_TYPE.CANCEL, id, rejectReason });
+        },
+        (err) => {
+          console.log(err);
+          this.isUpdating({ isUpdating: false });
+        }
+      );
+  }
+
+  $onDestroy() {
+    this.notificationEventSubscription.unsubscribe();
+  }
 }
 
 AdminActionPanelController.$inject = ['adminActionService', 'notificationEventService', 'alertEventService', '$uibModal'];
 
 
 export const AdminActionPanelComponent = {
-    bindings: {
-        selectedVisits: "<",
-        onVisitsUpdated: "&",
-        isUpdating: "&"
-    },
-    template: template,
-    controller: AdminActionPanelController
+  bindings: {
+    selectedVisits: "<",
+    onVisitsUpdated: "&",
+    isUpdating: "&"
+  },
+  template,
+  controller: AdminActionPanelController
 }

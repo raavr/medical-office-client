@@ -3,21 +3,21 @@ import template from "./visit-selector.component.html";
 
 class VisitSelectorController {
 
-    $onInit() {
-        this.isSelected = false;
-    }
+  $onInit() {
+    this.isSelected = false;
+  }
 
-    selectAll() {
-        this.isSelected = !this.isSelected;
-        this.onSelectBtnClicked({isSelected: this.isSelected});
-    }
+  selectAll() {
+    this.isSelected = !this.isSelected;
+    this.onSelectBtnClicked({ isSelected: this.isSelected });
+  }
 }
 
 
 export const VisitSelectorComponent = {
-    bindings: {
-        onSelectBtnClicked: "&"
-    },
-    template: template,
-    controller: VisitSelectorController
+  bindings: {
+    onSelectBtnClicked: "&"
+  },
+  template,
+  controller: VisitSelectorController
 }

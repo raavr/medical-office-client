@@ -3,8 +3,8 @@ import visitBrowse from './browse/visit-browse';
 import visitManage from './manage/visit-manage';
 
 export default 
-    angular.module("visit", [
-        visitSignup,
-        visitBrowse,
-        visitManage
-    ]).name;
+  angular.module("visit", [
+    visitSignup,
+    visitBrowse,
+    visitManage
+  ]).name;

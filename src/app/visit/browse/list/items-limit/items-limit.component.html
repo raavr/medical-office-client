@@ -1,3 +1,4 @@
 <div class="btn-group items-limit">
-    <button type="button" class="btn items-limit__btn" ng-repeat="entry in $ctrl.entries track by $index" ng-click="$ctrl.onLimitChange({entry: entry})" uib-btn-radio="{{entry}}" ng-model="$ctrl.selectedEntry">{{entry}}</button>  
+  <button type="button" class="btn items-limit__btn" ng-repeat="entry in $ctrl.entries track by $index" ng-click="$ctrl.onLimitChange({entry: entry})"
+    uib-btn-radio="{{entry}}" ng-model="$ctrl.selectedEntry">{{entry}}</button>
 </div>

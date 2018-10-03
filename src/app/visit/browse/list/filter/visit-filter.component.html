@@ -1,72 +1,62 @@
 <div class="row visit-filter">
-    <div ng-if="$ctrl.type === 'current' && $ctrl.authService.isAdmin()" class="col-xs-1"></div>
-    <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 visit-filter__label">
-            Data:
-        </div>
-        <div class="col-xs-8 col-sm-12 visit-filter__content">
-            <input type="text" 
-               class="form-control" 
-               ng-model="$ctrl.filter.date" 
-               ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})" 
-               ng-model-options="{
-                                    updateOn: 'default blur',
-                                    debounce: {
-                                        'default': 250,
-                                        'blur': 0
-                                    }
-                                 }">
-        </div>
+  <div ng-if="$ctrl.type === 'current' && $ctrl.authService.isAdmin()" class="col-xs-1"></div>
+  <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 visit-filter__label">
+      Data:
     </div>
-    <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 visit-filter__label">
-            Godzina:
-        </div>
-        <div class="col-xs-8 col-sm-12 visit-filter__content">
-            <input type="text" 
-               class="form-control" 
-               ng-model="$ctrl.filter.time" 
-               ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})" 
-               ng-model-options="{
-                                    updateOn: 'default blur',
-                                    debounce: {
-                                        'default': 250,
-                                        'blur': 0
-                                    }
-                                 }">
-        </div>
+    <div class="col-xs-8 col-sm-12 visit-filter__content">
+      <input type="text" class="form-control" ng-model="$ctrl.filter.date" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})"
+        ng-model-options="{
+          updateOn: 'default blur',
+          debounce: {
+            'default': 250,
+            'blur': 0
+          }
+        }">
     </div>
-    <div ng-if="!$ctrl.authService.isAdmin()" class="col-sm-4"></div>
-    <div ng-if="$ctrl.authService.isAdmin()" 
-         ng-class="{ 'col-xs-12 col-sm-3': $ctrl.type === 'current', 
-                     'col-xs-12 col-sm-4': $ctrl.type === 'past' }">
-        <div class="col-xs-4 visit-filter__label">
-            Pacjent:
-        </div>
-        <div class="col-xs-8 col-sm-12 visit-filter__content">
-            <input type="text" 
-               class="form-control" 
-               ng-model="$ctrl.filter.name" 
-               ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})" 
-               ng-model-options="{
-                                    updateOn: 'default blur',
-                                    debounce: {
-                                        'default': 250,
-                                        'blur': 0
-                                    }
-                                 }">
-        </div>
+  </div>
+  <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 visit-filter__label">
+      Godzina:
     </div>
-    <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 visit-filter__label">Status:</div>
-        <div class="col-xs-8 col-sm-12 visit-filter__content">
-            <select class="form-control" ng-model="$ctrl.filter.status" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})">
-                <option value="all">Wszystkie</option>
-                <option value="accepted">Zaakceptowane</option>
-                <option value="reserved">Oczekujące</option>
-                <option value="canceled">Odrzucone</option>
-            </select>
-        </div>
+    <div class="col-xs-8 col-sm-12 visit-filter__content">
+      <input type="text" class="form-control" ng-model="$ctrl.filter.time" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})"
+        ng-model-options="{
+          updateOn: 'default blur',
+          debounce: {
+            'default': 250,
+            'blur': 0
+          }
+        }">
     </div>
-    <div class="col-xs-2"></div>
+  </div>
+  <div ng-if="!$ctrl.authService.isAdmin()" class="col-sm-4"></div>
+  <div ng-if="$ctrl.authService.isAdmin()" ng-class="{ 'col-xs-12 col-sm-3': $ctrl.type === 'current', 
+      'col-xs-12 col-sm-4': $ctrl.type === 'past' }">
+    <div class="col-xs-4 visit-filter__label">
+      Pacjent:
+    </div>
+    <div class="col-xs-8 col-sm-12 visit-filter__content">
+      <input type="text" class="form-control" ng-model="$ctrl.filter.name" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})"
+        ng-model-options="{
+          updateOn: 'default blur',
+          debounce: {
+            'default': 250,
+            'blur': 0
+          }
+        }">
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 visit-filter__label">Status:</div>
+    <div class="col-xs-8 col-sm-12 visit-filter__content">
+      <select class="form-control" ng-model="$ctrl.filter.status" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})">
+        <option value="all">Wszystkie</option>
+        <option value="accepted">Zaakceptowane</option>
+        <option value="reserved">Oczekujące</option>
+        <option value="canceled">Odrzucone</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-xs-2"></div>
 </div>

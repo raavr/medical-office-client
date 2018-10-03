@@ -1,67 +1,49 @@
 <div class="container partials-content">
-    <div class="row">
-        <div class="col-sm-12 col-md-offset-2 col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">Zapisz pacjenta na wizytę</div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <form name="signupUserVisitForm" autocomplete="off">
-                                <div class="form-group">
-                                    <label for="datepicker">Data wizyty:</label>
-                                    <div class="input-group date">
-                                        <input bt-datepicker 
-                                            change-date="$ctrl.changeDate(event)" 
-                                            class="form-control" 
-                                            disabled-dates="$ctrl.disabledDates" 
-                                            current-date="$ctrl.formVisit.date" 
-                                            autoclose="true" 
-                                            multidate="false">
-                                        <span class="input-group-addon">
-                                            <i class="glyphicon glyphicon-th" required></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="visittime">Godzina wizyty:</label>
-                                    <select class="form-control" 
-                                            id="visittime" 
-                                            ng-model="$ctrl.formVisit.selectedTime"
-                                            ng-options="s.visitTime for s in $ctrl.formVisit.times" 
-                                            required>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="userselect">Wybierz pacjenta</label>
-                                    <input type="text" 
-                                        name="userselect" 
-                                        ng-model="$ctrl.asyncSelectedUser" 
-                                        uib-typeahead="user.name for user in $ctrl.findUsers($viewValue)" 
-                                        typeahead-loading="loadingUsers" 
-                                        typeahead-no-results="noResults" 
-                                        typeahead-wait-ms="0" 
-                                        typeahead-editable="false" 
-                                        typeahead-on-select="$ctrl.onSelectUser($item)" 
-                                        class="form-control" required>
-                                    <i ng-show="loadingUsers" class="glyphicon glyphicon-refresh"></i>
-                                    <div class="help-block text-danger" ng-show="!signupUserVisitForm.userselect.$pristine && $ctrl.asyncSelectedUser == undefined">
-                                        Nie znaleziono takiego pacjenta
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="description">Informacje dodatkowe:</label>
-                                    <textarea class="form-control" id="description" ng-model="$ctrl.formVisit.desc"></textarea>
-                                </div>
-                                <button type="submit" 
-                                        class="btn btn-success" 
-                                        ng-disabled="$ctrl.isSubmitDisabled()" 
-                                        ng-click="$ctrl.addVisit()">Zapisz pacjenta na wizytę</button>
-                                <a class="btn btn-danger" role="button" ui-sref="visit-browse.current">Anuluj</a>
-                            </form>
-                        </div>
-                    </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-offset-2 col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">Zapisz pacjenta na wizytę</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <form name="signupUserVisitForm" autocomplete="off">
+                <div class="form-group">
+                  <label for="datepicker">Data wizyty:</label>
+                  <div class="input-group date">
+                    <input bt-datepicker change-date="$ctrl.changeDate(event)" class="form-control" disabled-dates="$ctrl.disabledDates" current-date="$ctrl.formVisit.date"
+                      autoclose="true" multidate="false">
+                    <span class="input-group-addon">
+                      <i class="glyphicon glyphicon-th" required></i>
+                    </span>
+                  </div>
                 </div>
+                <div class="form-group">
+                  <label for="visittime">Godzina wizyty:</label>
+                  <select class="form-control" id="visittime" ng-model="$ctrl.formVisit.selectedTime" ng-options="s.visitTime for s in $ctrl.formVisit.times"
+                    required>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="userselect">Wybierz pacjenta</label>
+                  <input type="text" name="userselect" ng-model="$ctrl.asyncSelectedUser" uib-typeahead="user.name for user in $ctrl.findUsers($viewValue)"
+                    typeahead-loading="loadingUsers" typeahead-no-results="noResults" typeahead-wait-ms="0" typeahead-editable="false"
+                    typeahead-on-select="$ctrl.onSelectUser($item)" class="form-control" required>
+                  <i ng-show="loadingUsers" class="glyphicon glyphicon-refresh"></i>
+                  <div class="help-block text-danger" ng-show="!signupUserVisitForm.userselect.$pristine && $ctrl.asyncSelectedUser == undefined">
+                    Nie znaleziono takiego pacjenta
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="description">Informacje dodatkowe:</label>
+                  <textarea class="form-control" id="description" ng-model="$ctrl.formVisit.desc"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success" ng-disabled="$ctrl.isSubmitDisabled()" ng-click="$ctrl.addVisit()">Zapisz pacjenta na wizytę</button>
+                <a class="btn btn-danger" role="button" ui-sref="visit-browse.current">Anuluj</a>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

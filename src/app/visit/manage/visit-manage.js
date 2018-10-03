@@ -7,10 +7,10 @@ import DayOfWeekNameFilter from './day-of-week/day-of-week.filter';
 import { DayOfWeekComponent } from './day-of-week/day-of-week.component';
 import Alert from '../../alert/alert';
 
-export default 
-    angular.module("visit.manage", [uiRouter, visitManageService, visitCommon, Alert])
-           .config(VisitManageConfig)
-           .component("visitManage", VisitManageComponent)
-           .component("dayOfWeek", DayOfWeekComponent)
-           .filter("dayOfWeekName", DayOfWeekNameFilter)
-           .name;
+export default
+  angular.module("visit.manage", [uiRouter, visitManageService, visitCommon, Alert])
+    .config(VisitManageConfig)
+    .component("visitManage", VisitManageComponent)
+    .component("dayOfWeek", DayOfWeekComponent)
+    .filter("dayOfWeekName", DayOfWeekNameFilter)
+    .name;

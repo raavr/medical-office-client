@@ -1,29 +1,26 @@
-import { Observable } from 'rxjs/Observable';
 import { CONFIG } from '../../app.constant';
+import { handleRequest } from '../../app.helper';
 
 class VisitManageService {
 
-    constructor($http) {
-        this.$http = $http;
-    }
+  constructor($http) {
+    this.$http = $http;
+  }
 
-    getAvailableTimesAndDisabledDates() {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/weekly_times');
-        return Observable.fromPromise(resPromise)
-            .map(res => res.data)
-            .catch(error => Observable.throw(error));
-    }
+  getAvailableTimesAndDisabledDates() {
+    const reqPromise = this.$http.get(CONFIG.ENDPOINT + '/api/weekly_times');
+    return handleRequest(reqPromise);
+  }
 
-    updateAvailableTimesAndDisabledDates(datetimes) {
-        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/weekly_times', datetimes);
-        return Observable.fromPromise(resPromise)
-            .catch(error => Observable.throw(error));
-    }
+  updateAvailableTimesAndDisabledDates(datetimes) {
+    const reqPromise = this.$http.put(CONFIG.ENDPOINT + '/api/weekly_times', datetimes);
+    return handleRequest(reqPromise);
+  }
 
 }
 
 VisitManageService.$inject = ['$http'];
 
 export default angular.module("visit.manage.service", [])
-    .service("visitManageService", VisitManageService)
-    .name;
+  .service("visitManageService", VisitManageService)
+  .name;

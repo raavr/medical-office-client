@@ -1,38 +1,40 @@
 <div class="row list-item" ng-class="{ 'list-item--is-even': $ctrl.isEven }">
-    <div ng-if="$ctrl.type === 'current'" class="col-xs-12 col-sm-1">
-        <div class="col-xs-4 list-item__label"></div> 
-        <div class="col-xs-8 col-sm-12 list-item__content">
-            <div class="checkbox checkbox-success checkbox-circle">
-                <input type="checkbox" ng-model="$ctrl.visit.isSelected" ng-change="$ctrl.toggleSelection()">
-                <label></label>
-            </div>              
-        </div>
+  <div ng-if="$ctrl.type === 'current'" class="col-xs-12 col-sm-1">
+    <div class="col-xs-4 list-item__label"></div>
+    <div class="col-xs-8 col-sm-12 list-item__content">
+      <div class="checkbox checkbox-success checkbox-circle">
+        <input type="checkbox" ng-model="$ctrl.visit.isSelected" ng-change="$ctrl.toggleSelection()">
+        <label></label>
+      </div>
     </div>
-    <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 list-item__label">Data:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.visitDate | date : 'dd/MM/yyyy'}}</div>
+  </div>
+  <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 list-item__label">Data:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.visitDate | date : 'dd/MM/yyyy'}}</div>
+  </div>
+  <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 list-item__label">Godzina:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.visitDate | date : 'HH:mm'}}</div>
+  </div>
+  <div ng-class="{ 'col-xs-12 col-sm-3': $ctrl.type === 'current', 
+      'col-xs-12 col-sm-4': $ctrl.type === 'past' }">
+    <div class="col-xs-4 list-item__label">Pacjent:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.patient.name}} {{$ctrl.visit.patient.surname}}</div>
+  </div>
+  <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 list-item__label">Status:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">
+      <button type="button" ng-if="$ctrl.visit.status === 'reserved'" class="btn btn-warning list-item__type-btn list-item__type-btn--warning">Oczekuje</button>
+      <button type="button" ng-if="$ctrl.visit.status === 'accepted'" class="btn btn-success list-item__type-btn list-item__type-btn--success">Zaakceptowano</button>
+      <button type="button" ng-if="$ctrl.visit.status === 'canceled'" class="btn btn-danger list-item__type-btn list-item__type-btn--danger">Odrzucono</button>
     </div>
-     <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 list-item__label">Godzina:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.visitDate | date : 'HH:mm'}}</div>
-     </div>
-    <div ng-class="{ 'col-xs-12 col-sm-3': $ctrl.type === 'current', 
-                     'col-xs-12 col-sm-4': $ctrl.type === 'past' }">
-            <div class="col-xs-4 list-item__label">Pacjent:</div>
-            <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.patient.name}} {{$ctrl.visit.patient.surname}}</div>
+  </div>
+  <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-4 list-item__label">Akcje:</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">
+      <a ng-href="#" uib-tooltip="Pokaż więcej" ng-click="$ctrl.showMore()" class="btn btn-warning list-item__action-btn">
+        <i class="glyphicon glyphicon-info-sign"></i>
+      </a>
     </div>
-    <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 list-item__label">Status:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">
-            <button type="button" ng-if="$ctrl.visit.status === 'reserved'" class="btn btn-warning list-item__type-btn list-item__type-btn--warning">Oczekuje</button>
-            <button type="button" ng-if="$ctrl.visit.status === 'accepted'" class="btn btn-success list-item__type-btn list-item__type-btn--success">Zaakceptowano</button>
-            <button type="button" ng-if="$ctrl.visit.status === 'canceled'" class="btn btn-danger list-item__type-btn list-item__type-btn--danger">Odrzucono</button>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-2">
-        <div class="col-xs-4 list-item__label">Akcje:</div>
-        <div class="col-xs-8 col-sm-12 list-item__content">
-            <a ng-href="#" uib-tooltip="Pokaż więcej" ng-click="$ctrl.showMore()" class="btn btn-warning list-item__action-btn"><i class="glyphicon glyphicon-info-sign"></i></a>
-        </div>
-    </div>
+  </div>
 </div>

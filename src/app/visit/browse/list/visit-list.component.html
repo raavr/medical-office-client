@@ -1,45 +1,28 @@
 <div ng-if="!$ctrl.parent.isLoading()" class="container-fluid">
-    <visit-selector ng-if="$ctrl.authService.isAdmin() && $ctrl.getVisitType() === 'current'" on-select-btn-clicked="$ctrl.onSelectBtnClicked(isSelected)"></visit-selector>
-    <visit-list-header type="$ctrl.getVisitType()"></visit-list-header>
-    <visit-filter on-filter-change="$ctrl.onFilterChange(filter)" type="$ctrl.getVisitType()"></visit-filter>
-    <div class="visits-container">
-        <admin-visit ng-if="$ctrl.authService.isAdmin()" 
-                     ng-repeat="visit in $ctrl.visits" 
-                     visit="visit"
-                     type="$ctrl.getVisitType()" 
-                     is-even="$index % 2 === 0"
-                     on-change="$ctrl.onVisitSelected(visitId)">
-        </admin-visit>
-        <user-visit ng-if="!$ctrl.authService.isAdmin()" 
-                    ng-repeat="visit in $ctrl.visits" 
-                    visit="visit"
-                    type="$ctrl.getVisitType()" 
-                    is-even="$index % 2 === 0"
-                    on-visit-canceled="$ctrl.onVisitCanceledByUser(visitId)"
-                    is-updating="$ctrl.showUpdatingPanel(isUpdating)">
-        </user-visit>
-        <div ng-if="$ctrl.isUpdating" class="loading-overlay"><span>Proszę czekać...</span></div>
-        <p ng-if="$ctrl.totalItems === 0" class="visits__status">Brak wizyt</p>
+  <visit-selector ng-if="$ctrl.authService.isAdmin() && $ctrl.getVisitType() === 'current'" on-select-btn-clicked="$ctrl.onSelectBtnClicked(isSelected)"></visit-selector>
+  <visit-list-header type="$ctrl.getVisitType()"></visit-list-header>
+  <visit-filter on-filter-change="$ctrl.onFilterChange(filter)" type="$ctrl.getVisitType()"></visit-filter>
+  <div class="visits-container">
+    <admin-visit ng-if="$ctrl.authService.isAdmin()" ng-repeat="visit in $ctrl.visits" visit="visit" type="$ctrl.getVisitType()"
+      is-even="$index % 2 === 0" on-change="$ctrl.onVisitSelected(visitId)">
+    </admin-visit>
+    <user-visit ng-if="!$ctrl.authService.isAdmin()" ng-repeat="visit in $ctrl.visits" visit="visit" type="$ctrl.getVisitType()"
+      is-even="$index % 2 === 0" on-visit-canceled="$ctrl.onVisitCanceledByUser(visitId)" is-updating="$ctrl.showUpdatingPanel(isUpdating)">
+    </user-visit>
+    <div ng-if="$ctrl.isUpdating" class="loading-overlay">
+      <span>Proszę czekać...</span>
     </div>
-    <admin-action-panel ng-if="$ctrl.authService.isAdmin() && $ctrl.getVisitType() === 'current'" selected-visits="$ctrl.selectedVisits" on-visits-updated="$ctrl.onVisitsModified(visit)" is-updating="$ctrl.showUpdatingPanel(isUpdating)"></admin-action-panel>
-    <div class="row">
-        <div class="col-xs-12">
-            <ul uib-pagination 
-                total-items="$ctrl.totalItems" 
-                ng-model="$ctrl.filters.currentPage" 
-                max-size="5" 
-                num-pages="$ctrl.filters.numPages" 
-                items-per-page="$ctrl.filters.limit" 
-                ng-change="$ctrl.getVisits()"
-                class="pagination--no-margin" 
-                boundary-links="true" 
-                rotate="false" 
-                previous-text="&lsaquo;" 
-                next-text="&rsaquo;" 
-                first-text="&laquo;" 
-                last-text="&raquo;">
-            </ul>
-            <items-limit entries="[5, 10, 25, 50]" on-limit-change="$ctrl.onLimitChange(entry)"></items-limit>
-        </div>
+    <p ng-if="$ctrl.totalItems === 0" class="visits__status">Brak wizyt</p>
+  </div>
+  <admin-action-panel ng-if="$ctrl.authService.isAdmin() && $ctrl.getVisitType() === 'current'" selected-visits="$ctrl.selectedVisits"
+    on-visits-updated="$ctrl.onVisitsModified(visit)" is-updating="$ctrl.showUpdatingPanel(isUpdating)"></admin-action-panel>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.filters.currentPage" max-size="5" num-pages="$ctrl.filters.numPages"
+        items-per-page="$ctrl.filters.limit" ng-change="$ctrl.getVisits()" class="pagination--no-margin" boundary-links="true"
+        rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+      </ul>
+      <items-limit entries="[5, 10, 25, 50]" on-limit-change="$ctrl.onLimitChange(entry)"></items-limit>
     </div>
+  </div>
 </div>
