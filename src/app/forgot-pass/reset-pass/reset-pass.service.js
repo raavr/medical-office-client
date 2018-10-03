@@ -1,18 +1,16 @@
-import { Observable } from 'rxjs/Observable';
 import { CONFIG } from '../../app.constant';
+import { handleRequest } from '../../app.helper';
 
 export class ResetPassService {
 
-    constructor($http) {
-        this.$http = $http;
-    }
+  constructor($http) {
+    this.$http = $http;
+  }
 
-    resetPassword(email) {
-        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/reset', email);
-        return Observable.fromPromise(resPromise)
-                         .map(res => res.data.message)
-                         .catch(error => Observable.throw(error));
-    }
+  resetPassword(email) {
+    const reqPromise = this.$http.put(CONFIG.ENDPOINT + '/api/reset', email);
+    return handleRequest(reqPromise);
+  }
 
 }
 

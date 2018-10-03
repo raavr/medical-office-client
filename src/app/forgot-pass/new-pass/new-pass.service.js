@@ -1,27 +1,21 @@
-import { Observable } from 'rxjs/Observable';
 import { CONFIG } from '../../app.constant';
+import { handleRequest } from '../../app.helper';
 
 export class NewPassService {
 
-    constructor($http) {
-        this.$http = $http;
-    }
+  constructor($http) {
+    this.$http = $http;
+  }
 
-    _transformPromise(httpPromise) {
-        return Observable.fromPromise(httpPromise)
-                .map(res => res.data.message)
-                .catch(error => Observable.throw(error));
-    }
+  setNewPassword(token, newPass) {
+    const reqPromise = this.$http.put(CONFIG.ENDPOINT + '/api/reset/' + token, newPass);
+    return handleRequest(reqPromise);
+  }
 
-    setNewPassword(token, newPass) {
-        const resPromise = this.$http.put(CONFIG.ENDPOINT + '/api/reset/' + token, newPass);
-        return this._transformPromise(resPromise);
-    }
-    
-    checkValidToken(token) {
-        const resPromise = this.$http.get(CONFIG.ENDPOINT + '/api/reset/' + token);
-        return this._transformPromise(resPromise);
-    }
+  checkValidToken(token) {
+    const reqPromise = this.$http.get(CONFIG.ENDPOINT + '/api/reset/' + token);
+    return handleRequest(reqPromise);
+  }
 
 }
 

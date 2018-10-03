@@ -3,9 +3,9 @@ import { ResetPassComponent } from './reset-pass.component';
 import ResetPassConfig from './reset-pass.config';
 import { ResetPassService } from './reset-pass.service';
 
-export default 
-    angular.module("reset-pass", [uiRouter])
-           .config(ResetPassConfig)
-           .component("resetPass", ResetPassComponent)
-           .service("resetPassService", ResetPassService)
-           .name;
+export default
+  angular.module("reset-pass", [uiRouter])
+    .config(ResetPassConfig)
+    .component("resetPass", ResetPassComponent)
+    .service("resetPassService", ResetPassService)
+    .name;
