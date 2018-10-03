@@ -1,12 +1,12 @@
 .menu-icons-dropdown {
-    padding: 15px 10px;
-    display: inline-block;
-
-    & &__list {
-        right: 0;
-        left: auto;
-        margin-top: 0;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
+  padding: 15px 10px;
+  display: inline-block;
+  
+  & &__list {
+    right: 0;
+    left: auto;
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 }

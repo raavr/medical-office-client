@@ -1,22 +1,8 @@
 import "./navbar-admin.component.scss";
 import template from "./navbar-admin.component.html";
-
-class NavbarAdminController {
-    constructor($state) {
-        this.$state = $state;
-    }
-
-    isActive() {
-        const cState = this.$state.is("visit-browse.admin-current"),
-            pState = this.$state.is("visit-browse.admin-past");
-
-        return cState || pState;
-    }
-}
-
-NavbarAdminController.$inject = ['$state'];
+import { NavbarUserController } from "../navbar-user/navbar-user.component";
 
 export const NavbarAdminComponent = {
-    template: template,
-    controller: NavbarAdminController
+  template,
+  controller: NavbarUserController
 }

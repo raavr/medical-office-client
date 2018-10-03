@@ -1,19 +1,19 @@
 @import '../navbar.constant';
 
 .app-navbar {   
-    & &__nav li > &__link--signup {
-        margin: 4px;
-        padding: 10px;
-        color: $navbar-color-light;
+  & &__nav li > &__link--signup {
+    margin: 4px;
+    padding: 10px;
+    color: $navbar-color-light;
 
-        &:hover, &:focus {
-            background-color: $navbar-signup-color;
-            opacity: 0.9;
-            color: $navbar-color-light;
-        }
-        
-        &:after {
-            display: none;
-        }
+    &:hover, &:focus {
+      background-color: $navbar-signup-color;
+      opacity: 0.9;
+      color: $navbar-color-light;
     }
+    
+    &:after {
+      display: none;
+    }
+  }
 }

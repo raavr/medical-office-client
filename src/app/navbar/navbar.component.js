@@ -4,14 +4,14 @@ import { CONFIG } from '../app.constant';
 import { Observable } from 'rxjs/Observable';
 
 class NavbarController {
-    constructor(authService) {
-        this.authService = authService;
-    }
+  constructor(authService) {
+    this.authService = authService;
+  }
 }
 
 NavbarController.$inject = ['authService'];
 
 export const NavbarComponent = {
-    template: template,
-    controller: NavbarController
+  template,
+  controller: NavbarController
 }

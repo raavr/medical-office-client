@@ -8,13 +8,13 @@ import { NavbarUserComponent } from './navbar-user/navbar-user.component';
 import Notification from '../notification/notification';
 import { SmoothScrollDirective } from './smooth-scroll.directive';
 
-export default 
-    angular.module("navbar", [ Auth, Notification ])
-           .directive("collapseNavbar", CollapseNavbarDirective)
-           .directive("smoothScroll", SmoothScrollDirective)
-           .component("navbar", NavbarComponent)
-           .component("navbarSign", NavbarSignComponent)
-           .component("navbarAccount", NavbarAccountComponent)
-           .component("navbarAdmin", NavbarAdminComponent)
-           .component("navbarUser", NavbarUserComponent)
-           .name;
+export default
+  angular.module("navbar", [Auth, Notification])
+    .directive("collapseNavbar", CollapseNavbarDirective)
+    .directive("smoothScroll", SmoothScrollDirective)
+    .component("navbar", NavbarComponent)
+    .component("navbarSign", NavbarSignComponent)
+    .component("navbarAccount", NavbarAccountComponent)
+    .component("navbarAdmin", NavbarAdminComponent)
+    .component("navbarUser", NavbarUserComponent)
+    .name;
