@@ -1,18 +1,21 @@
-import { NotificationBaseService } from './notification-base.service';
+import { handleRequest } from '../../../app.helper';
+import { CONFIG } from '../../../app.constant';
 
-export class NotificationService extends NotificationBaseService {
+export class NotificationService {
 
-    constructor($http) {
-       super($http);
-    }
+  constructor($http) {
+    this.$http = $http;
+  }
 
-    getNotificationsCount() {
-        return super._getRequest('/api/notifications/count').map((res) => res.data.count);
-    }
+  getNotificationsCount() {
+    const reqPromise = this.$http.get(CONFIG.ENDPOINT + '/api/notifications/count');
+    return handleRequest(reqPromise);
+  }
 
-    getNotifications() {
-        return super._getRequest('/api/notifications').map((res) => res.data);
-    }
+  getNotifications() {
+    const reqPromise = this.$http.get(CONFIG.ENDPOINT + '/api/notifications');
+    return handleRequest(reqPromise);
+  }
 
 }
 

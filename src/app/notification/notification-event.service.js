@@ -3,34 +3,34 @@ import { Subject } from 'rxjs/Subject';
 
 export class NotificationEventService {
 
-    constructor() {
-        this.loadNotificationSource = new Subject();
-        this.loadNotificationObservable = this.loadNotificationSource.asObservable();
+  constructor() {
+    this.loadNotificationSource = new Subject();
+    this.loadNotification$ = this.loadNotificationSource.asObservable();
 
-        this.updateVisitStatusSource = new Subject();
-        this.updateVisitStatusObservable = this.updateVisitStatusSource.asObservable();
+    this.updateVisitStatusSource = new Subject();
+    this.updateVisitStatusObservable = this.updateVisitStatusSource.asObservable();
 
-        this.refreshNotificationCountSource = new Subject();
-        this.refreshNotificationCountObservable = this.refreshNotificationCountSource.asObservable();
+    this.refreshNotificationCountSource = new Subject();
+    this.refreshNotificationCount$ = this.refreshNotificationCountSource.asObservable();
 
-        this.hideNotificationMenuSource = new Subject();
-        this.hideNotificationMenuSourceObservable = this.hideNotificationMenuSource.asObservable();
-    }
-   
-    loadNotificationEvent() {
-        this.loadNotificationSource.next();
-    }
+    this.hideNotificationMenuSource = new Subject();
+    this.hideNotificationMenuSource$ = this.hideNotificationMenuSource.asObservable();
+  }
 
-    updateVisitStatusEvent(ntf) {
-        this.updateVisitStatusSource.next(ntf);
-    }
+  loadNotificationEvent() {
+    this.loadNotificationSource.next();
+  }
 
-    refreshNotificationCount() {
-        this.refreshNotificationCountSource.next();
-    }
+  updateVisitStatusEvent(ntf) {
+    this.updateVisitStatusSource.next(ntf);
+  }
 
-    hideNotificationMenu() {
-        this.hideNotificationMenuSource.next();
-    }
-   
+  refreshNotificationCount() {
+    this.refreshNotificationCountSource.next();
+  }
+
+  hideNotificationMenu() {
+    this.hideNotificationMenuSource.next();
+  }
+
 }

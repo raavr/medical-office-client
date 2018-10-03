@@ -1,86 +1,66 @@
 import '../common/notification-item.scss';
 import template from './notification-user.component.html';
+import { NotificationBaseCtrl } from '../common/notification-base.controller';
 
-class NotificationUserCtrl {
-    constructor(notificationEventService, notificationService, notificationUserService, $uibModal) {
-        this.notificationEventService = notificationEventService;
-        this.notificationService = notificationService;
-        this.notificationUserService = notificationUserService;
-        this.$uibModal = $uibModal;
-    }
+class NotificationUserCtrl extends NotificationBaseCtrl {
 
-    $onInit() {
-        this._initRefreshEvent();
-        this._getNotifications();
-    }
+  constructor(notificationEventService, notificationService, notificationUserService, $uibModal) {
+    super();
+    this.notificationEventService = notificationEventService;
+    this.notificationService = notificationService;
+    this.notificationUserService = notificationUserService;
+    this.$uibModal = $uibModal;
+  }
 
-    _getNotifications() {
-        this.notificationService
-            .getNotifications()
-            .do(() => this.onNotificationLoaded({isLoading: false}))
-            .subscribe(data => this.notifications = data);
-    }
+  markAsRead(notification) {
+    this.notificationUserService
+      .markAsRead(notification.notification.id)
+      .subscribe(
+        () => {
+          let idx = this.notifications.findIndex((notf) => notf === notification);
+          this.notifications.splice(idx, 1);
+          this.notificationEventService.refreshNotificationCount();
+        },
+        (err) => console.log(err)
+      );
+  }
 
-    _initRefreshEvent() {
-        this.notificationEventSubscription = 
-            this.notificationEventService
-                .loadNotificationObservable
-                .subscribe(() => this._getNotifications());
-    }
+  markAllAsRead() {
+    this.notificationUserService
+      .markAllAsRead()
+      .subscribe(
+        () => {
+          this.notifications = [];
+          this.notificationEventService.refreshNotificationCount();
+        },
+        (err) => console.log(err)
+      );
+  }
 
-    markAsRead(notification) {
-        this.notificationUserService
-            .markAsRead(notification.notification.id)
-            .subscribe(
-                () => { 
-                    let idx = this.notifications.findIndex((notf) => notf === notification);
-                    this.notifications.splice(idx, 1);
-                    this.notificationEventService.refreshNotificationCount();
-                },
-                (err) => console.log(err)
-            );
-    }
+  openNotificationModal(index) {
+    const modalInstance = this.$uibModal.open({
+      animation: true,
+      component: 'modalUserNotification',
+      resolve: {
+        notification: () => this.notifications[index]
+      }
+    });
 
-    markAllAsRead() {
-        this.notificationUserService
-            .markAllAsRead()
-            .subscribe(
-                () => { 
-                    this.notifications = [];
-                    this.notificationEventService.refreshNotificationCount();
-                },
-                (err) => console.log(err)
-            );
-    }
+    modalInstance.result.then(
+      () => this.markAsRead(this.notifications[index]),
+      () => { }
+    );
+  }
 
-    $onDestroy() {
-        this.notificationEventSubscription.unsubscribe();
-    }
 
-    openNotificationModal(index) {
-        let modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'modalUserNotification',
-            resolve: {
-                notification: () => this.notifications[index]
-            }  
-        });
-
-        modalInstance.result.then(
-            () =>  this.markAsRead(this.notifications[index]),
-            () => {}
-        );
-    }
-
-    
 }
 
 NotificationUserCtrl.$inject = ['notificationEventService', 'notificationService', 'notificationUserService', '$uibModal'];
 
 export const NotificationUserComponent = {
-    bindings: {
-        onNotificationLoaded: "&"
-    },
-    template: template,
-    controller: NotificationUserCtrl
+  bindings: {
+    onNotificationLoaded: "&"
+  },
+  template,
+  controller: NotificationUserCtrl
 }

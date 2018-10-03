@@ -1,92 +1,73 @@
 import '../common/notification-item.scss';
 import template from './notification-admin.component.html';
 import { NOTF_TYPE } from './notification-type.enum';
+import { NotificationBaseCtrl } from '../common/notification-base.controller';
 
-class NotificationAdminCtrl {
-    
-    constructor(notificationEventService, notificationService, $uibModal, adminActionService) {
-        this.notificationEventService = notificationEventService;
-        this.notificationService = notificationService;
-        this.$uibModal = $uibModal;
-        this.adminActionService = adminActionService;
-    }
+class NotificationAdminCtrl extends NotificationBaseCtrl {
 
-    $onInit() {
-        this._initRefreshEvent();
-        this._getNotifications();
-    }
+  constructor(notificationEventService, notificationService, $uibModal, adminActionService) {
+    super();
+    this.notificationEventService = notificationEventService;
+    this.notificationService = notificationService;
+    this.$uibModal = $uibModal;
+    this.adminActionService = adminActionService;
+  }
 
-    _getNotifications() {
-        this.notificationService
-                .getNotifications()
-                .do(() => this.onNotificationLoaded({isLoading: false}))
-                .subscribe(data => this.notifications = data);
-    }
+  openNotificationModal(index) {
+    const modalInstance = this.$uibModal.open({
+      animation: true,
+      component: 'modalAdminNotification',
+      resolve: {
+        notification: () => this.notifications[index]
+      }
+    });
 
-    _initRefreshEvent() {
-        this.notificationEventSubscription = 
-            this.notificationEventService
-                .loadNotificationObservable
-                .subscribe(() => this._getNotifications());
-    }
+    modalInstance.result.then(
+      (type) => {
+        type === NOTF_TYPE.ACCEPT
+          ? this.adminActionService
+              .acceptVisits([this.notifications[index].id])
+              .subscribe(() => this._onSuccess({ type, index }))
+          : this.openRejectVisitModal(index);
+      },
+      () => { }
+    );
+  }
 
-    $onDestroy() {
-        this.notificationEventSubscription.unsubscribe();
-    }
+  openRejectVisitModal(index) {
+    const modalInstance = this.$uibModal.open({
+      animation: true,
+      component: 'modalRejectionVisit'
+    });
 
-    openNotificationModal(index) {
-        let modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'modalAdminNotification',
-            resolve: {
-                notification: () => this.notifications[index]
-            }  
-        });
+    modalInstance.result.then(
+      (rejectReason) => {
+        this.adminActionService
+          .rejectVisits([this.notifications[index].id], rejectReason)
+          .subscribe(() => this._onSuccess({ type: NOTF_TYPE.CANCEL, index }, rejectReason));
+      },
+      () => { }
+    );
+  }
 
-        modalInstance.result.then(
-            (type) => {
-                if(type === NOTF_TYPE.ACCEPT) {
-                    this.adminActionService
-                        .acceptVisits([this.notifications[index].id])
-                        .subscribe(() => this._onSuccess({type: type, index: index}));
-                } else {
-                    this.openRejectVisitModal(index);
-                }  
-            },
-            () => {}
-        );
-    }
+  _onSuccess(ntf, rejectReason) {
+    this.notificationEventService.updateVisitStatusEvent({ 
+      type: ntf.type, 
+      id: this.notifications[ntf.index].id, 
+      rejectReason 
+    });
+    this.notifications.splice(ntf.index, 1);
+    this.notificationEventService.refreshNotificationCount();
+  }
 
-    openRejectVisitModal(index) {
-        const modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'modalRejectionVisit'
-        });
-
-        modalInstance.result.then(
-            (rejectReason) => {
-                this.adminActionService
-                    .rejectVisits([this.notifications[index].id], rejectReason)
-                    .subscribe(() => this._onSuccess({type: NOTF_TYPE.CANCEL, index: index}, rejectReason));
-            },
-            () => {}
-        );
-    }
-
-    _onSuccess(ntf, rejectReason) {
-        this.notificationEventService.updateVisitStatusEvent({ type: ntf.type, id: this.notifications[ntf.index].id, rejectReason: rejectReason});
-        this.notifications.splice(ntf.index, 1);
-        this.notificationEventService.refreshNotificationCount();
-    }
-    
 }
 
 NotificationAdminCtrl.$inject = ['notificationEventService', 'notificationService', '$uibModal', 'adminActionService'];
 
 export const NotificationAdminComponent = {
-    bindings: {
-        onNotificationLoaded: "&"
-    },
-    template: template,
-    controller: NotificationAdminCtrl
+  bindings: {
+    onNotificationLoaded: "&"
+  },
+  template,
+  controller: NotificationAdminCtrl
 }

@@ -1,62 +1,62 @@
 .notifications {
-    margin-bottom: 0;
+  margin-bottom: 0;
 
-    &__item {
-        padding: 0;
-        position: relative;
-        display: block;
-        margin-bottom: 0px;
-        background-color: #f5f5f5;
-        border-top: 1px solid #dddddd;
+  &__item {
+    padding: 0;
+    position: relative;
+    display: block;
+    margin-bottom: 0px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #dddddd;
+
+    &:hover {
+      background-color: #eeeeee;
+    }
+  }
+
+  &__item--danger &__link--bold {
+    color: #d03732;
+  }
+
+  &__item--success &__link--bold {
+    color: #5cb85c;
+  }
+
+  &__item--none {
+    padding: 10px;
+  }
+
+  &__link {
+    color: #333333;
+    padding: 10px;
+    display: block;
+    cursor: pointer;
+   
+    &--bold {
+      font-weight: 700;
+    }
+  }
+
+  &__see-all-btn {
+    padding: 10px;
+    display: block;
+    cursor: pointer;
+    color: #ffffff;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+
+  &__footer {
+    display: block;
+    font-size: 1.2rem;
+    padding: 0;
+    white-space: nowrap;
+    background-color: #5cb85c;
     
-        &:hover {
-            background-color: #eeeeee;
-        }
+    &:hover {
+      background-color: #4cae4c;
     }
-
-    &__item--danger &__link--bold {
-        color: #d03732;
-    }
-
-    &__item--success &__link--bold {
-        color: #5cb85c;
-    }
-
-    &__item--none {
-        padding: 10px;
-    }
-
-    &__link {
-        color: #333333;
-        padding: 10px;
-        display: block; 
-        cursor: pointer;
-
-        &--bold {
-            font-weight: 700;
-        }
-    }
-
-    &__see-all-btn {
-        padding: 10px;
-        display: block;
-        cursor: pointer;
-        color: #ffffff;
-    
-        &:hover {
-            color: #ffffff;
-        }
-    }
-
-    &__footer {
-        display: block;
-        font-size: 1.2rem;
-        padding: 0;
-        white-space: nowrap;
-        background-color: #5cb85c;
-    
-        &:hover {
-             background-color: #4cae4c;
-        }
-    }
+  }
 }

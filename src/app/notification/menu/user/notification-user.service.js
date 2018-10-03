@@ -1,19 +1,22 @@
-import { NotificationBaseService } from '../common/notification-base.service';
+import { handleRequest } from '../../../app.helper';
+import { CONFIG } from '../../../app.constant';
 
-export class NotificationUserService extends NotificationBaseService {
+export class NotificationUserService {
 
-    constructor($http) {
-        super($http);
-    }
+  constructor($http) {
+    this.$http = $http;
+  }
 
-    markAllAsRead() {
-        return super._putRequest('/api/notifications');
-    }
+  markAllAsRead() {
+    const reqPromise = this.$http.put(CONFIG.ENDPOINT + '/api/notifications');
+    return handleRequest(reqPromise);
+  }
 
-    markAsRead(notificationId) {
-        return super._putRequest('/api/notifications', { notificationId });;
-    }
-    
+  markAsRead(notificationId) {
+    const reqPromise = this.$http.put(CONFIG.ENDPOINT + '/api/notifications', { notificationId });
+    return handleRequest(reqPromise);
+  }
+
 }
 
 NotificationUserService.$inject = ['$http'];

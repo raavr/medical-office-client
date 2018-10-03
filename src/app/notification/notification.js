@@ -8,12 +8,12 @@ import NotifcationService from './notification.service';
 import Auth from '../auth/auth';
 import Modal from '../modal/modal';
 
-export default 
-    angular.module("notification", [ Auth, NotifcationService, Modal ])
-           .component("notification", NotificationComponent)
-           .component("notificationMenu", NotificationMenuComponent)
-           .component("notificationAdmin", NotificationAdminComponent)
-           .component("notificationUser", NotificationUserComponent)
-           .directive("notificationClickOutside", NotificationClickOutside)
-           .filter("notificationTypeFilter", NotificationTypeFilter)
-           .name;
+export default
+  angular.module("notification", [Auth, NotifcationService, Modal])
+    .component("notification", NotificationComponent)
+    .component("notificationMenu", NotificationMenuComponent)
+    .component("notificationAdmin", NotificationAdminComponent)
+    .component("notificationUser", NotificationUserComponent)
+    .directive("notificationClickOutside", NotificationClickOutside)
+    .filter("notificationTypeFilter", NotificationTypeFilter)
+    .name;

@@ -1,7 +1,8 @@
 <div ng-class="{ active: $ctrl.isNotificationPanelOpen }" class="dropdown menu-icons-dropdown" notification-click-outside>
-    <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-href="#" ng-click="$ctrl.toggleNotificationMenu()">
-        <span class="glyphicon glyphicon-bell"></span>
-        <span ng-if="$ctrl.notificationsCount > 0" class="badge">{{$ctrl.notificationsCount}}</span>
-    </a>
-    <notification-menu ng-if="$ctrl.isNotificationPanelOpen"></notification-menu>
+  <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-href="#"
+    ng-click="$ctrl.toggleNotificationMenu()">
+    <span class="glyphicon glyphicon-bell"></span>
+    <span ng-if="$ctrl.notificationsCount > 0" class="badge">{{$ctrl.notificationsCount}}</span>
+  </a>
+  <notification-menu ng-if="$ctrl.isNotificationPanelOpen"></notification-menu>
 </div>

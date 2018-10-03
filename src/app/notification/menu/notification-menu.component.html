@@ -1,11 +1,11 @@
- <div class="notification-dropdown">
-    <div class="notification-dropdown__header">
-        <div class="notification-dropdown__refresh-icon" ng-click="$ctrl.refreshNotificationEvent(); $event.stopPropagation();">
-            <span class="glyphicon glyphicon-refresh"></span>
-        </div>
-        <p class="notification-dropdown__title">Powiadomienia</p>
+<div class="notification-dropdown">
+  <div class="notification-dropdown__header">
+    <div class="notification-dropdown__refresh-icon" ng-click="$ctrl.refreshNotificationEvent(); $event.stopPropagation();">
+      <span class="glyphicon glyphicon-refresh"></span>
     </div>
-    <div ng-if="$ctrl.isLoading" class="notification-dropdown__is-loading">Ładuję powiadomienia...</div>
-    <notification-admin on-notification-loaded="$ctrl.setLoading(isLoading)" ng-if="$ctrl.authService.isAdmin()"></notification-admin>
-    <notification-user on-notification-loaded="$ctrl.setLoading(isLoading)" ng-if="!$ctrl.authService.isAdmin()"></notification-user>
+    <p class="notification-dropdown__title">Powiadomienia</p>
+  </div>
+  <div ng-if="$ctrl.isLoading" class="notification-dropdown__is-loading">Ładuję powiadomienia...</div>
+  <notification-admin on-notification-loaded="$ctrl.setLoading(isLoading)" ng-if="$ctrl.authService.isAdmin()"></notification-admin>
+  <notification-user on-notification-loaded="$ctrl.setLoading(isLoading)" ng-if="!$ctrl.authService.isAdmin()"></notification-user>
 </div>
