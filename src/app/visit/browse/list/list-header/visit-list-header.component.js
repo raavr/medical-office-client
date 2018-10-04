@@ -44,7 +44,7 @@ class VisitListHeaderController {
   }
   $onInit() {
     this.listHeaders = LIST_HEADERS[
-      this.authService.isAdmin() 
+      this.authService.isDoctor() 
         ? ROLES.DOCTOR 
         : ROLES.PATIENT
     ][this.type];

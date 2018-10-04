@@ -3,7 +3,7 @@ import VisitSignupModule from '../visit-signup';
 import * as ToDateFunctions from '../../../app.helper';
 
 describe("VisitSignupMeComponent", () => {
-  let $componentController, ctrl, spySignupService, visitTimesMock, spyAvailableTimes, spyIsAdmin
+  let $componentController, ctrl, spySignupService, visitTimesMock, spyAvailableTimes, spyIsDoctor
   beforeEach(angular.mock.module(VisitSignupModule));
 
   beforeEach(() => {
@@ -25,7 +25,7 @@ describe("VisitSignupMeComponent", () => {
     spyOn(ctrl.alertEventService, "showSuccessAlert");
     spyOn(ctrl.$state, "go");
     spyAvailableTimes = spyOn(ctrl.visitSignupService, "getAvailableTimes").and.returnValue(Observable.of(visitTimesMock));
-    spyIsAdmin = spyOn(ctrl.authService, "isAdmin").and.returnValue(false);
+    spyIsDoctor = spyOn(ctrl.authService, "isDoctor").and.returnValue(false);
   });
 
   it('should initialize formVisits object', () => {

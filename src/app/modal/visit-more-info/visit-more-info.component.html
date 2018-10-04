@@ -5,11 +5,11 @@
   <dl>
     <dt>Termin wizyty:</dt>
     <dd>{{$ctrl.visit.visitDate | date : 'dd/MM/yyyy'}} o godzinie {{$ctrl.visit.visitDate | date : 'HH:mm'}}</dd>
-    <div ng-if="$ctrl.authService.isAdmin()">
+    <div ng-if="$ctrl.authService.isDoctor()">
       <dt>Pacjent:</dt>
       <dd>{{$ctrl.visit.patient.name}} {{$ctrl.visit.patient.surname}}</dd>
     </div>
-    <div ng-if="!$ctrl.authService.isAdmin()">
+    <div ng-if="!$ctrl.authService.isDoctor()">
       <dt>Lekarz:</dt>
       <dd>{{$ctrl.visit.doctor.name}} {{$ctrl.visit.doctor.surname}}</dd>
     </div>
@@ -23,7 +23,7 @@
         <button ng-if="$ctrl.visit.status === 'canceled'" type="button" class="btn btn-danger btn-type-danger btn-visit-type">Odrzucono</button>
       </dd>
     </div>
-    <div ng-if="$ctrl.visit.status === 'accepted' && !$ctrl.authService.isAdmin()">
+    <div ng-if="$ctrl.visit.status === 'accepted' && !$ctrl.authService.isDoctor()">
       <dt>Więcej:</dt>
       <dd>Jeśli chcesz odwołać tę wizytę, napisz na adres:
         <a href="mailto:gabinet@example.com">gabinet@example.com</a>.</dd>

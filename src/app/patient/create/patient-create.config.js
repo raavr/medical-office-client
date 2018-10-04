@@ -1,4 +1,4 @@
-import AuthGuardAdmin from '../../auth/auth-guard-admin.service';
+import AuthGuardDoctor from '../../auth/auth-guard-doctor.service';
 
 export default function PatientCreateConfig($stateProvider) {
   $stateProvider.state({
@@ -6,7 +6,7 @@ export default function PatientCreateConfig($stateProvider) {
     url: "/patient/create",
     component: "patientCreate",
     resolve: {
-      canActivate: AuthGuardAdmin
+      canActivate: AuthGuardDoctor
     }
   });
 }

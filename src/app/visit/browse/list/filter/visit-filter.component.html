@@ -1,5 +1,5 @@
 <div class="row visit-filter">
-  <div ng-if="$ctrl.type === 'current' && $ctrl.authService.isAdmin()" class="col-xs-1"></div>
+  <div ng-if="$ctrl.type === 'current' && $ctrl.authService.isDoctor()" class="col-xs-1"></div>
   <div class="col-xs-12 col-sm-2">
     <div class="col-xs-4 visit-filter__label">
       Data:
@@ -30,8 +30,8 @@
         }">
     </div>
   </div>
-  <div ng-if="!$ctrl.authService.isAdmin()" class="col-sm-4"></div>
-  <div ng-if="$ctrl.authService.isAdmin()" ng-class="{ 'col-xs-12 col-sm-3': $ctrl.type === 'current', 
+  <div ng-if="!$ctrl.authService.isDoctor()" class="col-sm-4"></div>
+  <div ng-if="$ctrl.authService.isDoctor()" ng-class="{ 'col-xs-12 col-sm-3': $ctrl.type === 'current', 
       'col-xs-12 col-sm-4': $ctrl.type === 'past' }">
     <div class="col-xs-4 visit-filter__label">
       Pacjent:

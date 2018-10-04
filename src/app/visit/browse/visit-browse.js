@@ -9,10 +9,10 @@ import { VisitListComponent } from './list/visit-list.component';
 import { VisitListHeaderComponent } from './list/list-header/visit-list-header.component';
 import { VisitFilterComponent } from './list/filter/visit-filter.component';
 import { UserVisitComponent } from './list/visit-item/user/user-visit.component';
-import { AdminVisitComponent } from './list/visit-item/admin/admin-visit.component';
+import { DoctorVisitComponent } from './list/visit-item/doctor/doctor-visit.component';
 import { ItemsLimitComponent } from './list/items-limit/items-limit.component';
 import { VisitSelectorComponent } from './list/visit-selector/visit-selector.component';
-import { AdminActionPanelComponent } from './list/admin-action/admin-action-panel.component';
+import { DoctorActionPanelComponent } from './list/doctor-action/doctor-action-panel.component';
 import visitBrowseService from './visit-browse.service';
 import Auth from '../../auth/auth';
 import Modal from '../../modal/modal';
@@ -33,8 +33,8 @@ export default
     .component("visitListHeader", VisitListHeaderComponent)
     .component("visitFilter", VisitFilterComponent)
     .component("userVisit", UserVisitComponent)
-    .component("adminVisit", AdminVisitComponent)
+    .component("doctorVisit", DoctorVisitComponent)
     .component("itemsLimit", ItemsLimitComponent)
     .component("visitSelector", VisitSelectorComponent)
-    .component("adminActionPanel", AdminActionPanelComponent)
+    .component("doctorActionPanel", DoctorActionPanelComponent)
     .name;

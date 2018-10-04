@@ -1,7 +1,7 @@
-import template from './modal-admin-notification.component.html';
+import template from './modal-doctor-notification.component.html';
 import { VISIT_STATUS } from '../../visit/common/visit-status.constant';
 
-class ModalAdminNotificationCtrl {
+class ModalDoctorNotificationCtrl {
 
   $onInit() {
     this.ntf = this.resolve.notification;
@@ -20,12 +20,12 @@ class ModalAdminNotificationCtrl {
   }
 }
 
-export const ModalAdminNotificationComponent = {
+export const ModalDoctorNotificationComponent = {
   bindings: {
     resolve: '<',
     close: '&',
     dismiss: '&'
   },
   template,
-  controller: ModalAdminNotificationCtrl
+  controller: ModalDoctorNotificationCtrl
 }

@@ -1,5 +1,5 @@
 import { VisitManageVisitDatetimesResolve } from './visit-manage.resolve';
-import AuthGuardAdmin from '../../auth/auth-guard-admin.service';
+import AuthGuardDoctor from '../../auth/auth-guard-doctor.service';
 
 export default function VisitManageConfig($stateProvider) {
 
@@ -9,7 +9,7 @@ export default function VisitManageConfig($stateProvider) {
       url: "/visit/manage",
       component: "visitManage",
       resolve: {
-        canActivate: AuthGuardAdmin,
+        canActivate: AuthGuardDoctor,
         visitDatetimes: VisitManageVisitDatetimesResolve
       }
     }

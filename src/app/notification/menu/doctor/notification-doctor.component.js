@@ -1,22 +1,22 @@
 import '../common/notification-item.scss';
-import template from './notification-admin.component.html';
+import template from './notification-doctor.component.html';
 import { NotificationBaseCtrl } from '../common/notification-base.controller';
 import { VISIT_STATUS } from '../../../visit/common/visit-status.constant';
 
-class NotificationAdminCtrl extends NotificationBaseCtrl {
+class NotificationDoctorCtrl extends NotificationBaseCtrl {
 
-  constructor(notificationEventService, notificationService, $uibModal, adminActionService) {
+  constructor(notificationEventService, notificationService, $uibModal, doctorActionService) {
     super();
     this.notificationEventService = notificationEventService;
     this.notificationService = notificationService;
     this.$uibModal = $uibModal;
-    this.adminActionService = adminActionService;
+    this.doctorActionService = doctorActionService;
   }
 
   openNotificationModal(index) {
     const modalInstance = this.$uibModal.open({
       animation: true,
-      component: 'modalAdminNotification',
+      component: 'modalDoctorNotification',
       resolve: {
         notification: () => this.notifications[index]
       }
@@ -25,7 +25,7 @@ class NotificationAdminCtrl extends NotificationBaseCtrl {
     modalInstance.result.then(
       (status) => {
         status === VISIT_STATUS.ACCEPTED
-          ? this.adminActionService
+          ? this.doctorActionService
               .acceptVisits([this.notifications[index].id])
               .subscribe(() => this._onSuccess({ status, index }))
           : this.openRejectVisitModal(index);
@@ -42,7 +42,7 @@ class NotificationAdminCtrl extends NotificationBaseCtrl {
 
     modalInstance.result.then(
       (rejectReason) => {
-        this.adminActionService
+        this.doctorActionService
           .rejectVisits([this.notifications[index].id], rejectReason)
           .subscribe(() => this._onSuccess({ status: VISIT_STATUS.CANCELED, index }, rejectReason));
       },
@@ -62,12 +62,12 @@ class NotificationAdminCtrl extends NotificationBaseCtrl {
 
 }
 
-NotificationAdminCtrl.$inject = ['notificationEventService', 'notificationService', '$uibModal', 'adminActionService'];
+NotificationDoctorCtrl.$inject = ['notificationEventService', 'notificationService', '$uibModal', 'doctorActionService'];
 
-export const NotificationAdminComponent = {
+export const NotificationDoctorComponent = {
   bindings: {
     onNotificationLoaded: "&"
   },
   template,
-  controller: NotificationAdminCtrl
+  controller: NotificationDoctorCtrl
 }

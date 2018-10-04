@@ -1,5 +1,5 @@
 import { CONFIG } from '../../app.constant';
-import { AdminActionService } from './list/admin-action/admin-action.service';
+import { DoctorActionService } from './list/doctor-action/doctor-action.service';
 import { VisitFilterService } from './list/filter/visit-filter.service';
 import { handleRequest } from '../../app.helper';
 
@@ -26,6 +26,6 @@ VisitBrowseService.$inject = ['$http'];
 
 export default angular.module("visit.browse.service", [])
   .service("visitBrowseService", VisitBrowseService)
-  .service("adminActionService", AdminActionService)
+  .service("doctorActionService", DoctorActionService)
   .service("visitFilterService", VisitFilterService)
   .name;

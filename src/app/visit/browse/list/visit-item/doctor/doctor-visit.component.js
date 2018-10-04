@@ -1,7 +1,7 @@
-import "./admin-visit.component.scss";
-import template from "./admin-visit.component.html";
+import "./doctor-visit.component.scss";
+import template from "./doctor-visit.component.html";
 
-class AdminVisitController {
+class DoctorVisitController {
   constructor($uibModal) {
     this.$uibModal = $uibModal;
   }
@@ -25,10 +25,10 @@ class AdminVisitController {
   }
 }
 
-AdminVisitController.$inject = ['$uibModal'];
+DoctorVisitController.$inject = ['$uibModal'];
 
 
-export const AdminVisitComponent = {
+export const DoctorVisitComponent = {
   bindings: {
     visit: "<",
     type: "<",
@@ -36,5 +36,5 @@ export const AdminVisitComponent = {
     onChange: "&"
   },
   template,
-  controller: AdminVisitController
+  controller: DoctorVisitController
 }

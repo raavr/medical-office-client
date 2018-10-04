@@ -17,7 +17,7 @@ export class VisitSignupBaseController {
   }
 
   getAvailableTimes() {
-    const userId = this.authService.isAdmin() ? null : this.userSelected.id;
+    const userId = this.authService.isDoctor() ? null : this.userSelected.id;
     if (userId !== undefined) {
       this.visitSignupService
         .getAvailableTimes(this.formVisit.date, userId)

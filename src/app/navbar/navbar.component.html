@@ -33,8 +33,8 @@
         </li>
         <li ng-if="$ctrl.authService.loggedIn()" role="separator" class="app-navbar__divider"></li>
       </ul>
-      <navbar-user ng-if="$ctrl.authService.loggedIn() && !$ctrl.authService.isAdmin()"></navbar-user>
-      <navbar-admin ng-if="$ctrl.authService.loggedIn() && $ctrl.authService.isAdmin()"></navbar-admin>
+      <navbar-user ng-if="$ctrl.authService.loggedIn() && !$ctrl.authService.isDoctor()"></navbar-user>
+      <navbar-doctor ng-if="$ctrl.authService.loggedIn() && $ctrl.authService.isDoctor()"></navbar-doctor>
       <navbar-sign ng-if="!$ctrl.authService.loggedIn()"></navbar-sign>
     </div>
   </div>

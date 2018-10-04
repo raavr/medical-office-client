@@ -1,5 +1,5 @@
 import PatientBrowseResolve from './patient-browse.resolve';
-import AuthGuardAdmin from '../../auth/auth-guard-admin.service';
+import AuthGuardDoctor from '../../auth/auth-guard-doctor.service';
 
 export default function PatientBrowseConfig($stateProvider) {
   $stateProvider.state({
@@ -7,7 +7,7 @@ export default function PatientBrowseConfig($stateProvider) {
     url: "/patient/browse",
     component: "patientBrowse",
     resolve: {
-      canActivate: AuthGuardAdmin,
+      canActivate: AuthGuardDoctor,
       patients: PatientBrowseResolve
     }
   });

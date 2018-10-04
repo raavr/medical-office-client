@@ -1,11 +1,11 @@
-import './admin-action-panel.component.scss';
-import template from "./admin-action-panel.component.html";
+import './doctor-action-panel.component.scss';
+import template from "./doctor-action-panel.component.html";
 import { VISIT_STATUS } from '../../../common/visit-status.constant';
 
-class AdminActionPanelController {
+class DoctorActionPanelController {
 
-  constructor(adminActionService, notificationEventService, alertEventService, $uibModal) {
-    this.adminActionService = adminActionService;
+  constructor(doctorActionService, notificationEventService, alertEventService, $uibModal) {
+    this.doctorActionService = doctorActionService;
     this.notificationEventService = notificationEventService;
     this.alertEventService = alertEventService;
     this.$uibModal = $uibModal;
@@ -20,7 +20,7 @@ class AdminActionPanelController {
 
   acceptSelectedVisits(id = -1) {
     this.isUpdating({ isUpdating: true });
-    this.adminActionService
+    this.doctorActionService
       .acceptVisits(this.selectedVisits.map((elem) => elem.id))
       .subscribe(
         () => {
@@ -60,7 +60,7 @@ class AdminActionPanelController {
 
   _cancelSelectedVisits(rejectReason, id = -1) {
     this.isUpdating({ isUpdating: true });
-    this.adminActionService
+    this.doctorActionService
       .rejectVisits(this.selectedVisits.map((elem) => elem.id), rejectReason)
       .subscribe(
         () => {
@@ -78,15 +78,15 @@ class AdminActionPanelController {
   }
 }
 
-AdminActionPanelController.$inject = ['adminActionService', 'notificationEventService', 'alertEventService', '$uibModal'];
+DoctorActionPanelController.$inject = ['doctorActionService', 'notificationEventService', 'alertEventService', '$uibModal'];
 
 
-export const AdminActionPanelComponent = {
+export const DoctorActionPanelComponent = {
   bindings: {
     selectedVisits: "<",
     onVisitsUpdated: "&",
     isUpdating: "&"
   },
   template,
-  controller: AdminActionPanelController
+  controller: DoctorActionPanelController
 }

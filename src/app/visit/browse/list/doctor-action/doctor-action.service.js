@@ -3,7 +3,7 @@ import { CONFIG } from '../../../../app.constant';
 import { handleRequest } from '../../../../app.helper';
 import { VISIT_STATUS } from '../../../common/visit-status.constant';
 
-export class AdminActionService {
+export class DoctorActionService {
 
   constructor($http) {
     this.$http = $http;
@@ -25,4 +25,4 @@ export class AdminActionService {
 
 }
 
-AdminActionService.$inject = ['$http'];
+DoctorActionService.$inject = ['$http'];

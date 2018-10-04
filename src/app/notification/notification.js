@@ -1,4 +1,4 @@
-import { NotificationAdminComponent } from './menu/admin/notification-admin.component';
+import { NotificationDoctorComponent } from './menu/doctor/notification-doctor.component';
 import { NotificationUserComponent } from './menu/user/notification-user.component';
 import { NotificationComponent } from './notification.component';
 import { NotificationMenuComponent } from './menu/notification-menu.component';
@@ -12,7 +12,7 @@ export default
   angular.module("notification", [Auth, NotifcationService, Modal])
     .component("notification", NotificationComponent)
     .component("notificationMenu", NotificationMenuComponent)
-    .component("notificationAdmin", NotificationAdminComponent)
+    .component("notificationDoctor", NotificationDoctorComponent)
     .component("notificationUser", NotificationUserComponent)
     .directive("notificationClickOutside", NotificationClickOutside)
     .filter("notificationTypeFilter", NotificationTypeFilter)

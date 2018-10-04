@@ -6,6 +6,6 @@
     <p class="notification-dropdown__title">Powiadomienia</p>
   </div>
   <div ng-if="$ctrl.isLoading" class="notification-dropdown__is-loading">Ładuję powiadomienia...</div>
-  <notification-admin on-notification-loaded="$ctrl.setLoading(isLoading)" ng-if="$ctrl.authService.isAdmin()"></notification-admin>
-  <notification-user on-notification-loaded="$ctrl.setLoading(isLoading)" ng-if="!$ctrl.authService.isAdmin()"></notification-user>
+  <notification-doctor on-notification-loaded="$ctrl.setLoading(isLoading)" ng-if="$ctrl.authService.isDoctor()"></notification-doctor>
+  <notification-user on-notification-loaded="$ctrl.setLoading(isLoading)" ng-if="!$ctrl.authService.isDoctor()"></notification-user>
 </div>

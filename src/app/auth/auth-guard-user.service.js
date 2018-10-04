@@ -1,4 +1,4 @@
-export default function AuthGuardAdminService($q, $authService, $location) {
+export default function AuthGuardDoctorService($q, $authService, $location) {
   const deferred = $q.defer();
 
   if (!$authService.loggedIn()) {
@@ -10,4 +10,4 @@ export default function AuthGuardAdminService($q, $authService, $location) {
   return deferred.promise;
 }
 
-AuthGuardAdminService.$inject = ['$q', 'authService', '$location'];
+AuthGuardDoctorService.$inject = ['$q', 'authService', '$location'];

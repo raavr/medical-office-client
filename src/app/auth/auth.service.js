@@ -9,7 +9,7 @@ export class AuthService {
     this.jwtHelper = jwtHelper;
   }
 
-  isAdmin() {
+  isDoctor() {
     const token = localStorage.getItem(AUTH_CONFIG.DEFAULT_TOKEN_NAME);
     if (!token) {
       return false;
