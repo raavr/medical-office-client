@@ -1,11 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { CONFIG } from '../../../../app.constant';
 import { handleRequest } from '../../../../app.helper';
-
-const ACTION_TYPE = {
-  ACCEPT: 'accepted',
-  REJECT: 'canceled'
-}
+import { VISIT_STATUS } from '../../../common/visit-status.constant';
 
 export class AdminActionService {
 
@@ -14,11 +10,11 @@ export class AdminActionService {
   }
 
   rejectVisits(visits, reason) {
-    return this._updateVisits(ACTION_TYPE.REJECT, visits, reason);
+    return this._updateVisits(VISIT_STATUS.CANCELED, visits, reason);
   }
 
   acceptVisits(visits) {
-    return this._updateVisits(ACTION_TYPE.ACCEPT, visits);
+    return this._updateVisits(VISIT_STATUS.ACCEPTED, visits);
   }
 
   _updateVisits(status, visits, reason) {

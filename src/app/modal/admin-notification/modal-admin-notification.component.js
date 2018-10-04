@@ -1,5 +1,5 @@
 import template from './modal-admin-notification.component.html';
-import { NOTF_TYPE } from '../../notification/menu/admin/notification-type.enum';
+import { VISIT_STATUS } from '../../visit/common/visit-status.constant';
 
 class ModalAdminNotificationCtrl {
 
@@ -8,11 +8,11 @@ class ModalAdminNotificationCtrl {
   }
 
   reject() {
-    this.close({ $value: NOTF_TYPE.CANCEL });
+    this.close({ $value: VISIT_STATUS.CANCELED });
   }
 
   accept() {
-    this.close({ $value: NOTF_TYPE.ACCEPT });
+    this.close({ $value: VISIT_STATUS.ACCEPTED });
   }
 
   cancel() {

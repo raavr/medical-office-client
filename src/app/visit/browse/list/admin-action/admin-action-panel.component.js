@@ -1,6 +1,6 @@
 import './admin-action-panel.component.scss';
 import template from "./admin-action-panel.component.html";
-import { NOTF_TYPE } from '../../../../notification/menu/admin/notification-type.enum';
+import { VISIT_STATUS } from '../../../common/visit-status.constant';
 
 class AdminActionPanelController {
 
@@ -14,7 +14,7 @@ class AdminActionPanelController {
   $onInit() {
     this.notificationEventSubscription =
       this.notificationEventService
-        .updateVisitStatusObservable
+        .updateVisitStatus$
         .subscribe((ntf) => this._onSuccess(ntf));
   }
 
@@ -24,7 +24,7 @@ class AdminActionPanelController {
       .acceptVisits(this.selectedVisits.map((elem) => elem.id))
       .subscribe(
         () => {
-          this._onSuccess({ status: NOTF_TYPE.ACCEPT, id });
+          this._onSuccess({ status: VISIT_STATUS.ACCEPTED, id });
         },
         (err) => {
           console.log(err);
@@ -36,7 +36,7 @@ class AdminActionPanelController {
 
   _onSuccess(ntf) {
     this.alertEventService.showSuccessAlert(
-      ntf.status === NOTF_TYPE.ACCEPT 
+      ntf.status === VISIT_STATUS.ACCEPTED 
         ? 'Wizyty zostały zaakceptowane.' 
         : 'Wizyty zostały odrzucone.'
     );
@@ -64,7 +64,7 @@ class AdminActionPanelController {
       .rejectVisits(this.selectedVisits.map((elem) => elem.id), rejectReason)
       .subscribe(
         () => {
-          this._onSuccess({ status: NOTF_TYPE.CANCEL, id, rejectReason });
+          this._onSuccess({ status: VISIT_STATUS.CANCELED, id, rejectReason });
         },
         (err) => {
           console.log(err);

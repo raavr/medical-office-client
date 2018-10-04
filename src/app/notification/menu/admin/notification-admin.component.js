@@ -1,7 +1,7 @@
 import '../common/notification-item.scss';
 import template from './notification-admin.component.html';
-import { NOTF_TYPE } from './notification-type.enum';
 import { NotificationBaseCtrl } from '../common/notification-base.controller';
+import { VISIT_STATUS } from '../../../visit/common/visit-status.constant';
 
 class NotificationAdminCtrl extends NotificationBaseCtrl {
 
@@ -23,11 +23,11 @@ class NotificationAdminCtrl extends NotificationBaseCtrl {
     });
 
     modalInstance.result.then(
-      (type) => {
-        type === NOTF_TYPE.ACCEPT
+      (status) => {
+        status === VISIT_STATUS.ACCEPTED
           ? this.adminActionService
               .acceptVisits([this.notifications[index].id])
-              .subscribe(() => this._onSuccess({ type, index }))
+              .subscribe(() => this._onSuccess({ status, index }))
           : this.openRejectVisitModal(index);
       },
       () => { }
@@ -44,7 +44,7 @@ class NotificationAdminCtrl extends NotificationBaseCtrl {
       (rejectReason) => {
         this.adminActionService
           .rejectVisits([this.notifications[index].id], rejectReason)
-          .subscribe(() => this._onSuccess({ type: NOTF_TYPE.CANCEL, index }, rejectReason));
+          .subscribe(() => this._onSuccess({ status: VISIT_STATUS.CANCELED, index }, rejectReason));
       },
       () => { }
     );
@@ -52,7 +52,7 @@ class NotificationAdminCtrl extends NotificationBaseCtrl {
 
   _onSuccess(ntf, rejectReason) {
     this.notificationEventService.updateVisitStatusEvent({ 
-      type: ntf.type, 
+      status: ntf.status, 
       id: this.notifications[ntf.index].id, 
       rejectReason 
     });
