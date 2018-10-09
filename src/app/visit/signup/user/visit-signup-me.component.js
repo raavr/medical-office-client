@@ -13,7 +13,7 @@ class VisitSignupMeController extends VisitSignupBaseController {
 
   addVisit() {
     this.visitSignupService.addVisit(this.visit).subscribe(
-      () => {
+      (data) => {
         this.$state.go('visit-browse.current');
         this.alertEventService.showSuccessAlert(data.message);
       },
