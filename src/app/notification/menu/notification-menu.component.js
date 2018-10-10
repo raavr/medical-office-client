@@ -13,7 +13,6 @@ class NotificationMenuCtrl {
 
   refreshNotificationEvent() {
     this.notificationEventService.loadNotificationEvent();
-    this.notificationEventService.refreshNotificationCount();
   }
 
   setLoading(isLoading) {

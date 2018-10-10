@@ -57,7 +57,6 @@ class NotificationDoctorCtrl extends NotificationBaseCtrl {
       rejectReason 
     });
     this.notifications.splice(ntf.index, 1);
-    this.notificationEventService.refreshNotificationCount();
   }
 
 }

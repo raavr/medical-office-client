@@ -25,8 +25,8 @@ export class NotificationEventService {
     this.updateVisitStatusSource.next(ntf);
   }
 
-  refreshNotificationCount() {
-    this.refreshNotificationCountSource.next();
+  refreshNotificationCount(count) {
+    this.refreshNotificationCountSource.next(count);
   }
 
   hideNotificationMenu() {

@@ -19,7 +19,6 @@ class NotificationUserCtrl extends NotificationBaseCtrl {
         () => {
           let idx = this.notifications.findIndex((notf) => notf === notification);
           this.notifications.splice(idx, 1);
-          this.notificationEventService.refreshNotificationCount();
         },
         (err) => console.log(err)
       );
@@ -29,10 +28,7 @@ class NotificationUserCtrl extends NotificationBaseCtrl {
     this.notificationUserService
       .markAllAsRead()
       .subscribe(
-        () => {
-          this.notifications = [];
-          this.notificationEventService.refreshNotificationCount();
-        },
+        () => this.notifications = [],
         (err) => console.log(err)
       );
   }

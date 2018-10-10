@@ -18,6 +18,7 @@ import Patient from './patient/patient';
 import Footer from './footer/footer';
 import NoContent from './no-content/no-content';
 import ForgotPass from './forgot-pass/forgot-pass';
+import AppInit from './app.init';
 
 export default angular.module("My-app", [
   Navbar,
@@ -33,5 +34,6 @@ export default angular.module("My-app", [
   NoContent,
   ForgotPass
 ]).config(AppConfig)
+  .run(AppInit)
   .component("app", AppComponent)
   .name;
