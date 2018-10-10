@@ -16,12 +16,12 @@ class VisitListController {
     this.selectedVisits = [];
     this.filters = Object.assign({}, VISIT_PAGE_SETTINGS);
   }
-
+  
   $onInit() {
     this.parent.setLoading(false);
     this.totalItems = this.visits.totalItems;
     this.visits = this.visits.visits;
-
+    
     this.showUpdatingPanel(false);
   }
 
@@ -107,9 +107,9 @@ class VisitListController {
   }
 
   getVisitType() {
-    return this.$state.current.url.slice(1);
+    return this.$state.current.url.slice(1).split('?')[0];
   }
-
+  
 }
 
 VisitListController.$inject = ['authService', 'visitFilterService', 'visitBrowseService', '$state'];
@@ -117,7 +117,8 @@ VisitListController.$inject = ['authService', 'visitFilterService', 'visitBrowse
 
 export const VisitListComponent = {
   bindings: {
-    visits: "<"
+    visits: "<",
+    status: "<"
   },
   require: {
     parent: "^visitBrowse"

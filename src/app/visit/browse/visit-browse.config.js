@@ -13,9 +13,16 @@ export default function VisitBrowseConfig($stateProvider) {
       name: "visit-browse.current",
       url: "/current",
       component: "visitList",
+      params: {
+        status: null
+      },
       resolve: {
         canActivate: AuthGuardUser,
-        visits: VisitBrowseResolve('current')
+        visits: VisitBrowseResolve('current'),
+        status: [
+          '$transition$', 
+          $transition$ => $transition$.params().status
+        ]
       }
     },
     {

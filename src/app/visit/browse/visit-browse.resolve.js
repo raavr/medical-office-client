@@ -1,5 +1,10 @@
 export default function VisitBrowseResolve(type) {
-  return ['visitBrowseService', function (visitBrowseService) {
-    return visitBrowseService.getVisits({ type }).toPromise().catch(() => { });
+  return ['visitBrowseService', '$transition$', function (visitBrowseService, $transition$) {
+    return visitBrowseService.getVisits({ 
+        type, 
+        status: $transition$.params().status 
+      })
+      .toPromise()
+      .catch(() => { });
   }];
 } 
