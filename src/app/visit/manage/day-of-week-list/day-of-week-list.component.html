@@ -1,0 +1,17 @@
+<div class="col-sm-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">Ustal godziny wizyt dla dni tygodnia</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="row">
+            <day-of-week ng-repeat="visitTime in $ctrl.weeklyVisitTimes" visit-time="visitTime"></day-of-week>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-success" ng-click="$ctrl.update()">Zapisz zmiany</button>
+    </div>
+  </div>
+</div>

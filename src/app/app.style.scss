@@ -127,6 +127,10 @@ p {
   color: #ff0000;
 }
 
+.form-control.form-control--border-radius:first-child {
+  border-radius: 4px;
+}
+
 .loading-overlay {
   background-color: rgba(255, 255, 255, 0.8);
   width: calc(100% + 30px);

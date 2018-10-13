@@ -16,6 +16,7 @@ import 'rxjs/add/operator/toArray';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/switchMap';
 
 import angular from 'angular';
 import 'angular-jwt';

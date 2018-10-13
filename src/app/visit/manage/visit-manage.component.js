@@ -1,6 +1,5 @@
 import "./visit-manage.component.scss";
 import template from "./visit-manage.component.html";
-import { toDate_ddmmyyyy } from '../../app.helper';
 
 class VisitManageController {
 
@@ -9,13 +8,38 @@ class VisitManageController {
     this.alertEventService = alertEventService;
   }
 
-  changeDate(event) {
-    this.visitDatetimes.disabledDates = event.dates.map((elem) => toDate_ddmmyyyy(elem));
+  updateWeeklyTimes() {
+    this.visitManageService
+      .updateWeeklyTimes(this.visitDatetimes.weeklyVisitTimes)
+      .subscribe(
+        (data) => this.alertEventService.showSuccessAlert(data.message),
+        (err) => this.alertEventService.showDangerAlert(err.data.message)
+      );
   }
 
-  saveChanges() {
+  updateTimes(times) {
+    this.visitDatetimes.times = times;
+    this.visitManageService.updateVisitsTimes(times)
+      .switchMap(
+        res => this.visitManageService.getAvailableTimesAndDisabledDates(), 
+        (res, visitDatetimes) => ({ 
+          message: res.message, 
+          weeklyVisitTimes: visitDatetimes.weeklyVisitTimes
+        })
+      )
+      .subscribe(
+        (messageAndData) => {
+          this.visitDatetimes.weeklyVisitTimes = messageAndData.weeklyVisitTimes;
+          this.alertEventService.showSuccessAlert(messageAndData.message);
+        },
+        (err) => this.alertEventService.showDangerAlert(err.data.message)
+      );
+  }
+
+  updateDates(dates) {
+    this.visitDatetimes.disabledDates = dates;
     this.visitManageService
-      .updateAvailableTimesAndDisabledDates(this.visitDatetimes)
+      .updateDisabledDates(this.visitDatetimes.disabledDates)
       .subscribe(
         (data) => this.alertEventService.showSuccessAlert(data.message),
         (err) => this.alertEventService.showDangerAlert(err.data.message)

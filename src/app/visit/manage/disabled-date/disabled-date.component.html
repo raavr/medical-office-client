@@ -1,0 +1,25 @@
+<div class="panel panel-default panel-equal">
+  <div class="panel-heading">Ustal niedostępne dni wizyt</div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <div ng-repeat="date in $ctrl.disabledDates" class="datetime__item">
+          <time datetime="{{date}}" class="datetime__val">{{date}}</time>
+          <button type="button" uib-tooltip="Usuń zablokowaną datę" ng-click="$ctrl.removeDate(date)" class="btn btn-danger datetime__btn-remove">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+        </div>
+        <div class="input-group date">
+          <input bt-datepicker change-date="$ctrl.changeDate(event)" class="form-control form-control--border-radius" autoclose="true"
+            multidate="false" current-date="$ctrl.currentDate">
+          <span class="date__addon">
+            <button type="button" class="btn btn-success datetime__btn-add" ng-click="$ctrl.addDate()">Dodaj</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer panel-footer-equal">
+    <button type="submit" class="btn btn-success" ng-click="$ctrl.update({dates: $ctrl.disabledDates})">Zapisz zmiany</button>
+  </div>
+</div>

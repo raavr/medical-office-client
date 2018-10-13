@@ -1,0 +1,49 @@
+.datetime {
+  &__item {
+    font-size: 1.4rem;
+    padding: 5px;
+    margin: 0 5px 5px 0;
+    display: inline-block;
+    border: 1px #e7e7e7 solid;
+    border-radius: 5px;
+  }
+
+  &__val {
+    display: inline-block;
+    padding: 5px 5px 5px 2px;
+    font-weight: 400;
+  }
+
+  &__btn-remove {
+    padding: 2px 7px;
+    font-size: 1rem;
+  }
+
+  &__btn-add {
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .flex-row .flex-col {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .panel-equal {
+    padding-bottom: 55px;
+    height: 100%;
+  }
+  
+  .panel-footer-equal {
+    position: absolute;
+    width: calc(100% - 32px);
+    bottom: 21px;
+  }
+}

@@ -1,0 +1,18 @@
+<div class="panel panel-default panel-equal">
+  <div class="panel-heading">Ustal ogólne godziny wizyt</div>
+  <div class="panel-body">
+    <div ng-repeat="vtime in $ctrl.times" class="datetime__item">
+      <time datetime="{{vtime}}" class="datetime__val">{{vtime}}</time>
+      <button type="button" uib-tooltip="Usuń czas wizyty" ng-click="$ctrl.removeTime(vtime)" class="btn btn-danger datetime__btn-remove">
+        <i class="glyphicon glyphicon-trash"></i>
+      </button>
+    </div>
+    <div class="timepicker-container">
+      <div uib-timepicker ng-model="$ctrl.currentTime" ng-change="$ctrl.changed()" hour-step="1" minute-step="15" show-meridian="false"></div>
+      <button type="button" class="btn btn-success datetime__btn-add" ng-click="$ctrl.addTime()">Dodaj</button>
+    </div>
+  </div>
+  <div class="panel-footer panel-footer-equal">
+    <button type="submit" class="btn btn-success" ng-click="$ctrl.update({times: $ctrl.times})">Zapisz zmiany</button>
+  </div>
+</div>

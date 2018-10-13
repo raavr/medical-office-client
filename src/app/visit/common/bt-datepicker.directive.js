@@ -14,7 +14,6 @@ export default
         orientation: 'bottom left',
         autoclose: attr.autoclose === 'true',
         multidate: attr.multidate === 'true',
-        daysOfWeekDisabled: "0,6",
         startDate: new Date()
       }).on('changeDate', (e) => {
         scope.changeDate({ event: e });

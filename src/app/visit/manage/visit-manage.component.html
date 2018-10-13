@@ -1,32 +1,10 @@
 <div class="container partials-content">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">Zarządzaj terminami wizyt</div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-sm-12">
-              <form>
-                <div class="form-group">
-                  <label for="datepicker">Ustaw niedostępne dni wizyt:</label>
-                  <div class="input-group date">
-                    <input bt-datepicker change-date="$ctrl.changeDate(event)" class="form-control" current-date="$ctrl.visitDatetimes.disabledDates"
-                      autoclose="false" multidate="true">
-                    <span class="input-group-addon">
-                      <i class="glyphicon glyphicon-th" required></i>
-                    </span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Ustal godziny wizyt dla dni tygodnia:</label>
-                  <day-of-week ng-repeat="visitTime in $ctrl.visitDatetimes.weeklyVisitTimes" visit-time="visitTime"></day-of-week>
-                  <button type="submit" class="btn btn-success" ng-click="$ctrl.saveChanges()">Zapisz zmiany</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="row flex-row">
+      <visit-time times="$ctrl.visitDatetimes.times" update="$ctrl.updateTimes(times)" class="flex-col col-xs-12 col-sm-6"></visit-time>
+      <disabled-date disabled-dates="$ctrl.visitDatetimes.disabledDates" update="$ctrl.updateDates(dates)" class="flex-col col-xs-12 col-sm-6"></disabled-date>
   </div>
+  <div class="row">
+    <day-of-week-list weekly-visit-times="$ctrl.visitDatetimes.weeklyVisitTimes" update="$ctrl.updateWeeklyTimes()"></day-of-week-list>
+  </div>
+</div>
 </div>

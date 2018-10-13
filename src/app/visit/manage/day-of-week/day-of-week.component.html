@@ -1,13 +1,15 @@
-<fieldset class="scheduler-border">
-  <legend class="scheduler-border" for="visitday-{{$ctrl.visitTime.dayOfWeek}}">{{$ctrl.visitTime.dayOfWeek | dayOfWeekName }}</legend>
-  <div class="control-group">
-    <div class="select-btns">
-      <a ng-href="" class="btn btn-xs btn-default" ng-click="$ctrl.setSelected(true)">Zaznacz wszystkie</a>
-      <a ng-href="" class="btn btn-xs btn-default" ng-click="$ctrl.setSelected(false)">Odznacz wszystkie</a>
+<div class="col-xs-12 col-sm-3">
+  <fieldset class="scheduler-border">
+    <legend class="scheduler-border" for="visitday-{{$ctrl.visitTime.dayOfWeek}}">{{$ctrl.visitTime.dayOfWeek | dayOfWeekName }}</legend>
+    <div class="control-group">
+      <div class="select-btns">
+        <a ng-href="" class="btn btn-xs btn-default" ng-click="$ctrl.setSelected(true)">Zaz. wszystkie</a>
+        <a ng-href="" class="btn btn-xs btn-default" ng-click="$ctrl.setSelected(false)">Odz. wszystkie</a>
+      </div>
+      <div class="checkbox checkbox-success checkbox-circle" ng-repeat="vtime in $ctrl.visitTime.visitTime">
+        <input id="time-{{$ctrl.visitTime.dayOfWeek}}{{$index}}" type="checkbox" value="{{vtime.time}}" ng-model="vtime.selected">
+        <label for="time-{{$ctrl.visitTime.dayOfWeek}}{{$index}}">{{vtime.time}}</label>
+      </div>
     </div>
-    <div class="checkbox checkbox-success checkbox-circle" ng-repeat="vtime in $ctrl.visitTime.visitTime">
-      <input type="checkbox" value="{{vtime.time}}" ng-model="vtime.selected">
-      <label>{{vtime.time}}</label>
-    </div>
-  </div>
-</fieldset>
+  </fieldset>
+</div>
