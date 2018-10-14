@@ -25,9 +25,11 @@ class VisitListController {
     this.showUpdatingPanel(false);
   }
 
-  onFilterChange(filter) {
-    this.filters = Object.assign(this.filters, filter);
-    this.getVisits();
+  onFilterChange(filterChanges) {
+    this.filters = Object.assign(this.filters, filterChanges.filter);
+    if(filterChanges.shouldRefresh) {
+      this.getVisits();
+    }
   }
 
   onLimitChange(limit) {
@@ -118,7 +120,7 @@ VisitListController.$inject = ['authService', 'visitFilterService', 'visitBrowse
 export const VisitListComponent = {
   bindings: {
     visits: "<",
-    status: "<"
+    filterParams: "<"
   },
   require: {
     parent: "^visitBrowse"

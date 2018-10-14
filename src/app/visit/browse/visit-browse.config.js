@@ -14,14 +14,14 @@ export default function VisitBrowseConfig($stateProvider) {
       url: "/current",
       component: "visitList",
       params: {
-        status: null
+        filterParams: null
       },
       resolve: {
         canActivate: AuthGuardUser,
         visits: VisitBrowseResolve('current'),
-        status: [
+        filterParams: [
           '$transition$', 
-          $transition$ => $transition$.params().status
+          $transition$ => $transition$.params().filterParams
         ]
       }
     },

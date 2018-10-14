@@ -11,8 +11,23 @@ class VisitFilterController {
   }
 
   $onInit() {
-    if(Object.values(VISIT_STATUS).some((status) => status === this.status)) {
-      this.filter.status = this.status;
+    this.assignFilters();
+    this.onFilterChange({
+      filterChanges: {
+        filter: this.filter,
+        shouldRefresh: false
+      }
+    });
+  }
+
+  assignFilters() {
+    this.filter.userName = this.filterParams && this.filterParams.userName;
+    const status = this.filterParams && this.filterParams.status;
+    const isStatusValid = Object.values(VISIT_STATUS).some(
+      validStatus => validStatus === status
+    );
+    if (isStatusValid) {
+      this.filter.status = status;
     }
   }
 }
@@ -23,7 +38,7 @@ export const VisitFilterComponent = {
   bindings: {
     onFilterChange: "&",
     type: "<",
-    status: "<"
+    filterParams: "<"
   },
   template,
   controller: VisitFilterController

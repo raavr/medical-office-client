@@ -5,7 +5,7 @@
       Data:
     </div>
     <div class="col-xs-8 col-sm-12 visit-filter__content">
-      <input type="text" class="form-control" ng-model="$ctrl.filter.date" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})"
+      <input type="text" class="form-control" ng-model="$ctrl.filter.date" ng-change="$ctrl.onFilterChange({filterChanges: {filter: $ctrl.filter, shouldRefresh: true}})"
         ng-model-options="{
           updateOn: 'default blur',
           debounce: {
@@ -20,7 +20,7 @@
       Godzina:
     </div>
     <div class="col-xs-8 col-sm-12 visit-filter__content">
-      <input type="text" class="form-control" ng-model="$ctrl.filter.time" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})"
+      <input type="text" class="form-control" ng-model="$ctrl.filter.time" ng-change="$ctrl.onFilterChange({filterChanges: {filter: $ctrl.filter, shouldRefresh: true}})"
         ng-model-options="{
           updateOn: 'default blur',
           debounce: {
@@ -37,7 +37,7 @@
       Pacjent:
     </div>
     <div class="col-xs-8 col-sm-12 visit-filter__content">
-      <input type="text" class="form-control" ng-model="$ctrl.filter.name" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})"
+      <input type="text" class="form-control" ng-model="$ctrl.filter.userName" ng-change="$ctrl.onFilterChange({filterChanges: {filter: $ctrl.filter, shouldRefresh: true}})"
         ng-model-options="{
           updateOn: 'default blur',
           debounce: {
@@ -50,7 +50,7 @@
   <div class="col-xs-12 col-sm-2">
     <div class="col-xs-4 visit-filter__label">Status:</div>
     <div class="col-xs-8 col-sm-12 visit-filter__content">
-      <select class="form-control" ng-model="$ctrl.filter.status" ng-change="$ctrl.onFilterChange({filter: $ctrl.filter})">
+      <select class="form-control" ng-model="$ctrl.filter.status" ng-change="$ctrl.onFilterChange({filterChanges: {filter: $ctrl.filter, shouldRefresh: true}})">
         <option value="all">Wszystkie</option>
         <option value="accepted">Zaakceptowane</option>
         <option value="reserved">Oczekujące</option>
