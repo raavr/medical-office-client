@@ -2,9 +2,10 @@ import "./profile.component.scss";
 import template from "./profile.component.html";
 
 class ProfileController {
-  constructor(profileService, alertEventService) {
+  constructor(profileService, alertEventService, navbarEventService) {
     this.profileService = profileService;
     this.alertEventService = alertEventService;
+    this.navbarEventService = navbarEventService;
   }
 
   updateProfile() {
@@ -13,6 +14,10 @@ class ProfileController {
       .subscribe(
         (data) => {
           this.alertEventService.showSuccessAlert(data.message);
+          this.navbarEventService.refreshAvatarEvent({ 
+            name: `${this.user.surname} ${this.user.name}`, 
+            avatar: this.user.avatar 
+          });
           this.user.lastEmail = this.user.email;
         },
         (err) => {
@@ -22,12 +27,24 @@ class ProfileController {
       )
   }
 
+  onUploadSuccees(data) {
+    this.user.avatar = data.avatar_url;
+    this.navbarEventService.refreshAvatarEvent({ 
+      name: `${this.user.surname} ${this.user.name}`, 
+      avatar: this.user.avatar 
+    });
+  }
+
+  onUploadFailed(error) {
+    this.alertEventService.showDangerAlert(error.data.message);
+  }
+
   $onInit() {
     this.user.lastEmail = this.user.email;
   }
 }
 
-ProfileController.$inject = ['profileService', 'alertEventService'];
+ProfileController.$inject = ['profileService', 'alertEventService', 'navbarEventService'];
 
 export const ProfileComponent = {
   bindings: {

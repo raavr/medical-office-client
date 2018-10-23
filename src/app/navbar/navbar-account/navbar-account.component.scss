@@ -1,5 +1,5 @@
 .menu-icons-dropdown {
-  padding: 15px 10px;
+  padding: 10px;
   display: inline-block;
   
   & &__list {
@@ -9,4 +9,13 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
+  &--hpad {
+    padding: 15px 10px;
+  }
+}
+
+.app-navbar__avatar {
+  height: 30px;
+  width: 30px;
 }

@@ -3,7 +3,7 @@ $fa-font-path: "https://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts";
 // $fa-font-path: "/assets/font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
-* {
+*, *::after, *::before {
   box-sizing: border-box;
 }
 
@@ -129,6 +129,22 @@ p {
 
 .form-control.form-control--border-radius:first-child {
   border-radius: 4px;
+}
+
+.file-label {
+  position: relative;
+  cursor: pointer;
+}
+
+.file-input {
+  opacity: 0.00001;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
 }
 
 .loading-overlay {

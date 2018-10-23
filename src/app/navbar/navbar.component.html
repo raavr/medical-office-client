@@ -12,7 +12,7 @@
     </div>
     <div ng-if="$ctrl.authService.loggedIn()" class="app-navbar__menu-icons">
       <notification></notification>
-      <navbar-account></navbar-account>
+      <navbar-account user="$ctrl.user"></navbar-account>
     </div>
     <div class="navbar-collapse collapse app-navbar__links" id="nav-data">
       <ul class="nav navbar-nav navbar-left app-navbar__nav">

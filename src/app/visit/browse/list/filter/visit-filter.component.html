@@ -30,9 +30,10 @@
         }">
     </div>
   </div>
-  <div ng-if="!$ctrl.authService.isDoctor()" class="col-sm-4"></div>
-  <div ng-if="$ctrl.authService.isDoctor()" ng-class="{ 'col-xs-12 col-sm-3': $ctrl.type === 'current', 
-      'col-xs-12 col-sm-4': $ctrl.type === 'past' }">
+  <div ng-class="{ 
+    'col-xs-12 col-sm-3': $ctrl.type === 'current' && $ctrl.authService.isDoctor(), 
+    'col-xs-12 col-sm-4': $ctrl.type === 'past' || $ctrl.type === 'current' && !$ctrl.authService.isDoctor() 
+    }">
     <div class="col-xs-4 visit-filter__label">
       Pacjent:
     </div>

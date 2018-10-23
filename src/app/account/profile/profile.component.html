@@ -1,40 +1,55 @@
 <div class="col-sm-12">
   <div class="panel panel-default">
     <div class="panel-heading">Profil</div>
-    <div class="panel-body">
-      <legend>
-        <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
-        <span>Edytuj mój profil</span>
-      </legend>
-      <form name="profileForm" ng-submit="$ctrl.updateProfile()">
-        <div class="form-group" ng-class="{ 'has-error' : profileForm.name.$invalid && profileForm.name.$dirty }">
-          <label class="control-label">
-            <i class="glyphicon glyphicon-user" aria-hidden="true"></i> Imię</label>
-          <input type="text" class="form-control" ng-model="$ctrl.user.name" id="name" name="name" required/>
-          <div class="help-block text-danger" ng-if="profileForm.name.$dirty && profileForm.name.$invalid" ng-messages="profileForm.name.$error">
-            <div ng-show="profileForm.name.$error.required" ng-message="required">Twoje imię jest wymagane.</div>
+    <form name="profileForm" ng-submit="$ctrl.updateProfile()">
+      <div class="panel-body">
+        <legend>
+          <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
+          <span>Edytuj mój profil</span>
+        </legend>
+        <div class="profile-container">
+          <div class="form-group" ng-class="{ 'has-error' : profileForm.name.$invalid && profileForm.name.$dirty }">
+            <label class="control-label">
+              <i class="glyphicon glyphicon-user" aria-hidden="true"></i> Imię</label>
+            <input type="text" class="form-control" ng-model="$ctrl.user.name" id="name" name="name" required/>
+            <div class="help-block text-danger" ng-if="profileForm.name.$dirty && profileForm.name.$invalid" ng-messages="profileForm.name.$error">
+              <div ng-show="profileForm.name.$error.required" ng-message="required">Twoje imię jest wymagane.</div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{ 'has-error' : profileForm.surname.$invalid && profileForm.surname.$dirty }">
+            <label class="control-label">
+              <i class="glyphicon glyphicon-user" aria-hidden="true"></i> Nazwisko</label>
+            <input type="text" class="form-control" ng-model="$ctrl.user.surname" id="surname" name="surname" required/>
+            <div class="help-block text-danger" ng-if="profileForm.surname.$dirty && profileForm.surname.$invalid" ng-messages="profileForm.surname.$error">
+              <div ng-show="profileForm.surname.$error.required" ng-message="required">Twoje nazwisko jest wymagane.</div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{ 'has-error' : profileForm.userEmail.$invalid && profileForm.userEmail.$dirty }">
+            <label class="control-label">
+              <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> Adres e-mail</label>
+            <input type="email" id="user-email" name="userEmail" class="form-control" ng-model="$ctrl.user.email" required ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+            />
+            <div class="help-block text-danger" ng-if="profileForm.userEmail.$dirty && profileForm.userEmail.$invalid" ng-messages="profileForm.userEmail.$error">
+              <div ng-show="profileForm.userEmail.$error.required" ng-message="required">Twój adres e-mail jest wymagany.</div>
+              <div ng-show="profileForm.userEmail.$error.pattern" ng-message="pattern">Niepoprawny adres e-mail.</div>
+            </div>
           </div>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : profileForm.surname.$invalid && profileForm.surname.$dirty }">
+        <div class="form-group avatar-container">
           <label class="control-label">
-            <i class="glyphicon glyphicon-user" aria-hidden="true"></i> Nazwisko</label>
-          <input type="text" class="form-control" ng-model="$ctrl.user.surname" id="surname" name="surname" required/>
-          <div class="help-block text-danger" ng-if="profileForm.surname.$dirty && profileForm.surname.$invalid" ng-messages="profileForm.surname.$error">
-            <div ng-show="profileForm.surname.$error.required" ng-message="required">Twoje nazwisko jest wymagane.</div>
-          </div>
+            <i class="glyphicon glyphicon-user" aria-hidden="true"></i> Avatar
+          </label>
+          <img ng-src="{{$ctrl.user.avatar}}" class="avatar" alt="{{$ctrl.user.name}} {{$ctrl.user.surname}}">
+          <label for="avatar" class="btn btn-default file-label">
+            Wybierz plik obrazu
+            <input avatar-upload on-success="$ctrl.onUploadSuccees(data)" on-error="$ctrl.onUploadFailed(error)" type="file" class="file-input"
+              id="avatar" name="avatar" />
+          </label>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : profileForm.userEmail.$invalid && profileForm.userEmail.$dirty }">
-          <label class="control-label">
-            <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> Adres e-mail</label>
-          <input type="email" id="user-email" name="userEmail" class="form-control" ng-model="$ctrl.user.email" required ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
-          />
-          <div class="help-block text-danger" ng-if="profileForm.userEmail.$dirty && profileForm.userEmail.$invalid" ng-messages="profileForm.userEmail.$error">
-            <div ng-show="profileForm.userEmail.$error.required" ng-message="required">Twój adres e-mail jest wymagany.</div>
-            <div ng-show="profileForm.userEmail.$error.pattern" ng-message="pattern">Niepoprawny adres e-mail.</div>
-          </div>
-        </div>
+      </div>
+      <div class="panel-footer">
         <button type="submit" ng-disabled="profileForm.$invalid" class="btn btn-success">Aktualizuj dane</button>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
 </div>

@@ -7,6 +7,7 @@ import { NavbarDoctorComponent } from './navbar-doctor/navbar-doctor.component';
 import { NavbarUserComponent } from './navbar-user/navbar-user.component';
 import Notification from '../notification/notification';
 import { SmoothScrollDirective } from './smooth-scroll.directive';
+import { NavbarEventService } from './navbar-event.service';
 
 export default
   angular.module("navbar", [Auth, Notification])
@@ -17,4 +18,5 @@ export default
     .component("navbarAccount", NavbarAccountComponent)
     .component("navbarDoctor", NavbarDoctorComponent)
     .component("navbarUser", NavbarUserComponent)
+    .service('navbarEventService', NavbarEventService)
     .name;

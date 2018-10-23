@@ -20,6 +20,9 @@ class NavbarAccountController {
 NavbarAccountController.$inject = ['authService', '$location', 'notificationSocketService'];
 
 export const NavbarAccountComponent = {
+  bindings: {
+    user: "<"
+  },
   template,
   controller: NavbarAccountController
 }

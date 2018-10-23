@@ -1,7 +1,7 @@
 <div class="modal-header">
   <h3 class="modal-title">Szczegóły wizyty</h3>
 </div>
-<div class="modal-body">
+<div class="modal-body modal__more">
   <dl>
     <dt>Termin wizyty:</dt>
     <dd>{{$ctrl.visit.visitDate | date : 'dd/MM/yyyy'}} o godzinie {{$ctrl.visit.visitDate | date : 'HH:mm'}}</dd>
@@ -15,7 +15,7 @@
     </div>
     <dt>Informacje dodatkowe:</dt>
     <dd>{{$ctrl.visit.description}}{{$ctrl.visit.description.length > 0 ? '' : 'Brak'}}</dd>
-    <div class="modal-status-box">
+    <div class="modal__status-box">
       <dt>Status:</dt>
       <dd>
         <button ng-if="$ctrl.visit.status === 'reserved'" type="button" class="btn btn-warning btn-type-warning btn-visit-type">Oczekuje</button>
@@ -33,6 +33,7 @@
       <dd>{{$ctrl.visit.rejectReason}}</dd>
     </div>
   </dl>
+  <img ng-src="{{$ctrl.authService.isDoctor() ? $ctrl.visit.patient.avatar : $ctrl.visit.doctor.avatar}}" alt="{{$ctrl.authService.isDoctor() ? $ctrl.visit.patient.surname : $ctrl.visit.doctor.surname}} {{$ctrl.authService.isDoctor() ? $ctrl.visit.patient.name : $ctrl.visit.doctor.name}}" class="modal__avatar">
 </div>
 <div class="modal-footer">
   <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>

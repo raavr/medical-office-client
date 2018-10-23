@@ -10,13 +10,28 @@ dl {
   }
 }
 
-.modal-status-box {
-  dd,
-  dt {
-    display: inline-block;
+.modal {
+  &__more {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   
-  dt {
-    margin-right: 5px;
+  &__status-box {
+    margin-top: 5px;
+  
+    dd,
+    dt {
+      display: inline-block;
+    }
+    
+    dt {
+      margin-right: 5px;
+    }
+  }
+
+  &__avatar {
+    width: 150px;
+    height: 150px;
   }
 }

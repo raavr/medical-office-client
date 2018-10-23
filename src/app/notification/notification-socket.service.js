@@ -6,8 +6,9 @@ import { AUTH_CONFIG } from '../auth/auth.constant';
 
 export class NotificationSocketService {
 
-  constructor(notificationEventService) {
+  constructor(notificationEventService, navbarEventService) {
     this.notificationEventService = notificationEventService;
+    this.navbarEventService = navbarEventService;
   }
 
   init() {
@@ -15,15 +16,21 @@ export class NotificationSocketService {
       this.socket = socketIo(CONFIG.WS_ENDPOINT);
     }
     this.setEvents();
-    this.socket.emit('join', localStorage.getItem(AUTH_CONFIG.DEFAULT_TOKEN_NAME));
+    this.runEvents();
   }
 
   setEvents() {
     this.socket.on('count', (count) => 
       this.notificationEventService.refreshNotificationCount(count)
     );
+    this.socket.on('avatar', (user) => this.navbarEventService.refreshAvatarEvent(user));
     this.socket.on('exception', () => this.disconnect());
   }
+
+  runEvents() {
+    ['join', 'avatar'].forEach(channel => this.socket.emit(channel, localStorage.getItem(AUTH_CONFIG.DEFAULT_TOKEN_NAME)));
+  }
+
 
   onEvent(event) {
     return new Observable(observer => {
@@ -39,4 +46,4 @@ export class NotificationSocketService {
   }
 }
 
-NotificationSocketService.$inject = ['notificationEventService'];
+NotificationSocketService.$inject = ['notificationEventService', 'navbarEventService'];

@@ -14,11 +14,11 @@
     }
   }
 
-  &__item--danger &__link--bold {
+  &__item--danger &__link-content--bold {
     color: #d03732;
   }
 
-  &__item--success &__link--bold {
+  &__item--success &__link-content--bold {
     color: #5cb85c;
   }
 
@@ -29,12 +29,25 @@
   &__link {
     color: #333333;
     padding: 10px;
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     cursor: pointer;
    
-    &--bold {
-      font-weight: 700;
+    &-content {
+      margin-left: 5px;
+
+      &--bold {
+        font-weight: 700;
+      }
     }
+  }
+  
+
+  &__link-avatar {
+    width: 35px;
+    height: 35px;
+    display: block;
   }
 
   &__see-all-btn {

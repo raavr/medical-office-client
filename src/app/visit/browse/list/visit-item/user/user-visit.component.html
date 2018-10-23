@@ -8,10 +8,13 @@
     <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.visitDate | date : 'HH:mm'}}</div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <div class="col-xs-4 list-item__label">Informacje:</div>
+    <div class="col-xs-4 list-item__label">Doktor:</div>
     <div class="col-xs-8 col-sm-12 list-item__content">
-      <span ng-if="$ctrl.type === 'current'">{{$ctrl.visit.description}}{{$ctrl.visit.description.length > 0 ? '' : 'Brak'}}</span>
-      <span ng-if="$ctrl.type === 'past'">{{visit.infoFromDoctor}}{{visit.infoFromDoctor.length > 0 ? '' : '-'}}</span>
+      <img ng-src="{{$ctrl.visit.doctor.avatar}}" alt="{{$ctrl.visit.doctor.name}} {{$ctrl.visit.doctor.surname}}"
+        class="list-item__avatar">
+      <span>
+        {{$ctrl.visit.doctor.name}} {{$ctrl.visit.doctor.surname}}
+      </span>
     </div>
   </div>
   <div class="col-xs-12 col-sm-2">

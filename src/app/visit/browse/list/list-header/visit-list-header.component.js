@@ -24,14 +24,14 @@ const LIST_HEADERS = {
     past: [
       { title: "Data", class: "col-xs-2" },
       { title: "Godzina", class: "col-xs-2" },
-      { title: "Informacja zwrotna", class: "col-xs-4" },
+      { title: "Doktor", class: "col-xs-4" },
       { title: "Status", class: "col-xs-2" },
       { title: "Koszt wizyty", class: "col-xs-2" }
     ],
     current: [
       { title: "Data", class: "col-xs-2" },
       { title: "Godzina", class: "col-xs-2" },
-      { title: "Informacje dodatkowe", class: "col-xs-4" },
+      { title: "Doktor", class: "col-xs-4" },
       { title: "Status", class: "col-xs-2" },
       { title: "Akcje", class: "col-xs-2" }
     ]

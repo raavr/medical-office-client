@@ -31,7 +31,11 @@
           <span>Proszę czekać...</span>
         </div>
         <div class="row list-header">
-          <div ng-repeat="header in ['Imię', 'Nazwisko', 'Email', 'Akcje']" class="col-sm-3 list-header--bold">{{header}}</div>
+          <div ng-repeat="header in [
+            {title: 'Pacjent', col: 'col-sm-5'}, 
+            {title: 'Email', col: 'col-sm-4'}, 
+            {title: 'Akcje', col: 'col-sm-3'}
+          ]" class="list-header--bold" ng-class="header.col">{{header.title}}</div>
         </div>
         <patient-item ng-repeat="patient in $ctrl.filteredPatients" patient="patient" is-even="$index % 2 === 0" on-patient-deleted="$ctrl.onPatientDeleted(patientId)"
           is-updating="$ctrl.showUpdatingPanel(isUpdating)"></patient-item>

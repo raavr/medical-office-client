@@ -19,7 +19,12 @@
   <div ng-class="{ 'col-xs-12 col-sm-3': $ctrl.type === 'current', 
       'col-xs-12 col-sm-4': $ctrl.type === 'past' }">
     <div class="col-xs-4 list-item__label">Pacjent:</div>
-    <div class="col-xs-8 col-sm-12 list-item__content">{{$ctrl.visit.patient.name}} {{$ctrl.visit.patient.surname}}</div>
+    <div class="col-xs-8 col-sm-12 list-item__content">
+      <img ng-src="{{$ctrl.visit.patient.avatar}}" alt="{{$ctrl.visit.patient.name}} {{$ctrl.visit.patient.surname}}" class="list-item__avatar">
+      <span>
+        {{$ctrl.visit.patient.name}} {{$ctrl.visit.patient.surname}}
+      </span>
+    </div>
   </div>
   <div class="col-xs-12 col-sm-2">
     <div class="col-xs-4 list-item__label">Status:</div>

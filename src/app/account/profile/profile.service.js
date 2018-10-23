@@ -17,6 +17,14 @@ export class ProfileService {
     return handleRequest(reqPromise);
   }
 
+  uploadAvatar(avatarFile) {
+    const reqPromise = this.$http.post(CONFIG.ENDPOINT + '/api/avatar', 
+      avatarFile, 
+      { headers: { 'Content-Type': undefined } }
+    );
+    return handleRequest(reqPromise);
+  }
+
 }
 
 ProfileService.$inject = ['$http'];
