@@ -35,7 +35,7 @@
     'col-xs-12 col-sm-4': $ctrl.type === 'past' || $ctrl.type === 'current' && !$ctrl.authService.isDoctor() 
     }">
     <div class="col-xs-4 visit-filter__label">
-      Pacjent:
+      {{ $ctrl.authService.isDoctor() ? 'Pacjent:' : 'Doktor:' }}
     </div>
     <div class="col-xs-8 col-sm-12 visit-filter__content">
       <input type="text" class="form-control" ng-model="$ctrl.filter.userName" ng-change="$ctrl.onFilterChange({filterChanges: {filter: $ctrl.filter, shouldRefresh: true}})"
