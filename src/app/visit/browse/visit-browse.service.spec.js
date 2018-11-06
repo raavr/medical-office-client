@@ -47,7 +47,7 @@ describe("visitBrowseService", () => {
       response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits");
       response.respond(fakeVisits);
 
-      mVisitBrowseService._getVisits("/api/visits", {})
+      mVisitBrowseService.getVisits()
         .subscribe(s => {
           expect(s).toEqual(fakeVisits);
         });
@@ -57,18 +57,18 @@ describe("visitBrowseService", () => {
       response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits");
       response.respond({ visits: [] });
 
-      mVisitBrowseService._getVisits("/api/visits", {})
+      mVisitBrowseService.getVisits()
         .subscribe(s => {
           expect(s.visits.length).toBe(0);
         });
     });
 
-    it("should catch error when _getVisits is called", () => {
+    it("should catch error when getVisits is called", () => {
       const err = new Error();
       response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/visits");
       response.respond(400, err);
 
-      mVisitBrowseService._getVisits("/api/visits", {})
+      mVisitBrowseService.getVisits()
         .subscribe(
           () => { },
           (resErr) => expect(resErr.data).toEqual(err)
@@ -78,7 +78,7 @@ describe("visitBrowseService", () => {
     it("should cancel visits", () => {
       const id = 1;
       response = $httpMock.when("DELETE", CONFIG.ENDPOINT + "/api/visits/" + id);
-      response.respond(200, {});
+      response.respond(200, { status: 200 });
 
       mVisitBrowseService.cancelVisit(id)
         .subscribe(s => {
@@ -103,21 +103,21 @@ describe("visitBrowseService", () => {
 
   });
 
-  describe('spy on _getVisits method', () => {
+  describe('spy on getVisits method', () => {
     let spyService;
 
     beforeEach(() => {
-      spyService = spyOn(mVisitBrowseService, "_getVisits");
+      spyService = spyOn(mVisitBrowseService, "getVisits");
     })
 
-    it("should call _getVisits() when getVisits is called", () => {
-      expect(mVisitBrowseService._getVisits).not.toHaveBeenCalled();
-      mVisitBrowseService.getVisits();
-      expect(mVisitBrowseService._getVisits).toHaveBeenCalled();
-      expect(mVisitBrowseService._getVisits.calls.argsFor(0)).toEqual(['/api/visits', {}]);
+    it("should call getVisits() when getVisits is called", () => {
+      expect(mVisitBrowseService.getVisits).not.toHaveBeenCalled();
+      mVisitBrowseService.getVisits({});
+      expect(mVisitBrowseService.getVisits).toHaveBeenCalled();
+      expect(mVisitBrowseService.getVisits.calls.argsFor(0)).toEqual([{}]);
     });
 
-    it("should call _getVisits() and return user visits", () => {
+    it("should call getVisits() and return user visits", () => {
       spyService.and.returnValue(Observable.of(fakeVisits));
       mVisitBrowseService.getVisits()
         .subscribe(v => expect(v).toEqual(fakeVisits));

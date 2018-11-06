@@ -15,7 +15,7 @@ class VisitManageService {
         return {
           times: data.times,
           disabledDates: data.disabledDates,
-          weeklyVisitTimes: [...data.weeklyVisitTimes, sunday]
+          weeklyVisitTimes: [...data.weeklyVisitTimes, sunday].filter(day => !!day) 
         }
       })
   }

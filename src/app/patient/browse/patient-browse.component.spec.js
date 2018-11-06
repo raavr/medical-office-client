@@ -176,7 +176,7 @@ describe("PatientBrowseComponent", () => {
 
       scope.$apply();
       expect(element.find(".loading-overlay").length).toBe(1);
-      expect(element.find(".loading-overlay").text()).toBe("Proszę czekać...");
+      expect(element.find(".loading-overlay span").text()).toBe("Proszę czekać...");
     });
 
   });

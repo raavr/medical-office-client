@@ -21,7 +21,7 @@ describe("VisitSignupMeComponent", () => {
   }));
 
   beforeEach(() => {
-    spySignupService = spyOn(ctrl.visitSignupService, "addVisit").and.returnValue(Observable.of(null));
+    spySignupService = spyOn(ctrl.visitSignupService, "addVisit").and.returnValue(Observable.of({ message: "Zapisałeś się na wizytę." }));
     spyOn(ctrl.alertEventService, "showSuccessAlert");
     spyOn(ctrl.$state, "go");
     spyAvailableTimes = spyOn(ctrl.visitSignupService, "getAvailableTimes").and.returnValue(Observable.of(visitTimesMock));

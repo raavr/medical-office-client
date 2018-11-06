@@ -26,12 +26,12 @@ describe('DayOfWeekFilter', () => {
     expect(() => dayOfWeekNameFun(null)).toThrow(new Error("Required argument is not an integer number"));
   });
 
-  it('should throw an Error when required number is less than 1', () => {
-    expect(() => dayOfWeekNameFun(0)).toThrow(new Error("Required number is not in range"));
+  it('should throw an Error when required number is less than 0', () => {
+    expect(() => dayOfWeekNameFun(-1)).toThrow(new Error("Required number is not in range"));
   });
 
-  it('should throw an Error when required number is greater than 5', () => {
-    expect(() => dayOfWeekNameFun(6)).toThrow(new Error("Required number is not in range"));
+  it('should throw an Error when required number is greater than 6', () => {
+    expect(() => dayOfWeekNameFun(7)).toThrow(new Error("Required number is not in range"));
   });
 
 });

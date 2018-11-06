@@ -11,7 +11,7 @@ describe("SignupComponent", () => {
   }));
 
   beforeEach(() => {
-    spySignupService = spyOn(ctrl.signupService, "signup").and.returnValue(Observable.of(null));
+    spySignupService = spyOn(ctrl.signupService, "signup").and.returnValue(Observable.of({ message: "Poprawnie założono konto. Możesz się teraz zalogować." }));
     spyOn(ctrl.alertEventService, "showSuccessAlert");
     spyOn(ctrl.alertEventService, "showDangerAlert");
   });

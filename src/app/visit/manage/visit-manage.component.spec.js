@@ -27,7 +27,7 @@ describe("VisitManageComponent", () => {
   }));
 
   beforeEach(() => {
-    spyManageService = spyOn(ctrl.visitManageService, "updateAvailableTimesAndDisabledDates").and.returnValue(Observable.of(null));
+    spyManageService = spyOn(ctrl.visitManageService, "updateWeeklyTimes").and.returnValue(Observable.of({ message: "Zmiany zostały wprowadzone."}));
     spyOn(ctrl.alertEventService, "showSuccessAlert");
     spyOn(ctrl.alertEventService, "showDangerAlert");
     spyOn(ToDateFunctions, "toDate_ddmmyyyy").and.returnValue("20/06/2017");
@@ -46,33 +46,26 @@ describe("VisitManageComponent", () => {
     expect(ctrl.visitManageService).toBeDefined();
   });
 
-  it('should set disabledDates', () => {
-    const dates = { dates: [new Date("Fri Jun 20 2017"), new Date("Fri Jun 20 2017")] };
-    ctrl.changeDate(dates);
-
-    expect(ctrl.visitDatetimes.disabledDates).toEqual(["20/06/2017", "20/06/2017"]);
-  });
-
   describe("when saveChange() is called", () => {
 
-    it('should call visitManageService.updateAvailableTimesAndDisabledDates', () => {
-      expect(ctrl.visitManageService.updateAvailableTimesAndDisabledDates).not.toHaveBeenCalled();
-      ctrl.saveChanges();
-      expect(ctrl.visitManageService.updateAvailableTimesAndDisabledDates).toHaveBeenCalled();
+    it('should call visitManageService.updateWeeklyTimes', () => {
+      expect(ctrl.visitManageService.updateWeeklyTimes).not.toHaveBeenCalled();
+      ctrl.updateWeeklyTimes();
+      expect(ctrl.visitManageService.updateWeeklyTimes).toHaveBeenCalled();
     });
 
     it('should call alertEventService.showSuccessAlert', () => {
       expect(ctrl.alertEventService.showSuccessAlert).not.toHaveBeenCalled();
-      ctrl.saveChanges();
+      ctrl.updateWeeklyTimes();
       expect(ctrl.alertEventService.showSuccessAlert).toHaveBeenCalled();
       expect(ctrl.alertEventService.showSuccessAlert.calls.argsFor(0)).toEqual(["Zmiany zostały wprowadzone."]);
 
     });
 
     it('should call alertEventService.showDangerAlert', () => {
-      spyManageService.and.returnValue(Observable.throw());
+      spyManageService.and.returnValue(Observable.throw({ data: { message: "Wystąpił błąd. Zmiany nie zostały wprowadzone." }}));
       expect(ctrl.alertEventService.showDangerAlert).not.toHaveBeenCalled();
-      ctrl.saveChanges();
+      ctrl.updateWeeklyTimes();
       expect(ctrl.alertEventService.showDangerAlert).toHaveBeenCalled();
       expect(ctrl.alertEventService.showDangerAlert.calls.argsFor(0)).toEqual(["Wystąpił błąd. Zmiany nie zostały wprowadzone."]);
     });

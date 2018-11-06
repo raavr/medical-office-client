@@ -16,6 +16,12 @@ describe("VisitManageService", () => {
 
     fakeAvailableTimes = [
       {
+        dayOfWeek: 0,
+        visitTime: [
+          { selected: true, time: "12:30:00" }
+        ]
+      },
+      {
         dayOfWeek: 1,
         visitTime: [
           { selected: true, time: "09:30:00" },
@@ -49,7 +55,7 @@ describe("VisitManageService", () => {
 
   it("should return disabled visit dates", () => {
     response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/weekly_times");
-    response.respond({ disabledDates: fakeDisabledDates });
+    response.respond({ disabledDates: fakeDisabledDates, weeklyVisitTimes: fakeAvailableTimes });
 
     mVisitManageService.getAvailableTimesAndDisabledDates()
       .subscribe(s => {
@@ -59,7 +65,7 @@ describe("VisitManageService", () => {
 
   it("should not return any disabled visit dates", () => {
     response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/weekly_times");
-    response.respond({ disabledDates: [] });
+    response.respond({ disabledDates: [], weeklyVisitTimes: [] });
 
     mVisitManageService.getAvailableTimesAndDisabledDates()
       .subscribe(s => {
@@ -71,9 +77,14 @@ describe("VisitManageService", () => {
     response = $httpMock.when("GET", CONFIG.ENDPOINT + "/api/weekly_times");
     response.respond({ weeklyVisitTimes: fakeAvailableTimes });
 
+
+    const expectedTimes = [
+      ...fakeAvailableTimes.slice(1), fakeAvailableTimes[0]
+    ];
+
     mVisitManageService.getAvailableTimesAndDisabledDates()
       .subscribe(s => {
-        expect(s.weeklyVisitTimes).toEqual(fakeAvailableTimes);
+        expect(s.weeklyVisitTimes).toEqual(expectedTimes);
       });
   });
 
@@ -88,9 +99,9 @@ describe("VisitManageService", () => {
 
   it("should update available visit times", () => {
     response = $httpMock.when("PUT", CONFIG.ENDPOINT + "/api/weekly_times");
-    response.respond(200, { "message": "" });
+    response.respond(200, { status: 200, data: { message: "" }});
 
-    mVisitManageService.updateAvailableTimesAndDisabledDates()
+    mVisitManageService.updateWeeklyTimes()
       .subscribe(s => {
         expect(s.status).toBe(200);
         expect(s.data.message).toBe("");
