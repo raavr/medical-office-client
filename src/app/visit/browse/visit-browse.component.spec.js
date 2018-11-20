@@ -69,12 +69,9 @@ describe("VisitBrowseComponent", () => {
         expect(ctrl.activatedTab).toEqual('current');
       });
 
-      it("should set nav-tabs link's href attr to '/visit/browse/past' and ui-sref to 'visit-browse.past'", () => {
-        const href = element.find(".nav-tabs li a").eq(1).attr("href").substr(2);
+      it("should set nav-tabs link's ui-sref to 'dashboard.visits.past'", () => {
         const uiSref = element.find(".nav-tabs li a").eq(1).attr("ui-sref");
-
-        expect(href).toEqual('/visit/browse/past');
-        expect(uiSref).toEqual('visit-browse.past');
+        expect(uiSref).toEqual('dashboard.visits.past');
       });
 
       it("should show loading panel", () => {

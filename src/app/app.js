@@ -19,12 +19,14 @@ import Footer from './footer/footer';
 import NoContent from './no-content/no-content';
 import ForgotPass from './forgot-pass/forgot-pass';
 import AppInit from './app.init';
+import Dashboard from './dashboard/dashboard';
 
 export default angular.module("My-app", [
   Navbar,
   Auth,
   Home,
   Login,
+  Dashboard,
   Visit,
   Alert,
   Account,

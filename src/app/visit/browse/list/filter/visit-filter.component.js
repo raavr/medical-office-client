@@ -6,8 +6,14 @@ class VisitFilterController {
   constructor(authService) {
     this.authService = authService;
     this.filter = {
-      status: "all"
+      status: "all",
+      allSelected: false
     };
+  }
+
+  selectAll() {
+    this.allSelected = !this.allSelected;
+    this.onSelectBtnClicked({ allSelected: this.allSelected });
   }
 
   $onInit() {
@@ -38,7 +44,8 @@ export const VisitFilterComponent = {
   bindings: {
     onFilterChange: "&",
     type: "<",
-    filterParams: "<"
+    filterParams: "<",
+    onSelectBtnClicked: "&"
   },
   template,
   controller: VisitFilterController

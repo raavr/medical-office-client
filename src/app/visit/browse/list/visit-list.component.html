@@ -1,7 +1,7 @@
 <div ng-if="!$ctrl.parent.isLoading()" class="container-fluid">
-  <visit-selector ng-if="$ctrl.authService.isDoctor() && $ctrl.getVisitType() === 'current'" on-select-btn-clicked="$ctrl.onSelectBtnClicked(isSelected)"></visit-selector>
+  <visit-signup-btn ng-if="$ctrl.parent.isTabActive('current')" refresh-visit="$ctrl.getVisits()"></visit-signup-btn>
   <visit-list-header type="$ctrl.getVisitType()"></visit-list-header>
-  <visit-filter on-filter-change="$ctrl.onFilterChange(filterChanges)" type="$ctrl.getVisitType()" filter-params="$ctrl.filterParams"></visit-filter>
+  <visit-filter on-filter-change="$ctrl.onFilterChange(filterChanges)" type="$ctrl.getVisitType()" filter-params="$ctrl.filterParams" on-select-btn-clicked="$ctrl.onSelectBtnClicked(allSelected)"></visit-filter>
   <div class="visits-container">
     <doctor-visit ng-if="$ctrl.authService.isDoctor()" ng-repeat="visit in $ctrl.visits" visit="visit" type="$ctrl.getVisitType()"
       is-even="$index % 2 === 0" on-change="$ctrl.onVisitSelected(visitId)">

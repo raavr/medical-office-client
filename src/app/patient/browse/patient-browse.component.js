@@ -4,23 +4,29 @@ import { Observable } from 'rxjs/Observable';
 
 class PatientBrowseController {
 
+  constructor(authService, $uibModal, patientBrowseService) {
+    this.authService = authService;
+    this.$uibModal = $uibModal;
+    this.patientBrowseService = patientBrowseService;
+  }
+
   $onInit() {
-    this._getFilteredPatients();
+    this.onFilterChange();
     this.showUpdatingPanel(false);
   }
 
-  _getFilteredPatients() {
-    return Observable.from(this.patients)
+  _getFilteredPatients(patients) {
+    return Observable.from(patients || this.patients)
       .filter((pat) => {
         const patString = `${pat.name} ${pat.surname} ${pat.email}`;
         return !this.filter || patString.indexOf(this.filter) >= 0
       })
-      .toArray()
-      .subscribe((patients) => this.filteredPatients = patients);
+      .toArray();
   }
 
   onFilterChange() {
-    this._getFilteredPatients();
+    this._getFilteredPatients()
+      .subscribe((patients) => this.filteredPatients = patients);
   }
 
   onPatientDeleted(patientId) {
@@ -28,7 +34,7 @@ class PatientBrowseController {
 
     if (index >= 0) {
       this.patients.splice(index, 1);
-      this._getFilteredPatients();
+      this.onFilterChange();
     }
 
     this.showUpdatingPanel(false);
@@ -38,7 +44,29 @@ class PatientBrowseController {
     this.isUpdating = isUpdating;
   }
 
+  openPatientModal() {
+    const modalInstance = this.$uibModal.open({
+      animation: true,
+      component: 'patientCreate'
+    });
+
+    modalInstance.result
+      .then(() => this.patientBrowseService
+        .getPatients()
+        .switchMap(
+          (patients) => this._getFilteredPatients(patients), 
+          (patients, filteredPatients) => ({patients, filteredPatients})
+        )
+        .subscribe((allPatients) => {
+          this.patients = allPatients.patients;
+          this.filteredPatients = allPatients.filteredPatients;
+        })
+      )
+      .catch(() => {});
+  }
 }
+
+PatientBrowseController.$inject = ['authService', '$uibModal', 'patientBrowseService'];
 
 export const PatientBrowseComponent = {
   bindings: {

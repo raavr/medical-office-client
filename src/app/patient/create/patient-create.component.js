@@ -1,6 +1,5 @@
 import "./patient-create.component.scss";
 import template from "./patient-create.component.html";
-import { Observable } from 'rxjs/Observable';
 
 class PatientCreateController {
   constructor(patientCreateService, alertEventService, $state) {
@@ -20,9 +19,11 @@ class PatientCreateController {
         (data) => {
           this.alertEventService.showSuccessAlert(data.message);
           this.$state.go("patient-browse");
+          this.close();
         },
         (err) => {
           this.alertEventService.showDangerAlert(err.data.message);
+          this.close();
         }
       );
   }
@@ -32,6 +33,10 @@ class PatientCreateController {
 PatientCreateController.$inject = ['patientCreateService', 'alertEventService', '$state'];
 
 export const PatientCreateComponent = {
+  bindings: {
+    close: "&",
+    dismiss: "&"
+  },
   template,
   controller: PatientCreateController
 }

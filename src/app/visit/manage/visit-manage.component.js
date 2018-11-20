@@ -3,9 +3,10 @@ import template from "./visit-manage.component.html";
 
 class VisitManageController {
 
-  constructor(visitManageService, alertEventService) {
+  constructor(visitManageService, alertEventService, authService) {
     this.visitManageService = visitManageService;
     this.alertEventService = alertEventService;
+    this.authService = authService;
   }
 
   updateWeeklyTimes() {
@@ -48,7 +49,7 @@ class VisitManageController {
 
 }
 
-VisitManageController.$inject = ['visitManageService', 'alertEventService'];
+VisitManageController.$inject = ['visitManageService', 'alertEventService', 'authService'];
 
 export const VisitManageComponent = {
   bindings: {

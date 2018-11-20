@@ -1,0 +1,6 @@
+<button class="btn btn-success btn__signup-visit" type="button" ng-click="$ctrl.openSignupModal()">
+  {{ $ctrl.authService.isDoctor() 
+    ? 'Zapisz pacjenta na wizytę' 
+    : 'Zapisz się na wizytę'
+  }}
+</button>

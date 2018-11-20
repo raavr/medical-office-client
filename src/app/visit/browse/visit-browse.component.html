@@ -1,17 +1,20 @@
-<div class="container partials-content">
-  <div class="row">
-    <div class="col-sm-12">
-      <ul class="nav nav-tabs">
-        <li role="presentation" ng-class="{ active: $ctrl.isTabActive('current') }">
-          <a ui-sref="visit-browse.current" class="nav-tabs__link" ng-click="$ctrl.activeTab('current')">Atkualne wizyty</a>
-        </li>
-        <li role="presentation" ng-class="{ active: $ctrl.isTabActive('past') }">
-          <a ui-sref="visit-browse.past" class="nav-tabs__link" ng-click="$ctrl.activeTab('past')">Minione wizyty</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div ng-if="$ctrl.isLoading()">Trwa wczytywanie...</div>
-        <div ui-view class="show-grid"></div>
+<div ng-class="{ 'nav-sidebar': $ctrl.authService.isDoctor() }">
+  <div class="container partials-content" ng-class="{ 'sidebar-content': $ctrl.authService.isDoctor() }">
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+          <li role="presentation" ng-class="{ active: $ctrl.isTabActive('current') }">
+            <a ui-sref="dashboard.visits.current" class="nav-tabs__link" ng-click="$ctrl.activeTab('current')">Atkualne
+              wizyty</a>
+          </li>
+          <li role="presentation" ng-class="{ active: $ctrl.isTabActive('past') }">
+            <a ui-sref="dashboard.visits.past" class="nav-tabs__link" ng-click="$ctrl.activeTab('past')">Minione wizyty</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div ng-if="$ctrl.isLoading()">Trwa wczytywanie...</div>
+          <div ui-view class="show-grid"></div>
+        </div>
       </div>
     </div>
   </div>

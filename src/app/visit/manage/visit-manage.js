@@ -10,9 +10,17 @@ import Alert from '../../alert/alert';
 import { VisitTimeComponent } from './visit-time/visit-time.component';
 import { DayOfWeekListComponent } from './day-of-week-list/day-of-week-list.component';
 import { DisabledDateComponent } from './disabled-date/disabled-date.component';
+import Auth from '../../auth/auth';
 
 export default
-  angular.module("visit.manage", [uiRouter, uiBootstrapTimepicker, visitManageService, visitCommon, Alert])
+  angular.module("visit.manage", [
+    uiRouter, 
+    uiBootstrapTimepicker, 
+    visitManageService, 
+    visitCommon, 
+    Alert,
+    Auth
+  ])
     .config(VisitManageConfig)
     .component("visitManage", VisitManageComponent)
     .component("dayOfWeekList", DayOfWeekListComponent)

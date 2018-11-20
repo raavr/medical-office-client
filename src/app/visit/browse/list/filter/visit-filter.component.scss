@@ -3,6 +3,8 @@
 
   @media(min-width: 768px) {
     & {
+      display: flex;
+      align-items: center;
       margin-bottom: 0;
     }
   }

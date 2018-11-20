@@ -7,8 +7,8 @@ export class NavbarUserController {
   }
 
   isActive() {
-    const cState = this.$state.is("visit-browse.current");
-    const pState = this.$state.is("visit-browse.past");
+    const cState = this.$state.is("dashboard.visits.current");
+    const pState = this.$state.is("dashboard.visits.past");
 
     return cState || pState;
   }

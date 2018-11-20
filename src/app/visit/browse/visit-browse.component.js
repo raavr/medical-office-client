@@ -2,8 +2,9 @@ import "./visit-browse.component.scss";
 import template from "./visit-browse.component.html";
 
 class VisitBrowseController {
-  constructor($state) {
+  constructor($state, authService) {
     this.$state = $state;
+    this.authService = authService;
   }
 
   $onInit() {
@@ -26,7 +27,7 @@ class VisitBrowseController {
   }
 
   _isCurrentTabStateActive() {
-    return this.$state.is("visit-browse.current");
+    return this.$state.is("dashboard.visits.current");
   }
 
   isTabActive(tabName) {
@@ -42,7 +43,7 @@ class VisitBrowseController {
   }
 }
 
-VisitBrowseController.$inject = ['$state'];
+VisitBrowseController.$inject = ['$state', 'authService'];
 
 export const VisitBrowseComponent = {
   template,

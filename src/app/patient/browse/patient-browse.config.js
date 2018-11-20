@@ -3,8 +3,8 @@ import AuthGuardDoctor from '../../auth/auth-guard-doctor.service';
 
 export default function PatientBrowseConfig($stateProvider) {
   $stateProvider.state({
-    name: "patient-browse",
-    url: "/patient/browse",
+    name: "dashboard.patients",
+    url: "/patients",
     component: "patientBrowse",
     resolve: {
       canActivate: AuthGuardDoctor,

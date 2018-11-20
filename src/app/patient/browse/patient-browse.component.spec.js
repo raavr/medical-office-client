@@ -29,12 +29,12 @@ describe("PatientBrowseComponent", () => {
     ctrl = $componentController("patientBrowse", null, bindings);
   }));
 
-  it('should call _getFilteredPatients', () => {
-    spyOn(ctrl, "_getFilteredPatients");
+  it('should call onFilterChange', () => {
+    spyOn(ctrl, "onFilterChange");
 
-    expect(ctrl._getFilteredPatients).not.toHaveBeenCalled();
+    expect(ctrl.onFilterChange).not.toHaveBeenCalled();
     ctrl.$onInit();
-    expect(ctrl._getFilteredPatients).toHaveBeenCalled();
+    expect(ctrl.onFilterChange).toHaveBeenCalled();
   });
 
   it("should set isUpdating to false", () => {
@@ -54,18 +54,18 @@ describe("PatientBrowseComponent", () => {
     expect(ctrl.patients).toEqual(bindings.patients);
     expect(ctrl.filteredPatients).not.toBeDefined();
 
-    ctrl._getFilteredPatients();
+    ctrl.onFilterChange();
 
     expect(ctrl.filteredPatients).toBeDefined();
     expect(ctrl.filteredPatients).toEqual(bindings.patients);
   });
 
   it("should filter patients when filter is equal to undefined", () => {
-    ctrl.filter = '';
+    ctrl.filter = undefined;
     expect(ctrl.patients).toEqual(bindings.patients);
     expect(ctrl.filteredPatients).not.toBeDefined();
 
-    ctrl._getFilteredPatients();
+    ctrl.onFilterChange();
 
     expect(ctrl.filteredPatients).toBeDefined();
     expect(ctrl.filteredPatients).toEqual(bindings.patients);
@@ -76,7 +76,7 @@ describe("PatientBrowseComponent", () => {
     expect(ctrl.patients).toEqual(bindings.patients);
     expect(ctrl.filteredPatients).not.toBeDefined();
 
-    ctrl._getFilteredPatients();
+    ctrl.onFilterChange();
 
     expect(ctrl.filteredPatients).toBeDefined();
     expect(ctrl.filteredPatients).toEqual(bindings.patients.slice(0, 1));
@@ -87,14 +87,14 @@ describe("PatientBrowseComponent", () => {
     expect(ctrl.patients).toEqual(bindings.patients);
     expect(ctrl.filteredPatients).not.toBeDefined();
 
-    ctrl._getFilteredPatients();
+    ctrl.onFilterChange();
 
     expect(ctrl.filteredPatients).toBeDefined();
     expect(ctrl.filteredPatients).toEqual([]);
   });
 
   it('should call _getFilteredPatients when onFilterChange is called', () => {
-    spyOn(ctrl, "_getFilteredPatients");
+    spyOn(ctrl, "_getFilteredPatients").and.returnValue(Observable.of(null));
 
     expect(ctrl._getFilteredPatients).not.toHaveBeenCalled();
     ctrl.onFilterChange();
@@ -108,7 +108,7 @@ describe("PatientBrowseComponent", () => {
   });
 
   it('should call _getFilteredPatients and showUpdatingPanel when onPatientDeleted is called with patientId = 2', () => {
-    spyOn(ctrl, "_getFilteredPatients");
+    spyOn(ctrl, "_getFilteredPatients").and.returnValue(Observable.of(null));
     spyOn(ctrl, "showUpdatingPanel");
 
     expect(ctrl._getFilteredPatients).not.toHaveBeenCalled();
@@ -121,7 +121,7 @@ describe("PatientBrowseComponent", () => {
   });
 
   it('should not delete any patient when onPatientDeleted is called with patientId = 10', () => {
-    spyOn(ctrl, "_getFilteredPatients");
+    spyOn(ctrl, "_getFilteredPatients").and.returnValue(Observable.of(null));
     spyOn(ctrl, "showUpdatingPanel");
 
     expect(ctrl._getFilteredPatients).not.toHaveBeenCalled();

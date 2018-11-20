@@ -1,4 +1,5 @@
 import uiRouter from 'angular-ui-router';
+import uiBootstrapModal from 'angular-ui-bootstrap/src/modal';
 import { PatientBrowseComponent } from './patient-browse.component';
 import { PatientItemComponent } from './patient-item/patient-item.component';
 import PatientBrowseConfig from './patient-browse.config';
@@ -13,6 +14,7 @@ export default
     uiRouter,
     Auth,
     uiBootstrapTooltip,
+    uiBootstrapModal,
     Alert
   ]).config(PatientBrowseConfig)
     .component("patientBrowse", PatientBrowseComponent)

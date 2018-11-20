@@ -1,10 +1,11 @@
-<div class="container partials-content">
-  <div class="row flex-row">
-      <visit-time times="$ctrl.visitDatetimes.times" update="$ctrl.updateTimes(times)" class="flex-col col-xs-12 col-sm-6"></visit-time>
-      <disabled-date disabled-dates="$ctrl.visitDatetimes.disabledDates" update="$ctrl.updateDates(dates)" class="flex-col col-xs-12 col-sm-6"></disabled-date>
+<div class="nav-sidebar">
+  <div class="container partials-content sidebar-content">
+    <div class="row flex-row">
+        <visit-time times="$ctrl.visitDatetimes.times" update="$ctrl.updateTimes(times)" class="flex-col col-xs-12 col-sm-6"></visit-time>
+        <disabled-date disabled-dates="$ctrl.visitDatetimes.disabledDates" update="$ctrl.updateDates(dates)" class="flex-col col-xs-12 col-sm-6"></disabled-date>
+    </div>
+    <div class="row">
+      <day-of-week-list weekly-visit-times="$ctrl.visitDatetimes.weeklyVisitTimes" update="$ctrl.updateWeeklyTimes()"></day-of-week-list>
+    </div>
   </div>
-  <div class="row">
-    <day-of-week-list weekly-visit-times="$ctrl.visitDatetimes.weeklyVisitTimes" update="$ctrl.updateWeeklyTimes()"></day-of-week-list>
-  </div>
-</div>
 </div>

@@ -1,37 +1,27 @@
-<div class="container partials-content">
-  <div class="row">
-    <div class="col-sm-12 col-md-offset-2 col-md-8">
-      <div class="panel panel-default">
-        <div class="panel-heading">Utwórz konto pacjenta</div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-sm-12">
-              <form name="createPatientForm">
-                <div class="form-group">
-                  <label for="patientName">Imię pacjenta:</label>
-                  <input type="text" name="patientName" class="form-control" ng-model="$ctrl.patient.name" required>
-                </div>
-                <div class="form-group">
-                  <label for="patientLastName">Nazwisko pacjenta:</label>
-                  <input type="text" name="patientLastName" class="form-control" ng-model="$ctrl.patient.surname" required>
-                </div>
-                <div class="form-group">
-                  <label for="patientEmail">Email:</label>
-                  <input class="form-control" type="email" id="email" name="email" ng-model="$ctrl.patient.email" required ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
-                  <div class="help-block text-danger" ng-if="createPatientForm.email.$dirty && createPatientForm.email.$invalid" ng-messages="createPatientForm.email.$error">
-                    <div ng-show="createPatientForm.email.$error.required" ng-message="required">Adres e-mail jest wymagany.</div>
-                    <div ng-show="createPatientForm.email.$error.pattern" ng-message="pattern">Adres e-mail jest niepoprawny.</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <button type="submit" class="btn btn-success" ng-disabled="createPatientForm.$invalid" ng-click="$ctrl.createPatient()">Utwórz konto pacjenta</button>
-                  <button type="button" class="btn btn-danger" ui-sref="patient-browse">Anuluj</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="modal-header">
+  <h3 class="modal-title">Utwórz konto pacjenta</h3>
+</div>
+<form class="modal-body" name="createPatientForm">
+  <div class="form-group">
+    <label for="patientName">Imię pacjenta:</label>
+    <input type="text" name="patientName" class="form-control" ng-model="$ctrl.patient.name" required>
+  </div>
+  <div class="form-group">
+    <label for="patientLastName">Nazwisko pacjenta:</label>
+    <input type="text" name="patientLastName" class="form-control" ng-model="$ctrl.patient.surname" required>
+  </div>
+  <div class="form-group">
+    <label for="patientEmail">Email:</label>
+    <input class="form-control" type="email" id="email" name="email" ng-model="$ctrl.patient.email" required ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+    <div class="help-block text-danger" ng-if="createPatientForm.email.$dirty && createPatientForm.email.$invalid"
+      ng-messages="createPatientForm.email.$error">
+      <div ng-show="createPatientForm.email.$error.required" ng-message="required">Adres e-mail jest wymagany.</div>
+      <div ng-show="createPatientForm.email.$error.pattern" ng-message="pattern">Adres e-mail jest niepoprawny.</div>
     </div>
   </div>
+</form>
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success" ng-disabled="createPatientForm.$invalid" ng-click="$ctrl.createPatient()">Utwórz
+    konto pacjenta</button>
+  <button type="button" class="btn btn-danger" ng-click="$ctrl.dismiss()">Anuluj</button>
 </div>

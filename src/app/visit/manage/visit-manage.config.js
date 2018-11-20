@@ -5,8 +5,8 @@ export default function VisitManageConfig($stateProvider) {
 
   $stateProvider.state(
     {
-      name: "visit-manage",
-      url: "/visit/manage",
+      name: "dashboard.schedule",
+      url: "/schedule",
       component: "visitManage",
       resolve: {
         canActivate: AuthGuardDoctor,

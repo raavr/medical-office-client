@@ -1,23 +1,19 @@
-<ul class="nav navbar-nav navbar-left app-navbar__nav">
-  <li class="dropdown">
-    <a class="app-navbar__link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-      href="">
-      <span>Wizyty</span>
-      <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu collapse-menu" aria-labelledby="dropdownMenu1">
-      <li ng-class="{ active: $ctrl.isActive() }">
-        <a class="app-navbar__link" ui-sref="visit-browse.current" collapse-navbar>Przeglądaj wizyty</a>
-      </li>
-      <li ui-sref-active="active">
-        <a class="app-navbar__link" ui-sref="visit-signup.user" collapse-navbar>Zapisz pacjenta na wizytę</a>
-      </li>
-      <li ui-sref-active="active">
-        <a class="app-navbar__link" ui-sref="visit-manage" collapse-navbar>Zarządzaj terminami wizyt</a>
-      </li>
-    </ul>
-  </li>
-  <li ui-sref-active="active">
-    <a class="app-navbar__link" ui-sref="patient-browse" collapse-navbar>Pacjenci</a>
-  </li>
-</ul>
+<nav class="app-sidenav">
+  <ul class="app-sidenav__list">
+    <li class="app-sidenav__item" ng-class="{ 'app-navbar__link--is-active': $ctrl.isActive() }" uib-tooltip="Wizyty" tooltip-popup-delay="800" tooltip-placement="right">
+      <a class="app-sidenav__link" ui-sref="dashboard.visits.current">
+        <i class="glyphicon glyphicon glyphicon-list-alt"></i>
+      </a>
+    </li>
+    <li class="app-sidenav__item" ui-sref-active="app-navbar__link--is-active" uib-tooltip="Pacjenci" tooltip-popup-delay="800" tooltip-placement="right">
+      <a class="app-sidenav__link" ui-sref="dashboard.patients">
+        <i class="glyphicon glyphicon glyphicon-user"></i>
+      </a>
+    </li>
+    <li class="app-sidenav__item" ui-sref-active="app-navbar__link--is-active" uib-tooltip="Grafik" tooltip-popup-delay="800" tooltip-placement="right">
+      <a class="app-sidenav__link" ui-sref="dashboard.schedule">
+        <i class="glyphicon glyphicon glyphicon-time"></i>
+      </a>
+    </li>
+  </ul>
+</nav>

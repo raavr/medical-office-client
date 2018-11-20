@@ -10,15 +10,20 @@ class VisitSignupUserController extends VisitSignupBaseController {
     this.$state = $state;
   }
 
+  $onInit() {
+    this.disabledDates = this.resolve.disabledDates;
+  }
+
   addVisit() {
     this.visitSignupService.addVisit(this.visit).subscribe(
       () => {
-        this.$state.go('visit-browse.current');
         this.alertEventService.showSuccessAlert(`Pacjent ${this.asyncSelectedUser} został zapisany na wizytę.`);
+        this.close();
       },
       (err) => {
         this.alertEventService.showDangerAlert(err.data.message);
         this.getAvailableTimes();
+        this.close();
       }
     );
   }
@@ -33,14 +38,15 @@ class VisitSignupUserController extends VisitSignupBaseController {
     return super.isSubmitDisabled() 
       || this.asyncSelectedUser !== this.userSelected.name;
   }
-
 }
 
 VisitSignupUserController.$inject = ['visitSignupService', 'alertEventService', 'authService', '$state'];
 
 export const VisitSignupUserComponent = {
   bindings: {
-    disabledDates: "<"
+    resolve: "<",
+    close: '&',
+    dismiss: '&'
   },
   template,
   controller: VisitSignupUserController

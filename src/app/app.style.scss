@@ -90,6 +90,37 @@ p {
 .main-section {
   padding-top: 50px;
   min-height: 100%;
+  position: relative;
+}
+
+.nav-sidebar {
+  margin-left: 0px;
+
+  @media(min-width: 576px) {
+    & {
+      margin-left: 70px;
+    }
+  }
+}
+
+.sidebar-content {
+  @media(min-width: 768px) {
+    & {
+      width: 680px;
+    }
+  }
+
+  @media(min-width: 992px) {
+    & {
+      width: 900px;
+    }
+  }
+
+  @media(min-width: 1200px) {
+    & {
+      width: 1170px;
+    }
+  }
 }
 
 .partials-content {

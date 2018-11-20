@@ -1,5 +1,15 @@
 <div class="row visit-filter">
-  <div ng-if="$ctrl.type === 'current' && $ctrl.authService.isDoctor()" class="col-xs-1"></div>
+  <div ng-if="$ctrl.type === 'current' && $ctrl.authService.isDoctor()" class="col-xs-12 col-sm-1">
+    <div class="col-xs-4 visit-filter__label">
+      Zaz. wszystkie:
+    </div>
+    <div class="col-xs-8 col-sm-12 visit-filter__content">
+      <div class="checkbox checkbox-success checkbox-circle">
+        <input type="checkbox" ng-model="$ctrl.filter.allSelected" ng-change="$ctrl.selectAll()">
+        <label></label>
+      </div>
+    </div>
+  </div>
   <div class="col-xs-12 col-sm-2">
     <div class="col-xs-4 visit-filter__label">
       Data:

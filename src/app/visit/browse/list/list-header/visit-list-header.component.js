@@ -12,7 +12,7 @@ const LIST_HEADERS = {
       { title: "Akcje", class: "col-xs-2" }
     ],
     current: [
-      { title: "", class: "col-xs-1" },
+      { title: "Zaz.", class: "col-xs-1" },
       { title: "Data", class: "col-xs-2" },
       { title: "Godzina", class: "col-xs-2" },
       { title: "Pacjent", class: "col-xs-3" },

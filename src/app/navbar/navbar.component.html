@@ -32,9 +32,11 @@
           <a class="app-navbar__link" ng-href="/#find-us" collapse-navbar smooth-scroll>Odwiedź nas</a>
         </li>
         <li ng-if="$ctrl.authService.loggedIn()" role="separator" class="app-navbar__divider"></li>
+        <li>
+          <a class="app-navbar__link" ng-if="$ctrl.authService.loggedIn() && $ctrl.authService.isDoctor()" ui-sref="dashboard.visits.current" collapse-navbar>Panel doktora</a>
+        </li>
       </ul>
       <navbar-user ng-if="$ctrl.authService.loggedIn() && !$ctrl.authService.isDoctor()"></navbar-user>
-      <navbar-doctor ng-if="$ctrl.authService.loggedIn() && $ctrl.authService.isDoctor()"></navbar-doctor>
       <navbar-sign ng-if="!$ctrl.authService.loggedIn()"></navbar-sign>
     </div>
   </div>

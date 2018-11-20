@@ -17,7 +17,9 @@ describe("VisitSignupMeComponent", () => {
 
   beforeEach(angular.mock.inject(($injector) => {
     $componentController = $injector.get("$componentController");
-    ctrl = $componentController("visitSignupMe", null, null);
+    ctrl = $componentController("visitSignupMe", null, {
+      close: () => {}
+    });
   }));
 
   beforeEach(() => {
@@ -128,14 +130,6 @@ describe("VisitSignupMeComponent", () => {
       ctrl.addVisit();
       expect(ctrl.alertEventService.showSuccessAlert).toHaveBeenCalled();
       expect(ctrl.alertEventService.showSuccessAlert.calls.argsFor(0)).toEqual(["Zapisałeś się na wizytę."]);
-    });
-
-    it('should call $state.go', () => {
-      expect(ctrl.$state.go).not.toHaveBeenCalled();
-      ctrl.addVisit();
-      expect(ctrl.$state.go).toHaveBeenCalled();
-      expect(ctrl.$state.go.calls.argsFor(0)).toEqual(["visit-browse.current"]);
-
     });
 
     describe("with error", () => {

@@ -11,7 +11,6 @@ import { VisitFilterComponent } from './list/filter/visit-filter.component';
 import { UserVisitComponent } from './list/visit-item/user/user-visit.component';
 import { DoctorVisitComponent } from './list/visit-item/doctor/doctor-visit.component';
 import { ItemsLimitComponent } from './list/items-limit/items-limit.component';
-import { VisitSelectorComponent } from './list/visit-selector/visit-selector.component';
 import { DoctorActionPanelComponent } from './list/doctor-action/doctor-action-panel.component';
 import visitBrowseService from './visit-browse.service';
 import Auth from '../../auth/auth';
@@ -35,6 +34,5 @@ export default
     .component("userVisit", UserVisitComponent)
     .component("doctorVisit", DoctorVisitComponent)
     .component("itemsLimit", ItemsLimitComponent)
-    .component("visitSelector", VisitSelectorComponent)
     .component("doctorActionPanel", DoctorActionPanelComponent)
     .name;

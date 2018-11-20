@@ -11,15 +11,20 @@ class VisitSignupMeController extends VisitSignupBaseController {
     this.$state = $state;
   }
 
+  $onInit() {
+    this.doctorsList = this.resolve.doctorsList;
+  }
+
   addVisit() {
     this.visitSignupService.addVisit(this.visit).subscribe(
       (data) => {
-        this.$state.go('visit-browse.current');
         this.alertEventService.showSuccessAlert(data.message);
+        this.close();
       },
       (err) => {
         console.log(err);
         this.alertEventService.showDangerAlert(err.data.message);
+        this.close();
       }
     );
   }
@@ -39,7 +44,9 @@ VisitSignupMeController.$inject = ['visitSignupService', 'alertEventService', 'a
 
 export const VisitSignupMeComponent = {
   bindings: {
-    doctorsList: "<"
+    resolve: "<",
+    dismiss: "&",
+    close: "&"
   },
   template,
   controller: VisitSignupMeController

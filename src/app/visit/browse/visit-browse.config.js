@@ -5,12 +5,13 @@ export default function VisitBrowseConfig($stateProvider) {
 
   const states = [
     {
-      name: "visit-browse",
-      url: "/visit/browse",
-      component: "visitBrowse"
+      name: "dashboard.visits",
+      url: "/visits",
+      component: "visitBrowse",
+      redirectTo: "dashboard.visits.current"
     },
     {
-      name: "visit-browse.current",
+      name: "dashboard.visits.current",
       url: "/current",
       component: "visitList",
       params: {
@@ -26,7 +27,7 @@ export default function VisitBrowseConfig($stateProvider) {
       }
     },
     {
-      name: "visit-browse.past",
+      name: "dashboard.visits.past",
       url: "/past",
       component: "visitList",
       resolve: {

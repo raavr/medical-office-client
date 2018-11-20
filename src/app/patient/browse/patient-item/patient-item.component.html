@@ -20,7 +20,7 @@
       <a ng-href="#" uib-tooltip="Usuń użytkownika" ng-click="$ctrl.deletePatient()" class="btn btn-warning list-item__action-btn">
         <i class="glyphicon glyphicon-trash"></i>
       </a>
-      <a ng-href="#" uib-tooltip="Zobacz wizyty pacjenta" ui-sref="visit-browse.current({filterParams: {userName: '{{$ctrl.patient.name}} {{$ctrl.patient.surname}}'}})"
+      <a uib-tooltip="Zobacz wizyty pacjenta" ui-sref="dashboard.visits.current({filterParams: {userName: '{{$ctrl.patient.name}} {{$ctrl.patient.surname}}'}})"
         class="btn btn-warning list-item__action-btn">
         <i class="glyphicon glyphicon-info-sign"></i>
       </a>
