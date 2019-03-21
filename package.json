@@ -12,7 +12,7 @@
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
     "server:prod": "http-server dist --cors",
-    "test": "karma start",
+    "test": "./node_modules/karma/bin/karma start",
     "start": "npm run server"
   },
   "author": "Rafał Rykowski",
