@@ -9,7 +9,7 @@ export class PatientBrowseService {
 
   getPatients() {
     const reqPromise = this.$http.get(CONFIG.ENDPOINT + '/api/patients');
-    return handleRequest(reqPromise);
+    return handleRequest(reqPromise).map(data => data.patients);
   }
 
 }
